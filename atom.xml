@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-21T09:39:15.947Z</updated>
+  <updated>2018-04-22T10:59:41.528Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,23 +17,79 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2018/04/21/hello-world/"/>
-    <id>http://yoursite.com/2018/04/21/hello-world/</id>
-    <published>2018-04-21T09:39:15.947Z</published>
-    <updated>2018-04-21T09:39:15.947Z</updated>
+    <title>如何更改Github上面托管的项目的默认显示语言</title>
+    <link href="http://yoursite.com/2018/04/22/%E5%A6%82%E4%BD%95%E6%9B%B4%E6%94%B9Github%E4%B8%8A%E9%9D%A2%E6%89%98%E7%AE%A1%E7%9A%84%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%BB%98%E8%AE%A4%E6%98%BE%E7%A4%BA%E8%AF%AD%E8%A8%80/"/>
+    <id>http://yoursite.com/2018/04/22/如何更改Github上面托管的项目的默认显示语言/</id>
+    <published>2018-04-22T10:41:32.000Z</published>
+    <updated>2018-04-22T10:59:41.528Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<p>　　最近将自己一门课的课程大作业，也算是一个小项目demo，放到了GitHub上面，由于项目里面包含许多下载的html文件，导致html代码远远的超过自己写的python代码，于是GitHub默认也就显示是html。</p><p>　　这种对于我这种有强迫症的人来说，简直就是不能忍受的。于是我就各种上网找解决方案。终于，在不懈的努力之后，让我给找到了，在这里分享给大家。</p><p>　　导致这种情况的主要原因是GitHub是使用Linguist来检测你的项目所使用的语言，Linguist具体的作用我个人猜测应该就是：统计你这个项目里面哪一种语言的代码量最多，就把这种语言作为当前这个项目的主语言,也就是默认显示语言。这种做法显然是很不合理的，你比如像python这种支持函数式编程而且崇尚语法简洁优雅的解释型脚本语言，它的代码量远远比不过其他的编译型语言(比如C/C++/Java)。</p><p>　　那么到底如何来解决这个问题呢？解决办法如下：</p><p><font face="微软雅黑" size="4" color="red">使用.gitattributes配置文件</font><br><strong> 具体做法是这样的：在你的GitHub代码仓库的根目录界面新建一个.gitattributes配置文件，如下图所示：</strong><br><img src="/2018/04/22/如何更改Github上面托管的项目的默认显示语言/1.png" alt="Github"><br>然后打开这个文件：把默认的显示语言（也就是统计的代码量最多的语言）全部改成你这个项目本来的语言。例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*.js linguist-language=Python　　</span><br><span class="line">*.css linguist-language=Python　　　</span><br><span class="line">*.html linguist-language=Python</span><br></pre></td></tr></table></figure></p><p><font face="微软雅黑" size="4" color="red">这几行代码的意思就是说：将以.js , .css , .html 为扩展名的文件都按照Python语言来统计。就是这么简单。这么直接！！！</font><br>好了，改完这些之后保存，再回到GitHub主界面就会看到默认的展示语言已经变成python了。主要的步骤就是这样，希望能够帮助到大家。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+        &lt;p&gt;　　最近将自己一门课的课程大作业，也算是一个小项目demo，放到了GitHub上面，由于项目里面包含许多下载的html文件，导致html代码远远的超过自己写的python代码，于是GitHub默认也就显示是html。&lt;/p&gt;
+&lt;p&gt;　　这种对于我这种有强迫症的人来说，简直就
       
     
     </summary>
     
+      <category term="随笔" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于惠普暗影精灵2 pro用一段时间之后，插上电源充不了电的问题</title>
+    <link href="http://yoursite.com/2018/04/22/%E5%85%B3%E4%BA%8E%E6%83%A0%E6%99%AE%E6%9A%97%E5%BD%B1%E7%B2%BE%E7%81%B52-pro%E7%94%A8%E4%B8%80%E6%AE%B5%E6%97%B6%E9%97%B4%E4%B9%8B%E5%90%8E%EF%BC%8C%E6%8F%92%E4%B8%8A%E7%94%B5%E6%BA%90%E5%85%85%E4%B8%8D%E4%BA%86%E7%94%B5%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2018/04/22/关于惠普暗影精灵2-pro用一段时间之后，插上电源充不了电的问题/</id>
+    <published>2018-04-22T06:33:59.000Z</published>
+    <updated>2018-04-22T07:32:55.086Z</updated>
+    
+    <content type="html"><![CDATA[<p>　　去年5月份换的新电脑，用到现在大半年了。近几天来突然发现电脑插上电源充不了电，关机重启啥的都没有效果，于是尝试着上网找各种解决方案，终于，再试了N种解决方案之后，终于让我成功地找到了解决问题的办法。现在将我的解决方案分享出来，希望对大家有所帮助。</p><p>　　具体的操作步骤（<strong>仅针对惠普电脑，其他品牌的电脑不敢保证，不过个人觉得应该差不多</strong>）如下：</p><p>　　1.先将电脑关机；</p><p>　　2.在关机状态下按住键盘上的windows和V键；</p><p>　　3.再按住上面的两个键的同时，不松开，再按住电源键，三个键同时按住不放2-3秒钟；</p><p>　　4.松开全部的按键；</p><p>　　5.按电源键开机，看是否会进入一个Bios设置界面，即是否会提示502，如果提示的话则表示操作成功；</p><p>　　6.再重新启动电脑一次，问题即可解决。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;　　去年5月份换的新电脑，用到现在大半年了。近几天来突然发现电脑插上电源充不了电，关机重启啥的都没有效果，于是尝试着上网找各种解决方案，终于，再试了N种解决方案之后，终于让我成功地找到了解决问题的办法。现在将我的解决方案分享出来，希望对大家有所帮助。&lt;/p&gt;
+&lt;p&gt;　　具体
+      
+    
+    </summary>
+    
+      <category term="电脑诊断" scheme="http://yoursite.com/categories/%E7%94%B5%E8%84%91%E8%AF%8A%E6%96%AD/"/>
+    
+    
+      <category term="computer hardware" scheme="http://yoursite.com/tags/computer-hardware/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2018/04/21/hello-world/"/>
+    <id>http://yoursite.com/2018/04/21/hello-world/</id>
+    <published>2018-04-21T09:39:15.947Z</published>
+    <updated>2018-04-22T10:49:56.245Z</updated>
+    
+    <content type="html"><![CDATA[<p>　Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;　Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
   </entry>
   
