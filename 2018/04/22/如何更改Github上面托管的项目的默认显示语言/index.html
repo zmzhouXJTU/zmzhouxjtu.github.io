@@ -126,7 +126,7 @@
 <meta property="og:description" content="最近将自己一门课的课程大作业，也算是一个小项目demo，放到了GitHub上面，由于项目里面包含许多下载的html文件，导致html代码远远的超过自己写的python代码，于是GitHub默认也就显示是html。 这种对于我这种有强迫症的人来说，简直就是不能忍受的。于是我就各种上网找解决方案。终于，在不懈的努力之后，让我给找到了，在这里分享给大家。 导致这种情况的主要原因是GitHub是使用Lin">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/04/22/如何更改Github上面托管的项目的默认显示语言/1.png">
-<meta property="og:updated_time" content="2018-04-23T06:10:47.953Z">
+<meta property="og:updated_time" content="2018-04-23T06:24:25.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何更改Github上面托管的项目的默认显示语言">
 <meta name="twitter:description" content="最近将自己一门课的课程大作业，也算是一个小项目demo，放到了GitHub上面，由于项目里面包含许多下载的html文件，导致html代码远远的超过自己写的python代码，于是GitHub默认也就显示是html。 这种对于我这种有强迫症的人来说，简直就是不能忍受的。于是我就各种上网找解决方案。终于，在不懈的努力之后，让我给找到了，在这里分享给大家。 导致这种情况的主要原因是GitHub是使用Lin">
@@ -460,13 +460,15 @@
 <p>这种对于我这种有强迫症的人来说，简直就是不能忍受的。于是我就各种上网找解决方案。终于，在不懈的努力之后，让我给找到了，在这里分享给大家。</p>
 <p>导致这种情况的主要原因是GitHub是使用Linguist来检测你的项目所使用的语言，Linguist具体的作用我个人猜测应该就是：统计你这个项目里面哪一种语言的代码量最多，就把这种语言作为当前这个项目的主语言,也就是默认显示语言。这种做法显然是很不合理的，你比如像python这种支持函数式编程而且崇尚语法简洁优雅的解释型脚本语言，它的代码量远远比不过其他的编译型语言(比如C/C++/Java)。</p>
 <p>那么到底如何来解决这个问题呢？解决办法如下：</p>
-<font face="微软雅黑" size="4" color="red">使用.gitattributes配置文件</font>
+<font face="微软雅黑" size="3" color="red">使用.gitattributes配置文件</font>
 
 <p><strong> 具体做法是这样的：在你的GitHub代码仓库的根目录界面新建一个.gitattributes配置文件，如下图所示：</strong></p>
 <p><img src="/2018/04/22/如何更改Github上面托管的项目的默认显示语言/1.png" alt="Github"></p>
 <p>然后打开这个文件：把默认的显示语言（也就是统计的代码量最多的语言）全部改成你这个项目本来的语言。例如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*.js linguist-language=Python　　</span><br><span class="line">*.css linguist-language=Python　　　</span><br><span class="line">*.html linguist-language=Python</span><br></pre></td></tr></table></figure>
-<p><font face="微软雅黑" size="4" color="red">这几行代码的意思就是说：将以.js , .css , .html 为扩展名的文件都按照Python语言来统计。就是这么简单。这么直接！！！</font><br>好了，改完这些之后保存，再回到GitHub主界面就会看到默认的展示语言已经变成python了。主要的步骤就是这样，希望能够帮助到大家。</p>
+<font face="微软雅黑" size="3" color="red">这几行代码的意思就是说：将以.js , .css , .html 为扩展名的文件都按照Python语言来统计。就是这么简单。这么直接！！！</font>
+
+<p>好了，改完这些之后保存，再回到GitHub主界面就会看到默认的展示语言已经变成python了。主要的步骤就是这样，希望能够帮助到大家。</p>
 
       
     </div>
