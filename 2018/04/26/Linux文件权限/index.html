@@ -128,7 +128,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/26/Linux文件权限/1.jpg">
 <meta property="og:image" content="https://morvanzhou.github.io/static/results/linux-basic/03-01-02.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/26/Linux文件权限/3.jpg">
-<meta property="og:updated_time" content="2018-04-26T14:35:46.201Z">
+<meta property="og:updated_time" content="2018-04-26T14:48:16.230Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux文件权限">
 <meta name="twitter:description" content="在 Linux 操作系统中，权限是一个非常重要的东西。 它无时无刻不在影响着你的各种操作。就像有的时候，你想去百度云下载一些别人分享的文件，可是你却发现虽然你能看到文件但是你却不能下载，这就是一种权限的典型例子。在 Linux 中, 这种权限随处可见。你可以设置，让别人不能越界。 不过像我这种人，也就是一台电脑， 一个用户(手动滑稽)，涉及不到多少有关权限方面的问题。 如果你也和我差不多，只有你自">
@@ -477,7 +477,7 @@
 <li><p><code>Others</code>: 除了 User 和 Group 以外人的权限。</p>
 </li>
 </ul>
-<p>如果有人对 User, group, others 这三个没什么概念的话，我这里补充一下。User 一般就是指你，这个当前正在使用电脑的人。 Group 是一个 User 的集合，最开始创建新 User 的时候, 他也为这个 User 创建了一个和 User 一样名字的 Group, 这个新 Group 里只有这个 User。一般来说,，像一个企业部门的电脑，都可以放在一个 Group 里, 分享了一些共享文件和权限。Others 就是除了上面提到的 User 和 Group 以外的人。</p>
+<p>如果有人对 User, group, others 这三个没什么概念的话，我这里补充一下。User 一般就是指你，这个当前正在使用电脑的人。 Group 是一个 User 的集合，最开始创建新 User 的时候, 他也为这个 User 创建了一个和 User 一样名字的 Group, 这个新 Group 里只有这个 User。一般来说，像一个企业部门的电脑，都可以放在一个 Group 里, 分享了一些共享文件和权限。Others 就是除了上面提到的 User 和 Group 以外的人。</p>
 <p>好了, 有了这些理解, 我们拿上面的 p1.py 来举例. 我们可以将 -rw-r–r– 拆成 - (这是文件), -rw(这个 User可以读,写), rw- (这个Group里只能读), r– (其他人只能读)。</p>
 <hr>
 <h2 id="chmod-修改权限"><a href="#chmod-修改权限" class="headerlink" title="chmod 修改权限"></a>chmod 修改权限</h2><p>好了, 我们知道了这些权限的问题, 那我们如何来改写权限呢? <code>chmod</code> (change mode)命令就是来干这个的。</p>
