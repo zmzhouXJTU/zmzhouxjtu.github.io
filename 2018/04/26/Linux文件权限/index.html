@@ -128,7 +128,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/26/Linux文件权限/1.png">
 <meta property="og:image" content="https://morvanzhou.github.io/static/results/linux-basic/03-01-02.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/26/Linux文件权限/2.png">
-<meta property="og:updated_time" content="2018-04-27T01:50:38.787Z">
+<meta property="og:updated_time" content="2018-04-27T02:21:53.730Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux文件权限">
 <meta name="twitter:description" content="在 Linux 操作系统中，权限是一个非常重要的东西。 它无时无刻不在影响着你的各种操作。就像有的时候，你想去百度云下载一些别人分享的文件，可是你却发现虽然你能看到文件但是你却不能下载，这就是一种权限的典型例子。在 Linux 中, 这种权限随处可见。你可以设置，让别人不能越界。 不过像我这种人，也就是一台电脑， 一个用户(手动滑稽)，涉及不到多少有关权限方面的问题。 如果你也和我差不多，只有你自">
@@ -421,7 +421,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,135字
+                  1,339字
                 </span>
               
 
@@ -437,7 +437,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4分钟
+                  5分钟
                 </span>
               
             </div>
@@ -504,6 +504,13 @@
 </ul>
 <p>除了上面这些修改形式, 还有一些简化版的形式, 不过我觉得不是天天用权限这东西, 了解上面就够了。如果你想更深的了解, 网上搜搜 “linux 权限 数字表示”<br>对你会有帮助。</p>
 <hr>
+<h2 id="一个使用Python的技巧"><a href="#一个使用Python的技巧" class="headerlink" title="一个使用Python的技巧"></a>一个使用Python的技巧</h2><p>我不怎么用权限这东西, 但是我却发现给 python 文件添加权限<code>x</code> 还算有用的. 为什么这么说? 因为通常, 如果一个 <code>.py</code> 没有<code>x</code> 权限, 在 terminal 中你就需要这样执行:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/Documents/Folder1$ python3 p1.py</span><br></pre></td></tr></table></figure>
+<p>如果你有了 <code>x</code> (可执行权限), 你运行这个文件可以直接这样打:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/Documents/Folder1$ ./p1.py</span><br></pre></td></tr></table></figure>
+<p>很酷炫有木有？但是上面这个脚本能够成功运行有一个前提，那就是你在这个Python脚本p1.py的开头加上一句话，如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line">print(<span class="string">"Hello World"</span>)</span><br></pre></td></tr></table></figure>
+<p>好了，加上上面这句话的话以后运行这个脚本就可以直接用那本很酷炫的方式而不用每次都<code>python3 xx.py</code>啦。</p>
 
       
     </div>
@@ -789,7 +796,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ls查看权限"><span class="nav-number">1.</span> <span class="nav-text">ls查看权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chmod-修改权限"><span class="nav-number">2.</span> <span class="nav-text">chmod 修改权限</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ls查看权限"><span class="nav-number">1.</span> <span class="nav-text">ls查看权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chmod-修改权限"><span class="nav-number">2.</span> <span class="nav-text">chmod 修改权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个使用Python的技巧"><span class="nav-number">3.</span> <span class="nav-text">一个使用Python的技巧</span></a></li></ol></div>
             
 
           </div>
