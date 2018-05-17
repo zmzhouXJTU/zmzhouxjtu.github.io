@@ -126,7 +126,7 @@
 <meta property="og:description" content="前言碎碎念自从使用Git作为版本控制工具以来，通过教程学习、手册查阅方式了解了Git的相关原理和Git的命令，能够顺利使用。但由于还不熟练，实践经验也还不够丰富，每次遇到问题都需要重新搜索，多次下来十分麻烦。另一方面，查阅手册往往是不够的，因为手册只会告诉你什么命令做什么用，不会根据不同场景告诉你应该用什么命令。 所以在这篇文章中，我将常用的Git命令根据不同的使用场景做一个整理，加深印象的同时也">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/04/24/Git常用命令整理/1.png">
-<meta property="og:updated_time" content="2018-05-17T10:55:08.189Z">
+<meta property="og:updated_time" content="2018-05-17T11:02:26.355Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git常用命令整理">
 <meta name="twitter:description" content="前言碎碎念自从使用Git作为版本控制工具以来，通过教程学习、手册查阅方式了解了Git的相关原理和Git的命令，能够顺利使用。但由于还不熟练，实践经验也还不够丰富，每次遇到问题都需要重新搜索，多次下来十分麻烦。另一方面，查阅手册往往是不够的，因为手册只会告诉你什么命令做什么用，不会根据不同场景告诉你应该用什么命令。 所以在这篇文章中，我将常用的Git命令根据不同的使用场景做一个整理，加深印象的同时也">
@@ -419,7 +419,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,627字
+                  2,643字
                 </span>
               
 
@@ -519,11 +519,12 @@
 <p>现在，你的小伙伴要在<code>dev</code>分支上开发，就必须创建远程<code>origin</code>的<code>dev</code>分支到本地，于是他用这个命令创建本地<code>dev</code>分支：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#注意：本地分支名称最好与远程分支保持一致。</span></span><br><span class="line">$ git checkout -b dev origin/dev</span><br></pre></td></tr></table></figure>
 <p>现在，他就可以在<code>dev</code>上继续修改，然后，时不时地把<code>dev</code>分支<code>push</code>到远程。</p>
-<p>你的小伙伴已经向<code>origin/dev</code>分支推送了他的提交，而碰巧你对同样的文件也做了修改，并且试图推送，这个时候会推送失败,因为你的小伙伴的最新提交和你试图推送的提交有冲突，解决办法也很简单: 先用git pull把最新的提交从origin/dev抓下来，然后，在本地合并，解决冲突，再推送。</p>
+<p>你的小伙伴已经向<code>origin/dev</code>分支推送了他的提交，而碰巧你对同样的文件也做了修改，并且试图推送。</p>
+<p>这个时候会推送失败,因为你的小伙伴的最新提交和你试图推送的提交有冲突，解决办法也很简单: 先用<code>git pull</code>把最新的提交从<code>origin/dev</code>抓下来，然后，在本地合并，解决冲突，再推送。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
 <p>如果<code>git pull</code>提示<code>“no tracking information”</code>，则说明本地分支和远程分支的链接关系没有创建，用命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch --<span class="built_in">set</span>-upstream branch-name origin/branch-name</span><br></pre></td></tr></table></figure>
-<p>这就是多人协作的工作模式，一旦熟悉了，就非常简单。</p>
+<p>最后再将你改好的分支<code>push</code>到远程仓库。<br>这就是多人协作的工作模式，一旦熟悉了，就非常简单。</p>
 <hr>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="状态查看"><a href="#状态查看" class="headerlink" title="状态查看"></a>状态查看</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
 <p>任何情况下都可以使用<code>git status</code>命令查看当前的版本控制状态（包括工作区、暂存区、仓库区），并给出当前状态下可能会用到的命令提示。<br>经常使用该命令是好习惯。</p>
