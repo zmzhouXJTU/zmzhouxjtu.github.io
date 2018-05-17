@@ -126,7 +126,7 @@
 <meta property="og:description" content="前言碎碎念自从使用Git作为版本控制工具以来，通过教程学习、手册查阅方式了解了Git的相关原理和Git的命令，能够顺利使用。但由于还不熟练，实践经验也还不够丰富，每次遇到问题都需要重新搜索，多次下来十分麻烦。另一方面，查阅手册往往是不够的，因为手册只会告诉你什么命令做什么用，不会根据不同场景告诉你应该用什么命令。 所以在这篇文章中，我将常用的Git命令根据不同的使用场景做一个整理，加深印象的同时也">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/04/24/Git常用命令整理/1.png">
-<meta property="og:updated_time" content="2018-05-05T03:24:40.504Z">
+<meta property="og:updated_time" content="2018-05-17T03:12:23.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git常用命令整理">
 <meta name="twitter:description" content="前言碎碎念自从使用Git作为版本控制工具以来，通过教程学习、手册查阅方式了解了Git的相关原理和Git的命令，能够顺利使用。但由于还不熟练，实践经验也还不够丰富，每次遇到问题都需要重新搜索，多次下来十分麻烦。另一方面，查阅手册往往是不够的，因为手册只会告诉你什么命令做什么用，不会根据不同场景告诉你应该用什么命令。 所以在这篇文章中，我将常用的Git命令根据不同的使用场景做一个整理，加深印象的同时也">
@@ -419,7 +419,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,134字
+                  2,161字
                 </span>
               
 
@@ -472,7 +472,7 @@
 <hr>
 <h2 id="建立工程"><a href="#建立工程" class="headerlink" title="建立工程"></a>建立工程</h2><p>在工作目录中建立与远程仓库关联的Git工程主要有两种情况：第一种是由本地上传到远程仓库；第二种是从远程仓库克隆到本地。</p>
 <h3 id="本地上传"><a href="#本地上传" class="headerlink" title="本地上传"></a>本地上传</h3><p>在这种情况下，远程仓库应该是没有工程的。在本地工程文件夹下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line"><span class="comment">#初始化一个Git仓库，此时当前目录会增加一个.git文件夹(此文件夹默认是隐藏的)，当前文件夹受到Git的管理，并默认创建master分支</span></span><br><span class="line"></span><br><span class="line">$ git add &lt;file&gt;</span><br><span class="line"><span class="comment">#添加指定文件到暂存区，"&lt;file&gt;"为"."时表明添加当前目录的所有文件到暂存区</span></span><br><span class="line"></span><br><span class="line">$ git remote add origin &lt;url&gt;</span><br><span class="line"><span class="comment">#为当前项目添加远程主机。</span></span><br><span class="line"><span class="comment">#其中origin为自定义的远程主机名，url为远程主机的地址（推荐采用ssh协议）</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line"><span class="comment">#初始化一个Git仓库，此时当前目录会增加一个.git文件夹(此文件夹默认是隐藏的)，当前文件夹受到Git的管理，并默认创建master分支</span></span><br><span class="line"></span><br><span class="line">$ git add &lt;file&gt;</span><br><span class="line"><span class="comment">#添加指定文件到暂存区，"&lt;file&gt;"为"."时表明添加当前目录的所有文件到暂存区</span></span><br><span class="line"></span><br><span class="line">$ git commit -m <span class="string">"XXXX"</span></span><br><span class="line"><span class="comment">#提交暂存区的所有内容到本地仓库的当前分支</span></span><br><span class="line"></span><br><span class="line">$ git remote add origin &lt;url&gt;</span><br><span class="line"><span class="comment">#为当前项目添加远程主机。</span></span><br><span class="line"><span class="comment">#其中origin为自定义的远程主机名，url为远程主机的地址（推荐采用ssh协议）</span></span><br></pre></td></tr></table></figure>
 <p>此时已经建立了本地仓库与远程仓库的关联，可以通过<code>git push</code>推送上传。<br>第一次推送采用：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br><span class="line"><span class="comment">#将本地master分支推送到远程同名分支（若不存在则新建），同时-u指定origin为默认主机名，之后若要上传到origin可省略它。</span></span><br></pre></td></tr></table></figure>
 <h3 id="远程克隆"><a href="#远程克隆" class="headerlink" title="远程克隆"></a>远程克隆</h3><p>这种情况下，远程仓库已经有工程，只需要在本地工程文件夹下用<code>git clone</code>命令克隆：</p>
