@@ -128,7 +128,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/26/Linux文件权限/1.png">
 <meta property="og:image" content="https://morvanzhou.github.io/static/results/linux-basic/03-01-02.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/26/Linux文件权限/2.png">
-<meta property="og:updated_time" content="2018-05-19T13:56:32.124Z">
+<meta property="og:updated_time" content="2018-05-19T14:33:05.489Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux文件权限">
 <meta name="twitter:description" content="在 Linux 操作系统中，权限是一个非常重要的东西。 它无时无刻不在影响着你的各种操作。就像有的时候，你想去百度云下载一些别人分享的文件，可是你却发现虽然你能看到文件但是你却不能下载，这就是一种权限的典型例子。在 Linux 中, 这种权限随处可见。你可以设置，让别人不能越界。 不过像我这种人，也就是一台电脑， 一个用户(手动滑稽)，涉及不到多少有关权限方面的问题。 如果你也和我差不多，只有你自">
@@ -504,8 +504,7 @@
 </ul>
 <p>除了上面这些修改形式, 还有一些简化版的形式, 就是用数字来表示相应的权限，此时一组权限的 3 个位当做二进制数字的位，从左到右每个位的权值为 4、2、1，即每个权限对应的数字权值为 r : 4、w : 2、x : 1。</p>
 <hr>
-<p>##文件默认权限</p>
-<ul>
+<h2 id="文件默认权限"><a href="#文件默认权限" class="headerlink" title="文件默认权限"></a>文件默认权限</h2><ul>
 <li><p>文件默认权限：文件默认没有可执行权限，因此为 666，也就是 -rw-rw-rw- 。</p>
 </li>
 <li><p>目录默认权限：目录必须要能够进入，也就是必须拥有可执行权限，因此为 777 ，也就是 drwxrwxrwx。</p>
@@ -804,7 +803,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ls查看权限"><span class="nav-number">1.</span> <span class="nav-text">ls查看权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chmod-修改权限"><span class="nav-number">2.</span> <span class="nav-text">chmod 修改权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个使用Python的技巧"><span class="nav-number">3.</span> <span class="nav-text">一个使用Python的技巧</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ls查看权限"><span class="nav-number">1.</span> <span class="nav-text">ls查看权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chmod-修改权限"><span class="nav-number">2.</span> <span class="nav-text">chmod 修改权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件默认权限"><span class="nav-number">3.</span> <span class="nav-text">文件默认权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个使用Python的技巧"><span class="nav-number">4.</span> <span class="nav-text">一个使用Python的技巧</span></a></li></ol></div>
             
 
           </div>
