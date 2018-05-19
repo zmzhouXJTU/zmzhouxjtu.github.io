@@ -128,7 +128,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/26/Linux文件权限/1.png">
 <meta property="og:image" content="https://morvanzhou.github.io/static/results/linux-basic/03-01-02.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/26/Linux文件权限/2.png">
-<meta property="og:updated_time" content="2018-05-05T03:17:59.021Z">
+<meta property="og:updated_time" content="2018-05-19T13:56:32.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux文件权限">
 <meta name="twitter:description" content="在 Linux 操作系统中，权限是一个非常重要的东西。 它无时无刻不在影响着你的各种操作。就像有的时候，你想去百度云下载一些别人分享的文件，可是你却发现虽然你能看到文件但是你却不能下载，这就是一种权限的典型例子。在 Linux 中, 这种权限随处可见。你可以设置，让别人不能越界。 不过像我这种人，也就是一台电脑， 一个用户(手动滑稽)，涉及不到多少有关权限方面的问题。 如果你也和我差不多，只有你自">
@@ -421,7 +421,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,339字
+                  1,425字
                 </span>
               
 
@@ -470,7 +470,7 @@
 <ul>
 <li><p><code>Type</code>: 很多种 (最常见的是 <code>-</code> 为文件, <code>d</code> 为文件夹, 其他的还有<code>l</code>, <code>n</code> … 这种东西, 真正自己遇到了, 网上再搜就好, 一次性说太多记不住的)。</p>
 </li>
-<li><p><code>User</code>: 后面跟着的三个空是使用 User 的身份能对这个做什么处理 (<code>r</code> 能读; <code>w</code> 能写; <code>x</code> 能执行; <code>-</code> 不能完成某个操作)。</p>
+<li><p><code>User</code>: 后面跟着的三个空是使用 User 的身份能对这个做什么处理 (<code>r</code> 可读; <code>w</code> 可写; <code>x</code> 可执行; <code>-</code> 不能完成某个操作)。</p>
 </li>
 <li><p><code>Group</code>: 一个 Group 里可能有一个或者多个 user, 这些权限的样式和 User 一样。</p>
 </li>
@@ -496,13 +496,21 @@
 <p><strong>[怎么修改]</strong></p>
 <ul>
 <li><code>+</code>, <code>-</code>, <code>=</code>: 作用的形式, 加上, 减掉, 等于某些权限</li>
-<li><code>r</code>, <code>w</code>, <code>x</code> 或者多个权限一起, 比如 <code>rx</code></li>
+<li><code>r</code>, <code>w</code>, <code>x</code> 或者多个权限的组合, 比如 <code>rx</code></li>
 </ul>
 <p><strong>[哪个文件]</strong></p>
 <ul>
 <li>施加操作的文件, 可以为多个文件</li>
 </ul>
-<p>除了上面这些修改形式, 还有一些简化版的形式, 不过我觉得不是天天用权限这东西, 了解上面就够了。如果你想更深的了解, 网上搜搜 “linux 权限 数字表示”<br>对你会有帮助。</p>
+<p>除了上面这些修改形式, 还有一些简化版的形式, 就是用数字来表示相应的权限，此时一组权限的 3 个位当做二进制数字的位，从左到右每个位的权值为 4、2、1，即每个权限对应的数字权值为 r : 4、w : 2、x : 1。</p>
+<hr>
+<p>##文件默认权限</p>
+<ul>
+<li><p>文件默认权限：文件默认没有可执行权限，因此为 666，也就是 -rw-rw-rw- 。</p>
+</li>
+<li><p>目录默认权限：目录必须要能够进入，也就是必须拥有可执行权限，因此为 777 ，也就是 drwxrwxrwx。</p>
+</li>
+</ul>
 <hr>
 <h2 id="一个使用Python的技巧"><a href="#一个使用Python的技巧" class="headerlink" title="一个使用Python的技巧"></a>一个使用Python的技巧</h2><p>我不怎么用权限这东西, 但是我却发现给 python 文件添加权限<code>x</code> 还算有用的. 为什么这么说? 因为通常, 如果一个 <code>.py</code> 没有<code>x</code> 权限, 在 terminal 中你就需要这样执行:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/Documents/Folder1$ python3 p1.py</span><br></pre></td></tr></table></figure>

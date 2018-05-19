@@ -117,18 +117,18 @@
 
 
 
-<meta name="description" content="作为一名程序员，相信大家对Linux操作系统都不会陌生。但是Linux系统那些繁杂的操作命令通常让我们很头疼，我也在网上查阅了很多资料，做了一些总结。这里将常用的一些Linux操作命令整理如下：  sudo这个SuperUserDo(简写成”sudo”)是Linux新手要使用的最重要的命令。需要根权限的每一个命令都需要这个sudo命令。你可以在需要根权限的每个命令之前使用sudo 1$ sudo">
+<meta name="description" content="作为一名程序员，相信大家对Linux操作系统都不会陌生。但是Linux系统那些繁杂的操作命令通常让我们很头疼，我也在网上查阅了很多资料，做了一些总结。这里将常用的一些Linux操作命令(主要是与文件相关的操作命令)整理如下：  sudo这个SuperUserDo(简写成”sudo”)是Linux新手要使用的最重要的命令。需要根权限的每一个命令都需要这个sudo命令。你可以在需要根权限的每个命令之前">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux常用命令">
 <meta property="og:url" content="http://yoursite.com/2018/04/26/Linux常用命令/index.html">
 <meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
-<meta property="og:description" content="作为一名程序员，相信大家对Linux操作系统都不会陌生。但是Linux系统那些繁杂的操作命令通常让我们很头疼，我也在网上查阅了很多资料，做了一些总结。这里将常用的一些Linux操作命令整理如下：  sudo这个SuperUserDo(简写成”sudo”)是Linux新手要使用的最重要的命令。需要根权限的每一个命令都需要这个sudo命令。你可以在需要根权限的每个命令之前使用sudo 1$ sudo">
+<meta property="og:description" content="作为一名程序员，相信大家对Linux操作系统都不会陌生。但是Linux系统那些繁杂的操作命令通常让我们很头疼，我也在网上查阅了很多资料，做了一些总结。这里将常用的一些Linux操作命令(主要是与文件相关的操作命令)整理如下：  sudo这个SuperUserDo(简写成”sudo”)是Linux新手要使用的最重要的命令。需要根权限的每一个命令都需要这个sudo命令。你可以在需要根权限的每个命令之前">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-05T03:17:42.989Z">
+<meta property="og:updated_time" content="2018-05-19T14:27:33.074Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常用命令">
-<meta name="twitter:description" content="作为一名程序员，相信大家对Linux操作系统都不会陌生。但是Linux系统那些繁杂的操作命令通常让我们很头疼，我也在网上查阅了很多资料，做了一些总结。这里将常用的一些Linux操作命令整理如下：  sudo这个SuperUserDo(简写成”sudo”)是Linux新手要使用的最重要的命令。需要根权限的每一个命令都需要这个sudo命令。你可以在需要根权限的每个命令之前使用sudo 1$ sudo">
+<meta name="twitter:description" content="作为一名程序员，相信大家对Linux操作系统都不会陌生。但是Linux系统那些繁杂的操作命令通常让我们很头疼，我也在网上查阅了很多资料，做了一些总结。这里将常用的一些Linux操作命令(主要是与文件相关的操作命令)整理如下：  sudo这个SuperUserDo(简写成”sudo”)是Linux新手要使用的最重要的命令。需要根权限的每一个命令都需要这个sudo命令。你可以在需要根权限的每个命令之前">
 
 
 
@@ -417,7 +417,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,941字
+                  3,324字
                 </span>
               
 
@@ -433,7 +433,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  11分钟
+                  13分钟
                 </span>
               
             </div>
@@ -454,10 +454,13 @@
       
 
       
-        <p>作为一名程序员，相信大家对Linux操作系统都不会陌生。但是Linux系统那些繁杂的操作命令通常让我们很头疼，我也在网上查阅了很多资料，做了一些总结。这里将常用的一些Linux操作命令整理如下：</p>
+        <p>作为一名程序员，相信大家对Linux操作系统都不会陌生。但是Linux系统那些繁杂的操作命令通常让我们很头疼，我也在网上查阅了很多资料，做了一些总结。这里将常用的一些Linux操作命令(主要是与文件相关的操作命令)整理如下：</p>
 <hr>
 <h2 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a>sudo</h2><p>这个SuperUserDo(简写成”sudo”)是Linux新手要使用的最重要的命令。需要根权限的每一个命令都需要这个<code>sudo</code>命令。你可以在需要根权限的每个命令之前使用<code>sudo</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo su</span><br></pre></td></tr></table></figure>
+<hr>
+<p>##pwd</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/Documents$ <span class="built_in">pwd</span></span><br><span class="line"><span class="comment"># 获取当前所在的路径(绝对路径)</span></span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="ls-list"><a href="#ls-list" class="headerlink" title="ls(list)"></a>ls(list)</h2><p>借助<code>ls</code>(list)命令，终端就会显示你正在处理的那个目录里面的所有文件和文件夹。假设我在Home目录(也就是”~”)里面，想查看当前目录下的文件夹和文件。相应的命令如下图所示：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~$ ls</span><br><span class="line"><span class="comment"># 显示当前目录的所有文件和文件夹</span></span><br></pre></td></tr></table></figure>
@@ -497,12 +500,13 @@
 <h2 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h2><p>知道了 <code>cp</code>, <code>mv</code>就好理解多了, 基本是一样的。<code>mv</code>是剪切(移动)的命令。<br>下面是<code>mv</code>命令的一些常见操作。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/Documents$ mv file1 Folder1/</span><br><span class="line"><span class="comment"># 将file1移动到文件夹Folder1</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/Documents$ mv file1 file1rename</span><br><span class="line"><span class="comment">#  重命名文件file1为file1rename。因为移动文件到原始的地点, 但是以不同的文件名。所以这种做法不就是在重命名嘛!</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/Documents$ mv -f file1 Folder2/</span><br><span class="line"><span class="comment">#  将文件file1强制移动到Folder2文件夹下。如果目标文件已经存在，不会询问而会直接覆盖。</span></span><br></pre></td></tr></table></figure>
 <p>最后还是想要提一句, 如果想要查看使用说明, 直接在指令后面打上 <code>--help</code>就能查看.</p>
 <hr>
 <h2 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h2><p>仅仅会更改目录还不全面。有时候，你想要创建一个新的文件夹或子文件夹。可以使用<code>mkdir</code>命令来做到这一点。只要在终端中将你的文件夹名称放在<code>mkdir</code>命令的后面即可。<br><code>mkdir</code> (make directory) 就是创建一个文件夹的意思, 使用起来很简单。</p>
 <p>以下是<code>mkdir</code>命令的一些常见操作。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/Documents$ mkdir  Folder2/</span><br><span class="line"><span class="comment"># 在Documents文件夹下创建一个文件夹Folder1</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/Documents$ mkdir  Folder2/folder</span><br><span class="line"><span class="comment"># 在文件夹Folder1里面再创建一个子文件夹folder</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/Documents$ mkdir  Folder2/</span><br><span class="line"><span class="comment"># 在Documents文件夹下创建一个文件夹Folder2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/Documents$ mkdir  Folder2/folder</span><br><span class="line"><span class="comment"># 在文件夹Folder2里面再创建一个子文件夹folder</span></span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="rmdir"><a href="#rmdir" class="headerlink" title="rmdir"></a>rmdir</h2><p><code>rmdir</code>(remove directory) 也就是字面的意思，即移除文件夹。<strong>不过这有一个前提条件. 这些要移除的文件夹必须是空的，不然会失败</strong>。所以如果想刚刚建立的那个 Folder2 就不能被移除, 因为里面有个 folder 文件夹。那么怎么移除有文件的文件夹呢？这里需要用到我们后面讲的<code>rm</code>命令。</p>
 <p>要移除个空文件夹, 比如我在新建一个 Folder3, 然后移除。</p>
@@ -528,6 +532,12 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~/Documents$ cat  p1.py p2.py &gt; p3.py</span><br><span class="line">~/Documents$ cat  p3.py</span><br><span class="line"><span class="comment"># &gt; 将多个文件的内容打包一起放入另一个文件，这里我们将p1.py的内容和p1.py的内容一同写入到p2.py里面。</span></span><br><span class="line"><span class="comment"># 在显示的时候，两个文件的内容会分开显示</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/Documents$ cat  p2.py &gt;&gt; p3.py</span><br><span class="line">~/Documents$ cat  p3.py</span><br><span class="line"><span class="comment"># &gt;&gt; 将内容添加在一个文件末尾，这里我们将p2.py的内容添加到p3.py的末尾。</span></span><br></pre></td></tr></table></figure>
 <hr>
+<p>##head</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~/Documents$ head -n 5 p2.py</span><br><span class="line"><span class="comment"># 查看文件的前几行(默认查看前10行)</span></span><br><span class="line"><span class="comment"># head [-n number] filename</span></span><br><span class="line"><span class="comment"># -n ：后面接数字，代表显示几行的意思</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p>##tail</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~/Documents$ tail -n 6 p3.py</span><br><span class="line"><span class="comment"># 查看文件的后几行(默认查看倒数后10行)</span></span><br><span class="line"><span class="comment"># tail [-n number] filename</span></span><br><span class="line"><span class="comment"># -n ：后面接数字，代表显示几行的意思</span></span><br></pre></td></tr></table></figure>
+<hr>
 <h2 id="apt-get"><a href="#apt-get" class="headerlink" title="apt-get"></a>apt-get</h2><p>就不同的发行版而言，这个命令各不相同。在基于Debian的Linux发行版中，想安装、移除和升级任何软件包，我们可以使用高级包装工具(APT)软件包管理器。<code>apt-get</code>命令可帮助你安装需要在Linux中运行的软件。这是个功能强大的命令行工具，可以执行安装、升级、甚至移除软件这类任务。</p>
 <p>在其他发行版(比如Fedora和Centos)中，有不同的软件包管理器。Fedora过去有<code>yum</code>，但现在它有<code>dnf</code>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~ sudo apt-get update</span><br></pre></td></tr></table></figure>
@@ -535,9 +545,14 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~ sudo apt-get install &lt;package name&gt;</span><br><span class="line"><span class="comment"># 安装相应的软件或工具</span></span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><p>你需要找到一个文件，但是又记不得它的确切位置或路径。<code>grep</code>可以帮助你解决这个问题。你可以使用<code>grep</code>命令，根据给定的关键字帮助找到文件。</p>
-<p><code>grep</code>是一种强大的文本搜索工具，它能使用<strong>正则表达式</strong>搜索文本，并把匹配的行打印出来</p>
+<p><code>grep</code>是一种强大的文本搜索工具，它能使用<strong>正则表达式</strong>搜索文本，并把匹配的行打印出来。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ grep [-acinv] [--color=auto] 搜寻字符串 filename</span><br><span class="line"><span class="comment"># -a ： 将 binary 文件以 text 文件的方式进行搜寻</span></span><br><span class="line"><span class="comment"># -c ： 计算找到个数</span></span><br><span class="line"><span class="comment"># -i ： 忽略大小写</span></span><br><span class="line"><span class="comment"># -n ： 输出行号</span></span><br><span class="line"><span class="comment"># -v ： 反向选择，亦即显示出 没有搜寻字符串内容 的那一行</span></span><br><span class="line"><span class="comment"># --color=auto ：找到的关键字加颜色显示</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/Documents$ grep hello p1.python</span><br><span class="line"><span class="comment"># 在p1.py文件中搜索"hello"这个单词</span></span><br></pre></td></tr></table></figure>
-<p>这里仅仅介绍grep最简单的一种用法，更多更强大的用法后续会继续更新。。。<br>当然，具体的用法可以通过<code>grep --help</code>进行查看。</p>
+<p>范例：把含有 the 字符串的行提取出来(注意默认会有 –color=auto 选项，因此以下内容在 Linux 中有颜色显示 the 字符串)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ grep -n <span class="string">'the'</span> regular_express.txt</span><br><span class="line"><span class="comment"># 以下为相应的显示结果</span></span><br><span class="line"><span class="comment"># 8:I can't finish the test.</span></span><br><span class="line"><span class="comment"># 12:the symbol '*' is represented as start.</span></span><br><span class="line"><span class="comment"># 15:You are the best is mean you are the no. 1.</span></span><br><span class="line"><span class="comment"># 16:The world Happy is the same with "glad".</span></span><br><span class="line"><span class="comment">#18:google is the best tools for search keyword</span></span><br></pre></td></tr></table></figure>
+<p><strong>因为 <code>{ 和 }</code>在 <code>shell</code> 是有特殊意义的，因此必须要使用转义字符进行转义。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ grep -n <span class="string">'go\&#123;2,5\&#125;g'</span> regular_express.txt</span><br></pre></td></tr></table></figure>
+<p>grep还有很多更强大的用法，后续会继续更新。当然，具体的用法可以通过<code>grep --help</code>进行查看。</p>
 <hr>
 <h2 id="poweroff"><a href="#poweroff" class="headerlink" title="poweroff"></a>poweroff</h2><p>有时候，你需要直接从终端来进行关机。这个命令就能完成这项任务，别忘了在命令的开头添加<code>sudo</code>，因为它需要根权限才能执行<code>poweroff</code>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~$ sudo poweroff</span><br></pre></td></tr></table></figure>

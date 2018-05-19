@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/04/26/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
+    
+    <lastmod>2018-05-19T14:27:33.074Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/26/Linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/</loc>
+    
+    <lastmod>2018-05-19T13:56:32.124Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/04/24/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</loc>
     
     <lastmod>2018-05-17T11:02:26.355Z</lastmod>
@@ -26,20 +40,6 @@
     <loc>http://yoursite.com/2018/04/22/%E5%85%B3%E4%BA%8E%E6%83%A0%E6%99%AE%E6%9A%97%E5%BD%B1%E7%B2%BE%E7%81%B52-pro%E7%94%A8%E4%B8%80%E6%AE%B5%E6%97%B6%E9%97%B4%E4%B9%8B%E5%90%8E%EF%BC%8C%E6%8F%92%E4%B8%8A%E7%94%B5%E6%BA%90%E5%85%85%E4%B8%8D%E4%BA%86%E7%94%B5%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
     
     <lastmod>2018-05-05T03:19:38.902Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/04/26/Linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/</loc>
-    
-    <lastmod>2018-05-05T03:17:59.021Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/04/26/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
-    
-    <lastmod>2018-05-05T03:17:42.989Z</lastmod>
     
   </url>
   
