@@ -125,12 +125,12 @@
 <meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
 <meta property="og:description" content="最近将自己一门课的课程大作业，也算是一个小项目demo，放到了GitHub上面，由于项目里面包含许多下载的html文件，导致html代码远远的超过自己写的python代码，于是GitHub默认也就显示是html。 这种对于我这种有强迫症的人来说，简直就是不能忍受的。于是我就各种上网找解决方案。终于，在不懈的努力之后，让我给找到了，在这里分享给大家。 导致这种情况的主要原因是GitHub是使用Lin">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/04/22/如何更改Github上面托管的项目的默认显示语言/如何更改Github上面托管的项目的默认显示语言/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/22/如何更改Github上面托管的项目的默认显示语言/1.png">
 <meta property="og:updated_time" content="2018-06-08T07:24:08.530Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何更改Github上面托管的项目的默认显示语言">
 <meta name="twitter:description" content="最近将自己一门课的课程大作业，也算是一个小项目demo，放到了GitHub上面，由于项目里面包含许多下载的html文件，导致html代码远远的超过自己写的python代码，于是GitHub默认也就显示是html。 这种对于我这种有强迫症的人来说，简直就是不能忍受的。于是我就各种上网找解决方案。终于，在不懈的努力之后，让我给找到了，在这里分享给大家。 导致这种情况的主要原因是GitHub是使用Lin">
-<meta name="twitter:image" content="http://yoursite.com/2018/04/22/如何更改Github上面托管的项目的默认显示语言/如何更改Github上面托管的项目的默认显示语言/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/04/22/如何更改Github上面托管的项目的默认显示语言/1.png">
 
 
 
@@ -462,7 +462,7 @@
 <font face="微软雅黑" size="3" color="red">使用.gitattributes配置文件</font>
 
 <p><strong> 具体做法是这样的：在你的GitHub代码仓库的根目录界面新建一个.gitattributes配置文件，如下图所示：</strong></p>
-<p><img src="如何更改Github上面托管的项目的默认显示语言/1.png" alt="Github"></p>
+<p><img src="/2018/04/22/如何更改Github上面托管的项目的默认显示语言/1.png" alt="Github"></p>
 <p>然后打开这个文件：把默认的显示语言（也就是统计的代码量最多的语言）全部改成你这个项目本来的语言。例如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*.js linguist-language=Python　　</span><br><span class="line">*.css linguist-language=Python　　　</span><br><span class="line">*.html linguist-language=Python</span><br></pre></td></tr></table></figure>
 <font face="微软雅黑" size="3" color="red">这几行代码的意思就是说：将以.js , .css , .html 为扩展名的文件都按照Python语言来统计。就是这么简单。这么直接！！！</font>
