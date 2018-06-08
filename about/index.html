@@ -328,7 +328,7 @@
 <h2 id="教育经历"><a href="#教育经历" class="headerlink" title="教育经历"></a>教育经历</h2><p><strong> 2017年9月—至今               西安交通大学        软件工程 </strong></p>
 <p><strong> 2013年9月—2017年6月               安徽财经大学        计算机科学与技术 </strong></p>
 <hr>
-<h2 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h2><p><strong> Email: </strong> <a href="mailto:&#x7a;&#122;&#109;&#50;&#48;&#49;&#x33;&#x32;&#54;&#x31;&#x36;&#64;&#49;&#54;&#51;&#x2e;&#x63;&#111;&#x6d;" target="_blank" rel="noopener">&#x7a;&#122;&#109;&#50;&#48;&#49;&#x33;&#x32;&#54;&#x31;&#x36;&#64;&#49;&#54;&#51;&#x2e;&#x63;&#111;&#x6d;</a></p>
+<h2 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h2><p><strong> Email: </strong> <a href="mailto:&#x7a;&#x7a;&#x6d;&#x32;&#48;&#49;&#51;&#x32;&#x36;&#49;&#x36;&#x40;&#49;&#54;&#x33;&#x2e;&#x63;&#x6f;&#109;" target="_blank" rel="noopener">&#x7a;&#x7a;&#x6d;&#x32;&#48;&#49;&#51;&#x32;&#x36;&#49;&#x36;&#x40;&#49;&#54;&#x33;&#x2e;&#x63;&#x6f;&#109;</a></p>
 <p><strong> Github: </strong> <a href="https://github.com/zmzhouXJTU" target="_blank" rel="noopener">zmzhouXJTU</a></p>
 <p><strong> 简书: </strong> <a href="https://www.jianshu.com/users/baea3822be48/timeline" target="_blank" rel="noopener">周住铭</a></p>
 <p><strong> 微博: </strong> <a href="https://weibo.com/zzm961020" target="_blank" rel="noopener">周住铭</a></p>
@@ -756,22 +756,57 @@
 
 
   
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
 
 
 
 
 
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'zmzhouXJTU',
+            repo: 'zmzhouxjtu.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'df3c1a4f57b480675618557590b41f989a64e307',
+            
+                client_id: 'f5f138537ac3dc99a9d8'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
+      
+      </script>
+    
 
 
 
