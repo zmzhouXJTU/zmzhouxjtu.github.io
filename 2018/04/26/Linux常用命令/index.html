@@ -125,7 +125,7 @@
 <meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
 <meta property="og:description" content="作为一名程序员，相信大家对Linux操作系统都不会陌生。但是Linux系统那些繁杂的操作命令通常让我们很头疼，我也在网上查阅了很多资料，做了一些总结。这里将常用的一些Linux操作命令(主要是与文件相关的操作命令)整理如下：  sudo这个SuperUserDo(简写成”sudo”)是Linux新手要使用的最重要的命令。需要根权限的每一个命令都需要这个sudo命令。你可以在需要根权限的每个命令之前">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-19T14:32:47.891Z">
+<meta property="og:updated_time" content="2018-06-08T06:00:57.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常用命令">
 <meta name="twitter:description" content="作为一名程序员，相信大家对Linux操作系统都不会陌生。但是Linux系统那些繁杂的操作命令通常让我们很头疼，我也在网上查阅了很多资料，做了一些总结。这里将常用的一些Linux操作命令(主要是与文件相关的操作命令)整理如下：  sudo这个SuperUserDo(简写成”sudo”)是Linux新手要使用的最重要的命令。需要根权限的每一个命令都需要这个sudo命令。你可以在需要根权限的每个命令之前">
@@ -383,8 +383,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2018/04/26/Linux常用命令/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/04/26/Linux常用命令/" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/26/Linux常用命令/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -667,14 +666,7 @@
 
   
     <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
     </div>
-
   
 
 
@@ -1033,26 +1025,6 @@
 
   
 
-    
-      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/04/26/Linux常用命令/';
-          this.page.identifier = '2018/04/26/Linux常用命令/';
-          this.page.title = 'Linux常用命令';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
-
-  
-
 
 
 
@@ -1076,45 +1048,30 @@
 
 
 
-<!-- LOCAL: You can save these files to your site and update links -->
-    
-        
-        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
-        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
-    
-<!-- END LOCAL -->
-
-    
-
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitmint({
-            id: window.location.pathname,
-            owner: 'zmzhouXJTU',
-            repo: 'zmzhouxjtu.github.io',
-            
-            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
-            oauth: {
-            
-            
-                client_secret: 'df3c1a4f57b480675618557590b41f989a64e307',
-            
-                client_id: 'f5f138537ac3dc99a9d8'
-            }});
-        gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
-    
 
 
 
-
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'l8meKq8eW9oObYAjvhwFV1OX-gzGzoHsz',
+        appKey: 'VyMAFxmDWYooxCn6iP1pRJ0M',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
