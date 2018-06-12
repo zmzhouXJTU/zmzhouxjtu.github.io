@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-06-08T07:23:24.857Z</updated>
+  <updated>2018-06-12T14:45:04.278Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Github 如何同步更新一个你Fork的仓库？</title>
+    <link href="http://yoursite.com/2018/06/12/Github-%E5%A6%82%E4%BD%95%E5%90%8C%E6%AD%A5%E6%9B%B4%E6%96%B0%E4%B8%80%E4%B8%AA%E4%BD%A0Fork%E7%9A%84%E4%BB%93%E5%BA%93%EF%BC%9F/"/>
+    <id>http://yoursite.com/2018/06/12/Github-如何同步更新一个你Fork的仓库？/</id>
+    <published>2018-06-12T14:14:56.000Z</published>
+    <updated>2018-06-12T14:45:04.278Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Configuring-a-remote-for-a-fork"><a href="#Configuring-a-remote-for-a-fork" class="headerlink" title="Configuring a remote for a fork"></a>Configuring a remote for a fork</h2><ul><li>先将你<code>fork</code>的远程仓库克隆到本地，利用命令<code>git clone + repository url</code>即可完成</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/zmzhouXJTU/Problem-sets</span><br></pre></td></tr></table></figure><ul><li><p>给<code>fork</code>配置一个<code>remote</code></p></li><li><p>可以使用<code>git remote -v</code>查看远程仓库的状态</p></li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin  https://github.com/zmzhouXJTU/Problem-sets (fetch)</span><br><span class="line">origin  https://github.com/zmzhouXJTU/Problem-sets (push)</span><br></pre></td></tr></table></figure><ul><li>添加一个将被同步给<code>fork</code>远程的上游仓库</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add upstream https://github.com/ACLoong/Problem-sets</span><br></pre></td></tr></table></figure><ul><li>再次查看状态确定是否配置成功</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin  https://github.com/zmzhouXJTU/Problem-sets (fetch)</span><br><span class="line">origin  https://github.com/zmzhouXJTU/Problem-sets (push)</span><br><span class="line">upstream        https://github.com/ACLoong/Problem-sets (fetch)</span><br><span class="line">upstream        https://github.com/ACLoong/Problem-sets (push)</span><br></pre></td></tr></table></figure><h2 id="Syncing-a-fork"><a href="#Syncing-a-fork" class="headerlink" title="Syncing a fork"></a>Syncing a fork</h2><ul><li>从上游仓库<code>fetch</code>分支和提交点，将其传送至本地，它会被存储在一个本地分支upstream/master, 利用命令<code>git fetch upstream</code>来实现</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch upstream</span><br><span class="line">remote: Counting objects: 21, <span class="keyword">done</span>.</span><br><span class="line">remote: Compressing objects: 100% (15/15), <span class="keyword">done</span>.</span><br><span class="line">remote: Total 21 (delta 4), reused 5 (delta 1), pack-reused 0</span><br><span class="line">Unpacking objects: 100% (21/21), <span class="keyword">done</span>.</span><br><span class="line">From https://github.com/ACLoong/Problem-sets</span><br><span class="line"> * [new branch]      master     -&gt; upstream/master</span><br></pre></td></tr></table></figure><ul><li>切换到本地主分支(<strong>如果当前不在的话</strong>)</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line"><span class="comment"># Switched to branch 'master'</span></span><br></pre></td></tr></table></figure><ul><li>把upstream/master分支合并到本地的master分支上，这样就完成了同步，并且不会丢失掉本地修改的内容。可利用命令<code>git merge upstream/master</code>来实现</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git merge upstream/master</span><br><span class="line">Updating 60b537a..426148c</span><br><span class="line">Fast-forward</span><br><span class="line"> problem_set/first_week/refs/Process&amp;Thread.md | 29 +++++++++++++++++++++++++++</span><br><span class="line"> 1 file changed, 29 insertions(+)</span><br><span class="line"> create mode 100644 problem_set/first_week/refs/Process&amp;Thread.md</span><br></pre></td></tr></table></figure><ul><li>将其更新到Github远程仓库的<code>fork</code>上，可以利用命令<code>git push origin master</code>来实现</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br><span class="line">Counting objects: 21, <span class="keyword">done</span>.</span><br><span class="line">Delta compression using up to 4 threads.</span><br><span class="line">Compressing objects: 100% (16/16), <span class="keyword">done</span>.</span><br><span class="line">Writing objects: 100% (21/21), 5.65 KiB | 1.88 MiB/s, <span class="keyword">done</span>.</span><br><span class="line">Total 21 (delta 4), reused 0 (delta 0)</span><br><span class="line">remote: Resolving deltas: 100% (4/4), completed with 2 <span class="built_in">local</span> objects.</span><br><span class="line">To https://github.com/zmzhouXJTU/Problem-sets</span><br><span class="line">   60b537a..426148c  master -&gt; master</span><br></pre></td></tr></table></figure><p>好了，至此任务就完成了。不知你是否看明白了呢？有任何问题，欢迎再此博客下方评论留言。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Configuring-a-remote-for-a-fork&quot;&gt;&lt;a href=&quot;#Configuring-a-remote-for-a-fork&quot; class=&quot;headerlink&quot; title=&quot;Configuring a remote for a for
+      
+    
+    </summary>
+    
+      <category term="版本控制之Git" scheme="http://yoursite.com/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E4%B9%8BGit/"/>
+    
+    
+      <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux文件权限</title>
