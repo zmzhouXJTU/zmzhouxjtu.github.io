@@ -132,12 +132,12 @@
 <meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
 <meta property="og:description" content="前言碎碎念自从使用Git作为版本控制工具以来，通过教程学习、手册查阅方式了解了Git的相关原理和Git的命令，能够顺利使用。但由于还不熟练，实践经验也还不够丰富，每次遇到问题都需要重新搜索，多次下来十分麻烦。另一方面，查阅手册往往是不够的，因为手册只会告诉你什么命令做什么用，不会根据不同场景告诉你应该用什么命令。 所以在这篇文章中，我将常用的Git命令根据不同的使用场景做一个整理，加深印象的同时也">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://zmzhouxjtu.github.io/2018/04/24/Git常用命令整理/1.png">
+<meta property="og:image" content="https://zmzhouxjtu.github.io/2018/04/24/Git常用命令整理/Git常用命令整理/1.png">
 <meta property="og:updated_time" content="2018-06-16T10:04:28.892Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git常用命令整理">
 <meta name="twitter:description" content="前言碎碎念自从使用Git作为版本控制工具以来，通过教程学习、手册查阅方式了解了Git的相关原理和Git的命令，能够顺利使用。但由于还不熟练，实践经验也还不够丰富，每次遇到问题都需要重新搜索，多次下来十分麻烦。另一方面，查阅手册往往是不够的，因为手册只会告诉你什么命令做什么用，不会根据不同场景告诉你应该用什么命令。 所以在这篇文章中，我将常用的Git命令根据不同的使用场景做一个整理，加深印象的同时也">
-<meta name="twitter:image" content="https://zmzhouxjtu.github.io/2018/04/24/Git常用命令整理/1.png">
+<meta name="twitter:image" content="https://zmzhouxjtu.github.io/2018/04/24/Git常用命令整理/Git常用命令整理/1.png">
 
 
 
@@ -156,9 +156,9 @@
       author: '博主'
     },
     algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
+      applicationID: 'TRAYP34RGN',
+      apiKey: 'ee5772e0d205d78ea2a1d98f0174c2f2',
+      indexName: 'prod_NAME',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
@@ -290,9 +290,47 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
   
 </nav>
 
@@ -465,7 +503,7 @@
         <h2 id="前言碎碎念"><a href="#前言碎碎念" class="headerlink" title="前言碎碎念"></a>前言碎碎念</h2><p>自从使用Git作为版本控制工具以来，通过教程学习、手册查阅方式了解了Git的相关原理和Git的命令，能够顺利使用。但由于还不熟练，实践经验也还不够丰富，每次遇到问题都需要重新搜索，多次下来十分麻烦。另一方面，查阅手册往往是不够的，因为手册只会告诉你什么命令做什么用，不会根据不同场景告诉你应该用什么命令。</p>
 <p>所以在这篇文章中，我将常用的Git命令根据不同的使用场景做一个整理，加深印象的同时也方便自己日后进行查阅。</p>
 <hr>
-<h2 id="四个概念"><a href="#四个概念" class="headerlink" title="四个概念"></a>四个概念</h2><p>这里借用阮一峰老师的文章<a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="noopener">《常用Git命令清单》</a>中的图。<br><img src="/2018/04/24/Git常用命令整理/1.png" alt="Git"></p>
+<h2 id="四个概念"><a href="#四个概念" class="headerlink" title="四个概念"></a>四个概念</h2><p>这里借用阮一峰老师的文章<a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="noopener">《常用Git命令清单》</a>中的图。<br><img src="Git常用命令整理/1.png" alt="Git"></p>
 <p>几个专有名词的译名如下：</p>
 <ul>
 <li>Workspace: 工作区，也就是正在编辑的文件目录</li>
@@ -1095,6 +1133,19 @@
   
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
 
 
 

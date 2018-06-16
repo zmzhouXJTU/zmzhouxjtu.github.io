@@ -132,14 +132,14 @@
 <meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
 <meta property="og:description" content="在 Linux 操作系统中，权限是一个非常重要的东西。 它无时无刻不在影响着你的各种操作。就像有的时候，你想去百度云下载一些别人分享的文件，可是你却发现虽然你能看到文件但是你却不能下载，这就是一种权限的典型例子。在 Linux 中, 这种权限随处可见。你可以设置，让别人不能越界。 不过像我这种人，也就是一台电脑， 一个用户(手动滑稽)，涉及不到多少有关权限方面的问题。 如果你也和我差不多，只有你自">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://zmzhouxjtu.github.io/2018/04/26/Linux文件权限/1.png">
+<meta property="og:image" content="https://zmzhouxjtu.github.io/2018/04/26/Linux文件权限/Linux文件权限/1.png">
 <meta property="og:image" content="https://morvanzhou.github.io/static/results/linux-basic/03-01-02.png">
-<meta property="og:image" content="https://zmzhouxjtu.github.io/2018/04/26/Linux文件权限/2.png">
+<meta property="og:image" content="https://zmzhouxjtu.github.io/2018/04/26/Linux文件权限/Linux文件权限/2.png">
 <meta property="og:updated_time" content="2018-06-16T10:06:15.220Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux文件权限">
 <meta name="twitter:description" content="在 Linux 操作系统中，权限是一个非常重要的东西。 它无时无刻不在影响着你的各种操作。就像有的时候，你想去百度云下载一些别人分享的文件，可是你却发现虽然你能看到文件但是你却不能下载，这就是一种权限的典型例子。在 Linux 中, 这种权限随处可见。你可以设置，让别人不能越界。 不过像我这种人，也就是一台电脑， 一个用户(手动滑稽)，涉及不到多少有关权限方面的问题。 如果你也和我差不多，只有你自">
-<meta name="twitter:image" content="https://zmzhouxjtu.github.io/2018/04/26/Linux文件权限/1.png">
+<meta name="twitter:image" content="https://zmzhouxjtu.github.io/2018/04/26/Linux文件权限/Linux文件权限/1.png">
 
 
 
@@ -158,9 +158,9 @@
       author: '博主'
     },
     algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
+      applicationID: 'TRAYP34RGN',
+      apiKey: 'ee5772e0d205d78ea2a1d98f0174c2f2',
+      indexName: 'prod_NAME',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
@@ -292,9 +292,47 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
   
 </nav>
 
@@ -469,7 +507,7 @@
 <p>这里不会涉及过深的权限管理。我们了解一些基础，方便你拿你的 Linux 跑机器学习的代码就好。如果你想扩展学习的话, 网上会有很多教程。可以自行谷歌。</p>
 <hr>
 <h2 id="ls查看权限"><a href="#ls查看权限" class="headerlink" title="ls查看权限"></a>ls查看权限</h2><p>查看文件权限的方法很简单，其实在之前我的上一篇博文就讲了这个内容。 如果你还记得的话，我们在说 <code>ls</code>指令的时候, 提到过权限问题， 不过到了这节内容我们仔细的来说一说权限。如果你在 Terminal 中输入如下图片中的指令：</p>
-<p><img src="/2018/04/26/Linux文件权限/1.png" alt="Linux文件权限查看"></p>
+<p><img src="Linux文件权限/1.png" alt="Linux文件权限查看"></p>
 <p>如上图所示，在 Terminal 中查看文件的权限的命令可以用<code>ls -l</code>  或者<code>ls -lh</code>，这个是看当前目录下面所有文件的权限，如果你只是想单独看看某一个具体的文件的权限，只需要在后面加上相应的文件名就可以了，比如<code>ls -lh p1.py</code>。</p>
 <p>我们看到的上图中的<code>-rw-rw-r--</code>就是相关的权限啦。那么这些具体又是表达什么意思的呢？看下面的图就明白啦。</p>
 <p><img src="https://morvanzhou.github.io/static/results/linux-basic/03-01-02.png" alt="Linux文件权限说明"></p>
@@ -490,7 +528,7 @@
 <p>通常的修改形式是：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~$ chmod [谁] [怎么修改] [哪个文件]</span><br></pre></td></tr></table></figure>
 <p>举个最简单的例子, 现在的 p1.py 的权限是 <code>-rw-rw-r--</code>, 如果我们想让user和group拥有执行的能力。按照下面这样来改就行了。<br>相应的结果如下图所示：</p>
-<p><img src="/2018/04/26/Linux文件权限/2.png" alt="用chmod修改Linux文件权限"></p>
+<p><img src="Linux文件权限/2.png" alt="用chmod修改Linux文件权限"></p>
 <p>这里的 ug+x 很形象, User,Group + execute , 给 p1.py 这个文件进行修改。所以我们的修改形式就能总结出下面这样：</p>
 <p><strong>[谁]</strong></p>
 <ul>
@@ -1079,6 +1117,19 @@
   
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
 
 
 
