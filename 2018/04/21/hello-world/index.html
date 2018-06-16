@@ -128,7 +128,7 @@
 <meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://zmzhouxjtu.github.io/2018/04/21/hello-world/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/04/21/hello-world/index.html">
 <meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
 <meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
 <meta property="og:locale" content="zh-Hans">
@@ -165,7 +165,7 @@
 
 
 
-  <link rel="canonical" href="https://zmzhouxjtu.github.io/2018/04/21/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/21/hello-world/"/>
 
 
 
@@ -319,7 +319,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zmzhouxjtu.github.io/2018/04/21/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/21/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhou Zhuming">
@@ -383,16 +383,6 @@
           
 
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/04/21/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/21/hello-world/" itemprop="commentCount"></span>
-                </a>
-              </span>
             
           
 
@@ -616,7 +606,9 @@
 
   
     <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTkyMS8xMjQ1Nw=="></div>
     </div>
+
   
 
 
@@ -983,37 +975,26 @@
 
 
   
-
-
-
-
-
-
-
-
-
-
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item=>{
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: false,
-        notify: false,
-        appId: 'l8meKq8eW9oObYAjvhwFV1OX-gzGzoHsz',
-        appKey: 'VyMAFxmDWYooxCn6iP1pRJ0M',
-        placeholder: 'ヾﾉ≧∀≦)o 据说看到这个之后发表评论的程序猿(媛)最后都找到了对象！',
-        avatar:'wavatar',
-        guest_info:guest,
-        pageSize:'10' || 10,
-    });
-  </script>
+
+
+
+
+
+
+
+
+
 
 
 
