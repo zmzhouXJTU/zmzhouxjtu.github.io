@@ -132,12 +132,12 @@
 <meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
 <meta property="og:description" content="前言碎碎念自从使用Git作为版本控制工具以来，通过教程学习、手册查阅方式了解了Git的相关原理和Git的命令，能够顺利使用。但由于还不熟练，实践经验也还不够丰富，每次遇到问题都需要重新搜索，多次下来十分麻烦。另一方面，查阅手册往往是不够的，因为手册只会告诉你什么命令做什么用，不会根据不同场景告诉你应该用什么命令。 所以在这篇文章中，我将常用的Git命令根据不同的使用场景做一个整理，加深印象的同时也">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/04/24/Git常用命令整理/1.png">
-<meta property="og:updated_time" content="2018-06-16T10:04:28.892Z">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/Git_common_command.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDQ4abYL74rj2zZjbfbgivyyMkC5wKHXGo%26q-sign-time%3D1529164009%3B1529165809%26q-key-time%3D1529164009%3B1529165809%26q-header-list%3D%26q-url-param-list%3D%26q-signature%3De491c7be5b42e13c2670231bf85b00be1fcbb0f0&token=cba3b4e9ac53f796464b84abfe9bbd928749827510001&clientIP=111.20.226.3&clientUA=054c7f5e-376c-4642-8b35-a96c505832f4">
+<meta property="og:updated_time" content="2018-06-16T15:47:27.929Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git常用命令整理">
 <meta name="twitter:description" content="前言碎碎念自从使用Git作为版本控制工具以来，通过教程学习、手册查阅方式了解了Git的相关原理和Git的命令，能够顺利使用。但由于还不熟练，实践经验也还不够丰富，每次遇到问题都需要重新搜索，多次下来十分麻烦。另一方面，查阅手册往往是不够的，因为手册只会告诉你什么命令做什么用，不会根据不同场景告诉你应该用什么命令。 所以在这篇文章中，我将常用的Git命令根据不同的使用场景做一个整理，加深印象的同时也">
-<meta name="twitter:image" content="http://yoursite.com/2018/04/24/Git常用命令整理/1.png">
+<meta name="twitter:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/Git_common_command.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDQ4abYL74rj2zZjbfbgivyyMkC5wKHXGo%26q-sign-time%3D1529164009%3B1529165809%26q-key-time%3D1529164009%3B1529165809%26q-header-list%3D%26q-url-param-list%3D%26q-signature%3De491c7be5b42e13c2670231bf85b00be1fcbb0f0&token=cba3b4e9ac53f796464b84abfe9bbd928749827510001&clientIP=111.20.226.3&clientUA=054c7f5e-376c-4642-8b35-a96c505832f4">
 
 
 
@@ -455,7 +455,7 @@
         <h2 id="前言碎碎念"><a href="#前言碎碎念" class="headerlink" title="前言碎碎念"></a>前言碎碎念</h2><p>自从使用Git作为版本控制工具以来，通过教程学习、手册查阅方式了解了Git的相关原理和Git的命令，能够顺利使用。但由于还不熟练，实践经验也还不够丰富，每次遇到问题都需要重新搜索，多次下来十分麻烦。另一方面，查阅手册往往是不够的，因为手册只会告诉你什么命令做什么用，不会根据不同场景告诉你应该用什么命令。</p>
 <p>所以在这篇文章中，我将常用的Git命令根据不同的使用场景做一个整理，加深印象的同时也方便自己日后进行查阅。</p>
 <hr>
-<h2 id="四个概念"><a href="#四个概念" class="headerlink" title="四个概念"></a>四个概念</h2><p>这里借用阮一峰老师的文章<a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="noopener">《常用Git命令清单》</a>中的图。<br><img src="/2018/04/24/Git常用命令整理/1.png" alt="Git"></p>
+<h2 id="四个概念"><a href="#四个概念" class="headerlink" title="四个概念"></a>四个概念</h2><p>这里借用阮一峰老师的文章<a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="noopener">《常用Git命令清单》</a>中的图。<br><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/Git_common_command.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDQ4abYL74rj2zZjbfbgivyyMkC5wKHXGo%26q-sign-time%3D1529164009%3B1529165809%26q-key-time%3D1529164009%3B1529165809%26q-header-list%3D%26q-url-param-list%3D%26q-signature%3De491c7be5b42e13c2670231bf85b00be1fcbb0f0&amp;token=cba3b4e9ac53f796464b84abfe9bbd928749827510001&amp;clientIP=111.20.226.3&amp;clientUA=054c7f5e-376c-4642-8b35-a96c505832f4" alt="Git"></p>
 <p>几个专有名词的译名如下：</p>
 <ul>
 <li>Workspace: 工作区，也就是正在编辑的文件目录</li>
