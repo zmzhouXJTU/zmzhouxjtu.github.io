@@ -2,4 +2,4 @@
 
 ## 以下给出传送门：
 
- <https://zmzhouxjtu.github.io>
+ <http://zhouzhuming.tech>
