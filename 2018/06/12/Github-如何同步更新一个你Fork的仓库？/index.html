@@ -134,18 +134,18 @@
 
 
 
-<meta name="description" content="Configuring a remote for a fork 先将你fork的远程仓库克隆到本地，利用命令git clone + repository url即可完成  1$ git clone https://github.com/zmzhouXJTU/Problem-sets  给fork配置一个remote  可以使用git remote -v查看远程仓库的状态   123$ git re">
+<meta name="description" content="重点在于：除了origin以外，增加一个upstream，来跟踪原仓库更新">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Github 如何同步更新一个你Fork的仓库？">
+<meta property="og:title" content="Github如何同步更新一个你Fork的仓库？">
 <meta property="og:url" content="http://zhouzhuming.tech/2018/06/12/Github-如何同步更新一个你Fork的仓库？/index.html">
 <meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
-<meta property="og:description" content="Configuring a remote for a fork 先将你fork的远程仓库克隆到本地，利用命令git clone + repository url即可完成  1$ git clone https://github.com/zmzhouXJTU/Problem-sets  给fork配置一个remote  可以使用git remote -v查看远程仓库的状态   123$ git re">
+<meta property="og:description" content="重点在于：除了origin以外，增加一个upstream，来跟踪原仓库更新">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-18T08:39:56.160Z">
+<meta property="og:updated_time" content="2018-06-18T11:19:20.548Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Github 如何同步更新一个你Fork的仓库？">
-<meta name="twitter:description" content="Configuring a remote for a fork 先将你fork的远程仓库克隆到本地，利用命令git clone + repository url即可完成  1$ git clone https://github.com/zmzhouXJTU/Problem-sets  给fork配置一个remote  可以使用git remote -v查看远程仓库的状态   123$ git re">
+<meta name="twitter:title" content="Github如何同步更新一个你Fork的仓库？">
+<meta name="twitter:description" content="重点在于：除了origin以外，增加一个upstream，来跟踪原仓库更新">
 
 
 
@@ -181,7 +181,7 @@
 
 
 
-  <title>Github 如何同步更新一个你Fork的仓库？ | Zhou Zhuming's blogs</title>
+  <title>Github如何同步更新一个你Fork的仓库？ | Zhou Zhuming's blogs</title>
   
 
 
@@ -390,7 +390,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Github 如何同步更新一个你Fork的仓库？</h2>
+          <h2 class="post-title" itemprop="name headline">Github如何同步更新一个你Fork的仓库？</h2>
         
 
         <div class="post-meta">
@@ -442,7 +442,7 @@
 
           
           
-             <span id="/2018/06/12/Github-如何同步更新一个你Fork的仓库？/" class="leancloud_visitors" data-flag-title="Github 如何同步更新一个你Fork的仓库？">
+             <span id="/2018/06/12/Github-如何同步更新一个你Fork的仓库？/" class="leancloud_visitors" data-flag-title="Github如何同步更新一个你Fork的仓库？">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -467,7 +467,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  509字
+                  531字
                 </span>
               
 
@@ -504,7 +504,10 @@
       
 
       
-        <h2 id="Configuring-a-remote-for-a-fork"><a href="#Configuring-a-remote-for-a-fork" class="headerlink" title="Configuring a remote for a fork"></a>Configuring a remote for a fork</h2><ul>
+        <blockquote>
+<h2 id="重点在于：除了origin以外，增加一个upstream，来跟踪原仓库更新"><a href="#重点在于：除了origin以外，增加一个upstream，来跟踪原仓库更新" class="headerlink" title="重点在于：除了origin以外，增加一个upstream，来跟踪原仓库更新"></a>重点在于：除了origin以外，增加一个upstream，来跟踪原仓库更新</h2><a id="more"></a>
+</blockquote>
+<h2 id="Configuring-a-remote-for-a-fork"><a href="#Configuring-a-remote-for-a-fork" class="headerlink" title="Configuring a remote for a fork"></a>Configuring a remote for a fork</h2><ul>
 <li>先将你<code>fork</code>的远程仓库克隆到本地，利用命令<code>git clone + repository url</code>即可完成</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/zmzhouXJTU/Problem-sets</span><br></pre></td></tr></table></figure>
@@ -861,7 +864,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuring-a-remote-for-a-fork"><span class="nav-number">1.</span> <span class="nav-text">Configuring a remote for a fork</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Syncing-a-fork"><span class="nav-number">2.</span> <span class="nav-text">Syncing a fork</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重点在于：除了origin以外，增加一个upstream，来跟踪原仓库更新"><span class="nav-number">1.</span> <span class="nav-text">重点在于：除了origin以外，增加一个upstream，来跟踪原仓库更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuring-a-remote-for-a-fork"><span class="nav-number">2.</span> <span class="nav-text">Configuring a remote for a fork</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Syncing-a-fork"><span class="nav-number">3.</span> <span class="nav-text">Syncing a fork</span></a></li></ol></div>
             
 
           </div>
