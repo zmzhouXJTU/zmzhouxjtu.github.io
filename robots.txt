@@ -12,3 +12,8 @@ Disallow: /css/
 Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
+
+
+Sitemap: http://zhouzhuming.tech/search.xml
+Sitemap: http://zhouzhuming.tech/sitemap.xml
+Sitemap: http://zhouzhuming.tech/baidusitemap.xml
