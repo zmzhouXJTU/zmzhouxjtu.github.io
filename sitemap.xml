@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zhouzhuming.tech/about/index.html</loc>
+    
+    <lastmod>2018-06-19T02:33:24.122Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zhouzhuming.tech/tags/index.html</loc>
     
     <lastmod>2018-06-19T02:31:05.491Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://zhouzhuming.tech/categories/index.html</loc>
     
     <lastmod>2018-06-19T02:30:48.642Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zhouzhuming.tech/about/index.html</loc>
-    
-    <lastmod>2018-06-19T02:30:29.191Z</lastmod>
     
   </url>
   
