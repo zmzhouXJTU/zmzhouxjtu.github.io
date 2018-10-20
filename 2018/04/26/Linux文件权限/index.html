@@ -137,7 +137,7 @@
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/Linux_common_command_01.png">
 <meta property="og:image" content="https://morvanzhou.github.io/static/results/linux-basic/03-01-02.png">
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/Linux_common_command_02.png">
-<meta property="og:updated_time" content="2018-06-18T11:15:32.186Z">
+<meta property="og:updated_time" content="2018-10-20T14:34:22.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux文件权限">
 <meta name="twitter:description" content="在 Linux 操作系统中，权限是一个非常重要的东西。 它无时无刻不在影响着你的各种操作。就像有的时候，你想去百度云下载一些别人分享的文件，可是你却发现虽然你能看到文件但是你却不能下载，这就是一种权限的典型例子。在 Linux 中, 这种权限随处可见。你可以设置，让别人不能越界。">
@@ -511,8 +511,8 @@
 
       
         <p>在 Linux 操作系统中，权限是一个非常重要的东西。 它无时无刻不在影响着你的各种操作。就像有的时候，你想去百度云下载一些别人分享的文件，可是你却发现虽然你能看到文件但是你却不能下载，这就是一种权限的典型例子。在 Linux 中, 这种权限随处可见。你可以设置，让别人不能越界。<a id="more"></a></p>
-<p>不过像我这种人，也就是一台电脑， 一个用户(手动滑稽)，涉及不到多少有关权限方面的问题。 如果你也和我差不多，只有你自己在用 Linux 的电脑，主要用它来运行你的代码。我教你一招来修改权限，并且方便运行你的 Python 脚本的招数。</p>
-<p>这里不会涉及过深的权限管理。我们了解一些基础，方便你拿你的 Linux 跑机器学习的代码就好。如果你想扩展学习的话, 网上会有很多教程。可以自行谷歌。</p>
+<p>不过像我这种人，也就是一台电脑， 一个用户(手动滑稽)，涉及不到多少有关权限方面的问题。 如果你也和我差不多，只有你自己在用 Linux 的电脑，主要用它来运行你的代码。我教你一招来修改权限，并且方便运行你的Python脚本的招数。</p>
+<p>这里不会涉及过深的权限管理。我们了解一些基础，方便你拿你的Linux跑机器学习的代码就好。如果你想扩展学习的话, 网上会有很多教程。可以自行谷歌。</p>
 <hr>
 <h2 id="ls查看权限"><a href="#ls查看权限" class="headerlink" title="ls查看权限"></a>ls查看权限</h2><p>查看文件权限的方法很简单，其实在之前我的上一篇博文就讲了这个内容。 如果你还记得的话，我们在说 <code>ls</code>指令的时候, 提到过权限问题， 不过到了这节内容我们仔细的来说一说权限。如果你在 Terminal 中输入如下图片中的指令：</p>
 <p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/Linux_common_command_01.png" alt="Linux文件权限查看"></p>
@@ -557,9 +557,9 @@
 <p>除了上面这些修改形式, 还有一些简化版的形式, 就是用数字来表示相应的权限，此时一组权限的 3 个位当做二进制数字的位，从左到右每个位的权值为 4、2、1，即每个权限对应的数字权值为 r : 4、w : 2、x : 1。</p>
 <hr>
 <h2 id="文件默认权限"><a href="#文件默认权限" class="headerlink" title="文件默认权限"></a>文件默认权限</h2><ul>
-<li><p>文件默认权限：文件默认没有可执行权限，因此为 666，也就是 -rw-rw-rw- 。</p>
+<li><p>文件默认权限：文件默认没有可执行权限，因此为<code>666</code>，也就是 <code>-rw-rw-rw-</code> 。</p>
 </li>
-<li><p>目录默认权限：目录必须要能够进入，也就是必须拥有可执行权限，因此为 777 ，也就是 drwxrwxrwx。</p>
+<li><p>目录默认权限：目录必须要能够进入，也就是必须拥有可执行权限，因此为<code>777</code> ，也就是 <code>drwxrwxrwx</code>。</p>
 </li>
 </ul>
 <hr>
@@ -754,7 +754,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
