@@ -139,7 +139,7 @@
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/001_%E7%BB%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/003_su%E5%92%8Cexit%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/004_%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:updated_time" content="2018-10-21T08:00:19.371Z">
+<meta property="og:updated_time" content="2018-10-21T08:12:48.454Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常用命令之用户权限">
 <meta name="twitter:description" content="之前的一篇文章讲到了Linux操作系统的远程管理相关的终端命令，这篇文章我们来谈谈与用户权限有关的终端命令，毕竟我们也是经常与权限打交道。主要包含以下三块：  用户和权限的基本概念 用户管理终端命令 组管理终端命令 修改权限终端命令(有一篇单独的博文具体讲过了，这里再提一下)">
@@ -475,7 +475,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,020字
+                  2,016字
                 </span>
               
 
@@ -578,10 +578,11 @@
 <li><strong>组</strong>，在Linux中，很多时候，会出现组名和用户名相同的情况，后续会讲</li>
 <li><strong>大小</strong></li>
 <li><strong>时间</strong></li>
-<li><strong>名称</strong><br><br><br><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/002_%E6%9D%83%E9%99%90%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="权限示意图" title="权限示意图"></li>
+<li><strong>名称</strong></li>
 </ul>
 </li>
 </ul>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/002_%E6%9D%83%E9%99%90%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="权限示意图" title="权限示意图"></p>
 <hr>
 <h4 id="1-4-chmod-简单使用（重要）"><a href="#1-4-chmod-简单使用（重要）" class="headerlink" title="1.4 chmod 简单使用（重要）"></a>1.4 chmod 简单使用（重要）</h4><ul>
 <li><code>chmod</code>可以修改<strong>用户／组</strong>对<strong>文件／目录</strong>的权限</li>
@@ -682,10 +683,9 @@
 </tr>
 <tr>
 <td style="text-align:center">04</td>
-<td style="text-align:center">cat /etc/passwd \</td>
-<td style="text-align:center">grep 用户名</td>
+<td style="text-align:center">cat /etc/passwd</td>
 <td style="text-align:center">确认用户信息</td>
-<td>新建用户后，用户信息会保存在 <code>/etc/passwd</code>文件中</td>
+<td style="text-align:center">新建用户后，用户信息会保存在 <code>/etc/passwd</code>文件中</td>
 </tr>
 </tbody>
 </table>
