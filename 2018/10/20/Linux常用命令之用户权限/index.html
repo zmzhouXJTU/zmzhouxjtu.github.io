@@ -136,7 +136,10 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/001_%E7%BB%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/002_%E6%9D%83%E9%99%90%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:updated_time" content="2018-10-20T16:05:45.353Z">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/001_%E7%BB%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/003_su%E5%92%8Cexit%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/004_%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta property="og:updated_time" content="2018-10-21T07:50:43.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常用命令之用户权限">
 <meta name="twitter:description" content="之前的一篇文章讲到了Linux操作系统的远程管理相关的终端命令，这篇文章我们来谈谈与用户权限有关的终端命令，毕竟我们也是经常与权限打交道。主要包含以下三块：  用户和权限的基本概念 用户管理终端命令 组管理终端命令 修改权限终端命令(有一篇单独的博文具体讲过了，这里再提一下)">
@@ -472,7 +475,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  727字
+                  2,020字
                 </span>
               
 
@@ -488,7 +491,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3分钟
+                  7分钟
                 </span>
               
             </div>
@@ -599,6 +602,248 @@
 <blockquote>
 <p>若其未经授权的用户企图使用<code>sudo</code>，则会发出警告邮件给管理员</p>
 </blockquote>
+<hr>
+<h3 id="2-组管理终端命令"><a href="#2-组管理终端命令" class="headerlink" title="2. 组管理终端命令"></a>2. <strong>组管理</strong>终端命令</h3><blockquote>
+<p>提示：<strong>创建组/删除组</strong>的终端命令都需要通过<code>sudo</code>执行</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">groupadd 组名</td>
+<td style="text-align:center">添加组</td>
+</tr>
+<tr>
+<td style="text-align:center">02</td>
+<td style="text-align:center">groupdel 组名</td>
+<td style="text-align:center">删除组</td>
+</tr>
+<tr>
+<td style="text-align:center">03</td>
+<td style="text-align:center">cat/etc/group</td>
+<td style="text-align:center">确认组信息</td>
+</tr>
+<tr>
+<td style="text-align:center">04</td>
+<td style="text-align:center">chgrp -R 组名 文件/目录名</td>
+<td style="text-align:center">递归修改文件/目录的所属组</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>提示：</p>
+<ul>
+<li>组信息保存在<code>/etc/group</code>文件中</li>
+<li><code>etc</code>目录是专门用来保存<strong>系统配置信息</strong>的目录</li>
+</ul>
+</blockquote>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/001_%E7%BB%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="组示意图" title="组示意图"></p>
+<ul>
+<li>在实际应用中，可以预先针对<strong>组</strong>设置好权限，然后<strong>将不同的用户添加到对应的组中</strong>，从而不用依次为每一个用户设置权限</li>
+</ul>
+<hr>
+<h3 id="3-用户管理终端命令"><a href="#3-用户管理终端命令" class="headerlink" title="3. 用户管理终端命令"></a>3. <strong>用户管理</strong>终端命令</h3><blockquote>
+<p>提示：<strong>创建用户/删除用户/修改其他用户密码</strong>的终端命令都需要通过<code>sudo</code>执行</p>
+</blockquote>
+<h4 id="3-1-创建用户-设置密码-删除用户"><a href="#3-1-创建用户-设置密码-删除用户" class="headerlink" title="3.1 创建用户/设置密码/删除用户"></a>3.1 创建用户/设置密码/删除用户</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">作用</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">useradd -m -g 组 新建用户名</td>
+<td style="text-align:center">添加新用户</td>
+<td style="text-align:center"><b><code>-m</code>自动建立用户家目录<br><b><code>-g</code>指定用户所在的组，否则会建立一个和同名的组</b></b></td>
+</tr>
+<tr>
+<td style="text-align:center">02</td>
+<td style="text-align:center">passwd 用户名</td>
+<td style="text-align:center">设置用户密码</td>
+<td style="text-align:center">如果是普通用户，直接用<code>passwd</code>可以修改自己的账户密码</td>
+</tr>
+<tr>
+<td style="text-align:center">03</td>
+<td style="text-align:center">userdel -r 用户名</td>
+<td style="text-align:center">删除用户</td>
+<td style="text-align:center"><code>-r</code>选项会自动删除用户家目录</td>
+</tr>
+<tr>
+<td style="text-align:center">04</td>
+<td style="text-align:center">cat /etc/passwd \</td>
+<td style="text-align:center">grep 用户名</td>
+<td style="text-align:center">确认用户信息</td>
+<td>新建用户后，用户信息会保存在 <code>/etc/passwd</code>文件中</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>提示：</p>
+<ul>
+<li>创建用户时，如果忘记添加<code>-m</code>选项指定新用户的家目录—最简单的方法就是<strong>删除用户，重新创建</strong></li>
+<li>创建用户时，默认会创建一个和<strong>用户名</strong>同名的<strong>组名</strong></li>
+<li>用户信息保存在<code>/etc/passwd</code>文件中</li>
+</ul>
+</blockquote>
+<hr>
+<h4 id="3-2-查看用户信息"><a href="#3-2-查看用户信息" class="headerlink" title="3.2 查看用户信息"></a>3.2 查看用户信息</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">id[用户名]</td>
+<td style="text-align:center">查看用户 UID 和 GID 信息</td>
+</tr>
+<tr>
+<td style="text-align:center">02</td>
+<td style="text-align:center">who</td>
+<td style="text-align:center">查看当前所有登录的用户列表</td>
+</tr>
+<tr>
+<td style="text-align:center">03</td>
+<td style="text-align:center">whoami</td>
+<td style="text-align:center">查看当前登录用户的账户名</td>
+</tr>
+</tbody>
+</table>
+<h5 id="password文件"><a href="#password文件" class="headerlink" title="password文件"></a>password文件</h5><p><code>etc/passwd</code>文件存放的是用户的信息，由6个分号组成的7个信息，分别是：</p>
+<ol>
+<li>用户名</li>
+<li>密码(x，表示加密的密码)</li>
+<li>UID(用户标识)</li>
+<li>GID(组标识)</li>
+<li>用户全名或本地账号</li>
+<li>家目录</li>
+<li>登录使用的<code>Shell</code>，就是登录之后，使用的终端命令，<code>ubuntu</code>默认是<code>dash</code></li>
+</ol>
+<h5 id="usermod"><a href="#usermod" class="headerlink" title="usermod"></a>usermod</h5><ul>
+<li><code>usermod</code>可以用来设置<strong>用户</strong>的<strong>主组／附加组</strong>和<strong>登录 Shell</strong>，命令格式如下:</li>
+<li><strong>主组:</strong> 通常在新建用户时指定，在<code>etc/passwd</code>的第4列<strong>GID对应的组</strong></li>
+<li><strong>附加组:</strong> 在<code>etc/group</code>中最后一列表示该组的用户列表，用于指定<strong>用户的附加权限</strong></li>
+</ul>
+<blockquote>
+<p>提示：设置了用户的附加组之后，需要更新登陆才能生效。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改用户的主组（passwd 中的 GID）</span></span><br><span class="line">usermod -g 组 用户名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改用户的附加组</span></span><br><span class="line">usermod -G 组 用户名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改用户登录 Shell</span></span><br><span class="line">usermod -s /bin/bash 用户名</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：<br>默认使用<code>useradd</code>添加的用户是没有权限使用<code>sudo</code>以<code>root</code>身份执行命令的，可以使用以下命令，将用户添加到<code>sudo</code>附加组中</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -G sudo 用户名</span><br></pre></td></tr></table></figure>
+<h5 id="which-重要"><a href="#which-重要" class="headerlink" title="which(重要)"></a>which(重要)</h5><blockquote>
+<p>提示：</p>
+<ul>
+<li><code>/etc/passwd</code>是用于保存用户信息的文件</li>
+<li><code>/usr/bin/passwd</code>是用于修改用户密码的程序</li>
+</ul>
+</blockquote>
+<ul>
+<li><code>which</code>命令可以查看执行命令所在的位置，例如：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> ls</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line"><span class="comment"># /bin/ls</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">which</span> useradd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line"><span class="comment"># /usr/sbin/useradd</span></span><br></pre></td></tr></table></figure>
+<h5 id="bin和sbin"><a href="#bin和sbin" class="headerlink" title="bin和sbin"></a>bin和sbin</h5><ul>
+<li>在Linux中，绝大多数可执行文件都是保存在<code>/bin</code>、<code>/sbin</code>、<code>/usr/bin</code>、<code>/usr/sbin</code></li>
+<li><code>/bin</code>（<code>binary</code>）是二进制执行文件目录，主要用于具体应用</li>
+<li><code>/sbin</code>（<code>system binary</code>）是系统管理员专用的二进制代码存放目录，主要用于系统管理</li>
+<li><code>/usr/bin</code>（<code>user commands for applications</code>）后期安装的一些软件</li>
+<li><code>/usr/sbin</code>（<code>super user commands for applications</code>）超级用户的一些管理程序</li>
+</ul>
+<blockquote>
+<p>提示：</p>
+<ul>
+<li><code>cd</code>这个终端命令是内置在系统内核中的，没有独立的文件，因此用<code>which</code>无法找到 <code>cd</code>命令的位置</li>
+</ul>
+</blockquote>
+<hr>
+<h4 id="3-3-切换用户"><a href="#3-3-切换用户" class="headerlink" title="3.3 切换用户"></a>3.3 切换用户</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">作用</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">su - 用户名</td>
+<td style="text-align:center">切换用户，并且切换目录</td>
+<td style="text-align:center"><code>-</code>可以切换到用户家目录，否则保持位置不变</td>
+</tr>
+<tr>
+<td style="text-align:center">02</td>
+<td style="text-align:center">exit</td>
+<td style="text-align:center">退出当前登录账户</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>su</code>不接用户名，可以切换到<code>root</code>,但是不推荐使用，因为不安全</li>
+<li><code>exit</code>示意图如下：</li>
+</ul>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/003_su%E5%92%8Cexit%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="`su`和`exit`示意图" title="`su`和`exit`示意图"></p>
+<hr>
+<h3 id="4-修改文件权限"><a href="#4-修改文件权限" class="headerlink" title="4. 修改文件权限"></a>4. 修改文件权限</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">chown</td>
+<td style="text-align:center">修改拥有者</td>
+</tr>
+<tr>
+<td style="text-align:center">02</td>
+<td style="text-align:center">chgrp</td>
+<td style="text-align:center">修改组</td>
+</tr>
+<tr>
+<td style="text-align:center">03</td>
+<td style="text-align:center">chmod</td>
+<td style="text-align:center">修改权限</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>命令格式如下：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改文件|目录的拥有者</span></span><br><span class="line">chown 用户名 文件名|目录名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归修改文件|目录的组</span></span><br><span class="line">chgrp -R 组名 文件名|目录名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归修改文件权限</span></span><br><span class="line">chmod -R 755 文件名|目录名</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>chmod</code>在设置权限时，可以简单地使用三个数字分别对应<strong>拥有者/组</strong>和<strong>其他</strong>用户的权限</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 直接修改文件|目录的 读|写|执行 权限，但是不能精确到 拥有者|组|其他</span></span><br><span class="line">chmod +/-rwx 文件名|目录名</span><br></pre></td></tr></table></figure>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/004_%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="文件权限示意图" title="文件权限示意图"></p>
+<ul>
+<li>常见的数字组合有(<code>u</code>表示用户／<code>g</code>表示组／<code>o</code>表示其他)：<ul>
+<li><code>777</code> ===&gt; <code>u=rwx</code>,<code>g=rwx</code>,<code>o=rwx</code></li>
+<li><code>755</code> ===&gt; <code>u=rwx</code>,<code>g=rx</code>,<code>o=rx</code></li>
+<li><code>644</code> ===&gt; <code>u=rw</code>,<code>g=r</code>,<code>o=r</code></li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -896,7 +1141,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-用户和权限的基本概念"><span class="nav-number">1.</span> <span class="nav-text">1. 用户和权限的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-组"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-ls-l扩展"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 ls -l扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-chmod-简单使用（重要）"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 chmod 简单使用（重要）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-超级用户"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 超级用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sudo"><span class="nav-number">1.6.</span> <span class="nav-text">sudo</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-用户和权限的基本概念"><span class="nav-number">1.</span> <span class="nav-text">1. 用户和权限的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-组"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-ls-l扩展"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 ls -l扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-chmod-简单使用（重要）"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 chmod 简单使用（重要）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-超级用户"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 超级用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sudo"><span class="nav-number">1.6.</span> <span class="nav-text">sudo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-组管理终端命令"><span class="nav-number">2.</span> <span class="nav-text">2. 组管理终端命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-用户管理终端命令"><span class="nav-number">3.</span> <span class="nav-text">3. 用户管理终端命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-创建用户-设置密码-删除用户"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 创建用户/设置密码/删除用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-查看用户信息"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 查看用户信息</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#password文件"><span class="nav-number">3.2.1.</span> <span class="nav-text">password文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#usermod"><span class="nav-number">3.2.2.</span> <span class="nav-text">usermod</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#which-重要"><span class="nav-number">3.2.3.</span> <span class="nav-text">which(重要)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bin和sbin"><span class="nav-number">3.2.4.</span> <span class="nav-text">bin和sbin</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-切换用户"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 切换用户</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-修改文件权限"><span class="nav-number">4.</span> <span class="nav-text">4. 修改文件权限</span></a></li></ol></div>
             
 
           </div>
