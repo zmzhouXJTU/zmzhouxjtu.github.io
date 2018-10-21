@@ -126,22 +126,22 @@
 
 
 
-<meta name="description" content="在 Linux 操作系统中，权限是一个非常重要的东西。 它无时无刻不在影响着你的各种操作。就像有的时候，你想去百度云下载一些别人分享的文件，可是你却发现虽然你能看到文件但是你却不能下载，这就是一种权限的典型例子。在 Linux 中, 这种权限随处可见。你可以设置，让别人不能越界。">
+<meta name="description" content="在前面的几篇博文中，已经陆陆续续的讲了Linux操作系统的目录与文件、远程管理、用户权限、系统信息相关的基本终端命令，作为本系列的最后一篇博文，我们来讲一下其他的常用的Linux终端命令。 它们分别是查找文件命令find、软链接命令ln、打包和压缩命令tar以及软禁安装命令(此处特指Ubuntu系统)apt-get 下面我们就来具体看看这几个命令你给的用法。">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux文件权限">
-<meta property="og:url" content="https://zhouzhuming.tech/2018/04/26/Linux文件权限/index.html">
+<meta property="og:title" content="Linux常用命令之其他">
+<meta property="og:url" content="https://zhouzhuming.tech/2018/10/21/Linux常用命令之其他/index.html">
 <meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
-<meta property="og:description" content="在 Linux 操作系统中，权限是一个非常重要的东西。 它无时无刻不在影响着你的各种操作。就像有的时候，你想去百度云下载一些别人分享的文件，可是你却发现虽然你能看到文件但是你却不能下载，这就是一种权限的典型例子。在 Linux 中, 这种权限随处可见。你可以设置，让别人不能越界。">
+<meta property="og:description" content="在前面的几篇博文中，已经陆陆续续的讲了Linux操作系统的目录与文件、远程管理、用户权限、系统信息相关的基本终端命令，作为本系列的最后一篇博文，我们来讲一下其他的常用的Linux终端命令。 它们分别是查找文件命令find、软链接命令ln、打包和压缩命令tar以及软禁安装命令(此处特指Ubuntu系统)apt-get 下面我们就来具体看看这几个命令你给的用法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/Linux_common_command_01.png">
-<meta property="og:image" content="https://morvanzhou.github.io/static/results/linux-basic/03-01-02.png">
-<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/Linux_common_command_02.png">
-<meta property="og:updated_time" content="2018-10-20T14:34:22.610Z">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E5%85%B6%E4%BB%96/001_%E6%96%87%E4%BB%B6%E8%BD%AF%E7%A1%AC%E9%93%BE%E6%8E%A5%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E5%85%B6%E4%BB%96/002_%E9%95%9C%E5%83%8F%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E5%85%B6%E4%BB%96/003_ubuntu%E8%AE%BE%E7%BD%AE%E8%BD%AF%E4%BB%B6%E6%BA%90.png">
+<meta property="og:updated_time" content="2018-10-21T11:34:00.074Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux文件权限">
-<meta name="twitter:description" content="在 Linux 操作系统中，权限是一个非常重要的东西。 它无时无刻不在影响着你的各种操作。就像有的时候，你想去百度云下载一些别人分享的文件，可是你却发现虽然你能看到文件但是你却不能下载，这就是一种权限的典型例子。在 Linux 中, 这种权限随处可见。你可以设置，让别人不能越界。">
-<meta name="twitter:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/Linux_common_command_01.png">
+<meta name="twitter:title" content="Linux常用命令之其他">
+<meta name="twitter:description" content="在前面的几篇博文中，已经陆陆续续的讲了Linux操作系统的目录与文件、远程管理、用户权限、系统信息相关的基本终端命令，作为本系列的最后一篇博文，我们来讲一下其他的常用的Linux终端命令。 它们分别是查找文件命令find、软链接命令ln、打包和压缩命令tar以及软禁安装命令(此处特指Ubuntu系统)apt-get 下面我们就来具体看看这几个命令你给的用法。">
+<meta name="twitter:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E5%85%B6%E4%BB%96/001_%E6%96%87%E4%BB%B6%E8%BD%AF%E7%A1%AC%E9%93%BE%E6%8E%A5%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
 
 
 
@@ -171,13 +171,13 @@
 
 
 
-  <link rel="canonical" href="https://zhouzhuming.tech/2018/04/26/Linux文件权限/"/>
+  <link rel="canonical" href="https://zhouzhuming.tech/2018/10/21/Linux常用命令之其他/"/>
 
 
 
 
 
-  <title>Linux文件权限 | Zhou Zhuming's blogs</title>
+  <title>Linux常用命令之其他 | Zhou Zhuming's blogs</title>
   
 
 
@@ -369,7 +369,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhouzhuming.tech/2018/04/26/Linux文件权限/">
+    <link itemprop="mainEntityOfPage" href="https://zhouzhuming.tech/2018/10/21/Linux常用命令之其他/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhou Zhuming">
@@ -386,7 +386,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux文件权限</h1>
+          <h1 class="post-title" itemprop="name headline">Linux常用命令之其他</h1>
         
 
         <div class="post-meta">
@@ -398,8 +398,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-26T20:36:43+08:00">
-                2018-04-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-21T17:33:37+08:00">
+                2018-10-21
               </time>
             
 
@@ -439,8 +439,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/04/26/Linux文件权限/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/26/Linux文件权限/" itemprop="commentCount"></span>
+                <a href="/2018/10/21/Linux常用命令之其他/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/21/Linux常用命令之其他/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -448,7 +448,7 @@
 
           
           
-             <span id="/2018/04/26/Linux文件权限/" class="leancloud_visitors" data-flag-title="Linux文件权限">
+             <span id="/2018/10/21/Linux常用命令之其他/" class="leancloud_visitors" data-flag-title="Linux常用命令之其他">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -473,7 +473,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,425字
+                  1,407字
                 </span>
               
 
@@ -510,66 +510,183 @@
       
 
       
-        <p>在 Linux 操作系统中，权限是一个非常重要的东西。 它无时无刻不在影响着你的各种操作。就像有的时候，你想去百度云下载一些别人分享的文件，可是你却发现虽然你能看到文件但是你却不能下载，这就是一种权限的典型例子。在 Linux 中, 这种权限随处可见。你可以设置，让别人不能越界。<a id="more"></a></p>
-<p>不过像我这种人，也就是一台电脑， 一个用户(手动滑稽)，涉及不到多少有关权限方面的问题。 如果你也和我差不多，只有你自己在用 Linux 的电脑，主要用它来运行你的代码。我教你一招来修改权限，并且方便运行你的Python脚本的招数。</p>
-<p>这里不会涉及过深的权限管理。我们了解一些基础，方便你拿你的Linux跑机器学习的代码就好。如果你想扩展学习的话, 网上会有很多教程。可以自行谷歌。</p>
+        <p>在前面的几篇博文中，已经陆陆续续的讲了Linux操作系统的<strong>目录与文件、远程管理、用户权限、系统信息相关</strong>的基本终端命令，作为本系列的最后一篇博文，我们来讲一下其他的常用的Linux终端命令。</p>
+<p>它们分别是<strong>查找文件命令</strong><code>find</code>、<strong>软链接命令</strong><code>ln</code>、<strong>打包和压缩命令</strong><code>tar</code>以及<strong>软禁安装命令(此处特指Ubuntu系统)</strong><code>apt-get</code></p>
+<p>下面我们就来具体看看这几个命令你给的用法。</p>
+<a id="more"></a>
 <hr>
-<h2 id="ls查看权限"><a href="#ls查看权限" class="headerlink" title="ls查看权限"></a>ls查看权限</h2><p>查看文件权限的方法很简单，其实在之前我的上一篇博文就讲了这个内容。 如果你还记得的话，我们在说 <code>ls</code>指令的时候, 提到过权限问题， 不过到了这节内容我们仔细的来说一说权限。如果你在 Terminal 中输入如下图片中的指令：</p>
-<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/Linux_common_command_01.png" alt="Linux文件权限查看"></p>
-<p>如上图所示，在 Terminal 中查看文件的权限的命令可以用<code>ls -l</code>  或者<code>ls -lh</code>，这个是看当前目录下面所有文件的权限，如果你只是想单独看看某一个具体的文件的权限，只需要在后面加上相应的文件名就可以了，比如<code>ls -lh p1.py</code>。</p>
-<p>我们看到的上图中的<code>-rw-rw-r--</code>就是相关的权限啦。那么这些具体又是表达什么意思的呢？看下面的图就明白啦。</p>
-<p><img src="https://morvanzhou.github.io/static/results/linux-basic/03-01-02.png" alt="Linux文件权限说明"></p>
-<ul>
-<li><p><code>Type</code>: 很多种 (最常见的是 <code>-</code> 为文件, <code>d</code> 为文件夹, 其他的还有<code>l</code>, <code>n</code> … 这种东西, 真正自己遇到了, 网上再搜就好, 一次性说太多记不住的)。</p>
-</li>
-<li><p><code>User</code>: 后面跟着的三个空是使用 User 的身份能对这个做什么处理 (<code>r</code> 可读; <code>w</code> 可写; <code>x</code> 可执行; <code>-</code> 不能完成某个操作)。</p>
-</li>
-<li><p><code>Group</code>: 一个 Group 里可能有一个或者多个 user, 这些权限的样式和 User 一样。</p>
-</li>
-<li><p><code>Others</code>: 除了 User 和 Group 以外人的权限。</p>
-</li>
+<h3 id="查找文件"><a href="#查找文件" class="headerlink" title="查找文件"></a>查找文件</h3><ul>
+<li><code>find</code>命令功能非常强大，通常用来在<strong>特定的目录下搜索</strong>符合条件的文件</li>
 </ul>
-<p>如果有人对 User, group, others 这三个没什么概念的话，我这里补充一下。User 一般就是指你，这个当前正在使用电脑的人。 Group 是一个 User 的集合，最开始创建新 User 的时候, 他也为这个 User 创建了一个和 User 一样名字的 Group, 这个新 Group 里只有这个 User。一般来说，像一个企业部门的电脑，都可以放在一个 Group 里, 分享了一些共享文件和权限。Others 就是除了上面提到的 User 和 Group 以外的人。</p>
-<p>好了, 有了这些理解, 我们拿上面的 p1.py 来举例. 我们可以将 <code>-rw-rw-r--</code> 拆成 - (这是文件), -rw(这个 User可以读,写), rw- (这个Group里可以读,写), r– (其他人只能读)。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">find [路径] -name “*.py”</td>
+<td style="text-align:center">查找指定路径下扩展名是 .py 的文件，包括子目录</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>如果省略路径，表示在当前文件夹下查找</li>
+<li>之前学习的通配符，在使用<code>find</code>命令一样可以使用</li>
+<li>有关<code>find</code>的高级使用，后续在更新……</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">find -name <span class="string">"*1*"</span></span><br><span class="line"><span class="comment"># 搜索桌面目录下，文件名包含 1 的文件</span></span><br><span class="line"></span><br><span class="line">find -name <span class="string">"*.txt"</span></span><br><span class="line"><span class="comment"># 搜索桌面目录下，所有以 .txt 为扩展名的文件</span></span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="chmod-修改权限"><a href="#chmod-修改权限" class="headerlink" title="chmod 修改权限"></a>chmod 修改权限</h2><p>好了, 我们知道了这些权限的问题, 那我们如何来改写权限呢? <code>chmod</code> (change mode)命令就是来干这个的。</p>
-<p>通常的修改形式是：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~$ chmod [谁] [怎么修改] [哪个文件]</span><br></pre></td></tr></table></figure>
-<p>举个最简单的例子, 现在的 p1.py 的权限是 <code>-rw-rw-r--</code>, 如果我们想让user和group拥有执行的能力。按照下面这样来改就行了。<br>相应的结果如下图所示：</p>
-<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90/Linux_common_command_02.png" alt="用chmod修改Linux文件权限"></p>
-<p>这里的 ug+x 很形象, User,Group + execute , 给 p1.py 这个文件进行修改。所以我们的修改形式就能总结出下面这样：</p>
-<p><strong>[谁]</strong></p>
+<h3 id="软链接"><a href="#软链接" class="headerlink" title="软链接"></a>软链接</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">ln -s 被链接的源文件 链接文件</td>
+<td style="text-align:center">建立文件的软链接，用通俗的方式讲<strong>类似于</strong>Windows下的<strong>快捷方式</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意：</p>
 <ul>
-<li><code>u</code>: 对于 User 修改</li>
-<li><code>g</code>: 对于 Group 修改</li>
-<li><code>o</code>: 对于 Others 修改</li>
-<li><code>a</code>: (all) 对于所有人修改</li>
+<li>没有<code>-s</code>选项建立的是一个<strong>硬链接文件</strong><ul>
+<li>两个文件占用相同大小的硬盘空间，<strong>工作中几乎不会建立文件的硬链接</strong></li>
 </ul>
-<p><strong>[怎么修改]</strong></p>
-<ul>
-<li><code>+</code>, <code>-</code>, <code>=</code>: 作用的形式, 加上, 减掉, 等于某些权限</li>
-<li><code>r</code>, <code>w</code>, <code>x</code> 或者多个权限的组合, 比如 <code>rx</code></li>
-</ul>
-<p><strong>[哪个文件]</strong></p>
-<ul>
-<li>施加操作的文件, 可以为多个文件</li>
-</ul>
-<p>除了上面这些修改形式, 还有一些简化版的形式, 就是用数字来表示相应的权限，此时一组权限的 3 个位当做二进制数字的位，从左到右每个位的权值为 4、2、1，即每个权限对应的数字权值为 r : 4、w : 2、x : 1。</p>
-<hr>
-<h2 id="文件默认权限"><a href="#文件默认权限" class="headerlink" title="文件默认权限"></a>文件默认权限</h2><ul>
-<li><p>文件默认权限：文件默认没有可执行权限，因此为<code>666</code>，也就是 <code>-rw-rw-rw-</code> 。</p>
 </li>
-<li><p>目录默认权限：目录必须要能够进入，也就是必须拥有可执行权限，因此为<code>777</code> ，也就是 <code>drwxrwxrwx</code>。</p>
+<li><strong>源文件要使用绝对路径</strong>，不能使用相对路径，这样可以方便移动链接文件后，仍然能够正常使用</li>
+</ul>
+</blockquote>
+<h4 id="硬链接简介-知道"><a href="#硬链接简介-知道" class="headerlink" title="硬链接简介(知道)"></a>硬链接简介(知道)</h4><ul>
+<li><p>在使用<code>ln</code>创建链接时，如果没有<code>-s</code>选项，会创建一个<strong>硬链接</strong>，而不是软链接</p>
+</li>
+<li><p><b>文件软硬链接的示意图</b></p>
+</li>
+</ul>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E5%85%B6%E4%BB%96/001_%E6%96%87%E4%BB%B6%E8%BD%AF%E7%A1%AC%E9%93%BE%E6%8E%A5%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="文件软硬链接示意图" title="文件软硬链接示意图"></p>
+<blockquote>
+<p>在Linux中，<strong>文件名</strong>和<strong>文件的数据</strong>是分开存储的</p>
+</blockquote>
+<ul>
+<li>提示：<ul>
+<li>在Linux中，只有文件的<code>硬链接数 == 0</code>才会被删除</li>
+<li>使用<code>ls -l</code>可以查看一个文件的硬链接的数量(硬链接——有多少种方式可以访问文件或者目录)</li>
+<li>在日常工作中，几乎不会建立文件的硬链接，知道即可</li>
+</ul>
 </li>
 </ul>
 <hr>
-<h2 id="一个使用Python的技巧"><a href="#一个使用Python的技巧" class="headerlink" title="一个使用Python的技巧"></a>一个使用Python的技巧</h2><p>我不怎么用权限这东西, 但是我却发现给 python 文件添加权限<code>x</code> 还算有用的. 为什么这么说? 因为通常, 如果一个 <code>.py</code> 没有<code>x</code> 权限, 在 terminal 中你就需要这样执行:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/Documents/Folder1$ python3 p1.py</span><br></pre></td></tr></table></figure>
-<p>如果你有了 <code>x</code> (可执行权限), 你运行这个文件可以直接这样打:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/Documents/Folder1$ ./p1.py</span><br></pre></td></tr></table></figure>
-<p>很酷炫有木有？但是上面这个脚本能够成功运行有一个前提，那就是你在这个Python脚本p1.py的开头加上一句话，如下所示：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line">print(<span class="string">"Hello World"</span>)</span><br></pre></td></tr></table></figure>
-<p>好了，加上上面这句话的话以后运行这个脚本就可以直接用那本很酷炫的方式而不用每次都<code>python3 xx.py</code>啦。</p>
+<h3 id="打包压缩"><a href="#打包压缩" class="headerlink" title="打包压缩"></a>打包压缩</h3><ul>
+<li><strong>打包压缩</strong>是日常工作中备份文件的一种方式</li>
+<li>在不同的操作系统中，常用的打包压缩方式是不同的：<ul>
+<li><code>Windows</code>常用<code>rar</code></li>
+<li><code>Mac</code>常用<code>zip</code></li>
+<li><code>Linux</code>常用<code>tar.gz</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="打包-解包"><a href="#打包-解包" class="headerlink" title="打包 / 解包"></a>打包 / 解包</h4><ul>
+<li><code>tar</code>是Linux中最常用的<strong>备份工具</strong>，此命令可以<strong>把一系列文件</strong>打包到<strong>一个大文件中</strong>，也可以把一个<strong>打包的大文件恢复成一系列文件</strong></li>
+<li><code>tar</code>的命令格式如下：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打包文件</span></span><br><span class="line">tar -cvf 打包文件.tar 被打包的文件／路径...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解包文件</span></span><br><span class="line">tar -xvf 打包文件.tar</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>tar</code>选项说明</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">c</td>
+<td style="text-align:center">生成档案文件，创建打包文件</td>
+</tr>
+<tr>
+<td style="text-align:center">v</td>
+<td style="text-align:center">解开档案文件</td>
+</tr>
+<tr>
+<td style="text-align:center">x</td>
+<td style="text-align:center">列出归档解档的详细过程，显示进度</td>
+</tr>
+<tr>
+<td style="text-align:center">f</td>
+<td style="text-align:center">指定档案文件名称，f后面一定是 .tar 文件，所以必须放选项最后</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意：<code>f</code>选项必须放在最后，其他选项顺序可以随意</p>
+</blockquote>
+<h4 id="压缩-解压缩"><a href="#压缩-解压缩" class="headerlink" title="压缩 / 解压缩"></a>压缩 / 解压缩</h4><h5 id="gzip"><a href="#gzip" class="headerlink" title="gzip"></a>gzip</h5><ul>
+<li><code>tar</code>与<code>gzip</code>命令结合可以使用实现文件<strong>打包和压缩</strong><ul>
+<li><code>tar</code>只负责打包文件，但不压缩</li>
+<li>用<code>gzip</code>压缩<code>tar</code>打包后的文件，其扩展名一般用<code>xxx.tar.gz</code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>在<code>Linux</code>中，最常见的压缩文件格式就是<code>xxx.tar.gz</code></p>
+</blockquote>
+<ul>
+<li>在<code>tar</code>命令中有一个选项<code>-z</code>可以调用<code>gzip</code>，从而可以方便的实现压缩和解压缩的功能</li>
+<li>命令格式如下:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 压缩文件</span></span><br><span class="line">tar -zcvf 打包文件.tar.gz 被压缩的文件／路径...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压缩文件</span></span><br><span class="line">tar -zxvf 打包文件.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压缩到指定路径</span></span><br><span class="line">tar -zxvf 打包文件.tar.gz -C 目标路径</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-C</td>
+<td style="text-align:center">解压缩到指定目录，注意：要解压缩的目录必须存在</td>
+</tr>
+</tbody>
+</table>
+<h5 id="bzip2"><a href="#bzip2" class="headerlink" title="bzip2"></a>bzip2</h5><ul>
+<li><code>tar</code>与<code>bzip2</code>命令结合可以使用实现文件<strong>打包和压缩</strong>(用法和<code>gzip</code>一样)<ul>
+<li><code>tar</code>只负责打包文件，但不压缩</li>
+<li>用<code>bzip2</code>压缩<code>tar</code>打包后的文件，其扩展名一般用<code>xxx.tar.bz2</code></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>在<code>tar</code>命令中有一个选项<code>-j</code>可以调用<code>bzip2</code>，从而可以方便的实现压缩和解压缩的功能</li>
+<li>命令格式如下:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 压缩文件</span></span><br><span class="line">tar -jcvf 打包文件.tar.bz2 被压缩的文件／路径...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压缩文件</span></span><br><span class="line">tar -jxvf 打包文件.tar.bz2</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h3><h4 id="通过-apt-安装／卸载软件"><a href="#通过-apt-安装／卸载软件" class="headerlink" title="通过 apt 安装／卸载软件"></a>通过 apt 安装／卸载软件</h4><ul>
+<li><code>apt</code>是 <code>Advanced Packaging Tool</code>，是Linux下的一款安装包管理工具</li>
+<li>可以在终端中方便的<strong>安装／卸载／更新</strong>软件包</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 安装软件</span></span><br><span class="line">$ sudo apt install 软件包</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 卸载软件</span></span><br><span class="line">$ sudo apt remove 软件名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 更新已安装的包</span></span><br><span class="line">$ sudo apt upgrade</span><br></pre></td></tr></table></figure>
+<h4 id="配置软件源"><a href="#配置软件源" class="headerlink" title="配置软件源"></a>配置软件源</h4><ul>
+<li>如果希望在<code>ubuntu</code>中安装软件，<strong>更加快速</strong>，可以通过设置<strong>镜像源</strong>，选择一个访问网速更快的服务器，来提供软件下载／安装服务</li>
+<li>提示：更换服务器之后，需要一个相对比较长时间的更新过程，需要耐心等待。更新完成后，再安装软件都会从新设置的服务器下载软件了</li>
+</ul>
+<blockquote>
+<p>所谓镜像源，就是<strong>所有服务器的内容是相同的(镜像)</strong>，但是根据所在位置不同，国内服务器通常速度会更快一些！</p>
+</blockquote>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E5%85%B6%E4%BB%96/002_%E9%95%9C%E5%83%8F%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt=""><br><br><br><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E5%85%B6%E4%BB%96/003_ubuntu%E8%AE%BE%E7%BD%AE%E8%BD%AF%E4%BB%B6%E6%BA%90.png" alt=""></p>
 
       
     </div>
@@ -630,7 +747,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://zhouzhuming.tech/2018/04/26/Linux文件权限/" title="Linux文件权限">https://zhouzhuming.tech/2018/04/26/Linux文件权限/</a>
+    <a href="https://zhouzhuming.tech/2018/10/21/Linux常用命令之其他/" title="Linux常用命令之其他">https://zhouzhuming.tech/2018/10/21/Linux常用命令之其他/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -658,8 +775,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/26/Linux常用命令之目录和文件/" rel="next" title="Linux常用命令之目录和文件">
-                <i class="fa fa-chevron-left"></i> Linux常用命令之目录和文件
+              <a href="/2018/10/21/Linux常用命令之系统信息相关/" rel="next" title="Linux常用命令之系统信息相关">
+                <i class="fa fa-chevron-left"></i> Linux常用命令之系统信息相关
               </a>
             
           </div>
@@ -667,10 +784,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/12/Github-如何同步更新一个你Fork的仓库？/" rel="prev" title="Github如何同步更新一个你Fork的仓库？">
-                Github如何同步更新一个你Fork的仓库？ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -871,7 +984,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ls查看权限"><span class="nav-number">1.</span> <span class="nav-text">ls查看权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chmod-修改权限"><span class="nav-number">2.</span> <span class="nav-text">chmod 修改权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件默认权限"><span class="nav-number">3.</span> <span class="nav-text">文件默认权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个使用Python的技巧"><span class="nav-number">4.</span> <span class="nav-text">一个使用Python的技巧</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#查找文件"><span class="nav-number">1.</span> <span class="nav-text">查找文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软链接"><span class="nav-number">2.</span> <span class="nav-text">软链接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#硬链接简介-知道"><span class="nav-number">2.1.</span> <span class="nav-text">硬链接简介(知道)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打包压缩"><span class="nav-number">3.</span> <span class="nav-text">打包压缩</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#打包-解包"><span class="nav-number">3.1.</span> <span class="nav-text">打包 / 解包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#压缩-解压缩"><span class="nav-number">3.2.</span> <span class="nav-text">压缩 / 解压缩</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#gzip"><span class="nav-number">3.2.1.</span> <span class="nav-text">gzip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bzip2"><span class="nav-number">3.2.2.</span> <span class="nav-text">bzip2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件安装"><span class="nav-number">4.</span> <span class="nav-text">软件安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过-apt-安装／卸载软件"><span class="nav-number">4.1.</span> <span class="nav-text">通过 apt 安装／卸载软件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置软件源"><span class="nav-number">4.2.</span> <span class="nav-text">配置软件源</span></a></li></ol></li></ol></div>
             
 
           </div>
