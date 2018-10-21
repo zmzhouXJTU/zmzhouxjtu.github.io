@@ -139,7 +139,7 @@
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/001_%E7%BB%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/003_su%E5%92%8Cexit%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/004_%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:updated_time" content="2018-10-21T08:18:26.972Z">
+<meta property="og:updated_time" content="2018-10-21T08:26:16.717Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常用命令之用户权限">
 <meta name="twitter:description" content="之前的一篇文章讲到了Linux操作系统的远程管理相关的终端命令，这篇文章我们来谈谈与用户权限有关的终端命令，毕竟我们也是经常与权限打交道。主要包含以下三块：  用户和权限的基本概念 用户管理终端命令 组管理终端命令 修改权限终端命令(有一篇单独的博文具体讲过了，这里再提一下)">
@@ -475,7 +475,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,016字
+                  1,996字
                 </span>
               
 
@@ -521,7 +521,7 @@
 </li>
 </ul>
 <hr>
-<h3 id="1-用户和权限的基本概念"><a href="#1-用户和权限的基本概念" class="headerlink" title="1. 用户和权限的基本概念"></a>1. <strong>用户</strong>和<strong>权限</strong>的基本概念</h3><h4 id="1-1-基本概念"><a href="#1-1-基本概念" class="headerlink" title="1.1 基本概念"></a>1.1 基本概念</h4><ul>
+<h3 id="用户和权限的基本概念"><a href="#用户和权限的基本概念" class="headerlink" title="用户和权限的基本概念"></a><strong>用户</strong>和<strong>权限</strong>的基本概念</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
 <li><strong>用户</strong>是Linux系统工作中重要的一环，用户管理包括<strong>用户</strong>与<strong>组</strong>管理</li>
 <li>在Linux系统中，不论是由本机或是远程登录系统，每个系统都<strong>必须拥有一个账号</strong>，并且<strong>对于不同的系统资源拥有不同的使用权限</strong></li>
 <li>在Linux中，可以指定<strong>每一个用户</strong>针对<strong>不同的文件或者目录</strong>的<strong>不同权限</strong></li>
@@ -562,7 +562,7 @@
 </tbody>
 </table>
 <hr>
-<h4 id="1-2-组"><a href="#1-2-组" class="headerlink" title="1.2 组"></a>1.2 组</h4><ul>
+<h4 id="组"><a href="#组" class="headerlink" title="组"></a>组</h4><ul>
 <li>为了方便用户的管理，提出了<code>组</code>的概念，如下图所示：</li>
 </ul>
 <p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/001_%E7%BB%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="组示意图" title="组示意图"></p>
@@ -570,7 +570,7 @@
 <li>在实际应用中，可以预先针对<strong>组</strong>设置好权限，然后<strong>将不同的用户添加到对应的组中</strong>，从而<strong>不用依次为每一个用户设置权限</strong></li>
 </ul>
 <hr>
-<h4 id="1-3-ls-l扩展"><a href="#1-3-ls-l扩展" class="headerlink" title="1.3 ls -l扩展"></a>1.3 ls -l扩展</h4><ul>
+<h4 id="ls-l扩展"><a href="#ls-l扩展" class="headerlink" title="ls -l扩展"></a>ls -l扩展</h4><ul>
 <li><code>ls -l</code>可以查看文件夹下文件的详细信息，从左到右依次是:<ul>
 <li><strong>权限</strong>，第 1 个字符如果是<code>d</code>表示目录,如果是<code>-</code>表示文件</li>
 <li><strong>硬链接数</strong>，通俗地讲，就是有多少种方式，可以访问到当前目录／文件</li>
@@ -584,13 +584,13 @@
 </ul>
 <p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/002_%E6%9D%83%E9%99%90%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="权限示意图" title="权限示意图"></p>
 <hr>
-<h4 id="1-4-chmod-简单使用（重要）"><a href="#1-4-chmod-简单使用（重要）" class="headerlink" title="1.4 chmod 简单使用（重要）"></a>1.4 chmod 简单使用（重要）</h4><ul>
+<h4 id="chmod简单使用（重要）"><a href="#chmod简单使用（重要）" class="headerlink" title="chmod简单使用（重要）"></a>chmod简单使用（重要）</h4><ul>
 <li><code>chmod</code>可以修改<strong>用户／组</strong>对<strong>文件／目录</strong>的权限</li>
 <li>命令格式如下：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +/-rwx 文件名|目录名</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <hr>
-<h4 id="1-5-超级用户"><a href="#1-5-超级用户" class="headerlink" title="1.5 超级用户"></a>1.5 超级用户</h4><ul>
+<h4 id="超级用户"><a href="#超级用户" class="headerlink" title="超级用户"></a>超级用户</h4><ul>
 <li>Linux系统中的<code>root</code>账号通常<strong>用于系统的维护和管理</strong>，对操作系统的<strong>所有资源具有所有访问权限</strong></li>
 <li>在大多数版本的Linux中，都不推荐<strong>直接使用root账号登录系统</strong></li>
 <li>在Linux安装的过程中，系统会自动创建一个用户账号，而这个默认的用户就称为“标准用户”</li>
@@ -604,7 +604,7 @@
 <p>若其未经授权的用户企图使用<code>sudo</code>，则会发出警告邮件给管理员</p>
 </blockquote>
 <hr>
-<h3 id="2-组管理终端命令"><a href="#2-组管理终端命令" class="headerlink" title="2. 组管理终端命令"></a>2. <strong>组管理</strong>终端命令</h3><blockquote>
+<h3 id="组管理终端命令"><a href="#组管理终端命令" class="headerlink" title="组管理终端命令"></a><strong>组管理</strong>终端命令</h3><blockquote>
 <p>提示：<strong>创建组/删除组</strong>的终端命令都需要通过<code>sudo</code>执行</p>
 </blockquote>
 <table>
@@ -650,10 +650,10 @@
 <li>在实际应用中，可以预先针对<strong>组</strong>设置好权限，然后<strong>将不同的用户添加到对应的组中</strong>，从而不用依次为每一个用户设置权限</li>
 </ul>
 <hr>
-<h3 id="3-用户管理终端命令"><a href="#3-用户管理终端命令" class="headerlink" title="3. 用户管理终端命令"></a>3. <strong>用户管理</strong>终端命令</h3><blockquote>
+<h3 id="用户管理终端命令"><a href="#用户管理终端命令" class="headerlink" title="用户管理终端命令"></a><strong>用户管理</strong>终端命令</h3><blockquote>
 <p>提示：<strong>创建用户/删除用户/修改其他用户密码</strong>的终端命令都需要通过<code>sudo</code>执行</p>
 </blockquote>
-<h4 id="3-1-创建用户-设置密码-删除用户"><a href="#3-1-创建用户-设置密码-删除用户" class="headerlink" title="3.1 创建用户/设置密码/删除用户"></a>3.1 创建用户/设置密码/删除用户</h4><table>
+<h4 id="创建用户-设置密码-删除用户"><a href="#创建用户-设置密码-删除用户" class="headerlink" title="创建用户/设置密码/删除用户"></a>创建用户/设置密码/删除用户</h4><table>
 <thead>
 <tr>
 <th style="text-align:center">序号</th>
@@ -698,7 +698,7 @@
 </ul>
 </blockquote>
 <hr>
-<h4 id="3-2-查看用户信息"><a href="#3-2-查看用户信息" class="headerlink" title="3.2 查看用户信息"></a>3.2 查看用户信息</h4><table>
+<h4 id="查看用户信息"><a href="#查看用户信息" class="headerlink" title="查看用户信息"></a>查看用户信息</h4><table>
 <thead>
 <tr>
 <th style="text-align:center">序号</th>
@@ -772,7 +772,7 @@
 </ul>
 </blockquote>
 <hr>
-<h4 id="3-3-切换用户"><a href="#3-3-切换用户" class="headerlink" title="3.3 切换用户"></a>3.3 切换用户</h4><table>
+<h4 id="切换用户"><a href="#切换用户" class="headerlink" title="切换用户"></a>切换用户</h4><table>
 <thead>
 <tr>
 <th style="text-align:center">序号</th>
@@ -801,7 +801,7 @@
 </ul>
 <p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/003_su%E5%92%8Cexit%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="su和exit示意图" title="su和exit示意图"></p>
 <hr>
-<h3 id="4-修改文件权限"><a href="#4-修改文件权限" class="headerlink" title="4. 修改文件权限"></a>4. 修改文件权限</h3><table>
+<h3 id="修改文件权限"><a href="#修改文件权限" class="headerlink" title="修改文件权限"></a>修改文件权限</h3><table>
 <thead>
 <tr>
 <th style="text-align:center">序号</th>
@@ -1141,7 +1141,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-用户和权限的基本概念"><span class="nav-number">1.</span> <span class="nav-text">1. 用户和权限的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-组"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-ls-l扩展"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 ls -l扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-chmod-简单使用（重要）"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 chmod 简单使用（重要）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-超级用户"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 超级用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sudo"><span class="nav-number">1.6.</span> <span class="nav-text">sudo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-组管理终端命令"><span class="nav-number">2.</span> <span class="nav-text">2. 组管理终端命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-用户管理终端命令"><span class="nav-number">3.</span> <span class="nav-text">3. 用户管理终端命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-创建用户-设置密码-删除用户"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 创建用户/设置密码/删除用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-查看用户信息"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 查看用户信息</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#password文件"><span class="nav-number">3.2.1.</span> <span class="nav-text">password文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#usermod"><span class="nav-number">3.2.2.</span> <span class="nav-text">usermod</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#which-重要"><span class="nav-number">3.2.3.</span> <span class="nav-text">which(重要)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bin和sbin"><span class="nav-number">3.2.4.</span> <span class="nav-text">bin和sbin</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-切换用户"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 切换用户</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-修改文件权限"><span class="nav-number">4.</span> <span class="nav-text">4. 修改文件权限</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#用户和权限的基本概念"><span class="nav-number">1.</span> <span class="nav-text">用户和权限的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组"><span class="nav-number">1.2.</span> <span class="nav-text">组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ls-l扩展"><span class="nav-number">1.3.</span> <span class="nav-text">ls -l扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#chmod简单使用（重要）"><span class="nav-number">1.4.</span> <span class="nav-text">chmod简单使用（重要）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超级用户"><span class="nav-number">1.5.</span> <span class="nav-text">超级用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sudo"><span class="nav-number">1.6.</span> <span class="nav-text">sudo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组管理终端命令"><span class="nav-number">2.</span> <span class="nav-text">组管理终端命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户管理终端命令"><span class="nav-number">3.</span> <span class="nav-text">用户管理终端命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建用户-设置密码-删除用户"><span class="nav-number">3.1.</span> <span class="nav-text">创建用户/设置密码/删除用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看用户信息"><span class="nav-number">3.2.</span> <span class="nav-text">查看用户信息</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#password文件"><span class="nav-number">3.2.1.</span> <span class="nav-text">password文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#usermod"><span class="nav-number">3.2.2.</span> <span class="nav-text">usermod</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#which-重要"><span class="nav-number">3.2.3.</span> <span class="nav-text">which(重要)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bin和sbin"><span class="nav-number">3.2.4.</span> <span class="nav-text">bin和sbin</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切换用户"><span class="nav-number">3.3.</span> <span class="nav-text">切换用户</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改文件权限"><span class="nav-number">4.</span> <span class="nav-text">修改文件权限</span></a></li></ol></div>
             
 
           </div>
