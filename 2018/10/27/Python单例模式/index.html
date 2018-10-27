@@ -115,7 +115,7 @@
 
 
 
-  <meta name="keywords" content="Git,Bash," />
+  <meta name="keywords" content="Python,Design Pattern," />
 
 
 
@@ -126,20 +126,21 @@
 
 
 
-<meta name="description" content="前言碎碎念自从使用Git作为版本控制工具以来，通过教程学习、手册查阅方式了解了Git的相关原理和Git的命令，能够顺利使用。但由于还不熟练，实践经验也还不够丰富，每次遇到问题都需要重新搜索，多次下来十分麻烦。另一方面，查阅手册往往是不够的，因为手册只会告诉你什么命令做什么用，不会根据不同场景告诉你应该用什么命令。 所以在这篇文章中，我将常用的Git命令根据不同的使用场景做一个整理，加深印象的同时也">
-<meta name="keywords" content="Git,Bash">
+<meta name="description" content="目标 单例设计模式 __new__方法 Python中的单例   单例设计模式 设计模式 设计模式是前人工作的总结和提炼，通常，被人们广泛流传的设计模式都是针对某一特定问题的成熟的解决方案 使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性    单例设计模式 目的—- 让类创建的对象，在系统中只有唯一的一个实例 每一次执行类名()返回的对象，内存地址是相同的    单例设计模式">
+<meta name="keywords" content="Python,Design Pattern">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git常用命令整理">
-<meta property="og:url" content="https://zhouzhuming.tech/2018/04/24/Git常用命令整理/index.html">
+<meta property="og:title" content="Python单例模式">
+<meta property="og:url" content="https://zhouzhuming.tech/2018/10/27/Python单例模式/index.html">
 <meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
-<meta property="og:description" content="前言碎碎念自从使用Git作为版本控制工具以来，通过教程学习、手册查阅方式了解了Git的相关原理和Git的命令，能够顺利使用。但由于还不熟练，实践经验也还不够丰富，每次遇到问题都需要重新搜索，多次下来十分麻烦。另一方面，查阅手册往往是不够的，因为手册只会告诉你什么命令做什么用，不会根据不同场景告诉你应该用什么命令。 所以在这篇文章中，我将常用的Git命令根据不同的使用场景做一个整理，加深印象的同时也">
+<meta property="og:description" content="目标 单例设计模式 __new__方法 Python中的单例   单例设计模式 设计模式 设计模式是前人工作的总结和提炼，通常，被人们广泛流传的设计模式都是针对某一特定问题的成熟的解决方案 使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性    单例设计模式 目的—- 让类创建的对象，在系统中只有唯一的一个实例 每一次执行类名()返回的对象，内存地址是相同的    单例设计模式">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/Git_common_command.png">
-<meta property="og:updated_time" content="2018-06-18T11:15:09.367Z">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/01_%E5%AF%B9%E8%B1%A1%E5%88%86%E9%85%8D%E7%A9%BA%E9%97%B4%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/02_%E5%8D%95%E4%BE%8B%E6%B5%81%E7%A8%8B.png">
+<meta property="og:updated_time" content="2018-10-27T05:20:09.592Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git常用命令整理">
-<meta name="twitter:description" content="前言碎碎念自从使用Git作为版本控制工具以来，通过教程学习、手册查阅方式了解了Git的相关原理和Git的命令，能够顺利使用。但由于还不熟练，实践经验也还不够丰富，每次遇到问题都需要重新搜索，多次下来十分麻烦。另一方面，查阅手册往往是不够的，因为手册只会告诉你什么命令做什么用，不会根据不同场景告诉你应该用什么命令。 所以在这篇文章中，我将常用的Git命令根据不同的使用场景做一个整理，加深印象的同时也">
-<meta name="twitter:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/Git_common_command.png">
+<meta name="twitter:title" content="Python单例模式">
+<meta name="twitter:description" content="目标 单例设计模式 __new__方法 Python中的单例   单例设计模式 设计模式 设计模式是前人工作的总结和提炼，通常，被人们广泛流传的设计模式都是针对某一特定问题的成熟的解决方案 使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性    单例设计模式 目的—- 让类创建的对象，在系统中只有唯一的一个实例 每一次执行类名()返回的对象，内存地址是相同的    单例设计模式">
+<meta name="twitter:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/01_%E5%AF%B9%E8%B1%A1%E5%88%86%E9%85%8D%E7%A9%BA%E9%97%B4%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96.png">
 
 
 
@@ -169,13 +170,13 @@
 
 
 
-  <link rel="canonical" href="https://zhouzhuming.tech/2018/04/24/Git常用命令整理/"/>
+  <link rel="canonical" href="https://zhouzhuming.tech/2018/10/27/Python单例模式/"/>
 
 
 
 
 
-  <title>Git常用命令整理 | Zhou Zhuming's blogs</title>
+  <title>Python单例模式 | Zhou Zhuming's blogs</title>
   
 
 
@@ -367,7 +368,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhouzhuming.tech/2018/04/24/Git常用命令整理/">
+    <link itemprop="mainEntityOfPage" href="https://zhouzhuming.tech/2018/10/27/Python单例模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhou Zhuming">
@@ -384,7 +385,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Git常用命令整理</h1>
+          <h1 class="post-title" itemprop="name headline">Python单例模式</h1>
         
 
         <div class="post-meta">
@@ -396,8 +397,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-24T10:25:17+08:00">
-                2018-04-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-27T11:19:19+08:00">
+                2018-10-27
               </time>
             
 
@@ -419,8 +420,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/版本控制之Git/" itemprop="url" rel="index">
-                    <span itemprop="name">版本控制之Git</span>
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -437,8 +449,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/04/24/Git常用命令整理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/24/Git常用命令整理/" itemprop="commentCount"></span>
+                <a href="/2018/10/27/Python单例模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/27/Python单例模式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -446,7 +458,7 @@
 
           
           
-             <span id="/2018/04/24/Git常用命令整理/" class="leancloud_visitors" data-flag-title="Git常用命令整理">
+             <span id="/2018/10/27/Python单例模式/" class="leancloud_visitors" data-flag-title="Python单例模式">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -471,7 +483,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,643字
+                  929字
                 </span>
               
 
@@ -487,7 +499,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10分钟
+                  4分钟
                 </span>
               
             </div>
@@ -508,83 +520,86 @@
       
 
       
-        <h2 id="前言碎碎念"><a href="#前言碎碎念" class="headerlink" title="前言碎碎念"></a>前言碎碎念</h2><p>自从使用Git作为版本控制工具以来，通过教程学习、手册查阅方式了解了Git的相关原理和Git的命令，能够顺利使用。但由于还不熟练，实践经验也还不够丰富，每次遇到问题都需要重新搜索，多次下来十分麻烦。另一方面，查阅手册往往是不够的，因为手册只会告诉你什么命令做什么用，不会根据不同场景告诉你应该用什么命令。</p>
-<p>所以在这篇文章中，我将常用的Git命令根据不同的使用场景做一个整理，加深印象的同时也方便自己日后进行查阅。<a id="more"></a></p>
-<hr>
-<h2 id="四个概念"><a href="#四个概念" class="headerlink" title="四个概念"></a>四个概念</h2><p>这里借用阮一峰老师的文章<a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="noopener">《常用Git命令清单》</a>中的图。<br><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/Git_common_command.png" alt="Git"></p>
-<p>几个专有名词的译名如下：</p>
-<ul>
-<li>Workspace: 工作区，也就是正在编辑的文件目录</li>
-<li>Index / Stage: 暂存区</li>
-<li>Repository: 本地仓库，.git文件夹管理的版本库</li>
-<li>Remote: 远程仓库，也就是github.com上面的仓库</li>
+        <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><ul>
+<li>单例设计模式</li>
+<li><code>__new__</code>方法</li>
+<li>Python中的单例</li>
 </ul>
-<p>例如，在最常用的命令串中：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git add &lt;file&gt;</span><br><span class="line"><span class="comment">#添加工作区指定文件的改动到暂存区，"&lt;file&gt;"为"."时添加全部文件</span></span><br><span class="line"></span><br><span class="line">$ git commit -m <span class="string">"XXXX"</span></span><br><span class="line"><span class="comment">#提交暂存区的所有内容到本地仓库的当前分支</span></span><br><span class="line"></span><br><span class="line">$ git push -u origin master</span><br><span class="line"><span class="comment">#上传本地仓库到已关联的远程仓库</span></span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="建立工程"><a href="#建立工程" class="headerlink" title="建立工程"></a>建立工程</h2><p>在工作目录中建立与远程仓库关联的Git工程主要有两种情况：第一种是由本地上传到远程仓库；第二种是从远程仓库克隆到本地。</p>
-<h3 id="本地上传"><a href="#本地上传" class="headerlink" title="本地上传"></a>本地上传</h3><p>在这种情况下，远程仓库应该是没有工程的。在本地工程文件夹下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line"><span class="comment">#初始化一个Git仓库，此时当前目录会增加一个.git文件夹(此文件夹默认是隐藏的)，当前文件夹受到Git的管理，并默认创建master分支</span></span><br><span class="line"></span><br><span class="line">$ git add &lt;file&gt;</span><br><span class="line"><span class="comment">#添加指定文件到暂存区，"&lt;file&gt;"为"."时表明添加当前目录的所有文件到暂存区</span></span><br><span class="line"></span><br><span class="line">$ git commit -m <span class="string">"XXXX"</span></span><br><span class="line"><span class="comment">#提交暂存区的所有内容到本地仓库的当前分支</span></span><br><span class="line"></span><br><span class="line">$ git remote add origin &lt;url&gt;</span><br><span class="line"><span class="comment">#为当前项目添加远程主机。</span></span><br><span class="line"><span class="comment">#其中origin为自定义的远程主机名，url为远程主机的地址（推荐采用ssh协议）</span></span><br></pre></td></tr></table></figure>
-<p>此时已经建立了本地仓库与远程仓库的关联，可以通过<code>git push</code>推送上传。<br>第一次推送采用：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br><span class="line"><span class="comment">#将本地master分支推送到远程同名分支（若不存在则新建），同时-u指定origin为默认主机名，之后若要上传到origin可省略它。</span></span><br></pre></td></tr></table></figure>
-<h3 id="远程克隆"><a href="#远程克隆" class="headerlink" title="远程克隆"></a>远程克隆</h3><p>这种情况下，远程仓库已经有工程，只需要在本地工程文件夹下用<code>git clone</code>命令克隆：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> &lt;url&gt;</span><br></pre></td></tr></table></figure>
-<p>此时本地仓库已经与对应远程仓库建立关联，为主机名<code>origin</code>的地址。</p>
-<h3 id="克隆其他分支"><a href="#克隆其他分支" class="headerlink" title="克隆其他分支"></a>克隆其他分支</h3><p><code>git clone</code>命令默认克隆远程项目的<code>master</code>分支及其历史，若还需克隆别的分支，可通过以下方式进行（以克隆dev分支为例）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b dev origin/dev</span><br><span class="line"><span class="comment">#检出origin下的dev分支到本地新建的dev分支，并建立本地分支与远程分支的追踪关系</span></span><br></pre></td></tr></table></figure>
-<p>或者：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b dev</span><br><span class="line"><span class="comment">#新建并切换到本地分支dev</span></span><br><span class="line"></span><br><span class="line">$ git branch --<span class="built_in">set</span>-upstream-to=origin/dev dev</span><br><span class="line"><span class="comment">#建立origin/dev远程分支和dev本地分支的追踪关系</span></span><br><span class="line"></span><br><span class="line">$ git pull</span><br><span class="line"><span class="comment">#拉取本地分支dev对应的远程分支的最新状态</span></span><br></pre></td></tr></table></figure>
-<h3 id="托管到新的远程仓库"><a href="#托管到新的远程仓库" class="headerlink" title="托管到新的远程仓库"></a>托管到新的远程仓库</h3><p>在克隆需要的内容后，有时会希望托管到新的远程仓库。<br>此时可以增加新的远程主机名:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add &lt;new_remote_name&gt; &lt;url&gt;</span><br></pre></td></tr></table></figure>
-<p>或者干脆更改原来<code>origin</code>的地址：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote origin <span class="built_in">set</span>-url &lt;url&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h3><ul>
+<li>设计模式<ul>
+<li><strong>设计模式</strong>是<strong>前人工作的总结和提炼</strong>，通常，被人们广泛流传的设计模式都是针对<strong>某一特定问题</strong>的成熟的解决方案</li>
+<li>使用<strong>设计模式</strong>是为了可重用代码、让代码更容易被他人理解、保证代码可靠性 </li>
+</ul>
+</li>
+<li>单例设计模式<ul>
+<li><strong>目的</strong>—- 让<strong>类</strong>创建的对象，在系统中<strong>只有唯一的一个实例</strong></li>
+<li>每一次执行<code>类名()</code>返回的对象，<strong>内存地址是相同的</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>单例设计模式的应用场景</strong></p>
+<ul>
+<li><strong>音乐播放</strong>对象</li>
+<li><strong>回收站</strong>对象</li>
+<li><strong>打印机</strong>对象</li>
+<li>……</li>
+</ul>
 <hr>
-<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><h3 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br><span class="line"><span class="comment">#查看本地分支</span></span><br><span class="line"></span><br><span class="line">$ git branch -r</span><br><span class="line"><span class="comment">#查看远程分支</span></span><br><span class="line"></span><br><span class="line">$ git branch -a</span><br><span class="line"><span class="comment">#查看所有本地分支和远程分支</span></span><br></pre></td></tr></table></figure>
-<h3 id="新建本地分支"><a href="#新建本地分支" class="headerlink" title="新建本地分支"></a>新建本地分支</h3><p>新建分支（不切换）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch &lt;new_branch&gt;</span><br></pre></td></tr></table></figure>
-<p>新建分支并切换到新分支：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b &lt;new_branch&gt;</span><br><span class="line"><span class="comment">#相当于：</span></span><br><span class="line">$ git branch &lt;new_branch&gt;</span><br><span class="line">$ git checkout &lt;new_branch&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d &lt;branch&gt;</span><br><span class="line"><span class="comment">#删除分支前检查该分支是否有未提交或者未合并的内容</span></span><br><span class="line"></span><br><span class="line">$ git branch -D &lt;branch&gt;</span><br><span class="line"><span class="comment">#强制删除该分支</span></span><br></pre></td></tr></table></figure>
-<h3 id="新建远程分支"><a href="#新建远程分支" class="headerlink" title="新建远程分支"></a>新建远程分支</h3><p>相当于把远程未添加的本地分支push到远程：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin &lt;local_branch&gt;:&lt;remote_branch&gt;</span><br><span class="line"><span class="comment">#建议远程与本地分支同名，同名时可省略远程分支名</span></span><br></pre></td></tr></table></figure>
-<h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><p>相当于<code>push</code>一个本地的空分支：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin :&lt;remote_branch&gt;</span><br><span class="line"><span class="comment">#本地分支为空</span></span><br></pre></td></tr></table></figure>
-<p>或者用<code>--delete</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --delete &lt;remote_branch&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git merge &lt;branch&gt;</span><br><span class="line"><span class="comment">#快进合并（指针指向改变），合并&lt;branch&gt;到当前分支</span></span><br><span class="line"></span><br><span class="line">$ git merge --no-ff &lt;branch&gt;</span><br><span class="line"><span class="comment">#合并&lt;branch&gt;到当前分支，在当前分支生成新节点，保证每个分支的独立演变史</span></span><br></pre></td></tr></table></figure>
+<h3 id="new方法"><a href="#new方法" class="headerlink" title="new方法"></a><strong>new</strong>方法</h3><ul>
+<li>使用<b>类名()</b>创建对象时，<code>Python</code>的解释器<strong>首先</strong>会调用<code>__new__</code>方法为对象<strong>分配空间</strong></li>
+<li><code>__new__</code>是一个由<code>object</code>基类提供的<strong>内置的静态方法</strong>，主要作用有两个：<ul>
+<li>在内存中为对象<strong>分配空间</strong></li>
+<li><strong>返回</strong>对象的引用</li>
+</ul>
+</li>
+<li><code>Python</code>的解释器获得对象的<strong>引用</strong>后，将引用作为<strong>第一个参数</strong>，传递给<code>__init__</code>方法</li>
+</ul>
+<blockquote>
+<p>重写<code>__new__</code>方法的代码非常固定</p>
+</blockquote>
+<ul>
+<li>重写<code>__new__</code>方法<strong>一定要</strong><code>return super().__new__(cls)</code></li>
+<li>否则Python的解释器<strong>得不到</strong>分配了空间的<strong>对象引用，就不会调用对象的初始化方法</strong></li>
+<li>注意：<code>__new__</code>是一个静态方法，在调用时需要<strong>主动传递</strong><code>cls</code>参数</li>
+</ul>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/01_%E5%AF%B9%E8%B1%A1%E5%88%86%E9%85%8D%E7%A9%BA%E9%97%B4%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96.png" alt="对象分配空间和初始化" title="[对象分配空间和初始化"></p>
+<p><strong>示例代码：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MusicPlayer</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span><span class="params">(cls, *args, **kwargs)</span>:</span></span><br><span class="line">        <span class="comment"># 如果不返回任何结果，</span></span><br><span class="line">        <span class="keyword">return</span> super().__new__(cls)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"初始化音乐播放对象"</span>)</span><br><span class="line"></span><br><span class="line">player = MusicPlayer()</span><br><span class="line"></span><br><span class="line">print(player)</span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="撤销与版本回退"><a href="#撤销与版本回退" class="headerlink" title="撤销与版本回退"></a>撤销与版本回退</h2><h3 id="撤销工作区修改"><a href="#撤销工作区修改" class="headerlink" title="撤销工作区修改"></a>撤销工作区修改</h3><p>有时修改工作区后，发现修改错误，希望回到原来未修改时（上一次提交或暂存）的状态。可以采用<code>git checkout</code>命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git diff</span><br><span class="line"><span class="comment">#查看工作区未提交（或为暂存）的文件的具体修改</span></span><br><span class="line"></span><br><span class="line">$ git checkout -- &lt;file&gt;</span><br><span class="line"><span class="comment">#恢复工作区指定文件到上一次提交（或暂存）状态</span></span><br><span class="line">$ git checkout .</span><br><span class="line"><span class="comment">#撤销所有工作区修改</span></span><br></pre></td></tr></table></figure>
-<h3 id="撤销暂存"><a href="#撤销暂存" class="headerlink" title="撤销暂存"></a>撤销暂存</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD &lt;file&gt;</span><br><span class="line"><span class="comment">#将指定文件撤出暂存区</span></span><br></pre></td></tr></table></figure>
-<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><p>希望将版本库回退到之前的提交时，采用<code>git reset</code>命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span></span><br><span class="line"><span class="comment">#查看之前的版本提交记录</span></span><br><span class="line"></span><br><span class="line">$ git reset HEAD^</span><br><span class="line"><span class="comment">#回退到上一个提交版本，^^代表上两个版本，以此类推。（也可以用~2等代替）</span></span><br><span class="line">或</span><br><span class="line">$ git reset &lt;commitID&gt;</span><br><span class="line"><span class="comment">#commitID可由git log查看得到</span></span><br></pre></td></tr></table></figure>
-<p>有必要整理一下<code>git reset</code>命令的三个参数：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --soft HEAD^</span><br><span class="line"><span class="comment">#重置版本库头指针，且将这次提交之后的所有变更移动到暂存区</span></span><br><span class="line"></span><br><span class="line">$ git reset --mixed HEAD^</span><br><span class="line"><span class="comment">#默认参数，等同于 git reset HEAD^</span></span><br><span class="line"><span class="comment">#重置版本库头指针和暂存区，即这次提交之后的所有更改都留在工作区</span></span><br><span class="line"></span><br><span class="line">$ git reset --hard HEAD^</span><br><span class="line"><span class="comment">#重置版本库头指针、暂存区和工作区，即这次提交之后的所有更改都不在存在于当前状态</span></span><br></pre></td></tr></table></figure>
-<p>在没有将之后的提交推送到远程仓库的情况下，<code>git reset --hard</code>是个很危险的操作。若是已经推送到远程仓库，使用<code>git pull</code>可以重新获得之后的版本提交。<br>若是在没有远程备份时使用<code>--hard</code>进行版本回退，又想恢复到之后的版本，在一定时间内（一般为30天）可以通过<code>git reflog</code>查看操作id，再使用<code>git reset --hard &lt;ID&gt;</code>恢复。</p>
-<h3 id="stash储藏"><a href="#stash储藏" class="headerlink" title="stash储藏"></a>stash储藏</h3><p>有时手头的工作进行到一半，需要切换分支做一些其他事情，可以采用<code>git stash</code>命令将当前的工作区储藏起来。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ git stash</span><br><span class="line"><span class="comment">#储藏当前工作区</span></span><br><span class="line"></span><br><span class="line">$ git stash list</span><br><span class="line"><span class="comment">#查看当前的stash储藏栈</span></span><br><span class="line"></span><br><span class="line">$ git stash apply</span><br><span class="line"><span class="comment">#应用栈顶的储藏内容，恢复工作区到之前的储藏状态</span></span><br><span class="line">$ git stash apply stash@&#123;2&#125;</span><br><span class="line"><span class="comment">#应用指定储藏内容</span></span><br><span class="line"></span><br><span class="line">$ git stash pop</span><br><span class="line"><span class="comment">#与apply类似，但从栈中删除该储藏内容</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="多人协作"><a href="#多人协作" class="headerlink" title="多人协作"></a>多人协作</h2><h3 id="推送分支"><a href="#推送分支" class="headerlink" title="推送分支"></a>推送分支</h3><p>推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#默认推送的为master主分支</span></span><br><span class="line">$ git push origin master</span><br><span class="line"></span><br><span class="line"><span class="comment">#如果要推送其他分支，将该分支对应的名字来替换master即可</span></span><br><span class="line">$ git push origin dev</span><br></pre></td></tr></table></figure>
-<h3 id="抓取分支"><a href="#抓取分支" class="headerlink" title="抓取分支"></a>抓取分支</h3><p>多人协作时，大家都会往<code>master</code>和<code>dev</code>分支上推送各自的修改。<br>当你的小伙伴从远程库<code>clone</code>时，默认情况下，你的小伙伴只能看到本地的<code>master</code>分支。不信可以用<code>git branch</code>命令看看：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br><span class="line">* master</span><br></pre></td></tr></table></figure>
-<p>现在，你的小伙伴要在<code>dev</code>分支上开发，就必须创建远程<code>origin</code>的<code>dev</code>分支到本地，于是他用这个命令创建本地<code>dev</code>分支：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#注意：本地分支名称最好与远程分支保持一致。</span></span><br><span class="line">$ git checkout -b dev origin/dev</span><br></pre></td></tr></table></figure>
-<p>现在，他就可以在<code>dev</code>上继续修改，然后，时不时地把<code>dev</code>分支<code>push</code>到远程。</p>
-<p>你的小伙伴已经向<code>origin/dev</code>分支推送了他的提交，而碰巧你对同样的文件也做了修改，并且试图推送。</p>
-<p>这个时候会推送失败,因为你的小伙伴的最新提交和你试图推送的提交有冲突，解决办法也很简单: 先用<code>git pull</code>把最新的提交从<code>origin/dev</code>抓下来，然后，在本地合并，解决冲突，再推送。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
-<p>如果<code>git pull</code>提示<code>“no tracking information”</code>，则说明本地分支和远程分支的链接关系没有创建，用命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch --<span class="built_in">set</span>-upstream branch-name origin/branch-name</span><br></pre></td></tr></table></figure>
-<p>最后再将你改好的分支<code>push</code>到远程仓库。<br>这就是多人协作的工作模式，一旦熟悉了，就非常简单。</p>
-<hr>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="状态查看"><a href="#状态查看" class="headerlink" title="状态查看"></a>状态查看</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
-<p>任何情况下都可以使用<code>git status</code>命令查看当前的版本控制状态（包括工作区、暂存区、仓库区），并给出当前状态下可能会用到的命令提示。<br>经常使用该命令是好习惯。</p>
-<h3 id="查看远程库信息"><a href="#查看远程库信息" class="headerlink" title="查看远程库信息"></a>查看远程库信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br></pre></td></tr></table></figure>
-<h3 id="配置git用户"><a href="#配置git用户" class="headerlink" title="配置git用户"></a>配置git用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config user.name <span class="string">"your name"</span></span><br><span class="line">$ git config user.email <span class="string">"email@example.com"</span></span><br><span class="line"><span class="comment">#配置当前目录的git用户，加上--config参数时配置这台机器的所有git仓库</span></span><br></pre></td></tr></table></figure>
-<h3 id="协议更改"><a href="#协议更改" class="headerlink" title="协议更改"></a>协议更改</h3><p>有时版本克隆是采用的是https协议，以至于每一次提交都需要输入用户名密码，很麻烦。而使用ssh协议就会方便很多，需要将当前的仓库协议进行更换。<br>事实上，重置远程仓库名为ssh协议地址就可以了。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote origin <span class="built_in">set</span>-url git@example.com....</span><br></pre></td></tr></table></figure>
-
+<h3 id="Python中的单例"><a href="#Python中的单例" class="headerlink" title="Python中的单例"></a>Python中的单例</h3><ul>
+<li>单例 — 让<strong>类</strong>创建的对象，在系统中<strong>只有唯一的一个实例</strong><ul>
+<li>定义一个<strong>类属性</strong>，初始值是<code>None</code>, <strong>用于记录单例对象的引用</strong></li>
+<li>重写<code>__new__</code>方法</li>
+<li>如果<strong>类属性</strong> <code>is None</code>, 调用父类方法分配空间，并在类属性中记录结果</li>
+<li>返回<strong>类属性</strong>中记录的<strong>对象引用</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/02_%E5%8D%95%E4%BE%8B%E6%B5%81%E7%A8%8B.png" alt="单例流程" title="单例流程"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MusicPlayer</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 定义类属性记录单例对象引用</span></span><br><span class="line">    instance = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span><span class="params">(cls, *args, **kwargs)</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 1. 判断类属性是否已经被赋值</span></span><br><span class="line">        <span class="keyword">if</span> cls.instance <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            cls.instance = super().__new__(cls)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 2. 返回类属性的单例引用</span></span><br><span class="line">        <span class="keyword">return</span> cls.instance</span><br></pre></td></tr></table></figure>
+<p><strong>只执行一次初始化操作</strong></p>
+<ul>
+<li>在每次使用<code>类名()</code>创建对象时，<code>Python</code>的解释器都会自动调用两个方法：<ul>
+<li><code>__new__</code>分配空间</li>
+<li><code>__init__</code>对象初始化</li>
+</ul>
+</li>
+<li>在上一小节对<code>__new__</code>方法改造之后，每次都会得到<strong>第一次被创建对象的引用</strong></li>
+<li>但是<strong>初始化方法还是会被再次调用</strong></li>
+</ul>
+<p><strong>需求</strong></p>
+<ul>
+<li>让<strong>初始化动作</strong>只被<strong>执行一次</strong></li>
+</ul>
+<p><strong>解决办法</strong></p>
+<ul>
+<li>定义一个类属性<code>init_flag</code>, 标记是否<strong>执行过初始化动作</strong>，初始值为<code>False</code></li>
+<li>在<code>__init__</code>方法中，判断<code>init_flag</code>, 如果为<code>False</code>就执行初始化动作</li>
+<li>然后将<code>init_flag</code>设置为<code>True</code></li>
+<li>这样，再次<strong>自动</strong>调用<code>__init__</code>方法时，<strong>初始化动作就不会被再次执行了</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MusicPlayer</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 记录第一个被创建对象的引用</span></span><br><span class="line">    instance = <span class="keyword">None</span></span><br><span class="line">    <span class="comment"># 记录是否执行过初始化动作</span></span><br><span class="line">    init_flag = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span><span class="params">(cls, *args, **kwargs)</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 1. 判断类属性是否是空对象</span></span><br><span class="line">        <span class="keyword">if</span> cls.instance <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="comment"># 2. 调用父类的方法，为第一个对象分配空间</span></span><br><span class="line">            cls.instance = super().__new__(cls)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 3. 返回类属性保存的对象引用</span></span><br><span class="line">        <span class="keyword">return</span> cls.instance</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> MusicPlayer.init_flag:</span><br><span class="line">            print(<span class="string">"初始化音乐播放器"</span>)</span><br><span class="line"></span><br><span class="line">            MusicPlayer.init_flag = <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建多个对象</span></span><br><span class="line">player1 = MusicPlayer()</span><br><span class="line">print(player1)</span><br><span class="line"></span><br><span class="line">player2 = MusicPlayer()</span><br><span class="line">print(player2)</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -644,7 +659,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://zhouzhuming.tech/2018/04/24/Git常用命令整理/" title="Git常用命令整理">https://zhouzhuming.tech/2018/04/24/Git常用命令整理/</a>
+    <a href="https://zhouzhuming.tech/2018/10/27/Python单例模式/" title="Python单例模式">https://zhouzhuming.tech/2018/10/27/Python单例模式/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -659,9 +674,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Git/" <i class="fa fa-tag"></i> Git</a>
+            <a href="/tags/Python/" <i class="fa fa-tag"></i> Python</a>
           
-            <a href="/tags/Bash/" <i class="fa fa-tag"></i> Bash</a>
+            <a href="/tags/Design-Pattern/" <i class="fa fa-tag"></i> Design Pattern</a>
           
         </div>
       
@@ -674,8 +689,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/22/如何更改Github上面托管的项目的默认显示语言/" rel="next" title="如何更改Github上面托管的项目的默认显示语言">
-                <i class="fa fa-chevron-left"></i> 如何更改Github上面托管的项目的默认显示语言
+              <a href="/2018/10/21/Linux常用命令之其他/" rel="next" title="Linux常用命令之其他">
+                <i class="fa fa-chevron-left"></i> Linux常用命令之其他
               </a>
             
           </div>
@@ -683,10 +698,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/26/Linux常用命令之目录和文件/" rel="prev" title="Linux常用命令之目录和文件">
-                Linux常用命令之目录和文件 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -887,7 +898,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言碎碎念"><span class="nav-number">1.</span> <span class="nav-text">前言碎碎念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四个概念"><span class="nav-number">2.</span> <span class="nav-text">四个概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立工程"><span class="nav-number">3.</span> <span class="nav-text">建立工程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本地上传"><span class="nav-number">3.1.</span> <span class="nav-text">本地上传</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程克隆"><span class="nav-number">3.2.</span> <span class="nav-text">远程克隆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#克隆其他分支"><span class="nav-number">3.3.</span> <span class="nav-text">克隆其他分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#托管到新的远程仓库"><span class="nav-number">3.4.</span> <span class="nav-text">托管到新的远程仓库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支管理"><span class="nav-number">4.</span> <span class="nav-text">分支管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看分支"><span class="nav-number">4.1.</span> <span class="nav-text">查看分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建本地分支"><span class="nav-number">4.2.</span> <span class="nav-text">新建本地分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除本地分支"><span class="nav-number">4.3.</span> <span class="nav-text">删除本地分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建远程分支"><span class="nav-number">4.4.</span> <span class="nav-text">新建远程分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除远程分支"><span class="nav-number">4.5.</span> <span class="nav-text">删除远程分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并分支"><span class="nav-number">4.6.</span> <span class="nav-text">合并分支</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#撤销与版本回退"><span class="nav-number">5.</span> <span class="nav-text">撤销与版本回退</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销工作区修改"><span class="nav-number">5.1.</span> <span class="nav-text">撤销工作区修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销暂存"><span class="nav-number">5.2.</span> <span class="nav-text">撤销暂存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本回退"><span class="nav-number">5.3.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stash储藏"><span class="nav-number">5.4.</span> <span class="nav-text">stash储藏</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多人协作"><span class="nav-number">6.</span> <span class="nav-text">多人协作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#推送分支"><span class="nav-number">6.1.</span> <span class="nav-text">推送分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抓取分支"><span class="nav-number">6.2.</span> <span class="nav-text">抓取分支</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">7.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#状态查看"><span class="nav-number">7.1.</span> <span class="nav-text">状态查看</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看远程库信息"><span class="nav-number">7.2.</span> <span class="nav-text">查看远程库信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置git用户"><span class="nav-number">7.3.</span> <span class="nav-text">配置git用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协议更改"><span class="nav-number">7.4.</span> <span class="nav-text">协议更改</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单例设计模式"><span class="nav-number">2.</span> <span class="nav-text">单例设计模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#new方法"><span class="nav-number">3.</span> <span class="nav-text">new方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python中的单例"><span class="nav-number">4.</span> <span class="nav-text">Python中的单例</span></a></li></ol></div>
             
 
           </div>
