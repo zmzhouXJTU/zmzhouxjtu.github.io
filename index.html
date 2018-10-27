@@ -520,88 +520,17 @@
 
       
         
-          
-            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><ul>
+          <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><ul>
 <li>单例设计模式</li>
 <li><code>__new__</code>方法</li>
-<li>Python中的单例</li>
-</ul>
-<hr>
-<h3 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h3><ul>
-<li>设计模式<ul>
-<li><strong>设计模式</strong>是<strong>前人工作的总结和提炼</strong>，通常，被人们广泛流传的设计模式都是针对<strong>某一特定问题</strong>的成熟的解决方案</li>
-<li>使用<strong>设计模式</strong>是为了可重用代码、让代码更容易被他人理解、保证代码可靠性 </li>
-</ul>
-</li>
-<li>单例设计模式<ul>
-<li><strong>目的</strong>—- 让<strong>类</strong>创建的对象，在系统中<strong>只有唯一的一个实例</strong></li>
-<li>每一次执行<code>类名()</code>返回的对象，<strong>内存地址是相同的</strong></li>
-</ul>
-</li>
-</ul>
-<p><strong>单例设计模式的应用场景</strong></p>
-<ul>
-<li><strong>音乐播放</strong>对象</li>
-<li><strong>回收站</strong>对象</li>
-<li><strong>打印机</strong>对象</li>
-<li>……</li>
-</ul>
-<hr>
-<h3 id="new方法"><a href="#new方法" class="headerlink" title="new方法"></a><strong>new</strong>方法</h3><ul>
-<li>使用<b>类名()</b>创建对象时，<code>Python</code>的解释器<strong>首先</strong>会调用<code>__new__</code>方法为对象<strong>分配空间</strong></li>
-<li><code>__new__</code>是一个由<code>object</code>基类提供的<strong>内置的静态方法</strong>，主要作用有两个：<ul>
-<li>在内存中为对象<strong>分配空间</strong></li>
-<li><strong>返回</strong>对象的引用</li>
-</ul>
-</li>
-<li><code>Python</code>的解释器获得对象的<strong>引用</strong>后，将引用作为<strong>第一个参数</strong>，传递给<code>__init__</code>方法</li>
-</ul>
-<blockquote>
-<p>重写<code>__new__</code>方法的代码非常固定</p>
-</blockquote>
-<ul>
-<li>重写<code>__new__</code>方法<strong>一定要</strong><code>return super().__new__(cls)</code></li>
-<li>否则Python的解释器<strong>得不到</strong>分配了空间的<strong>对象引用，就不会调用对象的初始化方法</strong></li>
-<li>注意：<code>__new__</code>是一个静态方法，在调用时需要<strong>主动传递</strong><code>cls</code>参数</li>
-</ul>
-<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/01_%E5%AF%B9%E8%B1%A1%E5%88%86%E9%85%8D%E7%A9%BA%E9%97%B4%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96.png" alt="对象分配空间和初始化" title="[对象分配空间和初始化"></p>
-<p><strong>示例代码：</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MusicPlayer</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span><span class="params">(cls, *args, **kwargs)</span>:</span></span><br><span class="line">        <span class="comment"># 如果不返回任何结果，</span></span><br><span class="line">        <span class="keyword">return</span> super().__new__(cls)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"初始化音乐播放对象"</span>)</span><br><span class="line"></span><br><span class="line">player = MusicPlayer()</span><br><span class="line"></span><br><span class="line">print(player)</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="Python中的单例"><a href="#Python中的单例" class="headerlink" title="Python中的单例"></a>Python中的单例</h3><ul>
-<li>单例 — 让<strong>类</strong>创建的对象，在系统中<strong>只有唯一的一个实例</strong><ul>
-<li>定义一个<strong>类属性</strong>，初始值是<code>None</code>, <strong>用于记录单例对象的引用</strong></li>
-<li>重写<code>__new__</code>方法</li>
-<li>如果<strong>类属性</strong> <code>is None</code>, 调用父类方法分配空间，并在类属性中记录结果</li>
-<li>返回<strong>类属性</strong>中记录的<strong>对象引用</strong></li>
-</ul>
-</li>
-</ul>
-<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/02_%E5%8D%95%E4%BE%8B%E6%B5%81%E7%A8%8B.png" alt="单例流程" title="单例流程"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MusicPlayer</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 定义类属性记录单例对象引用</span></span><br><span class="line">    instance = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span><span class="params">(cls, *args, **kwargs)</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 1. 判断类属性是否已经被赋值</span></span><br><span class="line">        <span class="keyword">if</span> cls.instance <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            cls.instance = super().__new__(cls)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 2. 返回类属性的单例引用</span></span><br><span class="line">        <span class="keyword">return</span> cls.instance</span><br></pre></td></tr></table></figure>
-<p><strong>只执行一次初始化操作</strong></p>
-<ul>
-<li>在每次使用<code>类名()</code>创建对象时，<code>Python</code>的解释器都会自动调用两个方法：<ul>
-<li><code>__new__</code>分配空间</li>
-<li><code>__init__</code>对象初始化</li>
-</ul>
-</li>
-<li>在上一小节对<code>__new__</code>方法改造之后，每次都会得到<strong>第一次被创建对象的引用</strong></li>
-<li>但是<strong>初始化方法还是会被再次调用</strong></li>
-</ul>
-<p><strong>需求</strong></p>
-<ul>
-<li>让<strong>初始化动作</strong>只被<strong>执行一次</strong></li>
-</ul>
-<p><strong>解决办法</strong></p>
-<ul>
-<li>定义一个类属性<code>init_flag</code>, 标记是否<strong>执行过初始化动作</strong>，初始值为<code>False</code></li>
-<li>在<code>__init__</code>方法中，判断<code>init_flag</code>, 如果为<code>False</code>就执行初始化动作</li>
-<li>然后将<code>init_flag</code>设置为<code>True</code></li>
-<li>这样，再次<strong>自动</strong>调用<code>__init__</code>方法时，<strong>初始化动作就不会被再次执行了</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MusicPlayer</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 记录第一个被创建对象的引用</span></span><br><span class="line">    instance = <span class="keyword">None</span></span><br><span class="line">    <span class="comment"># 记录是否执行过初始化动作</span></span><br><span class="line">    init_flag = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span><span class="params">(cls, *args, **kwargs)</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 1. 判断类属性是否是空对象</span></span><br><span class="line">        <span class="keyword">if</span> cls.instance <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="comment"># 2. 调用父类的方法，为第一个对象分配空间</span></span><br><span class="line">            cls.instance = super().__new__(cls)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 3. 返回类属性保存的对象引用</span></span><br><span class="line">        <span class="keyword">return</span> cls.instance</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> MusicPlayer.init_flag:</span><br><span class="line">            print(<span class="string">"初始化音乐播放器"</span>)</span><br><span class="line"></span><br><span class="line">            MusicPlayer.init_flag = <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建多个对象</span></span><br><span class="line">player1 = MusicPlayer()</span><br><span class="line">print(player1)</span><br><span class="line"></span><br><span class="line">player2 = MusicPlayer()</span><br><span class="line">print(player2)</span><br></pre></td></tr></table></figure>
-          
+<li>Python中的单例
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/27/Python单例模式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
