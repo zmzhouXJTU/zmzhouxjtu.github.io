@@ -126,18 +126,18 @@
 
 
 
-<meta name="description" content="生成器利用迭代器，我们可以在每次迭代获取数据（通过next()方法）时按照特定的规律进行生成。但是我们在实现一个迭代器时，关于当前迭代到的状态需要我们自己记录，进而才能根据当前状态生成下一个数据。为了达到记录当前状态，并配合next()函数进行迭代使用，我们可以采用更简便的语法，即生成器(generator)。生成器是一类特殊的迭代器.">
+<meta name="description" content="利用迭代器，我们可以在每次迭代获取数据（通过next()方法）时按照特定的规律进行生成。但是我们在实现一个迭代器时，关于当前迭代到的状态需要我们自己记录，进而才能根据当前状态生成下一个数据。为了达到记录当前状态，并配合next()函数进行迭代使用，我们可以采用更简便的语法，即生成器(generator)。生成器是一类特殊的迭代器。下面就让我们一起来看看创建生成器的两种方法。">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python高级特性之生成器">
 <meta property="og:url" content="https://zhouzhuming.tech/2018/10/28/Python高级特性之生成器/index.html">
 <meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
-<meta property="og:description" content="生成器利用迭代器，我们可以在每次迭代获取数据（通过next()方法）时按照特定的规律进行生成。但是我们在实现一个迭代器时，关于当前迭代到的状态需要我们自己记录，进而才能根据当前状态生成下一个数据。为了达到记录当前状态，并配合next()函数进行迭代使用，我们可以采用更简便的语法，即生成器(generator)。生成器是一类特殊的迭代器.">
+<meta property="og:description" content="利用迭代器，我们可以在每次迭代获取数据（通过next()方法）时按照特定的规律进行生成。但是我们在实现一个迭代器时，关于当前迭代到的状态需要我们自己记录，进而才能根据当前状态生成下一个数据。为了达到记录当前状态，并配合next()函数进行迭代使用，我们可以采用更简便的语法，即生成器(generator)。生成器是一类特殊的迭代器。下面就让我们一起来看看创建生成器的两种方法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-28T13:33:22.271Z">
+<meta property="og:updated_time" content="2018-10-28T13:39:57.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python高级特性之生成器">
-<meta name="twitter:description" content="生成器利用迭代器，我们可以在每次迭代获取数据（通过next()方法）时按照特定的规律进行生成。但是我们在实现一个迭代器时，关于当前迭代到的状态需要我们自己记录，进而才能根据当前状态生成下一个数据。为了达到记录当前状态，并配合next()函数进行迭代使用，我们可以采用更简便的语法，即生成器(generator)。生成器是一类特殊的迭代器.">
+<meta name="twitter:description" content="利用迭代器，我们可以在每次迭代获取数据（通过next()方法）时按照特定的规律进行生成。但是我们在实现一个迭代器时，关于当前迭代到的状态需要我们自己记录，进而才能根据当前状态生成下一个数据。为了达到记录当前状态，并配合next()函数进行迭代使用，我们可以采用更简便的语法，即生成器(generator)。生成器是一类特殊的迭代器。下面就让我们一起来看看创建生成器的两种方法。">
 
 
 
@@ -469,7 +469,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,391字
+                  1,409字
                 </span>
               
 
@@ -506,7 +506,7 @@
       
 
       
-        <h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><p>利用迭代器，我们可以在每次迭代获取数据（通过<code>next()方法</code>）时按照特定的规律进行生成。但是我们在实现一个迭代器时，关于当前迭代到的状态需要我们自己记录，进而才能根据当前状态生成下一个数据。为了达到记录当前状态，并配合<code>next()</code>函数进行迭代使用，我们可以采用更简便的语法，即<code>生成器(generator)</code>。<strong>生成器是一类特殊的迭代器</strong>.<br><a id="more"></a></p>
+        <p>利用迭代器，我们可以在每次迭代获取数据（通过<code>next()方法</code>）时按照特定的规律进行生成。但是我们在实现一个迭代器时，关于当前迭代到的状态需要我们自己记录，进而才能根据当前状态生成下一个数据。为了达到记录当前状态，并配合<code>next()</code>函数进行迭代使用，我们可以采用更简便的语法，即<strong>生成器(<code>generator</code>)</strong>。<strong>生成器是一类特殊的迭代器</strong>。下面就让我们一起来看看创建生成器的两种方法。<br><a id="more"></a></p>
 <hr>
 <h2 id="创建生成器方法1"><a href="#创建生成器方法1" class="headerlink" title="创建生成器方法1"></a>创建生成器方法1</h2><p>要创建一个生成器，有很多种方法。第一种方法很简单，只要把一个<strong>列表生成式</strong>的<code>[]</code>改成<code>()</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">15</span>]: L = [ x*<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">5</span>)]</span><br><span class="line"></span><br><span class="line">In [<span class="number">16</span>]: L</span><br><span class="line">Out[<span class="number">16</span>]: [<span class="number">0</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">17</span>]: G = ( x*<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line">In [<span class="number">18</span>]: G</span><br><span class="line">Out[<span class="number">18</span>]: &lt;generator object &lt;genexpr&gt; at <span class="number">0x7f626c132db0</span>&gt;</span><br></pre></td></tr></table></figure>
@@ -831,7 +831,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#生成器"><span class="nav-number">1.</span> <span class="nav-text">生成器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建生成器方法1"><span class="nav-number">2.</span> <span class="nav-text">创建生成器方法1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建生成器方法2"><span class="nav-number">3.</span> <span class="nav-text">创建生成器方法2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建生成器方法1"><span class="nav-number">1.</span> <span class="nav-text">创建生成器方法1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建生成器方法2"><span class="nav-number">2.</span> <span class="nav-text">创建生成器方法2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
