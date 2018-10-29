@@ -115,7 +115,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Python," />
 
 
 
@@ -126,17 +126,32 @@
 
 
 
-<meta name="description" content="用来记录自己学习旅程的个人小站">
-<meta name="keywords" content="数据分析与挖掘">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zhou Zhuming&#39;s blogs">
-<meta property="og:url" content="https://zhouzhuming.tech/categories/电脑技巧/index.html">
+<meta name="description" content="在Python中，对象的赋值，拷贝(深/浅拷贝)之间是有差异的，如果使用的时候不注意，就可能产生意外的结果。下面就让我们一起来看看它们之间具体存在的差异吧！">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python之浅拷贝与深拷贝">
+<meta property="og:url" content="https://zhouzhuming.tech/2018/10/29/Python之浅拷贝与深拷贝/index.html">
 <meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
-<meta property="og:description" content="用来记录自己学习旅程的个人小站">
+<meta property="og:description" content="在Python中，对象的赋值，拷贝(深/浅拷贝)之间是有差异的，如果使用的时候不注意，就可能产生意外的结果。下面就让我们一起来看看它们之间具体存在的差异吧！">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%A4%BA%E6%84%8F%E5%9B%BE1.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%A4%BA%E6%84%8F%E5%9B%BE2.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%A4%BA%E6%84%8F%E5%9B%BE1.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%A4%BA%E6%84%8F%E5%9B%BE2.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%A4%BA%E6%84%8F%E5%9B%BE3.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/%E5%88%86%E7%89%87%E8%A1%A8%E8%BE%BE%E5%BC%8F.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/%E5%AD%97%E5%85%B8copy%E6%96%B9%E6%B3%95.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%B7%AE%E5%BC%821.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/copy.copy(">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/copy.copy(">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/copy.deepcopy(">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/copy.deepcopy(">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/copy.deepcopy(">
+<meta property="og:updated_time" content="2018-10-29T04:53:51.560Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zhou Zhuming&#39;s blogs">
-<meta name="twitter:description" content="用来记录自己学习旅程的个人小站">
+<meta name="twitter:title" content="Python之浅拷贝与深拷贝">
+<meta name="twitter:description" content="在Python中，对象的赋值，拷贝(深/浅拷贝)之间是有差异的，如果使用的时候不注意，就可能产生意外的结果。下面就让我们一起来看看它们之间具体存在的差异吧！">
+<meta name="twitter:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%A4%BA%E6%84%8F%E5%9B%BE1.png">
 
 
 
@@ -166,13 +181,13 @@
 
 
 
-  <link rel="canonical" href="https://zhouzhuming.tech/categories/电脑技巧/"/>
+  <link rel="canonical" href="https://zhouzhuming.tech/2018/10/29/Python之浅拷贝与深拷贝/"/>
 
 
 
 
 
-  <title>分类: 电脑技巧 | Zhou Zhuming's blogs</title>
+  <title>Python之浅拷贝与深拷贝 | Zhou Zhuming's blogs</title>
   
 
 
@@ -201,7 +216,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/zmzhouXJTU"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
@@ -350,55 +365,322 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>电脑技巧<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhouzhuming.tech/2018/10/29/Python之浅拷贝与深拷贝/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhou Zhuming">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head-image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhou Zhuming's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/04/22/关于惠普暗影精灵2-pro用一段时间之后，插上电源充不了电的问题/" itemprop="url">
-              
-                <span itemprop="name">关于惠普暗影精灵2 pro用一段时间之后，插上电源充不了电的问题</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Python之浅拷贝与深拷贝</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-22T14:33:59+08:00"
-              content="2018-04-22" >
-          04-22
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-29T11:36:04+08:00">
+                2018-10-29
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/10/29/Python之浅拷贝与深拷贝/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/29/Python之浅拷贝与深拷贝/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/10/29/Python之浅拷贝与深拷贝/" class="leancloud_visitors" data-flag-title="Python之浅拷贝与深拷贝">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  346字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>在Python中，对象的赋值，拷贝(深/浅拷贝)之间是有差异的，如果使用的时候不注意，就可能产生意外的结果。下面就让我们一起来看看它们之间具体存在的差异吧！<br><a id="more"></a></p>
+</blockquote>
+<h3 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h3><ul>
+<li><strong>浅拷贝</strong>是对于一个对象的顶层拷贝</li>
+</ul>
+<p><strong>通俗的理解是：拷贝了引用，并没有拷贝内容</strong></p>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%A4%BA%E6%84%8F%E5%9B%BE1.png" alt="浅拷贝示意图1" title="浅拷贝示意图1"></p>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%A4%BA%E6%84%8F%E5%9B%BE2.png" alt="浅拷贝示意图2" title="浅拷贝示意图2"></p>
+<hr>
+<h3 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h3><ul>
+<li><strong>深拷贝</strong>是对于一个对象所有层次的拷贝(递归)</li>
+</ul>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%A4%BA%E6%84%8F%E5%9B%BE1.png" alt="深拷贝示意图1" title="深拷贝示意图1"></p>
+<p><strong>进一步理解深拷贝</strong></p>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%A4%BA%E6%84%8F%E5%9B%BE2.png" alt="深拷贝示意图2" title="深拷贝示意图2"></p>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%A4%BA%E6%84%8F%E5%9B%BE3.png" alt="深拷贝示意图3" title="深拷贝示意图3"></p>
+<hr>
+<h3 id="拷贝的其他方式"><a href="#拷贝的其他方式" class="headerlink" title="拷贝的其他方式"></a>拷贝的其他方式</h3><ul>
+<li><strong>分片表达式</strong>可以赋值一个序列</li>
+</ul>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/%E5%88%86%E7%89%87%E8%A1%A8%E8%BE%BE%E5%BC%8F.png" alt="分片表达式" title="分片表达式"></p>
+<ul>
+<li>字典的<code>copy</code>方法可以拷贝一个字典</li>
+</ul>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/%E5%AD%97%E5%85%B8copy%E6%96%B9%E6%B3%95.png" alt="字典的copy方法" title="字典的copy方法"></p>
+<hr>
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><h4 id="浅拷贝对不可变类型和可变类型的copy不同"><a href="#浅拷贝对不可变类型和可变类型的copy不同" class="headerlink" title="浅拷贝对不可变类型和可变类型的copy不同"></a>浅拷贝对不可变类型和可变类型的copy不同</h4><ul>
+<li><code>copy.copy</code>对于<strong>可变类型，会进行浅拷贝*</strong></li>
+<li><code>copy.copy</code>对于<strong>不可变类型，不会拷贝，仅仅是指向</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">88</span>]: a = [<span class="number">11</span>,<span class="number">22</span>,<span class="number">33</span>]</span><br><span class="line">In [<span class="number">89</span>]: b = copy.copy(a)</span><br><span class="line">In [<span class="number">90</span>]: id(a)</span><br><span class="line">Out[<span class="number">90</span>]: <span class="number">59275144</span></span><br><span class="line">In [<span class="number">91</span>]: id(b)</span><br><span class="line">Out[<span class="number">91</span>]: <span class="number">59525600</span></span><br><span class="line">In [<span class="number">92</span>]: a.append(<span class="number">44</span>)</span><br><span class="line">In [<span class="number">93</span>]: a</span><br><span class="line">Out[<span class="number">93</span>]: [<span class="number">11</span>, <span class="number">22</span>, <span class="number">33</span>, <span class="number">44</span>]</span><br><span class="line">In [<span class="number">94</span>]: b</span><br><span class="line">Out[<span class="number">94</span>]: [<span class="number">11</span>, <span class="number">22</span>, <span class="number">33</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">In [<span class="number">95</span>]: a = (<span class="number">11</span>,<span class="number">22</span>,<span class="number">33</span>)</span><br><span class="line">In [<span class="number">96</span>]: b = copy.copy(a)</span><br><span class="line">In [<span class="number">97</span>]: id(a)</span><br><span class="line">Out[<span class="number">97</span>]: <span class="number">58890680</span></span><br><span class="line">In [<span class="number">98</span>]: id(b)</span><br><span class="line">Out[<span class="number">98</span>]: <span class="number">58890680</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%B7%AE%E5%BC%821.png" alt="浅拷贝与深拷贝的差异1" title="浅拷贝与深拷贝的差异1"></p>
+<h4 id="copy-copy和copy-deepcopy的区别"><a href="#copy-copy和copy-deepcopy的区别" class="headerlink" title="copy.copy和copy.deepcopy的区别"></a>copy.copy和copy.deepcopy的区别</h4><blockquote>
+<p>copy.copy()</p>
+</blockquote>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/copy.copy(" alt="copy.copy()_01">_01.png ‘copy.copy()_01’)</p>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/copy.copy(" alt="copy.copy()_02">_02.png ‘copy.copy()_02’)</p>
+<blockquote>
+<p>copy.deepcopy()</p>
+</blockquote>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/copy.deepcopy(" alt="copy.deepcopy()_01">_01.png ‘copy.deepcopy()_01’)</p>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/copy.deepcopy(" alt="copy.deepcopy()_02">_02.png ‘copy.deepcopy()_02’)</p>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Python%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D/copy.deepcopy(" alt="copy.deepcopy()_03">_03.png ‘copy.deepcopy()_03’)</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+      <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:18px;">----------------本文结束<i class="fa fa-paw"></i>感谢您的阅读----------------</div>
+    
+</div>
+
+        
+      </div>
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Zhou Zhuming 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Zhou Zhuming 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Zhou Zhuming
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://zhouzhuming.tech/2018/10/29/Python之浅拷贝与深拷贝/" title="Python之浅拷贝与深拷贝">https://zhouzhuming.tech/2018/10/29/Python之浅拷贝与深拷贝/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" <i class="fa fa-tag"></i> Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/28/Python高级特性之生成器/" rel="next" title="Python高级特性之生成器">
+                <i class="fa fa-chevron-left"></i> Python高级特性之生成器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -406,6 +688,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -426,8 +715,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -553,6 +851,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#浅拷贝"><span class="nav-number">1.</span> <span class="nav-text">浅拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深拷贝"><span class="nav-number">2.</span> <span class="nav-text">深拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拷贝的其他方式"><span class="nav-number">3.</span> <span class="nav-text">拷贝的其他方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意点"><span class="nav-number">4.</span> <span class="nav-text">注意点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#浅拷贝对不可变类型和可变类型的copy不同"><span class="nav-number">4.1.</span> <span class="nav-text">浅拷贝对不可变类型和可变类型的copy不同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#copy-copy和copy-deepcopy的区别"><span class="nav-number">4.2.</span> <span class="nav-text">copy.copy和copy.deepcopy的区别</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -724,6 +1038,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
