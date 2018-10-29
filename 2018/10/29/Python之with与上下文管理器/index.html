@@ -115,7 +115,7 @@
 
 
 
-  <meta name="keywords" content="Linux," />
+  <meta name="keywords" content="Python," />
 
 
 
@@ -126,24 +126,18 @@
 
 
 
-<meta name="description" content="之前的一篇文章讲到了Linux操作系统的远程管理相关的终端命令，这篇文章我们来谈谈与用户权限有关的终端命令，毕竟我们也是经常与权限打交道。主要包含以下三块：  用户和权限的基本概念 用户管理终端命令 组管理终端命令 修改权限终端命令(有一篇单独的博文具体讲过了，这里再提一下)">
-<meta name="keywords" content="Linux">
+<meta name="description" content="如果你有阅读源码的习惯，可能会看到一些优秀的代码经常出现带有“with”关键字的语句，它通常用在什么场景呢？ 对于系统资源如文件、数据库连接、socket而言，应用程序打开这些资源并执行完业务逻辑之后，必须做的一件事就是要关闭（断开）该资源。 比如Python程序打开一个文件，往文件中写内容，写完之后，就要关闭该文件，否则会出现什么情况呢？极端情况下会出现&amp;quot;Too many open f">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux常用命令之用户权限">
-<meta property="og:url" content="https://zhouzhuming.tech/2018/10/20/Linux常用命令之用户权限/index.html">
+<meta property="og:title" content="Python之with与上下文管理器">
+<meta property="og:url" content="https://zhouzhuming.tech/2018/10/29/Python之with与上下文管理器/index.html">
 <meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
-<meta property="og:description" content="之前的一篇文章讲到了Linux操作系统的远程管理相关的终端命令，这篇文章我们来谈谈与用户权限有关的终端命令，毕竟我们也是经常与权限打交道。主要包含以下三块：  用户和权限的基本概念 用户管理终端命令 组管理终端命令 修改权限终端命令(有一篇单独的博文具体讲过了，这里再提一下)">
+<meta property="og:description" content="如果你有阅读源码的习惯，可能会看到一些优秀的代码经常出现带有“with”关键字的语句，它通常用在什么场景呢？ 对于系统资源如文件、数据库连接、socket而言，应用程序打开这些资源并执行完业务逻辑之后，必须做的一件事就是要关闭（断开）该资源。 比如Python程序打开一个文件，往文件中写内容，写完之后，就要关闭该文件，否则会出现什么情况呢？极端情况下会出现&amp;quot;Too many open f">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/001_%E7%BB%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/002_%E6%9D%83%E9%99%90%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/001_%E7%BB%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/003_su%E5%92%8Cexit%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/004_%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:updated_time" content="2018-10-21T08:26:16.717Z">
+<meta property="og:updated_time" content="2018-10-29T09:18:16.875Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux常用命令之用户权限">
-<meta name="twitter:description" content="之前的一篇文章讲到了Linux操作系统的远程管理相关的终端命令，这篇文章我们来谈谈与用户权限有关的终端命令，毕竟我们也是经常与权限打交道。主要包含以下三块：  用户和权限的基本概念 用户管理终端命令 组管理终端命令 修改权限终端命令(有一篇单独的博文具体讲过了，这里再提一下)">
-<meta name="twitter:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/001_%E7%BB%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta name="twitter:title" content="Python之with与上下文管理器">
+<meta name="twitter:description" content="如果你有阅读源码的习惯，可能会看到一些优秀的代码经常出现带有“with”关键字的语句，它通常用在什么场景呢？ 对于系统资源如文件、数据库连接、socket而言，应用程序打开这些资源并执行完业务逻辑之后，必须做的一件事就是要关闭（断开）该资源。 比如Python程序打开一个文件，往文件中写内容，写完之后，就要关闭该文件，否则会出现什么情况呢？极端情况下会出现&amp;quot;Too many open f">
 
 
 
@@ -173,13 +167,13 @@
 
 
 
-  <link rel="canonical" href="https://zhouzhuming.tech/2018/10/20/Linux常用命令之用户权限/"/>
+  <link rel="canonical" href="https://zhouzhuming.tech/2018/10/29/Python之with与上下文管理器/"/>
 
 
 
 
 
-  <title>Linux常用命令之用户权限 | Zhou Zhuming's blogs</title>
+  <title>Python之with与上下文管理器 | Zhou Zhuming's blogs</title>
   
 
 
@@ -371,7 +365,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhouzhuming.tech/2018/10/20/Linux常用命令之用户权限/">
+    <link itemprop="mainEntityOfPage" href="https://zhouzhuming.tech/2018/10/29/Python之with与上下文管理器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhou Zhuming">
@@ -388,7 +382,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux常用命令之用户权限</h1>
+          <h1 class="post-title" itemprop="name headline">Python之with与上下文管理器</h1>
         
 
         <div class="post-meta">
@@ -400,8 +394,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-20T22:57:01+08:00">
-                2018-10-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-29T15:55:37+08:00">
+                2018-10-29
               </time>
             
 
@@ -423,8 +417,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux操作系统</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -441,8 +435,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/20/Linux常用命令之用户权限/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/20/Linux常用命令之用户权限/" itemprop="commentCount"></span>
+                <a href="/2018/10/29/Python之with与上下文管理器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/29/Python之with与上下文管理器/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -450,7 +444,7 @@
 
           
           
-             <span id="/2018/10/20/Linux常用命令之用户权限/" class="leancloud_visitors" data-flag-title="Linux常用命令之用户权限">
+             <span id="/2018/10/29/Python之with与上下文管理器/" class="leancloud_visitors" data-flag-title="Python之with与上下文管理器">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -475,7 +469,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,996字
+                  1,408字
                 </span>
               
 
@@ -491,7 +485,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7分钟
+                  5分钟
                 </span>
               
             </div>
@@ -512,338 +506,49 @@
       
 
       
-        <p>之前的一篇文章讲到了Linux操作系统的远程管理相关的终端命令，这篇文章我们来谈谈与<strong>用户权限</strong>有关的终端命令，毕竟我们也是经常与权限打交道。主要包含以下三块：</p>
-<ul>
-<li><strong>用户</strong>和<strong>权限</strong>的基本概念</li>
-<li><strong>用户管理</strong>终端命令</li>
-<li><strong>组管理</strong>终端命令</li>
-<li><strong>修改权限</strong>终端命令(有一篇单独的博文具体讲过了，这里再提一下)<a id="more"></a>
-</li>
-</ul>
+        <p>如果你有阅读源码的习惯，可能会看到一些优秀的代码经常出现带有“with”关键字的语句，它通常用在什么场景呢？</p>
+<p>对于系统资源如文件、数据库连接、socket而言，<strong>应用程序打开这些资源并执行完业务逻辑之后，必须做的一件事就是要关闭（断开）该资源</strong>。</p>
+<p>比如<code>Python</code>程序打开一个文件，往文件中写内容，写完之后，就要关闭该文件，否则会出现什么情况呢？极端情况下会出现<code>&quot;Too many open files&quot;</code>的错误，因为系统允许你打开的最大文件数量是有限的。<br><a id="more"></a></p>
+<p>同样，对于数据库，如果连接数过多而没有及时关闭的话，就可能会出现<code>&quot;Can not connect to MySQL server Too many connections&quot;</code>，因为数据库连接是一种非常昂贵的资源，不可能无限制的被创建。</p>
+<p>下面就让我们来看看如何正确关闭一个文件：</p>
 <hr>
-<h3 id="用户和权限的基本概念"><a href="#用户和权限的基本概念" class="headerlink" title="用户和权限的基本概念"></a><strong>用户</strong>和<strong>权限</strong>的基本概念</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
-<li><strong>用户</strong>是Linux系统工作中重要的一环，用户管理包括<strong>用户</strong>与<strong>组</strong>管理</li>
-<li>在Linux系统中，不论是由本机或是远程登录系统，每个系统都<strong>必须拥有一个账号</strong>，并且<strong>对于不同的系统资源拥有不同的使用权限</strong></li>
-<li>在Linux中，可以指定<strong>每一个用户</strong>针对<strong>不同的文件或者目录</strong>的<strong>不同权限</strong></li>
-<li>对<strong>文件/目录</strong>的权限包括：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">序号</th>
-<th style="text-align:center">权限</th>
-<th style="text-align:center">英文</th>
-<th style="text-align:center">缩写</th>
-<th style="text-align:center">数字代号</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">01</td>
-<td style="text-align:center">读</td>
-<td style="text-align:center">read</td>
-<td style="text-align:center">r</td>
-<td style="text-align:center">4</td>
-</tr>
-<tr>
-<td style="text-align:center">02</td>
-<td style="text-align:center">写</td>
-<td style="text-align:center">write</td>
-<td style="text-align:center">w</td>
-<td style="text-align:center">2</td>
-</tr>
-<tr>
-<td style="text-align:center">03</td>
-<td style="text-align:center">执行</td>
-<td style="text-align:center">execute</td>
-<td style="text-align:center">x</td>
-<td style="text-align:center">1</td>
-</tr>
-</tbody>
-</table>
+<h3 id="正确关闭一个文件"><a href="#正确关闭一个文件" class="headerlink" title="正确关闭一个文件"></a>正确关闭一个文件</h3><h4 id="普通版"><a href="#普通版" class="headerlink" title="普通版"></a>普通版</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">m1</span><span class="params">()</span>:</span></span><br><span class="line">    f = open(<span class="string">"output.txt"</span>, <span class="string">"w"</span>)</span><br><span class="line">    f.write(<span class="string">"python之禅"</span>)</span><br><span class="line">    f.close()</span><br></pre></td></tr></table></figure>
+<p>这样写有一个潜在的问题，如果在调用<code>write</code>的过程中，出现了异常进而导致后续代码无法继续执行，<code>close</code>方法无法被正常调用，因此资源就会一直被该程序占用者释放。那么该如何改进代码呢？</p>
+<h4 id="进阶版"><a href="#进阶版" class="headerlink" title="进阶版"></a>进阶版</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">m2</span><span class="params">()</span>:</span></span><br><span class="line">    f = open(<span class="string">"output.txt"</span>, <span class="string">"w"</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        f.write(<span class="string">"python之禅"</span>)</span><br><span class="line">    <span class="keyword">except</span> IOError:</span><br><span class="line">        print(<span class="string">"oops error"</span>)</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        f.close()</span><br></pre></td></tr></table></figure>
+<p>改良版本的程序是对可能发生异常的代码处进行<code>try</code>捕获，使用<code>try/finally</code>语句，该语句表示如果在<code>try</code>代码块中程序出现了异常，后续代码就不再执行，而直接跳转到<code>except</code>代码块。而无论如何，<code>finally</code>块的代码最终都会被执行。因此，只要把<code>close</code>放在<code>finally</code>代码中，文件就一定会关闭</p>
+<h4 id="高级版"><a href="#高级版" class="headerlink" title="高级版"></a>高级版</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">m3</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">"output.txt"</span>, <span class="string">"r"</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(<span class="string">"Python之禅"</span>)</span><br></pre></td></tr></table></figure>
+<p>一种更加简洁、优雅的方式就是用<code>with</code>关键字。<code>open</code>方法的返回值赋值给变量 <code>f</code>，当离开<code>with</code>代码块的时候，系统会自动调用<code>f.close()</code>方法，<code>with</code>的作用和使用<code>try/finally</code>语句是一样的。那么它的实现原理是什么？在讲<code>with</code>的原理前要涉及到另外一个概念，就是<strong>上下文管理器(Context Manager)</strong></p>
 <hr>
-<h4 id="组"><a href="#组" class="headerlink" title="组"></a>组</h4><ul>
-<li>为了方便用户的管理，提出了<code>组</code>的概念，如下图所示：</li>
-</ul>
-<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/001_%E7%BB%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="组示意图" title="组示意图"></p>
-<ul>
-<li>在实际应用中，可以预先针对<strong>组</strong>设置好权限，然后<strong>将不同的用户添加到对应的组中</strong>，从而<strong>不用依次为每一个用户设置权限</strong></li>
-</ul>
-<hr>
-<h4 id="ls-l扩展"><a href="#ls-l扩展" class="headerlink" title="ls -l扩展"></a>ls -l扩展</h4><ul>
-<li><code>ls -l</code>可以查看文件夹下文件的详细信息，从左到右依次是:<ul>
-<li><strong>权限</strong>，第 1 个字符如果是<code>d</code>表示目录,如果是<code>-</code>表示文件</li>
-<li><strong>硬链接数</strong>，通俗地讲，就是有多少种方式，可以访问到当前目录／文件</li>
-<li><strong>拥有者</strong>，家目录下文件／目录的拥有者通常都是当前用户</li>
-<li><strong>组</strong>，在Linux中，很多时候，会出现组名和用户名相同的情况，后续会讲</li>
-<li><strong>大小</strong></li>
-<li><strong>时间</strong></li>
-<li><strong>名称</strong></li>
-</ul>
-</li>
-</ul>
-<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/002_%E6%9D%83%E9%99%90%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="权限示意图" title="权限示意图"></p>
-<hr>
-<h4 id="chmod简单使用（重要）"><a href="#chmod简单使用（重要）" class="headerlink" title="chmod简单使用（重要）"></a>chmod简单使用（重要）</h4><ul>
-<li><code>chmod</code>可以修改<strong>用户／组</strong>对<strong>文件／目录</strong>的权限</li>
-<li>命令格式如下：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +/-rwx 文件名|目录名</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h4 id="超级用户"><a href="#超级用户" class="headerlink" title="超级用户"></a>超级用户</h4><ul>
-<li>Linux系统中的<code>root</code>账号通常<strong>用于系统的维护和管理</strong>，对操作系统的<strong>所有资源具有所有访问权限</strong></li>
-<li>在大多数版本的Linux中，都不推荐<strong>直接使用root账号登录系统</strong></li>
-<li>在Linux安装的过程中，系统会自动创建一个用户账号，而这个默认的用户就称为“标准用户”</li>
-</ul>
-<h4 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a>sudo</h4><ul>
-<li><code>su</code>是substitute user的缩写，表示<strong>使用另一个用户的身份</strong></li>
-<li><code>sudo</code>命令用来以其他身份来执行命令，预设的身份为<code>root</code></li>
-<li>用户使用<code>sudo</code>时，必须先输入密码，之后有<strong>5分钟的有效期限</strong>，超过期限则必须重新输入密码</li>
-</ul>
+<h3 id="什么是上下文-context"><a href="#什么是上下文-context" class="headerlink" title="什么是上下文(context)"></a>什么是上下文(context)</h3><blockquote>
+<p>上下文在不同的地方表示不同的含义，要感性理解。<code>context</code>其实说白了，和文章的上下文是一个意思，在通俗一点，我觉得叫环境更好。….</p>
+</blockquote>
 <blockquote>
-<p>若其未经授权的用户企图使用<code>sudo</code>，则会发出警告邮件给管理员</p>
+<p>林冲大叫一声“啊也！”….</p>
 </blockquote>
-<hr>
-<h3 id="组管理终端命令"><a href="#组管理终端命令" class="headerlink" title="组管理终端命令"></a><strong>组管理</strong>终端命令</h3><blockquote>
-<p>提示：<strong>创建组/删除组</strong>的终端命令都需要通过<code>sudo</code>执行</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">序号</th>
-<th style="text-align:center">命令</th>
-<th style="text-align:center">作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">01</td>
-<td style="text-align:center">groupadd 组名</td>
-<td style="text-align:center">添加组</td>
-</tr>
-<tr>
-<td style="text-align:center">02</td>
-<td style="text-align:center">groupdel 组名</td>
-<td style="text-align:center">删除组</td>
-</tr>
-<tr>
-<td style="text-align:center">03</td>
-<td style="text-align:center">cat/etc/group</td>
-<td style="text-align:center">确认组信息</td>
-</tr>
-<tr>
-<td style="text-align:center">04</td>
-<td style="text-align:center">chgrp -R 组名 文件/目录名</td>
-<td style="text-align:center">递归修改文件/目录的所属组</td>
-</tr>
-</tbody>
-</table>
 <blockquote>
-<p>提示：</p>
-<ul>
-<li>组信息保存在<code>/etc/group</code>文件中</li>
-<li><code>etc</code>目录是专门用来保存<strong>系统配置信息</strong>的目录</li>
-</ul>
+<p>问:这句话林冲的“啊也”表达了林冲怎样的心里？</p>
 </blockquote>
-<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/001_%E7%BB%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="组示意图" title="组示意图"></p>
-<ul>
-<li>在实际应用中，可以预先针对<strong>组</strong>设置好权限，然后<strong>将不同的用户添加到对应的组中</strong>，从而不用依次为每一个用户设置权限</li>
-</ul>
-<hr>
-<h3 id="用户管理终端命令"><a href="#用户管理终端命令" class="headerlink" title="用户管理终端命令"></a><strong>用户管理</strong>终端命令</h3><blockquote>
-<p>提示：<strong>创建用户/删除用户/修改其他用户密码</strong>的终端命令都需要通过<code>sudo</code>执行</p>
-</blockquote>
-<h4 id="创建用户-设置密码-删除用户"><a href="#创建用户-设置密码-删除用户" class="headerlink" title="创建用户/设置密码/删除用户"></a>创建用户/设置密码/删除用户</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">序号</th>
-<th style="text-align:center">命令</th>
-<th style="text-align:center">作用</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">01</td>
-<td style="text-align:center">useradd -m -g 组 新建用户名</td>
-<td style="text-align:center">添加新用户</td>
-<td style="text-align:center"><b><code>-m</code>自动建立用户家目录<br><b><code>-g</code>指定用户所在的组，否则会建立一个和同名的组</b></b></td>
-</tr>
-<tr>
-<td style="text-align:center">02</td>
-<td style="text-align:center">passwd 用户名</td>
-<td style="text-align:center">设置用户密码</td>
-<td style="text-align:center">如果是普通用户，直接用<code>passwd</code>可以修改自己的账户密码</td>
-</tr>
-<tr>
-<td style="text-align:center">03</td>
-<td style="text-align:center">userdel -r 用户名</td>
-<td style="text-align:center">删除用户</td>
-<td style="text-align:center"><code>-r</code>选项会自动删除用户家目录</td>
-</tr>
-<tr>
-<td style="text-align:center">04</td>
-<td style="text-align:center">cat /etc/passwd</td>
-<td style="text-align:center">确认用户信息</td>
-<td style="text-align:center">新建用户后，用户信息会保存在 <code>/etc/passwd</code>文件中</td>
-</tr>
-</tbody>
-</table>
 <blockquote>
-<p>提示：</p>
-<ul>
-<li>创建用户时，如果忘记添加<code>-m</code>选项指定新用户的家目录—最简单的方法就是<strong>删除用户，重新创建</strong></li>
-<li>创建用户时，默认会创建一个和<strong>用户名</strong>同名的<strong>组名</strong></li>
-<li>用户信息保存在<code>/etc/passwd</code>文件中</li>
-</ul>
+<p>答:啊你妈个头啊！</p>
 </blockquote>
+<p>看，一篇文章，给你摘录一段，没前没后，你读不懂，因为有语境，就是语言环境存在，一段话说了什么，要通过上下文(文章的上下文)来推断。</p>
+<p>app点击一个按钮进入一个新的界面，也要保存你是在哪个屏幕跳过来的等等信息，以便你点击返回的时候能正确跳回，如果不存肯定就无法正确跳回了。</p>
+<p>看这些都是上下文的典型例子，理解成环境就可以，(而且上下文虽然叫上下文，但是程序里面一般都只有上文而已，只是叫的好听叫上下文。。进程中断在操作系统中是有上有下的，不过不这个高深的问题就不要深究了。。。)</p>
 <hr>
-<h4 id="查看用户信息"><a href="#查看用户信息" class="headerlink" title="查看用户信息"></a>查看用户信息</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">序号</th>
-<th style="text-align:center">命令</th>
-<th style="text-align:center">作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">01</td>
-<td style="text-align:center">id[用户名]</td>
-<td style="text-align:center">查看用户 UID 和 GID 信息</td>
-</tr>
-<tr>
-<td style="text-align:center">02</td>
-<td style="text-align:center">who</td>
-<td style="text-align:center">查看当前所有登录的用户列表</td>
-</tr>
-<tr>
-<td style="text-align:center">03</td>
-<td style="text-align:center">whoami</td>
-<td style="text-align:center">查看当前登录用户的账户名</td>
-</tr>
-</tbody>
-</table>
-<h5 id="password文件"><a href="#password文件" class="headerlink" title="password文件"></a>password文件</h5><p><code>etc/passwd</code>文件存放的是用户的信息，由6个分号组成的7个信息，分别是：</p>
-<ol>
-<li>用户名</li>
-<li>密码(x，表示加密的密码)</li>
-<li>UID(用户标识)</li>
-<li>GID(组标识)</li>
-<li>用户全名或本地账号</li>
-<li>家目录</li>
-<li>登录使用的<code>Shell</code>，就是登录之后，使用的终端命令，<code>ubuntu</code>默认是<code>dash</code></li>
-</ol>
-<h5 id="usermod"><a href="#usermod" class="headerlink" title="usermod"></a>usermod</h5><ul>
-<li><code>usermod</code>可以用来设置<strong>用户</strong>的<strong>主组／附加组</strong>和<strong>登录 Shell</strong>，命令格式如下:</li>
-<li><strong>主组:</strong> 通常在新建用户时指定，在<code>etc/passwd</code>的第4列<strong>GID对应的组</strong></li>
-<li><strong>附加组:</strong> 在<code>etc/group</code>中最后一列表示该组的用户列表，用于指定<strong>用户的附加权限</strong></li>
-</ul>
-<blockquote>
-<p>提示：设置了用户的附加组之后，需要更新登陆才能生效。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改用户的主组（passwd 中的 GID）</span></span><br><span class="line">usermod -g 组 用户名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改用户的附加组</span></span><br><span class="line">usermod -G 组 用户名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改用户登录 Shell</span></span><br><span class="line">usermod -s /bin/bash 用户名</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：<br>默认使用<code>useradd</code>添加的用户是没有权限使用<code>sudo</code>以<code>root</code>身份执行命令的，可以使用以下命令，将用户添加到<code>sudo</code>附加组中</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -G sudo 用户名</span><br></pre></td></tr></table></figure>
-<h5 id="which-重要"><a href="#which-重要" class="headerlink" title="which(重要)"></a>which(重要)</h5><blockquote>
-<p>提示：</p>
-<ul>
-<li><code>/etc/passwd</code>是用于保存用户信息的文件</li>
-<li><code>/usr/bin/passwd</code>是用于修改用户密码的程序</li>
-</ul>
-</blockquote>
-<ul>
-<li><code>which</code>命令可以查看执行命令所在的位置，例如：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> ls</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line"><span class="comment"># /bin/ls</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">which</span> useradd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line"><span class="comment"># /usr/sbin/useradd</span></span><br></pre></td></tr></table></figure>
-<h5 id="bin和sbin"><a href="#bin和sbin" class="headerlink" title="bin和sbin"></a>bin和sbin</h5><ul>
-<li>在Linux中，绝大多数可执行文件都是保存在<code>/bin</code>、<code>/sbin</code>、<code>/usr/bin</code>、<code>/usr/sbin</code></li>
-<li><code>/bin</code>（<code>binary</code>）是二进制执行文件目录，主要用于具体应用</li>
-<li><code>/sbin</code>（<code>system binary</code>）是系统管理员专用的二进制代码存放目录，主要用于系统管理</li>
-<li><code>/usr/bin</code>（<code>user commands for applications</code>）后期安装的一些软件</li>
-<li><code>/usr/sbin</code>（<code>super user commands for applications</code>）超级用户的一些管理程序</li>
-</ul>
-<blockquote>
-<p>提示：</p>
-<ul>
-<li><code>cd</code>这个终端命令是内置在系统内核中的，没有独立的文件，因此用<code>which</code>无法找到 <code>cd</code>命令的位置</li>
-</ul>
-</blockquote>
+<h3 id="上下文管理器"><a href="#上下文管理器" class="headerlink" title="上下文管理器"></a>上下文管理器</h3><p>任何实现了<code>__enter__()</code>和<code>__exit__()</code>方法的对象都可称之为<strong>上下文管理器</strong>，上下文管理器对象可以使用<code>with</code>关键字。显然，文件（file）对象也实现了上下文管理器。</p>
+<p>那么文件对象是如何实现这两个方法的呢？我们可以模拟实现一个自己的文件类，让该类实现<code>__enter__()</code>和<code>__exit__()</code>方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">File</span><span class="params">()</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, filename, mode)</span>:</span></span><br><span class="line">        self.filename = filename</span><br><span class="line">        self.mode = mode</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"entering"</span>)</span><br><span class="line">        self.f = open(self.filename, self.mode)</span><br><span class="line">        <span class="keyword">return</span> self.f</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, *args)</span>:</span></span><br><span class="line">        print(<span class="string">"will exit"</span>)</span><br><span class="line">        self.f.close()</span><br></pre></td></tr></table></figure>
+<p><code>__enter__()</code>方法返回资源对象，这里就是你将要打开的那个文件对象，<code>__exit__()</code>方法处理一些清除工作。</p>
+<p>因为<code>File</code>类实现了上下文管理器，现在就可以使用<code>with</code>语句了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> File(<span class="string">'out.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    print(<span class="string">"writing"</span>)</span><br><span class="line">    f.write(<span class="string">'hello, python'</span>)</span><br></pre></td></tr></table></figure>
+<p>这样，你就无需显示地调用<code>close</code>方法了，由系统自动去调用，哪怕中间遇到异常<code>close</code>方法也会被调用</p>
 <hr>
-<h4 id="切换用户"><a href="#切换用户" class="headerlink" title="切换用户"></a>切换用户</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">序号</th>
-<th style="text-align:center">命令</th>
-<th style="text-align:center">作用</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">01</td>
-<td style="text-align:center">su - 用户名</td>
-<td style="text-align:center">切换用户，并且切换目录</td>
-<td style="text-align:center"><code>-</code>可以切换到用户家目录，否则保持位置不变</td>
-</tr>
-<tr>
-<td style="text-align:center">02</td>
-<td style="text-align:center">exit</td>
-<td style="text-align:center">退出当前登录账户</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><code>su</code>不接用户名，可以切换到<code>root</code>,但是不推荐使用，因为不安全</li>
-<li><code>exit</code>示意图如下：</li>
-</ul>
-<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/003_su%E5%92%8Cexit%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="su和exit示意图" title="su和exit示意图"></p>
+<h3 id="实现上下文管理器的另外方式"><a href="#实现上下文管理器的另外方式" class="headerlink" title="实现上下文管理器的另外方式"></a>实现上下文管理器的另外方式</h3><p><code>Python</code>还提供了一个<code>contextmanager</code>的装饰器，更进一步简化了上下文管理器的实现方式。通过<code>yield</code>将函数分割成两部分，<code>yield</code>之前的语句在 <code>__enter__</code>方法中执行，<code>yield</code>之后的语句在<code>__exit__</code>方法中执行。紧跟在<code>yield</code>后面的值是函数的返回值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> contextlib <span class="keyword">import</span> contextmanager</span><br><span class="line"></span><br><span class="line"><span class="meta">@contextmanager</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_open</span><span class="params">(path, mode)</span>:</span></span><br><span class="line">    f = open(path, mode)</span><br><span class="line">    <span class="keyword">yield</span> f</span><br><span class="line">    f.close()</span><br></pre></td></tr></table></figure>
+<p>调用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> my_open(<span class="string">'out.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">"hello , the simplest context manager"</span>)</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="修改文件权限"><a href="#修改文件权限" class="headerlink" title="修改文件权限"></a>修改文件权限</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">序号</th>
-<th style="text-align:center">命令</th>
-<th style="text-align:center">作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">01</td>
-<td style="text-align:center">chown</td>
-<td style="text-align:center">修改拥有者</td>
-</tr>
-<tr>
-<td style="text-align:center">02</td>
-<td style="text-align:center">chgrp</td>
-<td style="text-align:center">修改组</td>
-</tr>
-<tr>
-<td style="text-align:center">03</td>
-<td style="text-align:center">chmod</td>
-<td style="text-align:center">修改权限</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>命令格式如下：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改文件|目录的拥有者</span></span><br><span class="line">chown 用户名 文件名|目录名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归修改文件|目录的组</span></span><br><span class="line">chgrp -R 组名 文件名|目录名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归修改文件权限</span></span><br><span class="line">chmod -R 755 文件名|目录名</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>chmod</code>在设置权限时，可以简单地使用三个数字分别对应<strong>拥有者/组</strong>和<strong>其他</strong>用户的权限</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 直接修改文件|目录的 读|写|执行 权限，但是不能精确到 拥有者|组|其他</span></span><br><span class="line">chmod +/-rwx 文件名|目录名</span><br></pre></td></tr></table></figure>
-<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/004_%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="文件权限示意图" title="文件权限示意图"></p>
-<ul>
-<li>常见的数字组合有(<code>u</code>表示用户／<code>g</code>表示组／<code>o</code>表示其他)：<ul>
-<li><code>777</code> ===&gt; <code>u=rwx</code>,<code>g=rwx</code>,<code>o=rwx</code></li>
-<li><code>755</code> ===&gt; <code>u=rwx</code>,<code>g=rx</code>,<code>o=rx</code></li>
-<li><code>644</code> ===&gt; <code>u=rw</code>,<code>g=r</code>,<code>o=r</code></li>
-</ul>
-</li>
-</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><code>Python</code>提供了<code>with</code>语法用于简化资源操作的后续清除操作，是<code>try/finally</code> 的替代方法，实现原理建立在<strong>上下文管理器</strong>之上。此外，<code>Python</code>还提供了一个<code>contextmanager</code>装饰器，更进一步简化上下管理器的实现方式。</p>
 
       
     </div>
@@ -904,7 +609,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://zhouzhuming.tech/2018/10/20/Linux常用命令之用户权限/" title="Linux常用命令之用户权限">https://zhouzhuming.tech/2018/10/20/Linux常用命令之用户权限/</a>
+    <a href="https://zhouzhuming.tech/2018/10/29/Python之with与上下文管理器/" title="Python之with与上下文管理器">https://zhouzhuming.tech/2018/10/29/Python之with与上下文管理器/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -919,7 +624,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Linux/" <i class="fa fa-tag"></i> Linux</a>
+            <a href="/tags/Python/" <i class="fa fa-tag"></i> Python</a>
           
         </div>
       
@@ -932,8 +637,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/20/Linux常用命令之远程管理/" rel="next" title="Linux常用命令之远程管理">
-                <i class="fa fa-chevron-left"></i> Linux常用命令之远程管理
+              <a href="/2018/10/29/Python之魔法属性/" rel="next" title="Python之魔法属性">
+                <i class="fa fa-chevron-left"></i> Python之魔法属性
               </a>
             
           </div>
@@ -941,10 +646,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/21/Linux常用命令之系统信息相关/" rel="prev" title="Linux常用命令之系统信息相关">
-                Linux常用命令之系统信息相关 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -1145,7 +846,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#用户和权限的基本概念"><span class="nav-number">1.</span> <span class="nav-text">用户和权限的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组"><span class="nav-number">1.2.</span> <span class="nav-text">组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ls-l扩展"><span class="nav-number">1.3.</span> <span class="nav-text">ls -l扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#chmod简单使用（重要）"><span class="nav-number">1.4.</span> <span class="nav-text">chmod简单使用（重要）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超级用户"><span class="nav-number">1.5.</span> <span class="nav-text">超级用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sudo"><span class="nav-number">1.6.</span> <span class="nav-text">sudo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组管理终端命令"><span class="nav-number">2.</span> <span class="nav-text">组管理终端命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户管理终端命令"><span class="nav-number">3.</span> <span class="nav-text">用户管理终端命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建用户-设置密码-删除用户"><span class="nav-number">3.1.</span> <span class="nav-text">创建用户/设置密码/删除用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看用户信息"><span class="nav-number">3.2.</span> <span class="nav-text">查看用户信息</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#password文件"><span class="nav-number">3.2.1.</span> <span class="nav-text">password文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#usermod"><span class="nav-number">3.2.2.</span> <span class="nav-text">usermod</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#which-重要"><span class="nav-number">3.2.3.</span> <span class="nav-text">which(重要)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bin和sbin"><span class="nav-number">3.2.4.</span> <span class="nav-text">bin和sbin</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切换用户"><span class="nav-number">3.3.</span> <span class="nav-text">切换用户</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改文件权限"><span class="nav-number">4.</span> <span class="nav-text">修改文件权限</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#正确关闭一个文件"><span class="nav-number">1.</span> <span class="nav-text">正确关闭一个文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#普通版"><span class="nav-number">1.1.</span> <span class="nav-text">普通版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进阶版"><span class="nav-number">1.2.</span> <span class="nav-text">进阶版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高级版"><span class="nav-number">1.3.</span> <span class="nav-text">高级版</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是上下文-context"><span class="nav-number">2.</span> <span class="nav-text">什么是上下文(context)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上下文管理器"><span class="nav-number">3.</span> <span class="nav-text">上下文管理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现上下文管理器的另外方式"><span class="nav-number">4.</span> <span class="nav-text">实现上下文管理器的另外方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
