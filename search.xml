@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Python之静态方法与类方法]]></title>
+    <url>%2F2018%2F10%2F29%2FPython%E4%B9%8B%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E4%B8%8E%E7%B1%BB%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[我们都知道Python语言是一门动态语言，根据类创建的实例可以任意绑定属性。给实例绑定属性的方法是通过实例变量，或者通过self变量。但是，如果是类本身需要绑定一个属性呢？可以直接在class中定义属性，这种属性是类属性，归对应的类所有。今天我们就来看一下Python中的类属性、实例属性以及实例方法、静态方法和类方法。 类属性、实例属性类属性、实例属性在定义和使用中有所区别，而最本质的区别是内存中保存的位置不同 实例属性属于对象 类属性属于类 123456789101112131415class Province(object): # 类属性 country = '中国' def __init__(self, name): # 实例属性 self.name = name# 创建一个实例对象obj = Province('山东省')# 直接访问实例属性print(obj.name)# 直接访问类属性Province.country 由上述代码可以看出【实例属性需要通过对象来访问】【类属性通过类访问】，在使用上可以看出实例属性和类属性的归属是不同的. 其在内存中的存储方式类似如下图： 由上图可以看出： 类属性在内存中只保存一份 实例属性在每个对象中都要保存一份 应用场景： 通过类创建实例对象时，如果每个对象需要具有相同名字的属性，那么就使用类属性，用一份既可 实例方法、静态方法和类方法方法包括：实例方法、静态方法和类方法，三种方法在内存中都归属于类，区别在于调用方式不同 实例方法：由对象调用；至少一个self参数；执行实例方法时，自动将调用该方法的对象赋值给self； 类方法：由类调用； 至少一个cls参数；执行类方法时，自动将调用该方法的类赋值给cls； 静态方法：由类调用；无默认参数 123456789101112131415161718192021222324252627282930class Foo(object): def __init__(self, name): self.name = name def ord_func(self): """ 定义实例方法，至少有一个self参数 """ # print(self.name) print('实例方法') @classmethod def class_func(cls): """ 定义类方法，至少有一个cls参数 """ print('类方法') @staticmethod def static_func(): """ 定义静态方法 ，无默认参数""" print('静态方法')f = Foo("中国")# 调用实例方法f.ord_func()# 调用类方法Foo.class_func()# 调用静态方法Foo.static_func() 对比： 相同点：对于所有的方法而言，均属于类，所以 在内存中也只保存一份 不同点：方法调用者不同、调用方法时自动传入的参数不同]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>OOP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Python之浅拷贝与深拷贝]]></title>
     <url>%2F2018%2F10%2F29%2FPython%E4%B9%8B%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%2F</url>
     <content type="text"><![CDATA[在Python中，对象的赋值，拷贝(深/浅拷贝)之间是有差异的，如果使用的时候不注意，就可能产生意外的结果。下面就让我们一起来看看它们之间具体存在的差异吧！ 浅拷贝 浅拷贝是对于一个对象的顶层拷贝 通俗的理解是：拷贝了引用，并没有拷贝内容 深拷贝 深拷贝是对于一个对象所有层次的拷贝(递归) 进一步理解深拷贝 拷贝的其他方式 分片表达式可以赋值一个序列 字典的copy方法可以拷贝一个字典 注意点浅拷贝对不可变类型和可变类型的copy不同 copy.copy对于可变类型，会进行浅拷贝* copy.copy对于不可变类型，不会拷贝，仅仅是指向 12345678910111213141516171819In [88]: a = [11,22,33]In [89]: b = copy.copy(a)In [90]: id(a)Out[90]: 59275144In [91]: id(b)Out[91]: 59525600In [92]: a.append(44)In [93]: aOut[93]: [11, 22, 33, 44]In [94]: bOut[94]: [11, 22, 33]In [95]: a = (11,22,33)In [96]: b = copy.copy(a)In [97]: id(a)Out[97]: 58890680In [98]: id(b)Out[98]: 58890680 copy.copy和copy.deepcopy的区别 copy.copy() copy.deepcopy()]]></content>
