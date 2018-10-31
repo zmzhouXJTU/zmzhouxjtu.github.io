@@ -115,7 +115,7 @@
 
 
 
-  <meta name="keywords" content="Python," />
+  <meta name="keywords" content="MySQL,SQL," />
 
 
 
@@ -126,18 +126,21 @@
 
 
 
-<meta name="description" content="如果你有阅读源码的习惯，可能会看到一些优秀的代码经常出现带有“with”关键字的语句，它通常用在什么场景呢？ 对于系统资源如文件、数据库连接、socket而言，应用程序打开这些资源并执行完业务逻辑之后，必须做的一件事就是要关闭（断开）该资源。 比如Python程序打开一个文件，往文件中写内容，写完之后，就要关闭该文件，否则会出现什么情况呢？极端情况下会出现&amp;quot;Too many open f">
-<meta name="keywords" content="Python">
+<meta name="description" content="相信学过数据库这门课的人对SQL都不会陌生，SQL是结构化查询语言，是一种用来操作RDBMS的数据库语言，当前的主流关系型数据库都支持使用SQL语言进行操作, 也就是说可以通过SQL操作Oracle, SQL Server, MySQL, SQLite等所有主流的关系型的数据库。 MySQL是一个关系型数据库管理系统，由瑞典MySQL AB公司开发，后来被Sun公司收购，Sun公司后来又被Orac">
+<meta name="keywords" content="MySQL,SQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python之with与上下文管理器">
-<meta property="og:url" content="https://zhouzhuming.tech/2018/10/29/Python之with与上下文管理器/index.html">
+<meta property="og:title" content="MySQL命令行脚本必知必会">
+<meta property="og:url" content="https://zhouzhuming.tech/2018/10/30/MySQL命令行脚本必知必会/index.html">
 <meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
-<meta property="og:description" content="如果你有阅读源码的习惯，可能会看到一些优秀的代码经常出现带有“with”关键字的语句，它通常用在什么场景呢？ 对于系统资源如文件、数据库连接、socket而言，应用程序打开这些资源并执行完业务逻辑之后，必须做的一件事就是要关闭（断开）该资源。 比如Python程序打开一个文件，往文件中写内容，写完之后，就要关闭该文件，否则会出现什么情况呢？极端情况下会出现&amp;quot;Too many open f">
+<meta property="og:description" content="相信学过数据库这门课的人对SQL都不会陌生，SQL是结构化查询语言，是一种用来操作RDBMS的数据库语言，当前的主流关系型数据库都支持使用SQL语言进行操作, 也就是说可以通过SQL操作Oracle, SQL Server, MySQL, SQLite等所有主流的关系型的数据库。 MySQL是一个关系型数据库管理系统，由瑞典MySQL AB公司开发，后来被Sun公司收购，Sun公司后来又被Orac">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-29T09:18:16.875Z">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/MySQL%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%84%9A%E6%9C%AC%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/Ubuntu%E8%BF%9E%E6%8E%A5MySQL%E6%95%B0%E6%8D%AE%E5%BA%93.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/MySQL%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%84%9A%E6%9C%AC%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/Windows%E8%BF%9E%E6%8E%A5MySQL%E6%95%B0%E6%8D%AE%E5%BA%93.png">
+<meta property="og:updated_time" content="2018-10-31T09:28:01.694Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python之with与上下文管理器">
-<meta name="twitter:description" content="如果你有阅读源码的习惯，可能会看到一些优秀的代码经常出现带有“with”关键字的语句，它通常用在什么场景呢？ 对于系统资源如文件、数据库连接、socket而言，应用程序打开这些资源并执行完业务逻辑之后，必须做的一件事就是要关闭（断开）该资源。 比如Python程序打开一个文件，往文件中写内容，写完之后，就要关闭该文件，否则会出现什么情况呢？极端情况下会出现&amp;quot;Too many open f">
+<meta name="twitter:title" content="MySQL命令行脚本必知必会">
+<meta name="twitter:description" content="相信学过数据库这门课的人对SQL都不会陌生，SQL是结构化查询语言，是一种用来操作RDBMS的数据库语言，当前的主流关系型数据库都支持使用SQL语言进行操作, 也就是说可以通过SQL操作Oracle, SQL Server, MySQL, SQLite等所有主流的关系型的数据库。 MySQL是一个关系型数据库管理系统，由瑞典MySQL AB公司开发，后来被Sun公司收购，Sun公司后来又被Orac">
+<meta name="twitter:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/MySQL%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%84%9A%E6%9C%AC%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/Ubuntu%E8%BF%9E%E6%8E%A5MySQL%E6%95%B0%E6%8D%AE%E5%BA%93.png">
 
 
 
@@ -167,13 +170,13 @@
 
 
 
-  <link rel="canonical" href="https://zhouzhuming.tech/2018/10/29/Python之with与上下文管理器/"/>
+  <link rel="canonical" href="https://zhouzhuming.tech/2018/10/30/MySQL命令行脚本必知必会/"/>
 
 
 
 
 
-  <title>Python之with与上下文管理器 | Zhou Zhuming's blogs</title>
+  <title>MySQL命令行脚本必知必会 | Zhou Zhuming's blogs</title>
   
 
 
@@ -365,7 +368,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhouzhuming.tech/2018/10/29/Python之with与上下文管理器/">
+    <link itemprop="mainEntityOfPage" href="https://zhouzhuming.tech/2018/10/30/MySQL命令行脚本必知必会/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhou Zhuming">
@@ -382,7 +385,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python之with与上下文管理器</h1>
+          <h1 class="post-title" itemprop="name headline">MySQL命令行脚本必知必会</h1>
         
 
         <div class="post-meta">
@@ -394,8 +397,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-29T15:55:37+08:00">
-                2018-10-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-30T09:39:55+08:00">
+                2018-10-30
               </time>
             
 
@@ -417,8 +420,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
                   </a>
                 </span>
 
@@ -435,8 +438,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/29/Python之with与上下文管理器/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/29/Python之with与上下文管理器/" itemprop="commentCount"></span>
+                <a href="/2018/10/30/MySQL命令行脚本必知必会/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/30/MySQL命令行脚本必知必会/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -444,7 +447,7 @@
 
           
           
-             <span id="/2018/10/29/Python之with与上下文管理器/" class="leancloud_visitors" data-flag-title="Python之with与上下文管理器">
+             <span id="/2018/10/30/MySQL命令行脚本必知必会/" class="leancloud_visitors" data-flag-title="MySQL命令行脚本必知必会">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -469,7 +472,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,408字
+                  1,607字
                 </span>
               
 
@@ -485,7 +488,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5分钟
+                  7分钟
                 </span>
               
             </div>
@@ -506,50 +509,174 @@
       
 
       
-        <p>如果你有阅读源码的习惯，可能会看到一些优秀的代码经常出现带有“with”关键字的语句，它通常用在什么场景呢？</p>
-<p>对于系统资源如文件、数据库连接、socket而言，<strong>应用程序打开这些资源并执行完业务逻辑之后，必须做的一件事就是要关闭（断开）该资源</strong>。</p>
-<p>比如<code>Python</code>程序打开一个文件，往文件中写内容，写完之后，就要关闭该文件，否则会出现什么情况呢？极端情况下会出现<code>&quot;Too many open files&quot;</code>的错误，因为系统允许你打开的最大文件数量是有限的。<br><a id="more"></a></p>
-<p>同样，对于数据库，如果连接数过多而没有及时关闭的话，就可能会出现<code>&quot;Can not connect to MySQL server Too many connections&quot;</code>，因为数据库连接是一种非常昂贵的资源，不可能无限制的被创建。</p>
-<p>下面就让我们来看看如何正确关闭一个文件：</p>
+        <p>相信学过数据库这门课的人对<code>SQL</code>都不会陌生，<code>SQL</code>是<strong>结构化查询语言</strong>，是一种用来操作<code>RDBMS</code>的数据库语言，当前的主流关系型数据库都支持使用<code>SQL</code>语言进行操作, 也就是说可以通过<code>SQL</code>操作<code>Oracle</code>, <code>SQL Server</code>, <code>MySQL</code>, <code>SQLite</code>等所有主流的关系型的数据库。</p>
+<p><code>MySQL</code>是一个关系型数据库管理系统，由瑞典MySQL AB公司开发，后来被Sun公司收购，Sun公司后来又被Oracle公司收购，目前属于Oracle旗下产品。<code>MySQL</code>数据库开源、免费、不要钱、使用范围广, 跨平台支持性好, 提供了多种语言调用的<code>API</code>是学习数据库开发的首选。</p>
+<p>好了讲到这里，就让我们开始<strong>MySQL命令行脚本</strong>的学习吧！<br><a id="more"></a></p>
 <hr>
-<h3 id="正确关闭一个文件"><a href="#正确关闭一个文件" class="headerlink" title="正确关闭一个文件"></a>正确关闭一个文件</h3><h4 id="普通版"><a href="#普通版" class="headerlink" title="普通版"></a>普通版</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">m1</span><span class="params">()</span>:</span></span><br><span class="line">    f = open(<span class="string">"output.txt"</span>, <span class="string">"w"</span>)</span><br><span class="line">    f.write(<span class="string">"python之禅"</span>)</span><br><span class="line">    f.close()</span><br></pre></td></tr></table></figure>
-<p>这样写有一个潜在的问题，如果在调用<code>write</code>的过程中，出现了异常进而导致后续代码无法继续执行，<code>close</code>方法无法被正常调用，因此资源就会一直被该程序占用者释放。那么该如何改进代码呢？</p>
-<h4 id="进阶版"><a href="#进阶版" class="headerlink" title="进阶版"></a>进阶版</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">m2</span><span class="params">()</span>:</span></span><br><span class="line">    f = open(<span class="string">"output.txt"</span>, <span class="string">"w"</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        f.write(<span class="string">"python之禅"</span>)</span><br><span class="line">    <span class="keyword">except</span> IOError:</span><br><span class="line">        print(<span class="string">"oops error"</span>)</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        f.close()</span><br></pre></td></tr></table></figure>
-<p>改良版本的程序是对可能发生异常的代码处进行<code>try</code>捕获，使用<code>try/finally</code>语句，该语句表示如果在<code>try</code>代码块中程序出现了异常，后续代码就不再执行，而直接跳转到<code>except</code>代码块。而无论如何，<code>finally</code>块的代码最终都会被执行。因此，只要把<code>close</code>放在<code>finally</code>代码中，文件就一定会关闭</p>
-<h4 id="高级版"><a href="#高级版" class="headerlink" title="高级版"></a>高级版</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">m3</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">"output.txt"</span>, <span class="string">"r"</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(<span class="string">"Python之禅"</span>)</span><br></pre></td></tr></table></figure>
-<p>一种更加简洁、优雅的方式就是用<code>with</code>关键字。<code>open</code>方法的返回值赋值给变量 <code>f</code>，当离开<code>with</code>代码块的时候，系统会自动调用<code>f.close()</code>方法，<code>with</code>的作用和使用<code>try/finally</code>语句是一样的。那么它的实现原理是什么？在讲<code>with</code>的原理前要涉及到另外一个概念，就是<strong>上下文管理器(Context Manager)</strong></p>
+<h3 id="SQL简介"><a href="#SQL简介" class="headerlink" title="SQL简介"></a>SQL简介</h3><p>上面也说了<code>SQL</code>是一门<strong>结构化查询语言</strong>，可以用来操作<code>MySQL</code>等主流关系型数据库。那么<code>SQL</code>语句可以分为哪几类呢？让我们一起来看看。</p>
+<ul>
+<li><p>SQL语句主要分为:</p>
+<ul>
+<li><strong>DQL：数据查询语言，用于对数据进行查询，如select</strong></li>
+<li><strong>DML：数据操作语言，对数据进行增加、修改、删除，如insert、udpate、delete</strong></li>
+<li>TPL：事务处理语言，对事务进行处理，包括begin transaction、commit、rollback</li>
+<li>DCL：数据控制语言，进行授权与权限回收，如grant、revoke</li>
+<li><strong>DDL：数据定义语言，进行数据库、表的管理等，如create、drop</strong></li>
+<li>CCL：指针控制语言，通过控制指针完成表的操作，如declare cursor</li>
+</ul>
+</li>
+<li><p>对于Web开发的程序员来讲，<strong>重点是数据的CURD(增删改查)，必须熟练编写DQL、DML，能够编写DDL完成数据库、表的操作</strong>, 其它类型语句如TPL、DCL、CCL了解即可。</p>
+</li>
+<li><code>SQL</code>是一门特殊的语言,专门用来操作关系数据库</li>
+<li><strong>不区分大小写</strong></li>
+</ul>
 <hr>
-<h3 id="什么是上下文-context"><a href="#什么是上下文-context" class="headerlink" title="什么是上下文(context)"></a>什么是上下文(context)</h3><blockquote>
-<p>上下文在不同的地方表示不同的含义，要感性理解。<code>context</code>其实说白了，和文章的上下文是一个意思，在通俗一点，我觉得叫环境更好。….</p>
+<h3 id="命令行连接"><a href="#命令行连接" class="headerlink" title="命令行连接"></a>命令行连接</h3><p>这里以<code>Linux</code>的发行版<code>Ubuntu 16.04</code>操作系统为例演示命令行脚本，其他操作系统(如Windows)类似，都是大同小异的操作。</p>
+<ul>
+<li>打开终端，运行命令：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br><span class="line"><span class="comment"># 回车后输入密码，当前设置的密码为mysql</span></span><br><span class="line"><span class="comment"># 如果不想输入密码，可以直接将密码跟在该命令后面，即 mysql -uroot -pmysql</span></span><br></pre></td></tr></table></figure>
+<p><strong>Note</strong>：<code>Windows</code>系统安装完<code>MySQL</code>数据库后，直接在开始菜单里面找到<code>MySQL 8.0 Command Line Client - Unicode</code>程序, 点击打开，直接输入密码即可登录，无需再输入<code>mysql -uroot -p</code>命令</p>
+<ul>
+<li>连接成功后如下图：</li>
+</ul>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/MySQL%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%84%9A%E6%9C%AC%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/Ubuntu%E8%BF%9E%E6%8E%A5MySQL%E6%95%B0%E6%8D%AE%E5%BA%93.png" alt="Ubuntu连接MySQL数据库" title="Ubuntu连接MySQL数据库"></p>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/MySQL%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%84%9A%E6%9C%AC%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/Windows%E8%BF%9E%E6%8E%A5MySQL%E6%95%B0%E6%8D%AE%E5%BA%93.png" alt="Windows连接MySQL数据库" title="Windows连接MySQL数据库"></p>
+<ul>
+<li>退出登录：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">quit 和 <span class="built_in">exit</span></span><br><span class="line">或</span><br><span class="line">ctrl+d</span><br></pre></td></tr></table></figure>
+<ul>
+<li>登陆成功后，输入以下命令查看效果：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">查看版本：select version();</span><br><span class="line">显示当前时间：select now();</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h3><ul>
+<li>查看所有数据库</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">databases</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用数据库</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> 数据库名;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看当前使用的数据库</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">database</span>();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建数据库</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> 数据库名 <span class="keyword">charset</span>=utf8;</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> python <span class="keyword">charset</span>=utf8;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看数据库的创建语句</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">database</span> 数据库名;</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">database</span> Python;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除数据库</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">database</span> 数据库名;</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">database</span> python;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="数据表操作"><a href="#数据表操作" class="headerlink" title="数据表操作"></a>数据表操作</h3><ul>
+<li>查看当前数据库中所有表</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">tables</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看表结构</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">desc 表名;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建表<ul>
+<li><code>auto_increment</code>表示自动增长</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_name(</span><br><span class="line">    column1 datatype contrai,</span><br><span class="line">    column2 datatype,</span><br><span class="line">    column3 datatype,</span><br><span class="line">    .....</span><br><span class="line">    columnN datatype,</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span>(one <span class="keyword">or</span> more <span class="keyword">columns</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>例：创建班级表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> classes(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">int</span> <span class="keyword">unsigned</span> auto_increment primary <span class="keyword">key</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">10</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>创建学生表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> students(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">int</span> <span class="keyword">unsigned</span> primary <span class="keyword">key</span> auto_increment <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">default</span> <span class="string">''</span>,</span><br><span class="line">    age tinyint <span class="keyword">unsigned</span> <span class="keyword">default</span> <span class="number">0</span>,</span><br><span class="line">    height <span class="built_in">decimal</span>(<span class="number">5</span>,<span class="number">2</span>),</span><br><span class="line">    gender enum(<span class="string">'男'</span>,<span class="string">'女'</span>,<span class="string">'人妖'</span>,<span class="string">'保密'</span>),</span><br><span class="line">    cls_id <span class="built_in">int</span> <span class="keyword">unsigned</span> <span class="keyword">default</span> <span class="number">0</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改表-添加字段</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">add</span> 列名 类型;</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> students <span class="keyword">add</span> birthday datetime;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改表-修改字段：重命名版</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">change</span> 原名 新名 类型及约束;</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> students <span class="keyword">change</span> birthday birth datetime <span class="keyword">not</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改表-修改字段：不重命名版</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">modify</span> 列名 类型及约束;</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> students <span class="keyword">modify</span> birth <span class="built_in">date</span> <span class="keyword">not</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改表-删除字段</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">drop</span> 列名;</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> students <span class="keyword">drop</span> birthday;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除表</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> 表名;</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> students;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看表的创建语句</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> 表名;</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> classes;</span><br></pre></td></tr></table></figure>
+<h3 id="数据的增删改查-CURD"><a href="#数据的增删改查-CURD" class="headerlink" title="数据的增删改查(CURD)"></a>数据的增删改查(CURD)</h3><ul>
+<li><strong>CURD</strong>的解释: 代表创建(Create)、更新(Update)、读取(Retrieve)和删除(Delete)</li>
+</ul>
+<h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><ul>
+<li>查询所有列</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> 表名;</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> classes;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查询指定列<ul>
+<li>可以使用<code>as</code>为列或表指定别名</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 列<span class="number">1</span>,列<span class="number">2</span>,... <span class="keyword">from</span> 表名;</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>,<span class="keyword">name</span> <span class="keyword">from</span> classes;</span><br></pre></td></tr></table></figure>
+<h4 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h4><blockquote>
+<p>格式：INSERT [INTO] tb_name [(col_name,…)] {VALUES | VALUE} ({expr | DEFAULT},…),(…),…</p>
 </blockquote>
-<blockquote>
-<p>林冲大叫一声“啊也！”….</p>
+<ul>
+<li>说明：主键列是自动增长，但是在全列插入时需要占位，通常使用<code>0</code>或者<code>default</code>或者<code>null</code>来占位, 插入成功后以实际数据为准</li>
+<li>全列插入：值的顺序与表中字段的顺序对应</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名 <span class="keyword">values</span>(...)</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> students <span class="keyword">values</span>(<span class="number">0</span>,’郭靖‘,<span class="number">1</span>,<span class="string">'蒙古'</span>,<span class="string">'2016-1-2'</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>部分列插入：值的顺序与给出的列顺序对应</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名(列<span class="number">1</span>,...) <span class="keyword">values</span>(值<span class="number">1</span>,...)</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> students(<span class="keyword">name</span>,hometown,birthday) <span class="keyword">values</span>(<span class="string">'黄蓉'</span>,<span class="string">'桃花岛'</span>,<span class="string">'2016-3-2'</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>上面的语句一次可以向表中插入一行数据，还可以一次性插入多行数据，这样可以减少与数据库的通信</li>
+<li>全列多行插入:值的顺序与给出的列顺序对应</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名 <span class="keyword">values</span>(...),(...)...;</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> classes <span class="keyword">values</span>(<span class="number">0</span>,<span class="string">'python1'</span>),(<span class="number">0</span>,<span class="string">'python2'</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>部分列多行插入:值的顺序与给出的列顺序对应</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名(列<span class="number">1</span>,...) <span class="keyword">values</span>(值<span class="number">1</span>,...),(值<span class="number">1</span>,...)...;</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> students(<span class="keyword">name</span>) <span class="keyword">values</span>(<span class="string">'杨康'</span>),(<span class="string">'杨过'</span>),(<span class="string">'小龙女'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h4><blockquote>
+<p>格式: UPDATE tbname SET col1={expr1|DEFAULT} [,col2={expr2|default}]…[where 条件判断]</p>
 </blockquote>
-<blockquote>
-<p>问:这句话林冲的“啊也”表达了林冲怎样的心里？</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> 表名 <span class="keyword">set</span> 列<span class="number">1</span>=值<span class="number">1</span>,列<span class="number">2</span>=值<span class="number">2.</span>.. <span class="keyword">where</span> 条件</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">update</span> students <span class="keyword">set</span> gender=<span class="number">0</span>,hometown=<span class="string">'北京'</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><blockquote>
+<p>DELETE FROM tbname [where 条件判断]</p>
 </blockquote>
-<blockquote>
-<p>答:啊你妈个头啊！</p>
-</blockquote>
-<p>看，一篇文章，给你摘录一段，没前没后，你读不懂，因为有语境，就是语言环境存在，一段话说了什么，要通过上下文(文章的上下文)来推断。</p>
-<p>app点击一个按钮进入一个新的界面，也要保存你是在哪个屏幕跳过来的等等信息，以便你点击返回的时候能正确跳回，如果不存肯定就无法正确跳回了。</p>
-<p>看这些都是上下文的典型例子，理解成环境就可以，(而且上下文虽然叫上下文，但是程序里面一般都只有上文而已，只是叫的好听叫上下文。。进程中断在操作系统中是有上有下的，不过不这个高深的问题就不要深究了。。。)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> 表名 <span class="keyword">where</span> 条件</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> students <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>逻辑删除，本质就是修改操作</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> students <span class="keyword">set</span> isdelete=<span class="number">1</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="上下文管理器"><a href="#上下文管理器" class="headerlink" title="上下文管理器"></a>上下文管理器</h3><p>任何实现了<code>__enter__()</code>和<code>__exit__()</code>方法的对象都可称之为<strong>上下文管理器</strong>，上下文管理器对象可以使用<code>with</code>关键字。显然，文件（file）对象也实现了上下文管理器。</p>
-<p>那么文件对象是如何实现这两个方法的呢？我们可以模拟实现一个自己的文件类，让该类实现<code>__enter__()</code>和<code>__exit__()</code>方法</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">File</span><span class="params">()</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, filename, mode)</span>:</span></span><br><span class="line">        self.filename = filename</span><br><span class="line">        self.mode = mode</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"entering"</span>)</span><br><span class="line">        self.f = open(self.filename, self.mode)</span><br><span class="line">        <span class="keyword">return</span> self.f</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, *args)</span>:</span></span><br><span class="line">        print(<span class="string">"will exit"</span>)</span><br><span class="line">        self.f.close()</span><br></pre></td></tr></table></figure>
-<p><code>__enter__()</code>方法返回资源对象，这里就是你将要打开的那个文件对象，<code>__exit__()</code>方法处理一些清除工作。</p>
-<p>因为<code>File</code>类实现了上下文管理器，现在就可以使用<code>with</code>语句了</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> File(<span class="string">'out.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    print(<span class="string">"writing"</span>)</span><br><span class="line">    f.write(<span class="string">'hello, python'</span>)</span><br></pre></td></tr></table></figure>
-<p>这样，你就无需显示地调用<code>close</code>方法了，由系统自动去调用，哪怕中间遇到异常<code>close</code>方法也会被调用</p>
+<h3 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h3><ul>
+<li>运行<code>mysqldump</code>命令</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysqldump –uroot –p 数据库名 &gt; python.sql;</span><br><span class="line"></span><br><span class="line"># 按提示输入mysql的密码</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="实现上下文管理器的另外方式"><a href="#实现上下文管理器的另外方式" class="headerlink" title="实现上下文管理器的另外方式"></a>实现上下文管理器的另外方式</h3><p><code>Python</code>还提供了一个<code>contextmanager</code>的装饰器，更进一步简化了上下文管理器的实现方式。通过<code>yield</code>将函数分割成两部分，<code>yield</code>之前的语句在 <code>__enter__</code>方法中执行，<code>yield</code>之后的语句在<code>__exit__</code>方法中执行。紧跟在<code>yield</code>后面的值是函数的返回值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> contextlib <span class="keyword">import</span> contextmanager</span><br><span class="line"></span><br><span class="line"><span class="meta">@contextmanager</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_open</span><span class="params">(path, mode)</span>:</span></span><br><span class="line">    f = open(path, mode)</span><br><span class="line">    <span class="keyword">yield</span> f</span><br><span class="line">    f.close()</span><br></pre></td></tr></table></figure>
-<p>调用</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> my_open(<span class="string">'out.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">"hello , the simplest context manager"</span>)</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><code>Python</code>提供了<code>with</code>语法用于简化资源操作的后续清除操作，是<code>try/finally</code> 的替代方法，实现原理建立在<strong>上下文管理器</strong>之上。此外，<code>Python</code>还提供了一个<code>contextmanager</code>装饰器，更进一步简化上下管理器的实现方式。</p>
-
+<h3 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h3><ul>
+<li>连接<code>mysql</code>, 创建新的数据库，</li>
+<li>退出连接，执行如下命令：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot –p 新数据库名 &lt; python.sql</span><br><span class="line"></span><br><span class="line"># 根据提示输入mysql密码</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -609,7 +736,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://zhouzhuming.tech/2018/10/29/Python之with与上下文管理器/" title="Python之with与上下文管理器">https://zhouzhuming.tech/2018/10/29/Python之with与上下文管理器/</a>
+    <a href="https://zhouzhuming.tech/2018/10/30/MySQL命令行脚本必知必会/" title="MySQL命令行脚本必知必会">https://zhouzhuming.tech/2018/10/30/MySQL命令行脚本必知必会/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -624,7 +751,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" <i class="fa fa-tag"></i> Python</a>
+            <a href="/tags/MySQL/" <i class="fa fa-tag"></i> MySQL</a>
+          
+            <a href="/tags/SQL/" <i class="fa fa-tag"></i> SQL</a>
           
         </div>
       
@@ -637,8 +766,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/29/Python之魔法属性/" rel="next" title="Python之魔法属性">
-                <i class="fa fa-chevron-left"></i> Python之魔法属性
+              <a href="/2018/10/29/Python之with与上下文管理器/" rel="next" title="Python之with与上下文管理器">
+                <i class="fa fa-chevron-left"></i> Python之with与上下文管理器
               </a>
             
           </div>
@@ -646,10 +775,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/30/MySQL命令行脚本必知必会/" rel="prev" title="MySQL命令行脚本必知必会">
-                MySQL命令行脚本必知必会 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -850,7 +975,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#正确关闭一个文件"><span class="nav-number">1.</span> <span class="nav-text">正确关闭一个文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#普通版"><span class="nav-number">1.1.</span> <span class="nav-text">普通版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进阶版"><span class="nav-number">1.2.</span> <span class="nav-text">进阶版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高级版"><span class="nav-number">1.3.</span> <span class="nav-text">高级版</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是上下文-context"><span class="nav-number">2.</span> <span class="nav-text">什么是上下文(context)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上下文管理器"><span class="nav-number">3.</span> <span class="nav-text">上下文管理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现上下文管理器的另外方式"><span class="nav-number">4.</span> <span class="nav-text">实现上下文管理器的另外方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL简介"><span class="nav-number">1.</span> <span class="nav-text">SQL简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令行连接"><span class="nav-number">2.</span> <span class="nav-text">命令行连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库操作"><span class="nav-number">3.</span> <span class="nav-text">数据库操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据表操作"><span class="nav-number">4.</span> <span class="nav-text">数据表操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据的增删改查-CURD"><span class="nav-number">5.</span> <span class="nav-text">数据的增删改查(CURD)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查询"><span class="nav-number">5.1.</span> <span class="nav-text">查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#增加"><span class="nav-number">5.2.</span> <span class="nav-text">增加</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改"><span class="nav-number">5.3.</span> <span class="nav-text">修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除"><span class="nav-number">5.4.</span> <span class="nav-text">删除</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备份"><span class="nav-number">6.</span> <span class="nav-text">备份</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#恢复"><span class="nav-number">7.</span> <span class="nav-text">恢复</span></a></li></ol></div>
             
 
           </div>
