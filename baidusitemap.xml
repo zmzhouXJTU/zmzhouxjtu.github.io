@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://zhouzhuming.tech/2018/11/04/Python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E9%97%AD%E5%8C%85/</loc>
+    <lastmod>2018-11-04T09:48:54.044Z</lastmod>
+    <data>
+        <display>
+        <title>Python高级特性之闭包</title>
+        <pubTime>2018-11-04T09:35:59.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="https://zhouzhuming.tech/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://zhouzhuming.tech/2018/11/04/MySQL%E9%AB%98%E7%BA%A7/</loc>
     <lastmod>2018-11-04T09:15:05.497Z</lastmod>
     <data>
@@ -11,9 +31,9 @@
         <title>MySQL高级</title>
         <pubTime>2018-11-04T05:17:30.000Z</pubTime>
         
-        <tag>MySQL</tag>
-         
         <tag>SQL</tag>
+         
+        <tag>MySQL</tag>
          
          
            
@@ -33,9 +53,9 @@
         <title>MySQL与Python交互</title>
         <pubTime>2018-11-02T13:06:37.000Z</pubTime>
         
-        <tag>MySQL</tag>
-         
         <tag>SQL</tag>
+         
+        <tag>MySQL</tag>
          
         <tag>Python</tag>
          
@@ -57,9 +77,9 @@
         <title>详解MySQL查询</title>
         <pubTime>2018-10-31T10:10:10.000Z</pubTime>
         
-        <tag>MySQL</tag>
-         
         <tag>SQL</tag>
+         
+        <tag>MySQL</tag>
          
          
            
@@ -79,9 +99,9 @@
         <title>MySQL命令行脚本必知必会</title>
         <pubTime>2018-10-30T01:39:55.000Z</pubTime>
         
-        <tag>MySQL</tag>
-         
         <tag>SQL</tag>
+         
+        <tag>MySQL</tag>
          
          
            
