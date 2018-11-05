@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zhouzhuming.tech/2018/04/24/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</loc>
+    
+    <lastmod>2018-11-05T12:08:53.078Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://zhouzhuming.tech/2018/11/04/Python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E8%A3%85%E9%A5%B0%E5%99%A8/</loc>
     
     <lastmod>2018-11-05T06:57:44.405Z</lastmod>
@@ -159,13 +166,6 @@
     <loc>https://zhouzhuming.tech/categories/index.html</loc>
     
     <lastmod>2018-06-19T02:30:48.642Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zhouzhuming.tech/2018/04/24/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</loc>
-    
-    <lastmod>2018-06-18T11:15:09.367Z</lastmod>
     
   </url>
   
