@@ -134,7 +134,7 @@
 <meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
 <meta property="og:description" content="很久之前就有要写记录自己刷题的日记(博客)，奈何之前一直忙着没有太多时间，现在闲下来了，就赶紧把自己刷的题记录下来，哈哈。这里记录的是基于Python语言实现的Leetcode上面的算法题。好了，话不多说，让我们开始吧！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-13T13:40:23.399Z">
+<meta property="og:updated_time" content="2018-11-13T14:05:45.303Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode刷题之两数之和">
 <meta name="twitter:description" content="很久之前就有要写记录自己刷题的日记(博客)，奈何之前一直忙着没有太多时间，现在闲下来了，就赶紧把自己刷的题记录下来，哈哈。这里记录的是基于Python语言实现的Leetcode上面的算法题。好了，话不多说，让我们开始吧！">
@@ -469,7 +469,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  238字
+                  450字
                 </span>
               
 
@@ -485,7 +485,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1分钟
+                  2分钟
                 </span>
               
             </div>
@@ -508,10 +508,26 @@
       
         <p>很久之前就有要写记录自己刷题的日记(博客)，奈何之前一直忙着没有太多时间，现在闲下来了，就赶紧把自己刷的题记录下来，哈哈。这里记录的是基于<code>Python</code>语言实现的<code>Leetcode</code>上面的算法题。好了，话不多说，让我们开始吧！<br><a id="more"></a></p>
 <hr>
-<h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。</p>
+<h2 id="两数之和-难度-Easy"><a href="#两数之和-难度-Easy" class="headerlink" title="两数之和(难度: Easy)"></a>两数之和(难度: Easy)</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。</p>
 <p>你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">示例:</span><br><span class="line"></span><br><span class="line">给定 nums = [<span class="number">2</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">15</span>], target = <span class="number">9</span></span><br><span class="line"></span><br><span class="line">因为 nums[<span class="number">0</span>] + nums[<span class="number">1</span>] = <span class="number">2</span> + <span class="number">7</span> = <span class="number">9</span></span><br><span class="line">所以返回 [<span class="number">0</span>, <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-<h3 id="Python解答"><a href="#Python解答" class="headerlink" title="Python解答"></a>Python解答</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">twoSum</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        dicts = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> k, v <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">            <span class="keyword">if</span> target - v <span class="keyword">in</span> dicts:</span><br><span class="line">                <span class="keyword">return</span> [dicts.get(target-v), k]</span><br><span class="line">            dicts[v] = k</span><br></pre></td></tr></table></figure>
+<h3 id="Python解答"><a href="#Python解答" class="headerlink" title="Python解答"></a>Python解答</h3><blockquote>
+<p>思路一：<strong>- 时间复杂度: O(N^2) - 空间复杂度: O(1)</strong><br>暴力解法，两轮遍历<br>beats：27.6%</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">twoSum</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i+<span class="number">1</span>, len(nums)):</span><br><span class="line">                <span class="keyword">if</span> nums[i] + nums[j] == target:</span><br><span class="line">                    <span class="keyword">return</span> [i, j]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>思路二：<strong>- 时间复杂度: O(N) - 空间复杂度: O(N)</strong><br>上面的思路一太慢了，我们可以<strong>牺牲空间换取时间</strong>。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">           <span class="number">2</span>        <span class="number">7</span>        <span class="number">11</span>    <span class="number">15</span></span><br><span class="line">         不存在   存在之中</span><br><span class="line">lookup   &#123;<span class="number">2</span>:<span class="number">0</span>&#125;    [<span class="number">0</span>，<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>建立字典<code>lookup</code>存放第一个数字，并存放该数字的<code>index</code></li>
+<li>判断 <code>lookup</code>种是否存在： <code>target - 当前数字</code>， 则表面当前值和<code>lookup</code>中的值加和为<code>target</code></li>
+<li>如果存在，则返回：<code>target - 当前数字</code>的<code>index</code>和当前值的<code>index</code></li>
+</ul>
+<blockquote>
+<p>beats 100%</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">twoSum</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        lookup = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i, num <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">            <span class="keyword">if</span> target - num <span class="keyword">in</span> lookup:</span><br><span class="line">                <span class="keyword">return</span> [lookup[target-num], i]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                lookup[num] = i</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -813,7 +829,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#两数之和"><span class="nav-number">1.</span> <span class="nav-text">两数之和</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python解答"><span class="nav-number">1.2.</span> <span class="nav-text">Python解答</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#两数之和-难度-Easy"><span class="nav-number">1.</span> <span class="nav-text">两数之和(难度: Easy)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python解答"><span class="nav-number">1.2.</span> <span class="nav-text">Python解答</span></a></li></ol></li></ol></div>
             
 
           </div>
