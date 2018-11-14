@@ -115,7 +115,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Python,算法,华为机试题,字符串," />
 
 
 
@@ -126,18 +126,18 @@
 
 
 
-<meta name="description" content="成功的花人们往往惊羡它现时的明艳然而当初它的芽儿却浸透了奋斗的泪泉洒满了牺牲的血雨   关于我一个想进军数据科学领域的小菜鸟，欢迎各位大佬多多指教 A  Postgraduate  From  XJTU 研究方向：Unsupvised Feature Learning and Deep Learning  教育经历2017年9月—至今               西安交通大学        软件">
-<meta name="keywords" content="数据分析与挖掘">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About">
-<meta property="og:url" content="https://zhouzhuming.tech/about/index.html">
+<meta name="description" content="今天是开始刷题打怪的第二天啊，偶然在牛客网上看到了华为的机试题合集。众所周知，华为的机试题在业界是很容易的，通常都被大家拿来当做练手之用，于是我也做了几题。发现真的是，华为的机试题真的超级友好。要是所有互联网公司的编程题难度是这样的就好啦，哈哈。好了，这里说一个我觉得还是比较经典的题—字符串分割问题，好了，话不多说，让我们正式开始吧！">
+<meta name="keywords" content="Python,算法,华为机试题,字符串">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华为机试题之字符串分割">
+<meta property="og:url" content="https://zhouzhuming.tech/2018/11/14/华为机试题之字符串分割/index.html">
 <meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
-<meta property="og:description" content="成功的花人们往往惊羡它现时的明艳然而当初它的芽儿却浸透了奋斗的泪泉洒满了牺牲的血雨   关于我一个想进军数据科学领域的小菜鸟，欢迎各位大佬多多指教 A  Postgraduate  From  XJTU 研究方向：Unsupvised Feature Learning and Deep Learning  教育经历2017年9月—至今               西安交通大学        软件">
+<meta property="og:description" content="今天是开始刷题打怪的第二天啊，偶然在牛客网上看到了华为的机试题合集。众所周知，华为的机试题在业界是很容易的，通常都被大家拿来当做练手之用，于是我也做了几题。发现真的是，华为的机试题真的超级友好。要是所有互联网公司的编程题难度是这样的就好啦，哈哈。好了，这里说一个我觉得还是比较经典的题—字符串分割问题，好了，话不多说，让我们正式开始吧！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-19T12:35:10.767Z">
+<meta property="og:updated_time" content="2018-11-14T02:02:26.215Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About">
-<meta name="twitter:description" content="成功的花人们往往惊羡它现时的明艳然而当初它的芽儿却浸透了奋斗的泪泉洒满了牺牲的血雨   关于我一个想进军数据科学领域的小菜鸟，欢迎各位大佬多多指教 A  Postgraduate  From  XJTU 研究方向：Unsupvised Feature Learning and Deep Learning  教育经历2017年9月—至今               西安交通大学        软件">
+<meta name="twitter:title" content="华为机试题之字符串分割">
+<meta name="twitter:description" content="今天是开始刷题打怪的第二天啊，偶然在牛客网上看到了华为的机试题合集。众所周知，华为的机试题在业界是很容易的，通常都被大家拿来当做练手之用，于是我也做了几题。发现真的是，华为的机试题真的超级友好。要是所有互联网公司的编程题难度是这样的就好啦，哈哈。好了，这里说一个我觉得还是比较经典的题—字符串分割问题，好了，话不多说，让我们正式开始吧！">
 
 
 
@@ -167,13 +167,13 @@
 
 
 
-  <link rel="canonical" href="https://zhouzhuming.tech/about/"/>
+  <link rel="canonical" href="https://zhouzhuming.tech/2018/11/14/华为机试题之字符串分割/"/>
 
 
 
 
 
-  <title>About | Zhou Zhuming's blogs</title>
+  <title>华为机试题之字符串分割 | Zhou Zhuming's blogs</title>
   
 
 
@@ -353,49 +353,299 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhouzhuming.tech/2018/11/14/华为机试题之字符串分割/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhou Zhuming">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head-image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhou Zhuming's blogs">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">About</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <blockquote>
-<p><strong>成功的花</strong><br><strong>人们往往惊羡它现时的明艳</strong><br><strong>然而当初它的芽儿却浸透了奋斗的泪泉</strong><br><strong>洒满了牺牲的血雨</strong></p>
+          <h1 class="post-title" itemprop="name headline">华为机试题之字符串分割</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-14T09:48:30+08:00">
+                2018-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/华为机试题/" itemprop="url" rel="index">
+                    <span itemprop="name">华为机试题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/14/华为机试题之字符串分割/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/14/华为机试题之字符串分割/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/11/14/华为机试题之字符串分割/" class="leancloud_visitors" data-flag-title="华为机试题之字符串分割">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  348字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天是开始刷题打怪的第二天啊，偶然在牛客网上看到了华为的机试题合集。众所周知，华为的机试题在业界是很容易的，通常都被大家拿来当做练手之用，于是我也做了几题。发现真的是，华为的机试题真的超级友好。要是所有互联网公司的编程题难度是这样的就好啦，哈哈。好了，这里说一个我觉得还是比较经典的题—字符串分割问题，好了，话不多说，让我们正式开始吧！<br><a id="more"></a></p>
+<hr>
+<h2 id="字符串分割"><a href="#字符串分割" class="headerlink" title="字符串分割"></a>字符串分割</h2><h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h3><blockquote>
+<p>首先输入数字n，表示要输入多少个字符串。连续输入字符串(输出次数为N,字符串长度小于100)</p>
+</blockquote>
+<h3 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h3><blockquote>
+<p>按长度为8拆分每个字符串后输出到新的字符串数组，长度不是8整数倍的字符串请在后面补数字0，空字符串不处理</p>
+</blockquote>
+<h3 id="示例1："><a href="#示例1：" class="headerlink" title="示例1："></a>示例1：</h3><p><strong>输入</strong></p>
+<blockquote>
+<p>2<br>abc<br>123456789</p>
+</blockquote>
+<p><strong>输出</strong></p>
+<blockquote>
+<p>abc00000<br>12345678<br>90000000</p>
 </blockquote>
 <hr>
-<h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>一个想进军数据科学领域的小菜鸟，欢迎各位大佬多多指教</p>
-<p>A  Postgraduate  From  XJTU</p>
-<p>研究方向：Unsupvised Feature Learning and Deep Learning</p>
-<hr>
-<h2 id="教育经历"><a href="#教育经历" class="headerlink" title="教育经历"></a>教育经历</h2><p><strong>2017年9月—至今               西安交通大学        软件工程</strong></p>
-<p><strong>2013年9月—2017年6月               安徽财经大学        计算机科学与技术</strong></p>
-<hr>
-<h2 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h2><p><strong>Email:</strong> <a href="mailto:&#122;&#x7a;&#109;&#50;&#x30;&#49;&#51;&#x32;&#x36;&#x31;&#x36;&#x40;&#49;&#x36;&#x33;&#46;&#99;&#x6f;&#x6d;" target="_blank" rel="noopener">&#122;&#x7a;&#109;&#50;&#x30;&#49;&#51;&#x32;&#x36;&#x31;&#x36;&#x40;&#49;&#x36;&#x33;&#46;&#99;&#x6f;&#x6d;</a></p>
-<p><strong>Github:</strong> <a href="https://github.com/zmzhouXJTU" target="_blank" rel="noopener">zmzhouXJTU</a></p>
-<p><strong>简书:</strong> <a href="https://www.jianshu.com/users/baea3822be48/timeline" target="_blank" rel="noopener">周住铭</a></p>
-<p><strong>微博:</strong> <a href="https://weibo.com/zzm961020" target="_blank" rel="noopener">周住铭</a></p>
-<p><strong>知乎:</strong> <a href="https://www.zhihu.com/people/zhou-zhu-ming-24/activities" target="_blank" rel="noopener">周住铭</a></p>
+<h3 id="Python解法"><a href="#Python解法" class="headerlink" title="Python解法"></a>Python解法</h3><h4 id="思路：借助一个while循环和Python对字符串的切片操作，可以很容易得出答案，以下给出参考代码："><a href="#思路：借助一个while循环和Python对字符串的切片操作，可以很容易得出答案，以下给出参考代码：" class="headerlink" title="思路：借助一个while循环和Python对字符串的切片操作，可以很容易得出答案，以下给出参考代码："></a>思路：借助一个<code>while</code>循环和<code>Python</code>对字符串的切片操作，可以很容易得出答案，以下给出参考代码：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        a= int(input())</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(a):</span><br><span class="line">            s=input()</span><br><span class="line">            <span class="keyword">while</span> len(s)&gt;<span class="number">8</span>:</span><br><span class="line">                print(s[:<span class="number">8</span>])</span><br><span class="line">                s=s[<span class="number">8</span>:]</span><br><span class="line">            print(s+(<span class="number">8</span>-len(s))*<span class="string">'0'</span>)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 
-        
-      </div>
-      
-      
       
     </div>
     
     
     
+
+    
+
+      <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:18px;">----------------本文结束<i class="fa fa-paw"></i>感谢您的阅读----------------</div>
+    
+</div>
+
+        
+      </div>
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Zhou Zhuming 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Zhou Zhuming 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Zhou Zhuming
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://zhouzhuming.tech/2018/11/14/华为机试题之字符串分割/" title="华为机试题之字符串分割">https://zhouzhuming.tech/2018/11/14/华为机试题之字符串分割/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" <i class="fa fa-tag"></i> Python</a>
+          
+            <a href="/tags/算法/" <i class="fa fa-tag"></i> 算法</a>
+          
+            <a href="/tags/华为机试题/" <i class="fa fa-tag"></i> 华为机试题</a>
+          
+            <a href="/tags/字符串/" <i class="fa fa-tag"></i> 字符串</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/13/Leetcode刷题之两数之和/" rel="next" title="Leetcode刷题之两数之和">
+                <i class="fa fa-chevron-left"></i> Leetcode刷题之两数之和
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -404,6 +654,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -570,7 +827,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于我"><span class="nav-number">1.</span> <span class="nav-text">关于我</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教育经历"><span class="nav-number">2.</span> <span class="nav-text">教育经历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联系方式"><span class="nav-number">3.</span> <span class="nav-text">联系方式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串分割"><span class="nav-number">1.</span> <span class="nav-text">字符串分割</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入描述"><span class="nav-number">1.1.</span> <span class="nav-text">输入描述:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出描述"><span class="nav-number">1.2.</span> <span class="nav-text">输出描述:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例1："><span class="nav-number">1.3.</span> <span class="nav-text">示例1：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python解法"><span class="nav-number">1.4.</span> <span class="nav-text">Python解法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路：借助一个while循环和Python对字符串的切片操作，可以很容易得出答案，以下给出参考代码："><span class="nav-number">1.4.1.</span> <span class="nav-text">思路：借助一个while循环和Python对字符串的切片操作，可以很容易得出答案，以下给出参考代码：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
