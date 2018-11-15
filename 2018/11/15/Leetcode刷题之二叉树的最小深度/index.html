@@ -115,7 +115,7 @@
 
 
 
-  <meta name="keywords" content="Git," />
+  <meta name="keywords" content="Leetcode,Python,算法,树," />
 
 
 
@@ -126,18 +126,18 @@
 
 
 
-<meta name="description" content="我们在进行Github协同开发的时候，往往会去fork一个仓库到自己的Github中，过一段时间以后，原仓库可能会有各种提交以及修改，很可惜，Github本身并没有自动进行同步的机制，这个需要我们手动去执行，现在我来演示一下如何进行自己的仓库和原仓库进行Gith同步的操作。重点在于：除了origin以外，增加一个upstream，来跟踪原仓库的更新。">
-<meta name="keywords" content="Git">
+<meta name="description" content="今天是刷题的第三天呀！今天在逛牛客网的时候偶然发现牛客网上也有Leetcode专题，而且还有相关的题目的热度，瞬间觉得牛客网真的是程序员求职的良心网站(哈哈哈，牛客网没有给我广告费，手动滑稽)。以后决定就在牛客网刷Leetcode系列的题了，牛客网上面一共148道题，刷完了我觉得应该也就差不多了。好了，话不多说，让我们开始吧！今天刷的是牛客网上Leetcode热度指数最高的一题—Minimum D">
+<meta name="keywords" content="Leetcode,Python,算法,树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Github如何同步更新一个你Fork的仓库？">
-<meta property="og:url" content="https://zhouzhuming.tech/2018/06/12/Github-如何同步更新一个你Fork的仓库？/index.html">
+<meta property="og:title" content="Leetcode刷题之二叉树的最小深度">
+<meta property="og:url" content="https://zhouzhuming.tech/2018/11/15/Leetcode刷题之二叉树的最小深度/index.html">
 <meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
-<meta property="og:description" content="我们在进行Github协同开发的时候，往往会去fork一个仓库到自己的Github中，过一段时间以后，原仓库可能会有各种提交以及修改，很可惜，Github本身并没有自动进行同步的机制，这个需要我们手动去执行，现在我来演示一下如何进行自己的仓库和原仓库进行Gith同步的操作。重点在于：除了origin以外，增加一个upstream，来跟踪原仓库的更新。">
+<meta property="og:description" content="今天是刷题的第三天呀！今天在逛牛客网的时候偶然发现牛客网上也有Leetcode专题，而且还有相关的题目的热度，瞬间觉得牛客网真的是程序员求职的良心网站(哈哈哈，牛客网没有给我广告费，手动滑稽)。以后决定就在牛客网刷Leetcode系列的题了，牛客网上面一共148道题，刷完了我觉得应该也就差不多了。好了，话不多说，让我们开始吧！今天刷的是牛客网上Leetcode热度指数最高的一题—Minimum D">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-19T14:13:16.586Z">
+<meta property="og:updated_time" content="2018-11-15T11:10:21.483Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Github如何同步更新一个你Fork的仓库？">
-<meta name="twitter:description" content="我们在进行Github协同开发的时候，往往会去fork一个仓库到自己的Github中，过一段时间以后，原仓库可能会有各种提交以及修改，很可惜，Github本身并没有自动进行同步的机制，这个需要我们手动去执行，现在我来演示一下如何进行自己的仓库和原仓库进行Gith同步的操作。重点在于：除了origin以外，增加一个upstream，来跟踪原仓库的更新。">
+<meta name="twitter:title" content="Leetcode刷题之二叉树的最小深度">
+<meta name="twitter:description" content="今天是刷题的第三天呀！今天在逛牛客网的时候偶然发现牛客网上也有Leetcode专题，而且还有相关的题目的热度，瞬间觉得牛客网真的是程序员求职的良心网站(哈哈哈，牛客网没有给我广告费，手动滑稽)。以后决定就在牛客网刷Leetcode系列的题了，牛客网上面一共148道题，刷完了我觉得应该也就差不多了。好了，话不多说，让我们开始吧！今天刷的是牛客网上Leetcode热度指数最高的一题—Minimum D">
 
 
 
@@ -167,13 +167,13 @@
 
 
 
-  <link rel="canonical" href="https://zhouzhuming.tech/2018/06/12/Github-如何同步更新一个你Fork的仓库？/"/>
+  <link rel="canonical" href="https://zhouzhuming.tech/2018/11/15/Leetcode刷题之二叉树的最小深度/"/>
 
 
 
 
 
-  <title>Github如何同步更新一个你Fork的仓库？ | Zhou Zhuming's blogs</title>
+  <title>Leetcode刷题之二叉树的最小深度 | Zhou Zhuming's blogs</title>
   
 
 
@@ -365,7 +365,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhouzhuming.tech/2018/06/12/Github-如何同步更新一个你Fork的仓库？/">
+    <link itemprop="mainEntityOfPage" href="https://zhouzhuming.tech/2018/11/15/Leetcode刷题之二叉树的最小深度/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhou Zhuming">
@@ -382,7 +382,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Github如何同步更新一个你Fork的仓库？</h1>
+          <h1 class="post-title" itemprop="name headline">Leetcode刷题之二叉树的最小深度</h1>
         
 
         <div class="post-meta">
@@ -394,8 +394,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-12T22:14:56+08:00">
-                2018-06-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-15T18:51:16+08:00">
+                2018-11-15
               </time>
             
 
@@ -417,8 +417,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/版本控制之Git/" itemprop="url" rel="index">
-                    <span itemprop="name">版本控制之Git</span>
+                  <a href="/categories/Leetcode刷题/" itemprop="url" rel="index">
+                    <span itemprop="name">Leetcode刷题</span>
                   </a>
                 </span>
 
@@ -435,8 +435,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/06/12/Github-如何同步更新一个你Fork的仓库？/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/06/12/Github-如何同步更新一个你Fork的仓库？/" itemprop="commentCount"></span>
+                <a href="/2018/11/15/Leetcode刷题之二叉树的最小深度/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/15/Leetcode刷题之二叉树的最小深度/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -444,7 +444,7 @@
 
           
           
-             <span id="/2018/06/12/Github-如何同步更新一个你Fork的仓库？/" class="leancloud_visitors" data-flag-title="Github如何同步更新一个你Fork的仓库？">
+             <span id="/2018/11/15/Leetcode刷题之二叉树的最小深度/" class="leancloud_visitors" data-flag-title="Leetcode刷题之二叉树的最小深度">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -469,7 +469,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  677字
+                  645字
                 </span>
               
 
@@ -506,21 +506,32 @@
       
 
       
-        <blockquote>
-<p>我们在进行Github协同开发的时候，往往会去fork一个仓库到自己的Github中，过一段时间以后，原仓库可能会有各种提交以及修改，很可惜，Github本身并没有自动进行同步的机制，这个需要我们手动去执行，现在我来演示一下如何进行自己的仓库和原仓库进行Gith同步的操作。重点在于：除了origin以外，增加一个upstream，来跟踪原仓库的更新。<br><a id="more"></a></p>
-</blockquote>
+        <p>今天是刷题的第三天呀！今天在逛牛客网的时候偶然发现牛客网上也有<code>Leetcode</code>专题，而且还有相关的题目的热度，瞬间觉得牛客网真的是程序员求职的良心网站(哈哈哈，牛客网没有给我广告费，手动滑稽)。以后决定就在牛客网刷<code>Leetcode</code>系列的题了，牛客网上面一共148道题，刷完了我觉得应该也就差不多了。好了，话不多说，让我们开始吧！今天刷的是牛客网上<code>Leetcode</code>热度指数最高的一题—Minimum Depth of Binary Tree(二叉树的最小深度)<br><a id="more"></a></p>
 <hr>
-<h2 id="先将你fork到自己的Github的远程仓库克隆到本地"><a href="#先将你fork到自己的Github的远程仓库克隆到本地" class="headerlink" title="先将你fork到自己的Github的远程仓库克隆到本地"></a>先将你<code>fork</code>到自己的Github的远程仓库克隆到本地</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/zmzhouXJTU/Problem-sets</span><br></pre></td></tr></table></figure>
-<h2 id="查看远程仓库的信息"><a href="#查看远程仓库的信息" class="headerlink" title="查看远程仓库的信息"></a>查看远程仓库的信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin  https://github.com/zmzhouXJTU/Problem-sets (fetch)</span><br><span class="line">origin  https://github.com/zmzhouXJTU/Problem-sets (push)</span><br></pre></td></tr></table></figure>
-<h2 id="配置原远程仓库-即你所fork的-的路径"><a href="#配置原远程仓库-即你所fork的-的路径" class="headerlink" title="配置原远程仓库(即你所fork的)的路径"></a>配置原远程仓库(即你所<code>fork</code>的)的路径</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add upstream https://github.com/ACLoong/Problem-sets</span><br></pre></td></tr></table></figure>
-<h2 id="再次查看远程仓库信息确定是否配置成功"><a href="#再次查看远程仓库信息确定是否配置成功" class="headerlink" title="再次查看远程仓库信息确定是否配置成功"></a>再次查看远程仓库信息确定是否配置成功</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin  https://github.com/zmzhouXJTU/Problem-sets (fetch)</span><br><span class="line">origin  https://github.com/zmzhouXJTU/Problem-sets (push)</span><br><span class="line">upstream        https://github.com/ACLoong/Problem-sets (fetch)</span><br><span class="line">upstream        https://github.com/ACLoong/Problem-sets (push)</span><br></pre></td></tr></table></figure>
-<h2 id="抓取原仓库的更新文件，该文件会被存储在一个本地分支upstream-master上"><a href="#抓取原仓库的更新文件，该文件会被存储在一个本地分支upstream-master上" class="headerlink" title="抓取原仓库的更新文件，该文件会被存储在一个本地分支upstream/master上"></a>抓取原仓库的更新文件，该文件会被存储在一个本地分支<code>upstream/master</code>上</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch upstream</span><br><span class="line">remote: Counting objects: 21, <span class="keyword">done</span>.</span><br><span class="line">remote: Compressing objects: 100% (15/15), <span class="keyword">done</span>.</span><br><span class="line">remote: Total 21 (delta 4), reused 5 (delta 1), pack-reused 0</span><br><span class="line">Unpacking objects: 100% (21/21), <span class="keyword">done</span>.</span><br><span class="line">From https://github.com/ACLoong/Problem-sets</span><br><span class="line"> * [new branch]      master     -&gt; upstream/master</span><br></pre></td></tr></table></figure>
-<h2 id="切换到本地主分支-如果当前不在的话"><a href="#切换到本地主分支-如果当前不在的话" class="headerlink" title="切换到本地主分支(如果当前不在的话)"></a>切换到本地主分支(<strong>如果当前不在的话</strong>)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line"><span class="comment"># Switched to branch 'master'</span></span><br></pre></td></tr></table></figure>
-<h2 id="将原仓库的更新文件-即存储在本地的upstream-master分支上的文件-与本地仓库的当前分支合并"><a href="#将原仓库的更新文件-即存储在本地的upstream-master分支上的文件-与本地仓库的当前分支合并" class="headerlink" title="将原仓库的更新文件(即存储在本地的upstream/master分支上的文件)与本地仓库的当前分支合并"></a>将原仓库的更新文件(即存储在本地的<code>upstream/master</code>分支上的文件)与本地仓库的当前分支合并</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git merge upstream/master</span><br><span class="line">Updating 60b537a..426148c</span><br><span class="line">Fast-forward</span><br><span class="line"> problem_set/first_week/refs/Process&amp;Thread.md | 29 +++++++++++++++++++++++++++</span><br><span class="line"> 1 file changed, 29 insertions(+)</span><br><span class="line"> create mode 100644 problem_set/first_week/refs/Process&amp;Thread.md</span><br></pre></td></tr></table></figure>
-<p><strong>Note:</strong> 此时，你的<strong>本地仓库</strong>已经和<strong>原来仓库</strong>完全同步了。但是注意，此时只是你电脑上的本地仓库和原作者的远程<code>github仓库</code>同步了，你<code>fork</code>到自己的github远程仓库还没有同步。要想实现本地和自己的Github远程仓库的同步，只需要如下操作即可：</p>
-<h2 id="将其更新到自己的Github远程仓库，可以利用命令git-push-origin-master来实现"><a href="#将其更新到自己的Github远程仓库，可以利用命令git-push-origin-master来实现" class="headerlink" title="将其更新到自己的Github远程仓库，可以利用命令git push origin master来实现"></a>将其更新到自己的Github远程仓库，可以利用命令<code>git push origin master</code>来实现</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br><span class="line">Counting objects: 21, <span class="keyword">done</span>.</span><br><span class="line">Delta compression using up to 4 threads.</span><br><span class="line">Compressing objects: 100% (16/16), <span class="keyword">done</span>.</span><br><span class="line">Writing objects: 100% (21/21), 5.65 KiB | 1.88 MiB/s, <span class="keyword">done</span>.</span><br><span class="line">Total 21 (delta 4), reused 0 (delta 0)</span><br><span class="line">remote: Resolving deltas: 100% (4/4), completed with 2 <span class="built_in">local</span> objects.</span><br><span class="line">To https://github.com/zmzhouXJTU/Problem-sets</span><br><span class="line">   60b537a..426148c  master -&gt; master</span><br></pre></td></tr></table></figure>
-<p>好了，至此任务就完成了。不知你是否看明白了呢？有任何问题，欢迎在此博客下方评论留言。</p>
-
+<h2 id="二叉树的最小深度-难度：Easy"><a href="#二叉树的最小深度-难度：Easy" class="headerlink" title="二叉树的最小深度(难度：Easy)"></a>二叉树的最小深度(难度：Easy)</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个二叉树，找出其最小深度。</p>
+<p>最小深度是从根节点到最近叶子节点的最短路径上的节点数量。</p>
+<p><strong>说明</strong>: 叶子节点是指没有子节点的节点。</p>
+<p><strong>示例:</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">给定二叉树 [<span class="number">3</span>,<span class="number">9</span>,<span class="number">20</span>,null,null,<span class="number">15</span>,<span class="number">7</span>],</span><br><span class="line">    <span class="number">3</span></span><br><span class="line">   / \</span><br><span class="line">  <span class="number">9</span>  <span class="number">20</span></span><br><span class="line">    /  \</span><br><span class="line">   <span class="number">15</span>   <span class="number">7</span></span><br><span class="line">返回它的最小深度  <span class="number">2.</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="解题方案"><a href="#解题方案" class="headerlink" title="解题方案"></a>解题方案</h3><p>思路一：<strong>- 时间复杂度: O(N) - 空间复杂度: O(1)</strong></p>
+<blockquote>
+<p>思路，看完题目我想当然的认为就是直接递归取最小的值，代码如下：</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minDepth</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type root: TreeNode</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + min(map(self.minDepth, (root.left, root.right)))</span><br></pre></td></tr></table></figure>
+<p>但是没过，有一种特殊情况就是</p>
+<p>注意<code>leaf node</code>: 反正就是没有<code>left</code>和<code>right</code>的</p>
+<p>比如下图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"> \</span><br><span class="line">  <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p><code>2</code>是一个孩子节点</p>
+<p>这种情况应该输出<code>2</code>而不是<code>1</code></p>
+<p>唯一的特殊情况就是上面这种了，因为<code>root</code>下只有一个左节点或者是右节点，这样另外一边的空节点并不算是<code>leaf node</code></p>
+<blockquote>
+<p>leaf node: itself is not null but it has both children null</p>
+</blockquote>
+<p>所以还是要养成多写<code>edge case</code>的好习惯，也许就帮你避免了<code>general</code>写法的特例,代码如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minDepth</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type root: TreeNode</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> root.left <span class="keyword">and</span> root.right:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span> + min(self.minDepth(root.left), self.minDepth(root.right))</span><br><span class="line">        <span class="keyword">elif</span> root.left:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span> + self.minDepth(root.left)</span><br><span class="line">        <span class="keyword">elif</span> root.right:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span> + self.minDepth(root.right)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>思路二：<strong>- 时间复杂度: O(N) - 空间复杂度: O(1)</strong></p>
+<p>或许写的更巧妙一些</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minDepth</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type root: TreeNode</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        depth_under_root = map(self.minDepth, (root.left, root.right))</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + (min(depth_under_root) <span class="keyword">or</span> max(depth_under_root))</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -580,7 +591,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://zhouzhuming.tech/2018/06/12/Github-如何同步更新一个你Fork的仓库？/" title="Github如何同步更新一个你Fork的仓库？">https://zhouzhuming.tech/2018/06/12/Github-如何同步更新一个你Fork的仓库？/</a>
+    <a href="https://zhouzhuming.tech/2018/11/15/Leetcode刷题之二叉树的最小深度/" title="Leetcode刷题之二叉树的最小深度">https://zhouzhuming.tech/2018/11/15/Leetcode刷题之二叉树的最小深度/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -595,7 +606,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Git/" <i class="fa fa-tag"></i> Git</a>
+            <a href="/tags/Leetcode/" <i class="fa fa-tag"></i> Leetcode</a>
+          
+            <a href="/tags/Python/" <i class="fa fa-tag"></i> Python</a>
+          
+            <a href="/tags/算法/" <i class="fa fa-tag"></i> 算法</a>
+          
+            <a href="/tags/树/" <i class="fa fa-tag"></i> 树</a>
           
         </div>
       
@@ -608,8 +625,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/26/Linux文件权限/" rel="next" title="Linux文件权限">
-                <i class="fa fa-chevron-left"></i> Linux文件权限
+              <a href="/2018/11/15/使用sklearn做单机特征工程/" rel="next" title="使用sklearn做单机特征工程">
+                <i class="fa fa-chevron-left"></i> 使用sklearn做单机特征工程
               </a>
             
           </div>
@@ -617,10 +634,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/20/Linux常用命令之远程管理/" rel="prev" title="Linux常用命令之远程管理">
-                Linux常用命令之远程管理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -821,7 +834,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#先将你fork到自己的Github的远程仓库克隆到本地"><span class="nav-number">1.</span> <span class="nav-text">先将你fork到自己的Github的远程仓库克隆到本地</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看远程仓库的信息"><span class="nav-number">2.</span> <span class="nav-text">查看远程仓库的信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置原远程仓库-即你所fork的-的路径"><span class="nav-number">3.</span> <span class="nav-text">配置原远程仓库(即你所fork的)的路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#再次查看远程仓库信息确定是否配置成功"><span class="nav-number">4.</span> <span class="nav-text">再次查看远程仓库信息确定是否配置成功</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抓取原仓库的更新文件，该文件会被存储在一个本地分支upstream-master上"><span class="nav-number">5.</span> <span class="nav-text">抓取原仓库的更新文件，该文件会被存储在一个本地分支upstream/master上</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切换到本地主分支-如果当前不在的话"><span class="nav-number">6.</span> <span class="nav-text">切换到本地主分支(如果当前不在的话)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将原仓库的更新文件-即存储在本地的upstream-master分支上的文件-与本地仓库的当前分支合并"><span class="nav-number">7.</span> <span class="nav-text">将原仓库的更新文件(即存储在本地的upstream/master分支上的文件)与本地仓库的当前分支合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将其更新到自己的Github远程仓库，可以利用命令git-push-origin-master来实现"><span class="nav-number">8.</span> <span class="nav-text">将其更新到自己的Github远程仓库，可以利用命令git push origin master来实现</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树的最小深度-难度：Easy"><span class="nav-number">1.</span> <span class="nav-text">二叉树的最小深度(难度：Easy)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解题方案"><span class="nav-number">1.2.</span> <span class="nav-text">解题方案</span></a></li></ol></li></ol></div>
             
 
           </div>
