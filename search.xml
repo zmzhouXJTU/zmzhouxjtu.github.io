@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[华为机试题之删除字符串中出现次数最少的字符]]></title>
+    <url>%2F2018%2F11%2F16%2F%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E9%A2%98%E4%B9%8B%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E6%9C%80%E5%B0%91%E7%9A%84%E5%AD%97%E7%AC%A6%2F</url>
+    <content type="text"><![CDATA[今天是开始刷题打怪的第四天啊，晚上闲来无事，Leetcode本菜鸡刷不动，于是乎心血来潮又刷了几道华为的机试题来增长信心哈哈哈。这里来给大家分享一道比较经典的机试题—删除字符串中出现次数最少的字符。好了，话不多说，让我们正式开始吧！ 删除字符串中出现次数最少的字符题目描述：实现删除字符串中出现次数最少的字符，若多个字符出现次数一样，则都删除。输出删除这些单词后的字符串，字符串中其它字符保持原来的顺序。 输入描述: 字符串只包含小写英文字母, 不考虑非法输入，输入的字符串长度小于等于20个字节。 输出描述: 删除字符串中出现次数最少的字符后的字符串。 示例1:输入 abcdd 输出 dd Python解法12345678910111213while True: try: a=input() b=[] c='' for i in range(len(a)): b.append(a.count(a[i])) for i in range(len(a)): if min(b)!=b[i]: c=c+a[i] print(c) except: break]]></content>
+      <categories>
+        <category>华为机试题</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>算法</tag>
+        <tag>华为机试题</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode刷题之二叉树的最大深度]]></title>
     <url>%2F2018%2F11%2F16%2FLeetcode%E5%88%B7%E9%A2%98%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6%2F</url>
     <content type="text"><![CDATA[今天是刷题的第四天呀！接上昨天的那一篇博客，昨天在逛牛客网的时候偶然发现牛客网上也有Leetcode专题，一共选了148道题，而且还有相应的题目热度排名，于是决定就在牛客网刷Leetcode系列的题了，昨天刷的是牛客网上Leetcode热度指数最高的一题—Minimum Depth of Binary Tree(二叉树的最小深度)，用的是递归的思想，刷完自信心爆棚。于是今天准备刷第二道题—逆波兰表达式求值。直接打脸，不会做。于是本狗子灵机一动，按照通过率对题目排序，于是就说今天的这道题啦—maximum-depth-of-binary-tree(二叉树的最大深度)，也是递归的思想啦！ 二叉树的最大深度(难度：Easy)题目描述给定一个二叉树，找出其最大深度。 二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。 说明: 叶子节点是指没有子节点的节点。 示例： 给定二叉树 [3,9,20,null,null,15,7]， 123456 3 / \ 9 20 / \ 15 7返回它的最大深度 3 。 解题方案 思路一：- 时间复杂度: O(N) - 空间复杂度: O(1) 简单题, 但是这道题跟昨天刷的Leetcode 111不一样，这道题没有特殊情况，所以一行就够了。以下给出代码： 1234567class Solution(object): def maxDepth(self, root): """ :type root: TreeNode :rtype: int """ return 1 + max(map(self.maxDepth, (root.left, root.right))) if root else 0 后记觉得博客这个东西应该是用来总结的，不应该当做刷题的日记。所以啊，这是最后一篇刷题的博文啦！我在Github上面专门建了一个仓库来记录我的Leetcode刷题之路，下面给出传送门：https://github.com/zmzhouXJTU/Leetcode-Sword_to_Offer，欢迎各位看官来踩！]]></content>
@@ -55,7 +69,7 @@
   <entry>
     <title><![CDATA[华为机试题之字符串分割]]></title>
     <url>%2F2018%2F11%2F14%2F%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E9%A2%98%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%86%E5%89%B2%2F</url>
-    <content type="text"><![CDATA[今天是开始刷题打怪的第二天啊，偶然在牛客网上看到了华为的机试题合集。众所周知，华为的机试题在业界是很容易的，通常都被大家拿来当做练手之用，于是我也做了几题。发现真的是，华为的机试题真的超级友好。要是所有互联网公司的编程题难度是这样的就好啦，哈哈。好了，这里说一个我觉得还是比较经典的题—字符串分割问题，好了，话不多说，让我们正式开始吧！ 字符串分割输入描述: 首先输入数字n，表示要输入多少个字符串。连续输入字符串(输出次数为N,字符串长度小于100) 输出描述: 按长度为8拆分每个字符串后输出到新的字符串数组，长度不是8整数倍的字符串请在后面补数字0，空字符串不处理 示例1：输入 2abc123456789 输出 abc000001234567890000000 Python解法思路：借助一个while循环和Python对字符串的切片操作，可以很容易得出答案，以下给出参考代码：123456789101112while True: try: a= int(input()) for i in range(a): s=input() while len(s)&gt;8: print(s[:8]) s=s[8:] print(s+(8-len(s))*'0') except: break]]></content>
+    <content type="text"><![CDATA[今天是开始刷题打怪的第二天啊，偶然在牛客网上看到了华为的机试题合集。众所周知，华为的机试题在业界是很容易的，通常都被大家拿来当做练手之用，于是我也做了几题。发现真的是，华为的机试题真的超级友好。要是所有互联网公司的编程题难度是这样的就好啦，哈哈。好了，这里说一个我觉得还是比较经典的题—字符串分割问题，好了，话不多说，让我们正式开始吧！ 字符串分割题目描述 连续输入字符串，请按长度为8拆分每个字符串后输出到新的字符串数组； 长度不是8整数倍的字符串请在后面补数字0，空字符串不处理。 输入描述: 首先输入数字n，表示要输入多少个字符串。连续输入字符串(输出次数为N,字符串长度小于100) 输出描述: 按长度为8拆分每个字符串后输出到新的字符串数组，长度不是8整数倍的字符串请在后面补数字0，空字符串不处理 示例1：输入 2abc123456789 输出 abc000001234567890000000 Python解法思路：借助一个while循环和Python对字符串的切片操作，可以很容易得出答案，以下给出参考代码：123456789101112while True: try: a= int(input()) for i in range(a): s=input() while len(s)&gt;8: print(s[:8]) s=s[8:] print(s+(8-len(s))*'0') except: break]]></content>
       <categories>
         <category>华为机试题</category>
       </categories>
@@ -110,8 +124,8 @@
         <category>数据库</category>
       </categories>
       <tags>
-        <tag>SQL</tag>
         <tag>MySQL</tag>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -123,8 +137,8 @@
       </categories>
       <tags>
         <tag>Python</tag>
-        <tag>SQL</tag>
         <tag>MySQL</tag>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -135,8 +149,8 @@
         <category>数据库</category>
       </categories>
       <tags>
-        <tag>SQL</tag>
         <tag>MySQL</tag>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -147,8 +161,8 @@
         <category>数据库</category>
       </categories>
       <tags>
-        <tag>SQL</tag>
         <tag>MySQL</tag>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
