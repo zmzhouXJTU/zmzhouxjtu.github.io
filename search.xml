@@ -39,20 +39,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Leetcode刷题之三数之和]]></title>
-    <url>%2F2018%2F11%2F14%2FLeetcode%E5%88%B7%E9%A2%98%E4%B9%8B%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C%2F</url>
-    <content type="text"><![CDATA[Leetcode刷题之路第二天，今天的题和昨天的题目类似，同样是和数组有关的题。哈哈，打算按照Leetcode官方上面的分类来刷题，这样比较好一些。好了，废话不多说，让我们来开始吧！ 三数之和(难度:Medium)题目描述给定一个包含n个整数的数组nums，判断nums中是否存在三个元素a, b, c, 使得 a+b+c=0？找出所有满足条件且不重复的三元组。 注意：答案中不可以包含重复的三元组 12345678例如, 给定数组 nums = [-1, 0, 1, 2, -1, -4]，满足要求的三元组集合为：[ [-1, 0, 1], [-1, -1, 2]] 解题方案 思路一: - 时间复杂度: O(N^3) - 空间复杂度: O(N)第一想法，先把nums排序，用三个loop，无法AC 12345678910111213141516171819class Solution(object): def threeSum(self, nums): """ :type nums: List[int] :rtype: List[List[int]] """ n = len(nums) res = [] nums.sort() for i in range(n): for j in range(i,n): for k in range(j,n): if nums[i] + nums[j] + nums[k] == 0 and j != i and k != j and k != i: curRes = [nums[i],nums[j],nums[k]] if curRes not in res: res.append(curRes) return res 思路二：- 时间复杂度: O(N^3) - 空间复杂度: O(N) 然后查了一下2sum，用2sum的花样，因为要排除重复以及输出是按照从小到大的输出:但是还是超时 1234567891011121314151617181920212223242526class Solution(object): # 此法也超时 def threeSum(self, nums): """ :type nums: List[int] :rtype: List[List[int]] """ def twoSum(nums, target): """ :type nums: List[int] :type target: int :rtype: List[int] """ lookup = &#123;&#125; for num in nums: if target - num in lookup: if (-target ,target - num, num) not in res: res.append((-target ,target - num, num)) lookup[num] = target - num n = len(nums) nums.sort() res = [] for i in range(n): twoSum(nums[i+1:], 0-nums[i]) return [list(i) for i in res] 思路三：- 时间复杂度: O(N^2) - 空间复杂度: O(N) 谷歌看别人的代码，思路非常清晰的,运行起来比直接调用Two Sum快. 清晰的思路： 排序 固定左边，如果左边重复，继续 左右弄边界，去重，针对不同的左右边界情况处理 12345678910111213141516171819202122232425262728class Solution(object): def threeSum(self, nums): """ :type nums: List[int] :rtype: List[List[int]] """ n, res = len(nums), [] nums.sort() for i in range(n): if i &gt; 0 and nums[i] == nums[i-1]: # 因为i=0这个元素会直接往下执行 continue l, r = i+1, n-1 while l &lt; r: tmp = nums[i] + nums[l] + nums[r] if tmp == 0: res.append([nums[i], nums[l], nums[r]]) l += 1 r -= 1 while l &lt; r and nums[l] == nums[l-1]: l += 1 while l &lt; r and nums[r] == nums[r+1]: r -= 1 elif tmp &gt; 0: r -= 1 else: l += 1 return res]]></content>
-      <categories>
-        <category>Leetcode刷题</category>
-      </categories>
-      <tags>
-        <tag>Leetcode</tag>
-        <tag>Python</tag>
-        <tag>算法</tag>
-        <tag>数组</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[华为机试题之字符串分割]]></title>
     <url>%2F2018%2F11%2F14%2F%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E9%A2%98%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%86%E5%89%B2%2F</url>
     <content type="text"><![CDATA[今天是开始刷题打怪的第二天啊，偶然在牛客网上看到了华为的机试题合集。众所周知，华为的机试题在业界是很容易的，通常都被大家拿来当做练手之用，于是我也做了几题。发现真的是，华为的机试题真的超级友好。要是所有互联网公司的编程题难度是这样的就好啦，哈哈。好了，这里说一个我觉得还是比较经典的题—字符串分割问题，好了，话不多说，让我们正式开始吧！ 字符串分割输入描述: 首先输入数字n，表示要输入多少个字符串。连续输入字符串(输出次数为N,字符串长度小于100) 输出描述: 按长度为8拆分每个字符串后输出到新的字符串数组，长度不是8整数倍的字符串请在后面补数字0，空字符串不处理 示例1：输入 2abc123456789 输出 abc000001234567890000000 Python解法思路：借助一个while循环和Python对字符串的切片操作，可以很容易得出答案，以下给出参考代码：123456789101112while True: try: a= int(input()) for i in range(a): s=input() while len(s)&gt;8: print(s[:8]) s=s[8:] print(s+(8-len(s))*'0') except: break]]></content>
