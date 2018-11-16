@@ -56,21 +56,6 @@
 
     
   <url>
-    <loc>https://zhouzhuming.tech/2018/11/16/Leetcode/</loc>
-    <lastmod>2018-11-16T07:39:21.943Z</lastmod>
-    <data>
-        <display>
-        <title>Leetcode</title>
-        <pubTime>2018-11-16T07:39:21.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://zhouzhuming.tech/2018/11/15/%E4%BD%BF%E7%94%A8sklearn%E4%BC%98%E9%9B%85%E5%9C%B0%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/</loc>
     <lastmod>2018-11-15T12:46:23.083Z</lastmod>
     <data>
@@ -236,9 +221,9 @@
         <title>MySQL高级</title>
         <pubTime>2018-11-04T05:17:30.000Z</pubTime>
         
-        <tag>MySQL</tag>
-         
         <tag>SQL</tag>
+         
+        <tag>MySQL</tag>
          
          
            
@@ -260,9 +245,9 @@
         
         <tag>Python</tag>
          
-        <tag>MySQL</tag>
-         
         <tag>SQL</tag>
+         
+        <tag>MySQL</tag>
          
          
            
@@ -282,9 +267,9 @@
         <title>详解MySQL查询</title>
         <pubTime>2018-10-31T10:10:10.000Z</pubTime>
         
-        <tag>MySQL</tag>
-         
         <tag>SQL</tag>
+         
+        <tag>MySQL</tag>
          
          
            
@@ -304,9 +289,9 @@
         <title>MySQL命令行脚本必知必会</title>
         <pubTime>2018-10-30T01:39:55.000Z</pubTime>
         
-        <tag>MySQL</tag>
-         
         <tag>SQL</tag>
+         
+        <tag>MySQL</tag>
          
          
            
