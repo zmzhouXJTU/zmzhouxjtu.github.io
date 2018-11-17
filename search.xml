@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[华为机试题之提取不重复的整数]]></title>
     <url>%2F2018%2F11%2F17%2F%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E9%A2%98%E4%B9%8B%E6%8F%90%E5%8F%96%E4%B8%8D%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B4%E6%95%B0%2F</url>
-    <content type="text"><![CDATA[今天是开始刷题打怪的第五天啊，今天在牛客网上面做到了一道比较有趣的华为机试题—提取不重复的整数。我觉得这题目的解法还是比较经典的，这种解题思想值得我们掌握。好了，话不多说，让我们正式开始吧！ 提取不重复的整数题目描述输入一个int型整数，按照从右向左的阅读顺序，返回一个不含重复数字的新的整数。 输入描述 输入一个int型整数 输出描述:按照从右向左的阅读顺序，返回一个不含重复数字的新的整数 示例1：输入 9876673 输出 37689 Python解法12345result=""for i in input()[::-1]: if i not in result: result+=iprint(result)]]></content>
+    <content type="text"><![CDATA[今天是开始刷题打怪的第五天啊，今天在牛客网上面做到了一道比较有趣的华为机试题—提取不重复的整数。我觉得这题目的解法还是比较经典的，这种解题思想值得我们掌握。好了，话不多说，让我们正式开始吧！ 提取不重复的整数题目描述输入一个int型整数，按照从右向左的阅读顺序，返回一个不含重复数字的新的整数。 输入描述 输入一个int型整数 输出描述: 按照从右向左的阅读顺序，返回一个不含重复数字的新的整数 示例1：输入 9876673 输出 37689 Python解法12345result=""for i in input()[::-1]: if i not in result: result+=iprint(result)]]></content>
       <categories>
         <category>华为机试题</category>
       </categories>
@@ -138,8 +138,8 @@
         <category>数据库</category>
       </categories>
       <tags>
-        <tag>SQL</tag>
         <tag>MySQL</tag>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -151,8 +151,8 @@
       </categories>
       <tags>
         <tag>Python</tag>
-        <tag>SQL</tag>
         <tag>MySQL</tag>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -163,8 +163,8 @@
         <category>数据库</category>
       </categories>
       <tags>
-        <tag>SQL</tag>
         <tag>MySQL</tag>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -175,8 +175,8 @@
         <category>数据库</category>
       </categories>
       <tags>
-        <tag>SQL</tag>
         <tag>MySQL</tag>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
