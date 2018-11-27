@@ -141,7 +141,14 @@
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/5.png">
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/6.png">
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/7.png">
-<meta property="og:updated_time" content="2018-11-27T13:36:09.221Z">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/8.jpg">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/9.jpg">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/10.jpg">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/11.jpg">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/12.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/13.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/14.png">
+<meta property="og:updated_time" content="2018-11-27T14:54:53.264Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习算法概览">
 <meta name="twitter:description" content="这篇文章我们将讲解一下机器学习与数据挖掘领域最常用的一些算法，包括有监督学习的分类与回归算法以及无监督学习的聚类与降维算法。好了，闲话不多说，让我们一起开始吧！">
@@ -477,7 +484,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,171字
+                  3,214字
                 </span>
               
 
@@ -493,7 +500,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8分钟
+                  12分钟
                 </span>
               
             </div>
@@ -621,6 +628,46 @@
 <li>手肘法：横坐标为K值，纵坐标为所有样本点到它所对应的聚类中心的误差平方和，在图中找到最佳拐点。</li>
 </ul>
 <hr>
+<h3 id="Principal-Components-Analysis-主成分分析"><a href="#Principal-Components-Analysis-主成分分析" class="headerlink" title="Principal Components Analysis(主成分分析)"></a>Principal Components Analysis(主成分分析)</h3><h4 id="定义符号-1"><a href="#定义符号-1" class="headerlink" title="定义符号"></a>定义符号</h4><p>主成分分析(Principal Components Analysis,PCA)是一种降维方法。为了更好地解释该算法，首先假设数据集为$(x^{(i)};i = 1,2,…,m)$, 其中$x^{(i)} \in \mathbb R^N$, 也就是说数据集一共包含m条数据，每条数据的特征向量维度为n.</p>
+<h4 id="中心化和标准化"><a href="#中心化和标准化" class="headerlink" title="中心化和标准化"></a>中心化和标准化</h4><p>中心化又叫零均值化，中心化(零均值化)后的数据均值为零。下面两幅图是数据做中心化前后的对比，可以看到其实就是一个平移的过程，平移后所有数据的中心是(0,0)。</p>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/8.jpg" alt=""></p>
+<p>数据标准化的目的就是使各个特征都在同一尺度下被衡量。</p>
+<h4 id="Z-score标准化"><a href="#Z-score标准化" class="headerlink" title="Z-score标准化"></a>Z-score标准化</h4><p>Z-score标准化(也叫0-1标准化)，这种方法给予原始数据的均值(mean)和标准差(standard deviation)进行数据的标准化。进过处理的数据符合正态分布，即均值为0, 标准差为1。Z-score标准化的公式如下：</p>
+<p>$$x^* = {x-\mu \over \sigma}$$</p>
+<p>我们可以发现Z-score标准化的过程中是包含中心化的。以下图片展示了一组数据进行Z-score标准化的过程。左图表示的是原始数据，中间的是中心化后的数据，右图是将中心化后的数据除以标准差，得到的标准化后的数据，可以看出每个维度上的尺度是一致的(红色线段的长度表示尺度)。</p>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/9.jpg" alt=""></p>
+<p>想要使用PCA算法，需要先对数据做以下处理：</p>
+<ol>
+<li>$\mu = {1 \over m}\sum_{i=1}^mx^{(i)}$</li>
+<li>$x^{(i)} = x^{(i)} - \mu$</li>
+<li>$\sigma_j^2 = {1 \over m}\sum_i(x_j^{(i)})^2$</li>
+<li>$x_j^{(i)} = {x_j^{(i)}\over \sigma_j}$</li>
+</ol>
+<p>整个过程其实就是Z-score标准化的过程</p>
+<h4 id="PCA算法的基本思想"><a href="#PCA算法的基本思想" class="headerlink" title="PCA算法的基本思想"></a>PCA算法的基本思想</h4><p>PCA算法的基本思想就是寻找到数据的主轴方向，我们希望数据在主轴方向上能够更好地被区分开，直观的说就是我们希望数据在主轴方向上尽量分散，更具体的就是指所有的点在主轴方向的投影点的方差最大。比如在以下两个图中，在方向一上，数据更分散，投影点的方差最大，所以如果从这两个方向上选一个主轴的话，应该选择方向一。</p>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/10.jpg" alt=""></p>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/11.jpg" alt=""></p>
+<p>在数据已经做了Z-score标准化的前提下，数据的均值为0，其投影点的均值也为0.</p>
+<div align="center"><br><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/12.png"><br></div>
+
+<p>(1) 上述第一个式子里面的$x^{(i)^T}\mu$就是$x^{(i)}$这个向量在投影方向$\mu$上的长度。这里的$\mu$是单位向量，即$||\mu|| = 1$。<br>(2) 上述第二个式子是把向量内积的平方换了一个写法。<br>(3) 上述第三个式子又对式子做了一个变形，不难看出${1 \over m}\sum_{i=1}^mx^{(i)}x^{(i)^T}$是一个矩阵，并且这个矩阵是对称矩阵(实际上是一个协方差矩阵)。<br>(4) 纵观整个式子，最终的目标则是找到使得整个式子取到最大值的向量$\mu$，所以这是一个最优化问题。</p>
+<h4 id="求解-mu-与降维"><a href="#求解-mu-与降维" class="headerlink" title="求解$\mu$与降维"></a>求解$\mu$与降维</h4><p>$\mu$是一个单位向量，这其实是这个最优化问题的约束条件($||\mu|| = 1$), 可以使用拉格朗日方程来求解最优化问题：</p>
+<div align="center"><br><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/13.png"><br></div>
+
+<p>对$\mu$求导：</p>
+<div align="center"><br><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/14.png"><br></div>
+
+<p>令导数为0，可以发现$\mu$是$\Sigma$的特征向量。再因为矩阵$\Sigma$是对称矩阵，所以一定能找到n个相互正交的特征向量，如果要选出k个主轴方向，我们从n个特征向量里面选出k个最大的特征值对应的特征向量即可。假设选出的k个特征向量为：</p>
+<p>$${\mu_1,\mu_2,…,\mu_k}$$</p>
+<p>则可以通过以下公式将原来的n维的$x^{(i)}$降为k维的$y^{(i)}$:</p>
+<p>$$[y_1^{(i)},y_2^{(i)},…,y_k^{(i)}] = [\mu_1^Tx^{(i)},\mu_2^Tx^{(i)},…,\mu_k^Tx^{(i)}]$$</p>
+<hr>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li>李航—《统计学习方法》</li>
+<li>周志华—《机器学习》</li>
+<li>吴恩达—《斯坦福机器学习课程》</li>
+<li>张雨石—《斯坦福ML公开课笔记》</li>
+</ul>
 
       
     </div>
@@ -918,7 +965,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#K-Nearest-Neighbor-K近邻"><span class="nav-number">1.</span> <span class="nav-text">K-Nearest Neighbor(K近邻)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前置假设"><span class="nav-number">1.1.</span> <span class="nav-text">前置假设</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K近邻算法基本思想"><span class="nav-number">1.2.</span> <span class="nav-text">K近邻算法基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K近邻算法的三个要素"><span class="nav-number">1.3.</span> <span class="nav-text">K近邻算法的三个要素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#K值的选择"><span class="nav-number">1.3.1.</span> <span class="nav-text">K值的选择</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#距离的度量"><span class="nav-number">1.3.2.</span> <span class="nav-text">距离的度量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分类决策的准则"><span class="nav-number">1.3.3.</span> <span class="nav-text">分类决策的准则</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征归一化"><span class="nav-number">1.4.</span> <span class="nav-text">特征归一化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对异常值敏感"><span class="nav-number">1.5.</span> <span class="nav-text">对异常值敏感</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Regression-线性回归"><span class="nav-number">2.</span> <span class="nav-text">Linear Regression(线性回归)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义符号"><span class="nav-number">2.1.</span> <span class="nav-text">定义符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假设函数"><span class="nav-number">2.2.</span> <span class="nav-text">假设函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目标函数"><span class="nav-number">2.3.</span> <span class="nav-text">目标函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#目标函数的形式"><span class="nav-number">2.3.1.</span> <span class="nav-text">目标函数的形式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么要选择这样的目标函数？"><span class="nav-number">2.3.2.</span> <span class="nav-text">为什么要选择这样的目标函数？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化目标函数的方法"><span class="nav-number">2.4.</span> <span class="nav-text">优化目标函数的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#批量梯度下降"><span class="nav-number">2.4.1.</span> <span class="nav-text">批量梯度下降</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#随机梯度下降"><span class="nav-number">2.4.2.</span> <span class="nav-text">随机梯度下降</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#K-means-K-均值聚类"><span class="nav-number">3.</span> <span class="nav-text">K-means(K-均值聚类)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#假设"><span class="nav-number">3.1.</span> <span class="nav-text">假设</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K-means算法的一般流程"><span class="nav-number">3.2.</span> <span class="nav-text">K-means算法的一般流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对K-means算法的进一步解释"><span class="nav-number">3.3.</span> <span class="nav-text">对K-means算法的进一步解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对K-means算法的改进"><span class="nav-number">3.4.</span> <span class="nav-text">对K-means算法的改进</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K值的选取"><span class="nav-number">3.5.</span> <span class="nav-text">K值的选取</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#K-Nearest-Neighbor-K近邻"><span class="nav-number">1.</span> <span class="nav-text">K-Nearest Neighbor(K近邻)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前置假设"><span class="nav-number">1.1.</span> <span class="nav-text">前置假设</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K近邻算法基本思想"><span class="nav-number">1.2.</span> <span class="nav-text">K近邻算法基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K近邻算法的三个要素"><span class="nav-number">1.3.</span> <span class="nav-text">K近邻算法的三个要素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#K值的选择"><span class="nav-number">1.3.1.</span> <span class="nav-text">K值的选择</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#距离的度量"><span class="nav-number">1.3.2.</span> <span class="nav-text">距离的度量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分类决策的准则"><span class="nav-number">1.3.3.</span> <span class="nav-text">分类决策的准则</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征归一化"><span class="nav-number">1.4.</span> <span class="nav-text">特征归一化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对异常值敏感"><span class="nav-number">1.5.</span> <span class="nav-text">对异常值敏感</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Regression-线性回归"><span class="nav-number">2.</span> <span class="nav-text">Linear Regression(线性回归)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义符号"><span class="nav-number">2.1.</span> <span class="nav-text">定义符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假设函数"><span class="nav-number">2.2.</span> <span class="nav-text">假设函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目标函数"><span class="nav-number">2.3.</span> <span class="nav-text">目标函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#目标函数的形式"><span class="nav-number">2.3.1.</span> <span class="nav-text">目标函数的形式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么要选择这样的目标函数？"><span class="nav-number">2.3.2.</span> <span class="nav-text">为什么要选择这样的目标函数？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化目标函数的方法"><span class="nav-number">2.4.</span> <span class="nav-text">优化目标函数的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#批量梯度下降"><span class="nav-number">2.4.1.</span> <span class="nav-text">批量梯度下降</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#随机梯度下降"><span class="nav-number">2.4.2.</span> <span class="nav-text">随机梯度下降</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#K-means-K-均值聚类"><span class="nav-number">3.</span> <span class="nav-text">K-means(K-均值聚类)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#假设"><span class="nav-number">3.1.</span> <span class="nav-text">假设</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K-means算法的一般流程"><span class="nav-number">3.2.</span> <span class="nav-text">K-means算法的一般流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对K-means算法的进一步解释"><span class="nav-number">3.3.</span> <span class="nav-text">对K-means算法的进一步解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对K-means算法的改进"><span class="nav-number">3.4.</span> <span class="nav-text">对K-means算法的改进</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K值的选取"><span class="nav-number">3.5.</span> <span class="nav-text">K值的选取</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Principal-Components-Analysis-主成分分析"><span class="nav-number">4.</span> <span class="nav-text">Principal Components Analysis(主成分分析)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义符号-1"><span class="nav-number">4.1.</span> <span class="nav-text">定义符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中心化和标准化"><span class="nav-number">4.2.</span> <span class="nav-text">中心化和标准化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Z-score标准化"><span class="nav-number">4.3.</span> <span class="nav-text">Z-score标准化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PCA算法的基本思想"><span class="nav-number">4.4.</span> <span class="nav-text">PCA算法的基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#求解-mu-与降维"><span class="nav-number">4.5.</span> <span class="nav-text">求解$\mu$与降维</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
