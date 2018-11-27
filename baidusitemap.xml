@@ -4,6 +4,48 @@
 
     
   <url>
+    <loc>https://zhouzhuming.tech/2018/11/15/%E4%BD%BF%E7%94%A8sklearn%E5%81%9A%E5%8D%95%E6%9C%BA%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/</loc>
+    <lastmod>2018-11-27T05:57:34.077Z</lastmod>
+    <data>
+        <display>
+        <title>使用sklearn做单机特征工程</title>
+        <pubTime>2018-11-15T05:49:15.000Z</pubTime>
+        
+        <tag>数据挖掘</tag>
+         
+        <tag>机器学习</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据挖掘" url="https://zhouzhuming.tech/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://zhouzhuming.tech/2018/11/27/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/</loc>
+    <lastmod>2018-11-27T05:54:03.352Z</lastmod>
+    <data>
+        <display>
+        <title>机器学习算法概览</title>
+        <pubTime>2018-11-27T05:04:27.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://zhouzhuming.tech/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://zhouzhuming.tech/2018/11/17/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E9%A2%98%E4%B9%8B%E6%8F%90%E5%8F%96%E4%B8%8D%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B4%E6%95%B0/</loc>
     <lastmod>2018-11-17T07:30:38.896Z</lastmod>
     <data>
@@ -140,28 +182,6 @@
         <display>
         <title>使用sklearn优雅地进行数据挖掘</title>
         <pubTime>2018-11-15T11:25:11.000Z</pubTime>
-        
-        <tag>数据挖掘</tag>
-         
-        <tag>机器学习</tag>
-         
-         
-           
-             
-              <breadCrumb title="数据挖掘" url="https://zhouzhuming.tech/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://zhouzhuming.tech/2018/11/15/%E4%BD%BF%E7%94%A8sklearn%E5%81%9A%E5%8D%95%E6%9C%BA%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/</loc>
-    <lastmod>2018-11-15T10:36:42.147Z</lastmod>
-    <data>
-        <display>
-        <title>使用sklearn做单机特征工程</title>
-        <pubTime>2018-11-15T05:49:15.000Z</pubTime>
         
         <tag>数据挖掘</tag>
          
