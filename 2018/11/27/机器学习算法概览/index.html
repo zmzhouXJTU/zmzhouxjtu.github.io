@@ -138,7 +138,8 @@
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/2.png">
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/3.png">
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/4.png">
-<meta property="og:updated_time" content="2018-11-27T12:09:52.376Z">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/5.png">
+<meta property="og:updated_time" content="2018-11-27T12:15:16.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习算法概览">
 <meta name="twitter:description" content="这篇文章我们将讲解一下机器学习与数据挖掘领域最常用的一些算法，包括有监督学习的分类与回归算法以及无监督学习的聚类与降维算法。好了，闲话不多说，让我们一起开始吧！">
@@ -474,7 +475,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,269字
+                  1,242字
                 </span>
               
 
@@ -570,7 +571,8 @@
 <div align="center"><br><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/4.png"><br></div>
 
 <p>转换为对数似然函数后，需要做的工作也转变为极大化对数似然函数，要极大化对数似然函数，从式子中可以得出需要使得$\sum_{i=1}^m(\theta^Tx^{(i)} - y^{(i)})^2$最小。到这一步也基本可以对选择这样的目标函数做出一个比较合理的解释了。</p>
-<h4 id="优化目标函数的方法"><a href="#优化目标函数的方法" class="headerlink" title="优化目标函数的方法"></a>优化目标函数的方法</h4><h5 id="批量梯度下降"><a href="#批量梯度下降" class="headerlink" title="批量梯度下降"></a>批量梯度下降</h5><p>$$<br>\theta_j:= \theta_j - \alpha{\partial\over\partial\theta_j}J(\theta)<br>\<br>\theta_j:= \theta_j - \alpha {1 \over m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}<br>$$</p>
+<h4 id="优化目标函数的方法"><a href="#优化目标函数的方法" class="headerlink" title="优化目标函数的方法"></a>优化目标函数的方法</h4><h5 id="批量梯度下降"><a href="#批量梯度下降" class="headerlink" title="批量梯度下降"></a>批量梯度下降</h5><div align="center"><br><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/5.png"><br></div>
+
 <h5 id="随机梯度下降"><a href="#随机梯度下降" class="headerlink" title="随机梯度下降"></a>随机梯度下降</h5><p>当每次只用一个样本训练时，$J(\theta)$退化成以下形式：</p>
 <p>$$J(\theta) = (h_\theta(x^{(i)})-y^{(i)})^2$$</p>
 <p>此时参数更新公式变为以下形式：</p>
