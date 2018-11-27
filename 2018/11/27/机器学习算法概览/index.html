@@ -134,10 +134,15 @@
 <meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
 <meta property="og:description" content="这篇文章我们将讲解一下机器学习与数据挖掘领域最常用的一些算法，包括有监督学习的分类与回归算法以及无监督学习的聚类与降维算法。好了，闲话不多说，让我们一起开始吧！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-27T12:06:23.444Z">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/1.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/2.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/3.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/4.png">
+<meta property="og:updated_time" content="2018-11-27T12:09:52.376Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习算法概览">
 <meta name="twitter:description" content="这篇文章我们将讲解一下机器学习与数据挖掘领域最常用的一些算法，包括有监督学习的分类与回归算法以及无监督学习的聚类与降维算法。好了，闲话不多说，让我们一起开始吧！">
+<meta name="twitter:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/1.png">
 
 
 
@@ -469,7 +474,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  876字
+                  1,269字
                 </span>
               
 
@@ -485,7 +490,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3分钟
+                  5分钟
                 </span>
               
             </div>
@@ -551,6 +556,27 @@
 <h5 id="为什么要选择这样的目标函数？"><a href="#为什么要选择这样的目标函数？" class="headerlink" title="为什么要选择这样的目标函数？"></a>为什么要选择这样的目标函数？</h5><p>(1) 对于每一个样例$(x^{(i)},y^{(i)})$, 假设预测值和真实值存在以下关系：</p>
 <p>$$y^{(i)} = {\theta}^Tx^{(i)} + {\epsilon}^{(i)}$$</p>
 <p>其中${\epsilon}^{(i)}$表示预测值和真实值之间的差值。</p>
+<p>(2) 影响误差的因素有很多，这些因素又都是随机分布的。根据中心极限定理，许多独立随机变量的和趋于正态分布。所以进一步假设：</p>
+<div align="center"><br><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/1.png"><br></div>
+
+<p>当给定参数$\theta$和变量$x$时，有以下公式成立：</p>
+<div align="center"><br><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/2.png"><br></div>
+
+<p>(3) 再进一步假设各个样例的误差是独立同分布的，可以得到似然函数：</p>
+<div align="center"><br><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/3.png"><br></div>
+
+<p>因为似然函数表示的是在参数$\theta$下数据集出现的概率，所以需要做的工作就是极大化似然函数。</p>
+<p>(4) 将似然函数转化为对数似然：</p>
+<div align="center"><br><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/4.png"><br></div>
+
+<p>转换为对数似然函数后，需要做的工作也转变为极大化对数似然函数，要极大化对数似然函数，从式子中可以得出需要使得$\sum_{i=1}^m(\theta^Tx^{(i)} - y^{(i)})^2$最小。到这一步也基本可以对选择这样的目标函数做出一个比较合理的解释了。</p>
+<h4 id="优化目标函数的方法"><a href="#优化目标函数的方法" class="headerlink" title="优化目标函数的方法"></a>优化目标函数的方法</h4><h5 id="批量梯度下降"><a href="#批量梯度下降" class="headerlink" title="批量梯度下降"></a>批量梯度下降</h5><p>$$<br>\theta_j:= \theta_j - \alpha{\partial\over\partial\theta_j}J(\theta)<br>\<br>\theta_j:= \theta_j - \alpha {1 \over m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}<br>$$</p>
+<h5 id="随机梯度下降"><a href="#随机梯度下降" class="headerlink" title="随机梯度下降"></a>随机梯度下降</h5><p>当每次只用一个样本训练时，$J(\theta)$退化成以下形式：</p>
+<p>$$J(\theta) = (h_\theta(x^{(i)})-y^{(i)})^2$$</p>
+<p>此时参数更新公式变为以下形式：</p>
+<p>$$\theta_j:= \theta_j - \alpha(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$$</p>
+<p>随机梯度下降(Stochastic Gradient Descent)可能永远不能收敛到最小值，参数$\theta$将会一直在使得$J(\theta)$取最小值的附近振荡。</p>
+<hr>
 
       
     </div>
@@ -848,7 +874,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#K-Nearest-Neighbor-K近邻"><span class="nav-number">1.</span> <span class="nav-text">K-Nearest Neighbor(K近邻)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前置假设"><span class="nav-number">1.1.</span> <span class="nav-text">前置假设</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K近邻算法基本思想"><span class="nav-number">1.2.</span> <span class="nav-text">K近邻算法基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K近邻算法的三个要素"><span class="nav-number">1.3.</span> <span class="nav-text">K近邻算法的三个要素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#K值的选择"><span class="nav-number">1.3.1.</span> <span class="nav-text">K值的选择</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#距离的度量"><span class="nav-number">1.3.2.</span> <span class="nav-text">距离的度量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分类决策的准则"><span class="nav-number">1.3.3.</span> <span class="nav-text">分类决策的准则</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征归一化"><span class="nav-number">1.4.</span> <span class="nav-text">特征归一化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对异常值敏感"><span class="nav-number">1.5.</span> <span class="nav-text">对异常值敏感</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Regression-线性回归"><span class="nav-number">2.</span> <span class="nav-text">Linear Regression(线性回归)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义符号"><span class="nav-number">2.1.</span> <span class="nav-text">定义符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假设函数"><span class="nav-number">2.2.</span> <span class="nav-text">假设函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目标函数"><span class="nav-number">2.3.</span> <span class="nav-text">目标函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#目标函数的形式"><span class="nav-number">2.3.1.</span> <span class="nav-text">目标函数的形式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么要选择这样的目标函数？"><span class="nav-number">2.3.2.</span> <span class="nav-text">为什么要选择这样的目标函数？</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#K-Nearest-Neighbor-K近邻"><span class="nav-number">1.</span> <span class="nav-text">K-Nearest Neighbor(K近邻)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前置假设"><span class="nav-number">1.1.</span> <span class="nav-text">前置假设</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K近邻算法基本思想"><span class="nav-number">1.2.</span> <span class="nav-text">K近邻算法基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K近邻算法的三个要素"><span class="nav-number">1.3.</span> <span class="nav-text">K近邻算法的三个要素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#K值的选择"><span class="nav-number">1.3.1.</span> <span class="nav-text">K值的选择</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#距离的度量"><span class="nav-number">1.3.2.</span> <span class="nav-text">距离的度量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分类决策的准则"><span class="nav-number">1.3.3.</span> <span class="nav-text">分类决策的准则</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征归一化"><span class="nav-number">1.4.</span> <span class="nav-text">特征归一化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对异常值敏感"><span class="nav-number">1.5.</span> <span class="nav-text">对异常值敏感</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Regression-线性回归"><span class="nav-number">2.</span> <span class="nav-text">Linear Regression(线性回归)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义符号"><span class="nav-number">2.1.</span> <span class="nav-text">定义符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假设函数"><span class="nav-number">2.2.</span> <span class="nav-text">假设函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目标函数"><span class="nav-number">2.3.</span> <span class="nav-text">目标函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#目标函数的形式"><span class="nav-number">2.3.1.</span> <span class="nav-text">目标函数的形式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么要选择这样的目标函数？"><span class="nav-number">2.3.2.</span> <span class="nav-text">为什么要选择这样的目标函数？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化目标函数的方法"><span class="nav-number">2.4.</span> <span class="nav-text">优化目标函数的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#批量梯度下降"><span class="nav-number">2.4.1.</span> <span class="nav-text">批量梯度下降</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#随机梯度下降"><span class="nav-number">2.4.2.</span> <span class="nav-text">随机梯度下降</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
