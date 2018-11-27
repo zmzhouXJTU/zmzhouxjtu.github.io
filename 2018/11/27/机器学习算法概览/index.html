@@ -139,7 +139,9 @@
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/3.png">
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/4.png">
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/5.png">
-<meta property="og:updated_time" content="2018-11-27T13:28:47.888Z">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/6.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/7.png">
+<meta property="og:updated_time" content="2018-11-27T13:36:09.221Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习算法概览">
 <meta name="twitter:description" content="这篇文章我们将讲解一下机器学习与数据挖掘领域最常用的一些算法，包括有监督学习的分类与回归算法以及无监督学习的聚类与降维算法。好了，闲话不多说，让我们一起开始吧！">
@@ -475,7 +477,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,202字
+                  2,171字
                 </span>
               
 
@@ -588,12 +590,15 @@
 <p>$$c^{(i)}:=arg\min_{j}||x^{(i)}-\mu^{(j)}||^2, j = 1,2,…,k$$</p>
 <p>其中$c^{(i)}$为第i个样例的类别标号</p>
 <p>(2) 更新聚类中心的值为相同类别的样本的平均值：</p>
-<p>$$\mu_j = {\sum_{i=1}^mI{c^{(i)} = j}x^{(i)}\over\sum_{i=1}^mI{c^{(i)} = j}\}$$</p>
+<div align="center"><br><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/6.png"><br></div>
+
 <p>其中，当$c^{(i)} = j$时，$I{c^{(i)}=j} = 1$,当$c^{(i)} \ne j$时，$I{c^{(i)}=j} = 0$</p>
 <h4 id="对K-means算法的进一步解释"><a href="#对K-means算法的进一步解释" class="headerlink" title="对K-means算法的进一步解释"></a>对K-means算法的进一步解释</h4><ol>
 <li>K-means算法要优化的目标函数如下：</li>
 </ol>
-<p>$$J(c,\mu) = \sum_{i=1}^m||x^{(i)} - \mu_{c^{(i)}\}||^2$$</p>
+<div align="center"><br><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/7.png"><br></div>
+
+
 <p>优化目标可以看成让所有点到其对应的聚类中心点的距离和最小。K-means算法可以看成对目标函数J的<strong>坐标下降</strong>过程，对应的解释如下：</p>
 <ul>
 <li>执行上述2(1)这一步的时候，相当于固定$\mu$,改变$c$ (每个样本所对应的类别)，改变的规则是样本到哪个聚类中心的距离最小就将对应的样本对应的$c$改为哪类，所以$J(c,\mu)$一定会减小。</li>
