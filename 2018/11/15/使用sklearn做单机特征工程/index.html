@@ -135,7 +135,9 @@
 <meta property="og:description" content="有这么一句话在业界广泛流传：数据和特征决定了机器学习的上限，而模型和算法只是逼近这个上限而已。那特征工程到底是什么呢？顾名思义，其本质是一项工程活动，目的是最大限度地从原始数据中提取特征以供算法和模型使用。 下面就让我们一起来看看吧！">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%E6%80%BB%E7%BB%93/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%E5%9B%BE%E7%A4%BA.jpg">
-<meta property="og:updated_time" content="2018-11-27T05:57:34.077Z">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%E6%80%BB%E7%BB%93/%E4%BA%8C%E5%80%BC%E5%8C%96.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%E6%80%BB%E7%BB%93/%E6%95%B0%E6%8D%AE%E5%8F%98%E6%8D%A2.png">
+<meta property="og:updated_time" content="2018-11-27T06:08:52.208Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用sklearn做单机特征工程">
 <meta name="twitter:description" content="有这么一句话在业界广泛流传：数据和特征决定了机器学习的上限，而模型和算法只是逼近这个上限而已。那特征工程到底是什么呢？顾名思义，其本质是一项工程活动，目的是最大限度地从原始数据中提取特征以供算法和模型使用。 下面就让我们一起来看看吧！">
@@ -471,7 +473,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4,737字
+                  4,684字
                 </span>
               
 
@@ -540,7 +542,7 @@
 <p>使用<code>preproccessing</code>库的<code>Normalizer</code>类对数据进行归一化的代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Normalizer</span><br><span class="line"></span><br><span class="line"><span class="comment">#归一化，返回值为归一化后的数据</span></span><br><span class="line">Normalizer().fit_transform(iris.data)</span><br></pre></td></tr></table></figure>
 <h4 id="对定量特征二值化"><a href="#对定量特征二值化" class="headerlink" title="对定量特征二值化"></a>对定量特征二值化</h4><p>定量特征二值化的核心在于设定一个阈值，大于阈值的赋值为1，小于等于阈值的赋值为0，公式表达如下：</p>
-<p>$$<br>x =<br>\begin{cases}<br>1, &amp; \text{x &gt; threshold}\<br>0, &amp; \text{x &lt;= threshold}<br>\end{cases}<br>$$</p>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%E6%80%BB%E7%BB%93/%E4%BA%8C%E5%80%BC%E5%8C%96.png" alt=""></p>
 <p>使用<code>preproccessing</code>库的<code>Binarizer</code>类对数据进行二值化的代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Binarizer</span><br><span class="line"> </span><br><span class="line"><span class="comment">#二值化，阈值设置为3，返回值为二值化后的数据</span></span><br><span class="line">Binarizer(threshold=<span class="number">3</span>).fit_transform(iris.data)</span><br></pre></td></tr></table></figure>
 <h4 id="对定性特征哑编码"><a href="#对定性特征哑编码" class="headerlink" title="对定性特征哑编码"></a>对定性特征哑编码</h4><p>由于<code>IRIS</code>数据集的特征皆为<strong>定量特征</strong>，故使用其目标值进行哑编码(实际上是不需要的)。使用<code>preproccessing</code>库的<code>OneHotEncoder</code>类对数据进行哑编码的代码如下：</p>
@@ -548,7 +550,7 @@
 <h4 id="缺失值计算"><a href="#缺失值计算" class="headerlink" title="缺失值计算"></a>缺失值计算</h4><p>由于<code>IRIS</code>数据集没有缺失值，故对数据集新增一个样本，4个特征均赋值为<code>NaN</code>，表示数据缺失。使用<code>preproccessing</code>库的<code>Imputer</code>类对数据进行缺失值计算的代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> vstack, array, nan</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Imputer</span><br><span class="line"></span><br><span class="line"><span class="comment">#缺失值计算，返回值为计算缺失值后的数据</span></span><br><span class="line"><span class="comment">#参数missing_value为缺失值的表示形式，默认为NaN</span></span><br><span class="line"><span class="comment">#参数strategy为缺失值填充方式，默认为mean（均值）</span></span><br><span class="line">Imputer().fit_transform(vstack((array([nan, nan, nan, nan]), iris.data)))</span><br></pre></td></tr></table></figure>
 <h4 id="数据变换"><a href="#数据变换" class="headerlink" title="数据变换"></a>数据变换</h4><p>常见的数据变换有基于多项式的、基于指数函数的、基于对数函数的。4个特征，度为2的多项式转换公式如下：</p>
-<p>$$(x_1’, x_2’, x_3’, x_4’, x_5’, x_6’, x_7’, x_8’, x_9’, x_{10}’, x_{11}’, x_{12}’, x_{13}’, x_{14}’, x_{15}’)\<br>=(1, x_1’, x_2’, x_3’, x_4’, x_1^2, x_1<em>x_2, x_1</em>x_3, x_1<em>x_4, x_2^2, x_2</em>x_3, x_2<em>x_4, x_3^2, x_3</em>x_4, x_4^2)<br>$$</p>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%E6%80%BB%E7%BB%93/%E6%95%B0%E6%8D%AE%E5%8F%98%E6%8D%A2.png" alt=""></p>
 <p>使用<code>preproccessing</code>库的<code>PolynomialFeatures</code>类对数据进行多项式转换的代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures</span><br><span class="line"></span><br><span class="line"><span class="comment">#多项式转换</span></span><br><span class="line"><span class="comment">#参数degree为度，默认值为2</span></span><br><span class="line">PolynomialFeatures().fit_transform(iris.data)</span><br></pre></td></tr></table></figure>
 <p>基于单变元函数的数据变换可以使用一个统一的方式完成，使用<code>preproccessing</code>库的<code>FunctionTransformer</code>对数据进行对数函数转换的代码如下：</p>
