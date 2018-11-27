@@ -139,7 +139,7 @@
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/3.png">
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/4.png">
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/5.png">
-<meta property="og:updated_time" content="2018-11-27T12:15:16.823Z">
+<meta property="og:updated_time" content="2018-11-27T13:28:47.888Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习算法概览">
 <meta name="twitter:description" content="这篇文章我们将讲解一下机器学习与数据挖掘领域最常用的一些算法，包括有监督学习的分类与回归算法以及无监督学习的聚类与降维算法。好了，闲话不多说，让我们一起开始吧！">
@@ -475,7 +475,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,242字
+                  2,202字
                 </span>
               
 
@@ -491,7 +491,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5分钟
+                  8分钟
                 </span>
               
             </div>
@@ -578,6 +578,43 @@
 <p>此时参数更新公式变为以下形式：</p>
 <p>$$\theta_j:= \theta_j - \alpha(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$$</p>
 <p>随机梯度下降(Stochastic Gradient Descent)可能永远不能收敛到最小值，参数$\theta$将会一直在使得$J(\theta)$取最小值的附近振荡。</p>
+<hr>
+<h3 id="K-means-K-均值聚类"><a href="#K-means-K-均值聚类" class="headerlink" title="K-means(K-均值聚类)"></a>K-means(K-均值聚类)</h3><h4 id="假设"><a href="#假设" class="headerlink" title="假设"></a>假设</h4><p>K-means算法是一种聚类算法。为了更好的解释这个算法，首先我们假设给定的数据集为$(x^{(1)},x^{(2)},…,x^{(m)}),x^{(i)} \in \mathbb R^n,$, 注意<strong>数据是没有标签的</strong>。</p>
+<h4 id="K-means算法的一般流程"><a href="#K-means算法的一般流程" class="headerlink" title="K-means算法的一般流程"></a>K-means算法的一般流程</h4><ol>
+<li>选择初始的K个聚类中心$\mu_1,\mu_2,…,\mu_k \in \mathbb R^n$</li>
+<li>重复以下两步直到收敛(聚类中心不再变化或者变化低于阈值)：</li>
+</ol>
+<p>(1) 计算每个样本到各个聚类中心的距离，并将其类别标号设为距其最近的聚类中心的标号，即：</p>
+<p>$$c^{(i)}:=arg\min_{j}||x^{(i)}-\mu^{(j)}||^2, j = 1,2,…,k$$</p>
+<p>其中$c^{(i)}$为第i个样例的类别标号</p>
+<p>(2) 更新聚类中心的值为相同类别的样本的平均值：</p>
+<p>$$\mu_j = {\sum_{i=1}^mI{c^{(i)} = j}x^{(i)}\over\sum_{i=1}^mI{c^{(i)} = j}\}$$</p>
+<p>其中，当$c^{(i)} = j$时，$I{c^{(i)}=j} = 1$,当$c^{(i)} \ne j$时，$I{c^{(i)}=j} = 0$</p>
+<h4 id="对K-means算法的进一步解释"><a href="#对K-means算法的进一步解释" class="headerlink" title="对K-means算法的进一步解释"></a>对K-means算法的进一步解释</h4><ol>
+<li>K-means算法要优化的目标函数如下：</li>
+</ol>
+<p>$$J(c,\mu) = \sum_{i=1}^m||x^{(i)} - \mu_{c^{(i)}\}||^2$$</p>
+<p>优化目标可以看成让所有点到其对应的聚类中心点的距离和最小。K-means算法可以看成对目标函数J的<strong>坐标下降</strong>过程，对应的解释如下：</p>
+<ul>
+<li>执行上述2(1)这一步的时候，相当于固定$\mu$,改变$c$ (每个样本所对应的类别)，改变的规则是样本到哪个聚类中心的距离最小就将对应的样本对应的$c$改为哪类，所以$J(c,\mu)$一定会减小。</li>
+<li>执行上述2(2)步的时候，相当于固定所有样本的$c$,重新计算各个类别的中心，进一步使得$J(c,\mu)$减小。</li>
+</ul>
+<ol start="2">
+<li>目标函数$J$不是一个凸函数，因此K-means算法不能保证收敛到全局最优解，一个简单的方法就是随机初始化多次，以最优的聚类结果作为最终的结果。</li>
+<li>聚类结束后，如果一个中心没有任何相关的样本，那么这个中心就应该去掉，或者重新聚类。</li>
+</ol>
+<h4 id="对K-means算法的改进"><a href="#对K-means算法的改进" class="headerlink" title="对K-means算法的改进"></a>对K-means算法的改进</h4><ol>
+<li>K-means++算法对K个初始聚类中心的选取做了改进，各个聚类中心之间的距离越远越好。</li>
+</ol>
+<p>(1) 随机选取一个聚类中心<br>(2) 计算每个样本到所有已知聚类中心的最短距离$D(x)$<br>(3) 计算每个样本被选为下一个聚类中心的概率${D^2(x)}\over{\sum_{x \in X}D^2(x)}$<br>(4) 确定每个样本被选为下一个聚类中心的概率区间<br>(5) 生成一个0~1的随机数，选取随机数对应区间的样本作为下一个聚类中心<br>(6) 重复以上过程，直到选取了K个聚类中心</p>
+<ol start="2">
+<li>二分K-means算法，为了克服K-means聚类算法容易陷入局部最小值的问题和提高聚类的性能，提出了二分K-means聚类算法。该算法的基本思想是首先将所有的样本点划分到一个簇，然后将该簇一分为二，之后选择其中的一个簇继续进行划分，直到得到用户指定的簇数目为止。选择哪个簇进行划分取决于对其划分是否可以最大程度的降低SSE(误差平方和)</li>
+</ol>
+<h4 id="K值的选取"><a href="#K值的选取" class="headerlink" title="K值的选取"></a>K值的选取</h4><p>对于如何选取K值，本文只简要提及以下两种方法：</p>
+<ul>
+<li>经验法</li>
+<li>手肘法：横坐标为K值，纵坐标为所有样本点到它所对应的聚类中心的误差平方和，在图中找到最佳拐点。</li>
+</ul>
 <hr>
 
       
@@ -876,7 +913,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#K-Nearest-Neighbor-K近邻"><span class="nav-number">1.</span> <span class="nav-text">K-Nearest Neighbor(K近邻)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前置假设"><span class="nav-number">1.1.</span> <span class="nav-text">前置假设</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K近邻算法基本思想"><span class="nav-number">1.2.</span> <span class="nav-text">K近邻算法基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K近邻算法的三个要素"><span class="nav-number">1.3.</span> <span class="nav-text">K近邻算法的三个要素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#K值的选择"><span class="nav-number">1.3.1.</span> <span class="nav-text">K值的选择</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#距离的度量"><span class="nav-number">1.3.2.</span> <span class="nav-text">距离的度量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分类决策的准则"><span class="nav-number">1.3.3.</span> <span class="nav-text">分类决策的准则</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征归一化"><span class="nav-number">1.4.</span> <span class="nav-text">特征归一化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对异常值敏感"><span class="nav-number">1.5.</span> <span class="nav-text">对异常值敏感</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Regression-线性回归"><span class="nav-number">2.</span> <span class="nav-text">Linear Regression(线性回归)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义符号"><span class="nav-number">2.1.</span> <span class="nav-text">定义符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假设函数"><span class="nav-number">2.2.</span> <span class="nav-text">假设函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目标函数"><span class="nav-number">2.3.</span> <span class="nav-text">目标函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#目标函数的形式"><span class="nav-number">2.3.1.</span> <span class="nav-text">目标函数的形式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么要选择这样的目标函数？"><span class="nav-number">2.3.2.</span> <span class="nav-text">为什么要选择这样的目标函数？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化目标函数的方法"><span class="nav-number">2.4.</span> <span class="nav-text">优化目标函数的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#批量梯度下降"><span class="nav-number">2.4.1.</span> <span class="nav-text">批量梯度下降</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#随机梯度下降"><span class="nav-number">2.4.2.</span> <span class="nav-text">随机梯度下降</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#K-Nearest-Neighbor-K近邻"><span class="nav-number">1.</span> <span class="nav-text">K-Nearest Neighbor(K近邻)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前置假设"><span class="nav-number">1.1.</span> <span class="nav-text">前置假设</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K近邻算法基本思想"><span class="nav-number">1.2.</span> <span class="nav-text">K近邻算法基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K近邻算法的三个要素"><span class="nav-number">1.3.</span> <span class="nav-text">K近邻算法的三个要素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#K值的选择"><span class="nav-number">1.3.1.</span> <span class="nav-text">K值的选择</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#距离的度量"><span class="nav-number">1.3.2.</span> <span class="nav-text">距离的度量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分类决策的准则"><span class="nav-number">1.3.3.</span> <span class="nav-text">分类决策的准则</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征归一化"><span class="nav-number">1.4.</span> <span class="nav-text">特征归一化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对异常值敏感"><span class="nav-number">1.5.</span> <span class="nav-text">对异常值敏感</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Regression-线性回归"><span class="nav-number">2.</span> <span class="nav-text">Linear Regression(线性回归)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义符号"><span class="nav-number">2.1.</span> <span class="nav-text">定义符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假设函数"><span class="nav-number">2.2.</span> <span class="nav-text">假设函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目标函数"><span class="nav-number">2.3.</span> <span class="nav-text">目标函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#目标函数的形式"><span class="nav-number">2.3.1.</span> <span class="nav-text">目标函数的形式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么要选择这样的目标函数？"><span class="nav-number">2.3.2.</span> <span class="nav-text">为什么要选择这样的目标函数？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化目标函数的方法"><span class="nav-number">2.4.</span> <span class="nav-text">优化目标函数的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#批量梯度下降"><span class="nav-number">2.4.1.</span> <span class="nav-text">批量梯度下降</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#随机梯度下降"><span class="nav-number">2.4.2.</span> <span class="nav-text">随机梯度下降</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#K-means-K-均值聚类"><span class="nav-number">3.</span> <span class="nav-text">K-means(K-均值聚类)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#假设"><span class="nav-number">3.1.</span> <span class="nav-text">假设</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K-means算法的一般流程"><span class="nav-number">3.2.</span> <span class="nav-text">K-means算法的一般流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对K-means算法的进一步解释"><span class="nav-number">3.3.</span> <span class="nav-text">对K-means算法的进一步解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对K-means算法的改进"><span class="nav-number">3.4.</span> <span class="nav-text">对K-means算法的改进</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K值的选取"><span class="nav-number">3.5.</span> <span class="nav-text">K值的选取</span></a></li></ol></li></ol></div>
             
 
           </div>
