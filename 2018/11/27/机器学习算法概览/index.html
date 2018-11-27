@@ -134,7 +134,7 @@
 <meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
 <meta property="og:description" content="这篇文章我们将讲解一下机器学习与数据挖掘领域最常用的一些算法，包括有监督学习的分类与回归算法以及无监督学习的聚类与降维算法。好了，闲话不多说，让我们一起开始吧！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-27T11:51:39.392Z">
+<meta property="og:updated_time" content="2018-11-27T11:56:56.102Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习算法概览">
 <meta name="twitter:description" content="这篇文章我们将讲解一下机器学习与数据挖掘领域最常用的一些算法，包括有监督学习的分类与回归算法以及无监督学习的聚类与降维算法。好了，闲话不多说，让我们一起开始吧！">
@@ -469,7 +469,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  699字
+                  771字
                 </span>
               
 
@@ -538,7 +538,15 @@
 <h4 id="特征归一化"><a href="#特征归一化" class="headerlink" title="特征归一化"></a>特征归一化</h4><p>为了让各个特征在分类的时候同等重要，我们需要将各个特征进行归一化。</p>
 <h4 id="对异常值敏感"><a href="#对异常值敏感" class="headerlink" title="对异常值敏感"></a>对异常值敏感</h4><p>由于KNN是<strong>基于距离</strong>的算法，所以KNN对异常值是比较敏感的。</p>
 <hr>
-<h3 id="Linear-Regression-线性回归"><a href="#Linear-Regression-线性回归" class="headerlink" title="Linear Regression(线性回归)"></a>Linear Regression(线性回归)</h3><h4 id="定义符号"><a href="#定义符号" class="headerlink" title="定义符号"></a>定义符号</h4>
+<h3 id="Linear-Regression-线性回归"><a href="#Linear-Regression-线性回归" class="headerlink" title="Linear Regression(线性回归)"></a>Linear Regression(线性回归)</h3><h4 id="定义符号"><a href="#定义符号" class="headerlink" title="定义符号"></a>定义符号</h4><p>假设数据集为：{$(x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),…,(x^{(m)},y^{(m)})$}，参数为$\theta$，其中：</p>
+<ul>
+<li>训练样本数目为 m</li>
+<li>第 i 个样本为$(x^{(i)},y^{(i)})$</li>
+<li>$x^{(i)} = [x_1^{(i)},x_2^{(i)},…,x_n^{(i)}]^T, x^{(i)} \in \mathbb R^n$</li>
+<li>$y^{(i)} \in \mathbb R$</li>
+<li>$\theta = [\theta_1,\theta_2,…,\theta_n]^T, \theta \in \mathbb R^n$</li>
+</ul>
+
       
     </div>
     
