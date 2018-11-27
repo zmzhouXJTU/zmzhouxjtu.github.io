@@ -134,7 +134,7 @@
 <meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
 <meta property="og:description" content="这篇文章我们将讲解一下机器学习与数据挖掘领域最常用的一些算法，包括有监督学习的分类与回归算法以及无监督学习的聚类与降维算法。好了，闲话不多说，让我们一起开始吧！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-27T11:56:56.102Z">
+<meta property="og:updated_time" content="2018-11-27T12:02:22.704Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习算法概览">
 <meta name="twitter:description" content="这篇文章我们将讲解一下机器学习与数据挖掘领域最常用的一些算法，包括有监督学习的分类与回归算法以及无监督学习的聚类与降维算法。好了，闲话不多说，让我们一起开始吧！">
@@ -469,7 +469,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  771字
+                  784字
                 </span>
               
 
@@ -546,6 +546,7 @@
 <li>$y^{(i)} \in \mathbb R$</li>
 <li>$\theta = [\theta_1,\theta_2,…,\theta_n]^T, \theta \in \mathbb R^n$</li>
 </ul>
+<h4 id="假设函数"><a href="#假设函数" class="headerlink" title="假设函数"></a>假设函数</h4><p>$$h(x) = \sum_{i=1}^n \theta_ix_i = \theta^Tx$$</p>
 
       
     </div>
@@ -843,7 +844,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#K-Nearest-Neighbor-K近邻"><span class="nav-number">1.</span> <span class="nav-text">K-Nearest Neighbor(K近邻)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前置假设"><span class="nav-number">1.1.</span> <span class="nav-text">前置假设</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K近邻算法基本思想"><span class="nav-number">1.2.</span> <span class="nav-text">K近邻算法基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K近邻算法的三个要素"><span class="nav-number">1.3.</span> <span class="nav-text">K近邻算法的三个要素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#K值的选择"><span class="nav-number">1.3.1.</span> <span class="nav-text">K值的选择</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#距离的度量"><span class="nav-number">1.3.2.</span> <span class="nav-text">距离的度量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分类决策的准则"><span class="nav-number">1.3.3.</span> <span class="nav-text">分类决策的准则</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征归一化"><span class="nav-number">1.4.</span> <span class="nav-text">特征归一化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对异常值敏感"><span class="nav-number">1.5.</span> <span class="nav-text">对异常值敏感</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Regression-线性回归"><span class="nav-number">2.</span> <span class="nav-text">Linear Regression(线性回归)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义符号"><span class="nav-number">2.1.</span> <span class="nav-text">定义符号</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#K-Nearest-Neighbor-K近邻"><span class="nav-number">1.</span> <span class="nav-text">K-Nearest Neighbor(K近邻)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前置假设"><span class="nav-number">1.1.</span> <span class="nav-text">前置假设</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K近邻算法基本思想"><span class="nav-number">1.2.</span> <span class="nav-text">K近邻算法基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K近邻算法的三个要素"><span class="nav-number">1.3.</span> <span class="nav-text">K近邻算法的三个要素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#K值的选择"><span class="nav-number">1.3.1.</span> <span class="nav-text">K值的选择</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#距离的度量"><span class="nav-number">1.3.2.</span> <span class="nav-text">距离的度量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分类决策的准则"><span class="nav-number">1.3.3.</span> <span class="nav-text">分类决策的准则</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征归一化"><span class="nav-number">1.4.</span> <span class="nav-text">特征归一化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对异常值敏感"><span class="nav-number">1.5.</span> <span class="nav-text">对异常值敏感</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Regression-线性回归"><span class="nav-number">2.</span> <span class="nav-text">Linear Regression(线性回归)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义符号"><span class="nav-number">2.1.</span> <span class="nav-text">定义符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假设函数"><span class="nav-number">2.2.</span> <span class="nav-text">假设函数</span></a></li></ol></li></ol></div>
             
 
           </div>
