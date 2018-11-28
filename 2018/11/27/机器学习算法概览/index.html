@@ -152,7 +152,10 @@
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/16.png">
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/17.png">
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/18.png">
-<meta property="og:updated_time" content="2018-11-28T03:12:15.595Z">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/19.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/20.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/21.png">
+<meta property="og:updated_time" content="2018-11-28T05:09:12.685Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习算法概览">
 <meta name="twitter:description" content="这篇文章我们将讲解一下机器学习与数据挖掘领域最常用的一些算法，包括有监督学习的分类与回归算法以及无监督学习的聚类与降维算法。好了，闲话不多说，让我们一起开始吧！">
@@ -488,7 +491,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,682字
+                  4,784字
                 </span>
               
 
@@ -504,7 +507,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  14分钟
+                  18分钟
                 </span>
               
             </div>
@@ -700,11 +703,104 @@
 <p>如果我们用<strong>梯度下降法</strong>,每次更新参数用所有样例，则参数更新公式为：</p>
 <p>$$\theta_j:= \theta_j + \sum_{i=1}^m\alpha(y^{(i)} - h_{\theta_j}(x^{(i)}))x_j^{(i)}$$</p>
 <hr>
-<h3 id="Naive-Bayes-朴素贝叶斯"><a href="#Naive-Bayes-朴素贝叶斯" class="headerlink" title="Naive Bayes(朴素贝叶斯)"></a>Naive Bayes(朴素贝叶斯)</h3><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
-<li>李航—《统计学习方法》</li>
-<li>周志华—《机器学习》</li>
-<li>吴恩达—《斯坦福机器学习课程》</li>
-<li>张雨石—《斯坦福ML公开课笔记》</li>
+<h3 id="Naive-Bayes-朴素贝叶斯"><a href="#Naive-Bayes-朴素贝叶斯" class="headerlink" title="Naive Bayes(朴素贝叶斯)"></a>Naive Bayes(朴素贝叶斯)</h3><h4 id="判别式学习算法和生成式学习算法"><a href="#判别式学习算法和生成式学习算法" class="headerlink" title="判别式学习算法和生成式学习算法"></a>判别式学习算法和生成式学习算法</h4><p>对于一个分类问题来说(这里以二分类问题为例)，逻辑回归算法是在解空间中寻找一条直线从而把两种类别的样例分开，对于新的样例只要判断其在直线的哪一侧即可，这种<strong>直接对问题求解的方法可以称为判别式学习方法</strong>。<strong>生成式学习算法则是对两个类别的数据分别进行建模，用新的样例去匹配两个模型，匹配度较高的作为新样例的类别。</strong></p>
+<h4 id="贝叶斯公式"><a href="#贝叶斯公式" class="headerlink" title="贝叶斯公式"></a>贝叶斯公式</h4><p>朴素贝叶斯算法的核心自然是贝叶斯公式：</p>
+<p>$$P(B|A) = {P(A|B)P(B) \over P(A)}$$</p>
+<p>在机器学习分类算法中，用以下形式可能会更加清晰明了：</p>
+<p>$$P(类别|特征) = {P(特征|类别)P(类别) \over P(特征)}$$</p>
+<h4 id="朴素贝叶斯算法的基本思想"><a href="#朴素贝叶斯算法的基本思想" class="headerlink" title="朴素贝叶斯算法的基本思想"></a>朴素贝叶斯算法的基本思想</h4><ul>
+<li>如果要解决的是一个分类问题，那么我们的任务就是根据样本的特征来判断样本属于哪个类别。首先我们要对训练集中的样本进行统计，并计算各个类别数据所占的比例(<strong>先验概率</strong>)：</li>
+</ul>
+<p>$$P(类别y)$$</p>
+<ul>
+<li>接着计算各个类别下各个特征取到某值的概率(<strong>条件概率</strong>)：</li>
+</ul>
+<p>$$P(第i个特征的第K个可取值|类别y)$$</p>
+<ul>
+<li>朴素贝叶斯算法假设各个特征相互独立，这样的话，对于测试集上的一个新样本来说，有以下等式成立：</li>
+</ul>
+<p>$$P(特征1,特征2,…,特征n|类别y) = P(特征1|类别y)P(特征2|类别y),…,P(特征n|类别y)$$</p>
+<ul>
+<li>给定测试集上的一个样本(也就是告知样本的各个特征的取值)，我们可以计算出：</li>
+</ul>
+<p>$$P(特征|类别y)P(类别y)$$</p>
+<ul>
+<li>想要计算出后验概率<strong>P(类别y|特征)</strong>，我们还需要计算出<strong>P(特征)</strong>，但是任一样本的<b>P(特征)</b>在各个类别下的值是完全相同的，又因为我们的目的是找出样本属于哪个类别的概率最大，为了简化计算，分母部分的的<b>P(特征)</b>可以去掉。</li>
+</ul>
+<h4 id="拉普拉斯平滑"><a href="#拉普拉斯平滑" class="headerlink" title="拉普拉斯平滑"></a>拉普拉斯平滑</h4><p>$P(特征1|类别y)P(特征2|类别y),…,P(特征n|类别y)$中有任何一部分的值为0，则整个式子的值为0。在对条件概率P(特征i的第k个可取值|类别y)进行建模时，发现它们很有可能为0，为了避免出现这种情况，可以引入拉普拉斯平滑，在建模过程中，假定每个特征的每个取值至少出现1次，这样：</p>
+<div align="center"><br><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/19.png"><br></div>
+
+
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><p>某个医院早上收了6个门诊病人，如下表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">症状</th>
+<th style="text-align:center">职业</th>
+<th style="text-align:center">疾病</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">打喷嚏</td>
+<td style="text-align:center">护士</td>
+<td style="text-align:center">感冒</td>
+</tr>
+<tr>
+<td style="text-align:center">打喷嚏</td>
+<td style="text-align:center">农夫</td>
+<td style="text-align:center">没患感冒</td>
+</tr>
+<tr>
+<td style="text-align:center">头痛</td>
+<td style="text-align:center">建筑工人</td>
+<td style="text-align:center">没患感冒</td>
+</tr>
+<tr>
+<td style="text-align:center">头痛</td>
+<td style="text-align:center">建筑工人</td>
+<td style="text-align:center">感冒</td>
+</tr>
+<tr>
+<td style="text-align:center">打喷嚏</td>
+<td style="text-align:center">教师</td>
+<td style="text-align:center">感冒</td>
+</tr>
+<tr>
+<td style="text-align:center">头痛</td>
+<td style="text-align:center">教师</td>
+<td style="text-align:center">没患感冒</td>
+</tr>
+</tbody>
+</table>
+<p>现在又来了第七个病人，是一个打喷嚏的建筑工人。请问他患上感冒的概率有多大？</p>
+<ul>
+<li>根据贝叶斯公式可得：</li>
+</ul>
+<p>$$P(感冒|打喷嚏<em>建筑工人) = {P(打喷嚏</em>建筑工人|感冒) <em> P(感冒) \over P(打喷嚏</em>建筑工人)}$$</p>
+<ul>
+<li>假定“打喷嚏”和“建筑工人”这两个特征是相互独立的，因此，上面的等式就变成了：</li>
+</ul>
+<p>$$P(感冒|打喷嚏<em>建筑工人) = {P(打喷嚏|感冒) </em> P(建筑工人|感冒) <em> P(感冒) \over P(打喷嚏</em>建筑工人)}$$</p>
+<ul>
+<li>按照以上公式进行统计、计算：</li>
+</ul>
+<div align="center"><br><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/20.png"><br></div>
+
+<ul>
+<li>那他没患上感冒的概率为0.33，我们可以通过以下式子进行验证：</li>
+</ul>
+<div align="center"><br><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%A6%82%E8%A7%88/21.png"><br></div>
+
+<hr>
+<h3 id="Desicion-Tree-决策树-—Part-1"><a href="#Desicion-Tree-决策树-—Part-1" class="headerlink" title="Desicion Tree(决策树)—Part 1"></a>Desicion Tree(决策树)—Part 1</h3><h4 id="决策树算法简介"><a href="#决策树算法简介" class="headerlink" title="决策树算法简介"></a>决策树算法简介</h4><p>决策树算法既可以应用于<strong>分类</strong>问题，也可以应用于<strong>回归</strong>问题。决策树算法有<strong>可解释性好、分类速度快</strong>的特点。决策树算法主要包含<strong>特征选择、决策树的生成、决策树的修剪</strong>这几个主要步骤。决策树相关的算法原理主要包含<strong>ID3、C4.5、CART</strong>，其中 scikit-learn 使用了优化版的 CART 算法作为其决策树算法的实现。</p>
+<hr>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li>李航 —《统计学习方法》</li>
+<li>周志华 —《机器学习》</li>
+<li>吴恩达 — 斯坦福机器学习课程</li>
+<li>张雨石 — 斯坦福ML公开课笔记</li>
+<li>阮一峰 — 朴素贝叶斯分类器的应用</li>
 </ul>
 
       
@@ -1003,7 +1099,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#K-Nearest-Neighbor-K近邻"><span class="nav-number">1.</span> <span class="nav-text">K-Nearest Neighbor(K近邻)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前置假设"><span class="nav-number">1.1.</span> <span class="nav-text">前置假设</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K近邻算法基本思想"><span class="nav-number">1.2.</span> <span class="nav-text">K近邻算法基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K近邻算法的三个要素"><span class="nav-number">1.3.</span> <span class="nav-text">K近邻算法的三个要素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#K值的选择"><span class="nav-number">1.3.1.</span> <span class="nav-text">K值的选择</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#距离的度量"><span class="nav-number">1.3.2.</span> <span class="nav-text">距离的度量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分类决策的准则"><span class="nav-number">1.3.3.</span> <span class="nav-text">分类决策的准则</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征归一化"><span class="nav-number">1.4.</span> <span class="nav-text">特征归一化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对异常值敏感"><span class="nav-number">1.5.</span> <span class="nav-text">对异常值敏感</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Regression-线性回归"><span class="nav-number">2.</span> <span class="nav-text">Linear Regression(线性回归)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义符号"><span class="nav-number">2.1.</span> <span class="nav-text">定义符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假设函数"><span class="nav-number">2.2.</span> <span class="nav-text">假设函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目标函数"><span class="nav-number">2.3.</span> <span class="nav-text">目标函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#目标函数的形式"><span class="nav-number">2.3.1.</span> <span class="nav-text">目标函数的形式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么要选择这样的目标函数？"><span class="nav-number">2.3.2.</span> <span class="nav-text">为什么要选择这样的目标函数？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化目标函数的方法"><span class="nav-number">2.4.</span> <span class="nav-text">优化目标函数的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#批量梯度下降"><span class="nav-number">2.4.1.</span> <span class="nav-text">批量梯度下降</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#随机梯度下降"><span class="nav-number">2.4.2.</span> <span class="nav-text">随机梯度下降</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#K-means-K-均值聚类"><span class="nav-number">3.</span> <span class="nav-text">K-means(K-均值聚类)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#假设"><span class="nav-number">3.1.</span> <span class="nav-text">假设</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K-means算法的一般流程"><span class="nav-number">3.2.</span> <span class="nav-text">K-means算法的一般流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对K-means算法的进一步解释"><span class="nav-number">3.3.</span> <span class="nav-text">对K-means算法的进一步解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对K-means算法的改进"><span class="nav-number">3.4.</span> <span class="nav-text">对K-means算法的改进</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K值的选取"><span class="nav-number">3.5.</span> <span class="nav-text">K值的选取</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Principal-Components-Analysis-主成分分析"><span class="nav-number">4.</span> <span class="nav-text">Principal Components Analysis(主成分分析)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义符号-1"><span class="nav-number">4.1.</span> <span class="nav-text">定义符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中心化和标准化"><span class="nav-number">4.2.</span> <span class="nav-text">中心化和标准化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Z-score标准化"><span class="nav-number">4.3.</span> <span class="nav-text">Z-score标准化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PCA算法的基本思想"><span class="nav-number">4.4.</span> <span class="nav-text">PCA算法的基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#求解-mu-与降维"><span class="nav-number">4.5.</span> <span class="nav-text">求解$\mu$与降维</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logistic-Regression-LR—逻辑回归"><span class="nav-number">5.</span> <span class="nav-text">Logistic Regression(LR—逻辑回归)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#推导过程"><span class="nav-number">5.1.</span> <span class="nav-text">推导过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Naive-Bayes-朴素贝叶斯"><span class="nav-number">6.</span> <span class="nav-text">Naive Bayes(朴素贝叶斯)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#K-Nearest-Neighbor-K近邻"><span class="nav-number">1.</span> <span class="nav-text">K-Nearest Neighbor(K近邻)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前置假设"><span class="nav-number">1.1.</span> <span class="nav-text">前置假设</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K近邻算法基本思想"><span class="nav-number">1.2.</span> <span class="nav-text">K近邻算法基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K近邻算法的三个要素"><span class="nav-number">1.3.</span> <span class="nav-text">K近邻算法的三个要素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#K值的选择"><span class="nav-number">1.3.1.</span> <span class="nav-text">K值的选择</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#距离的度量"><span class="nav-number">1.3.2.</span> <span class="nav-text">距离的度量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分类决策的准则"><span class="nav-number">1.3.3.</span> <span class="nav-text">分类决策的准则</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征归一化"><span class="nav-number">1.4.</span> <span class="nav-text">特征归一化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对异常值敏感"><span class="nav-number">1.5.</span> <span class="nav-text">对异常值敏感</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Regression-线性回归"><span class="nav-number">2.</span> <span class="nav-text">Linear Regression(线性回归)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义符号"><span class="nav-number">2.1.</span> <span class="nav-text">定义符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假设函数"><span class="nav-number">2.2.</span> <span class="nav-text">假设函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目标函数"><span class="nav-number">2.3.</span> <span class="nav-text">目标函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#目标函数的形式"><span class="nav-number">2.3.1.</span> <span class="nav-text">目标函数的形式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么要选择这样的目标函数？"><span class="nav-number">2.3.2.</span> <span class="nav-text">为什么要选择这样的目标函数？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化目标函数的方法"><span class="nav-number">2.4.</span> <span class="nav-text">优化目标函数的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#批量梯度下降"><span class="nav-number">2.4.1.</span> <span class="nav-text">批量梯度下降</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#随机梯度下降"><span class="nav-number">2.4.2.</span> <span class="nav-text">随机梯度下降</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#K-means-K-均值聚类"><span class="nav-number">3.</span> <span class="nav-text">K-means(K-均值聚类)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#假设"><span class="nav-number">3.1.</span> <span class="nav-text">假设</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K-means算法的一般流程"><span class="nav-number">3.2.</span> <span class="nav-text">K-means算法的一般流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对K-means算法的进一步解释"><span class="nav-number">3.3.</span> <span class="nav-text">对K-means算法的进一步解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对K-means算法的改进"><span class="nav-number">3.4.</span> <span class="nav-text">对K-means算法的改进</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K值的选取"><span class="nav-number">3.5.</span> <span class="nav-text">K值的选取</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Principal-Components-Analysis-主成分分析"><span class="nav-number">4.</span> <span class="nav-text">Principal Components Analysis(主成分分析)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义符号-1"><span class="nav-number">4.1.</span> <span class="nav-text">定义符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中心化和标准化"><span class="nav-number">4.2.</span> <span class="nav-text">中心化和标准化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Z-score标准化"><span class="nav-number">4.3.</span> <span class="nav-text">Z-score标准化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PCA算法的基本思想"><span class="nav-number">4.4.</span> <span class="nav-text">PCA算法的基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#求解-mu-与降维"><span class="nav-number">4.5.</span> <span class="nav-text">求解$\mu$与降维</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logistic-Regression-LR—逻辑回归"><span class="nav-number">5.</span> <span class="nav-text">Logistic Regression(LR—逻辑回归)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#推导过程"><span class="nav-number">5.1.</span> <span class="nav-text">推导过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Naive-Bayes-朴素贝叶斯"><span class="nav-number">6.</span> <span class="nav-text">Naive Bayes(朴素贝叶斯)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#判别式学习算法和生成式学习算法"><span class="nav-number">6.1.</span> <span class="nav-text">判别式学习算法和生成式学习算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#贝叶斯公式"><span class="nav-number">6.2.</span> <span class="nav-text">贝叶斯公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#朴素贝叶斯算法的基本思想"><span class="nav-number">6.3.</span> <span class="nav-text">朴素贝叶斯算法的基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拉普拉斯平滑"><span class="nav-number">6.4.</span> <span class="nav-text">拉普拉斯平滑</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-number">6.5.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Desicion-Tree-决策树-—Part-1"><span class="nav-number">7.</span> <span class="nav-text">Desicion Tree(决策树)—Part 1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#决策树算法简介"><span class="nav-number">7.1.</span> <span class="nav-text">决策树算法简介</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
