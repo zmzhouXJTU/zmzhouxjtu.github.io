@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="true" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Microsoft YaHei:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="之前的一篇文章讲到了Linux操作系统的远程管理相关的终端命令，这篇文章我们来谈谈与用户权限有关的终端命令，毕竟我们也是经常与权限打交道。主要包含以下三块：  用户和权限的基本概念 用户管理终端命令 组管理终端命令 修改权限终端命令(有一篇单独的博文具体讲过了，这里再提一下)">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux常用命令之用户权限">
+<meta property="og:url" content="https://zhouzhuming.tech/2018/10/20/Linux常用命令之用户权限/index.html">
+<meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
+<meta property="og:description" content="之前的一篇文章讲到了Linux操作系统的远程管理相关的终端命令，这篇文章我们来谈谈与用户权限有关的终端命令，毕竟我们也是经常与权限打交道。主要包含以下三块：  用户和权限的基本概念 用户管理终端命令 组管理终端命令 修改权限终端命令(有一篇单独的博文具体讲过了，这里再提一下)">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/001_%E7%BB%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/002_%E6%9D%83%E9%99%90%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/001_%E7%BB%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/003_su%E5%92%8Cexit%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/004_%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta property="og:updated_time" content="2018-10-21T08:26:16.717Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux常用命令之用户权限">
+<meta name="twitter:description" content="之前的一篇文章讲到了Linux操作系统的远程管理相关的终端命令，这篇文章我们来谈谈与用户权限有关的终端命令，毕竟我们也是经常与权限打交道。主要包含以下三块：  用户和权限的基本概念 用户管理终端命令 组管理终端命令 修改权限终端命令(有一篇单独的博文具体讲过了，这里再提一下)">
+<meta name="twitter:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/001_%E7%BB%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zhouzhuming.tech/2018/10/20/Linux常用命令之用户权限/"/>
+
+
+
+
+
+  <title>Linux常用命令之用户权限 | Zhou Zhuming's blogs</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4aab8459c9ccb9136d4791cd2e7c6294";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/zmzhouXJTU"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhou Zhuming's blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">你必须非常努力，才能看起来毫不费力。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            Commonweal 404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhouzhuming.tech/2018/10/20/Linux常用命令之用户权限/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhou Zhuming">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head-image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhou Zhuming's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux常用命令之用户权限</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-20T22:57:01+08:00">
+                2018-10-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/10/20/Linux常用命令之用户权限/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/10/20/Linux常用命令之用户权限/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/10/20/Linux常用命令之用户权限/" class="leancloud_visitors" data-flag-title="Linux常用命令之用户权限">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2k字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  7分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>之前的一篇文章讲到了Linux操作系统的远程管理相关的终端命令，这篇文章我们来谈谈与<strong>用户权限</strong>有关的终端命令，毕竟我们也是经常与权限打交道。主要包含以下三块：</p>
+<ul>
+<li><strong>用户</strong>和<strong>权限</strong>的基本概念</li>
+<li><strong>用户管理</strong>终端命令</li>
+<li><strong>组管理</strong>终端命令</li>
+<li><strong>修改权限</strong>终端命令(有一篇单独的博文具体讲过了，这里再提一下)<a id="more"></a>
+</li>
+</ul>
+<hr>
+<h3 id="用户和权限的基本概念"><a href="#用户和权限的基本概念" class="headerlink" title="用户和权限的基本概念"></a><strong>用户</strong>和<strong>权限</strong>的基本概念</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
+<li><strong>用户</strong>是Linux系统工作中重要的一环，用户管理包括<strong>用户</strong>与<strong>组</strong>管理</li>
+<li>在Linux系统中，不论是由本机或是远程登录系统，每个系统都<strong>必须拥有一个账号</strong>，并且<strong>对于不同的系统资源拥有不同的使用权限</strong></li>
+<li>在Linux中，可以指定<strong>每一个用户</strong>针对<strong>不同的文件或者目录</strong>的<strong>不同权限</strong></li>
+<li>对<strong>文件/目录</strong>的权限包括：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">权限</th>
+<th style="text-align:center">英文</th>
+<th style="text-align:center">缩写</th>
+<th style="text-align:center">数字代号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">读</td>
+<td style="text-align:center">read</td>
+<td style="text-align:center">r</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">02</td>
+<td style="text-align:center">写</td>
+<td style="text-align:center">write</td>
+<td style="text-align:center">w</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">03</td>
+<td style="text-align:center">执行</td>
+<td style="text-align:center">execute</td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="组"><a href="#组" class="headerlink" title="组"></a>组</h4><ul>
+<li>为了方便用户的管理，提出了<code>组</code>的概念，如下图所示：</li>
+</ul>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/001_%E7%BB%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="组示意图" title="组示意图"></p>
+<ul>
+<li>在实际应用中，可以预先针对<strong>组</strong>设置好权限，然后<strong>将不同的用户添加到对应的组中</strong>，从而<strong>不用依次为每一个用户设置权限</strong></li>
+</ul>
+<hr>
+<h4 id="ls-l扩展"><a href="#ls-l扩展" class="headerlink" title="ls -l扩展"></a>ls -l扩展</h4><ul>
+<li><code>ls -l</code>可以查看文件夹下文件的详细信息，从左到右依次是:<ul>
+<li><strong>权限</strong>，第 1 个字符如果是<code>d</code>表示目录,如果是<code>-</code>表示文件</li>
+<li><strong>硬链接数</strong>，通俗地讲，就是有多少种方式，可以访问到当前目录／文件</li>
+<li><strong>拥有者</strong>，家目录下文件／目录的拥有者通常都是当前用户</li>
+<li><strong>组</strong>，在Linux中，很多时候，会出现组名和用户名相同的情况，后续会讲</li>
+<li><strong>大小</strong></li>
+<li><strong>时间</strong></li>
+<li><strong>名称</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/002_%E6%9D%83%E9%99%90%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="权限示意图" title="权限示意图"></p>
+<hr>
+<h4 id="chmod简单使用（重要）"><a href="#chmod简单使用（重要）" class="headerlink" title="chmod简单使用（重要）"></a>chmod简单使用（重要）</h4><ul>
+<li><code>chmod</code>可以修改<strong>用户／组</strong>对<strong>文件／目录</strong>的权限</li>
+<li>命令格式如下：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +/-rwx 文件名|目录名</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h4 id="超级用户"><a href="#超级用户" class="headerlink" title="超级用户"></a>超级用户</h4><ul>
+<li>Linux系统中的<code>root</code>账号通常<strong>用于系统的维护和管理</strong>，对操作系统的<strong>所有资源具有所有访问权限</strong></li>
+<li>在大多数版本的Linux中，都不推荐<strong>直接使用root账号登录系统</strong></li>
+<li>在Linux安装的过程中，系统会自动创建一个用户账号，而这个默认的用户就称为“标准用户”</li>
+</ul>
+<h4 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a>sudo</h4><ul>
+<li><code>su</code>是substitute user的缩写，表示<strong>使用另一个用户的身份</strong></li>
+<li><code>sudo</code>命令用来以其他身份来执行命令，预设的身份为<code>root</code></li>
+<li>用户使用<code>sudo</code>时，必须先输入密码，之后有<strong>5分钟的有效期限</strong>，超过期限则必须重新输入密码</li>
+</ul>
+<blockquote>
+<p>若其未经授权的用户企图使用<code>sudo</code>，则会发出警告邮件给管理员</p>
+</blockquote>
+<hr>
+<h3 id="组管理终端命令"><a href="#组管理终端命令" class="headerlink" title="组管理终端命令"></a><strong>组管理</strong>终端命令</h3><blockquote>
+<p>提示：<strong>创建组/删除组</strong>的终端命令都需要通过<code>sudo</code>执行</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">groupadd 组名</td>
+<td style="text-align:center">添加组</td>
+</tr>
+<tr>
+<td style="text-align:center">02</td>
+<td style="text-align:center">groupdel 组名</td>
+<td style="text-align:center">删除组</td>
+</tr>
+<tr>
+<td style="text-align:center">03</td>
+<td style="text-align:center">cat/etc/group</td>
+<td style="text-align:center">确认组信息</td>
+</tr>
+<tr>
+<td style="text-align:center">04</td>
+<td style="text-align:center">chgrp -R 组名 文件/目录名</td>
+<td style="text-align:center">递归修改文件/目录的所属组</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>提示：</p>
+<ul>
+<li>组信息保存在<code>/etc/group</code>文件中</li>
+<li><code>etc</code>目录是专门用来保存<strong>系统配置信息</strong>的目录</li>
+</ul>
+</blockquote>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/001_%E7%BB%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="组示意图" title="组示意图"></p>
+<ul>
+<li>在实际应用中，可以预先针对<strong>组</strong>设置好权限，然后<strong>将不同的用户添加到对应的组中</strong>，从而不用依次为每一个用户设置权限</li>
+</ul>
+<hr>
+<h3 id="用户管理终端命令"><a href="#用户管理终端命令" class="headerlink" title="用户管理终端命令"></a><strong>用户管理</strong>终端命令</h3><blockquote>
+<p>提示：<strong>创建用户/删除用户/修改其他用户密码</strong>的终端命令都需要通过<code>sudo</code>执行</p>
+</blockquote>
+<h4 id="创建用户-设置密码-删除用户"><a href="#创建用户-设置密码-删除用户" class="headerlink" title="创建用户/设置密码/删除用户"></a>创建用户/设置密码/删除用户</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">作用</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">useradd -m -g 组 新建用户名</td>
+<td style="text-align:center">添加新用户</td>
+<td style="text-align:center"><b><code>-m</code>自动建立用户家目录<br><b><code>-g</code>指定用户所在的组，否则会建立一个和同名的组</b></b></td>
+</tr>
+<tr>
+<td style="text-align:center">02</td>
+<td style="text-align:center">passwd 用户名</td>
+<td style="text-align:center">设置用户密码</td>
+<td style="text-align:center">如果是普通用户，直接用<code>passwd</code>可以修改自己的账户密码</td>
+</tr>
+<tr>
+<td style="text-align:center">03</td>
+<td style="text-align:center">userdel -r 用户名</td>
+<td style="text-align:center">删除用户</td>
+<td style="text-align:center"><code>-r</code>选项会自动删除用户家目录</td>
+</tr>
+<tr>
+<td style="text-align:center">04</td>
+<td style="text-align:center">cat /etc/passwd</td>
+<td style="text-align:center">确认用户信息</td>
+<td style="text-align:center">新建用户后，用户信息会保存在 <code>/etc/passwd</code>文件中</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>提示：</p>
+<ul>
+<li>创建用户时，如果忘记添加<code>-m</code>选项指定新用户的家目录—最简单的方法就是<strong>删除用户，重新创建</strong></li>
+<li>创建用户时，默认会创建一个和<strong>用户名</strong>同名的<strong>组名</strong></li>
+<li>用户信息保存在<code>/etc/passwd</code>文件中</li>
+</ul>
+</blockquote>
+<hr>
+<h4 id="查看用户信息"><a href="#查看用户信息" class="headerlink" title="查看用户信息"></a>查看用户信息</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">id[用户名]</td>
+<td style="text-align:center">查看用户 UID 和 GID 信息</td>
+</tr>
+<tr>
+<td style="text-align:center">02</td>
+<td style="text-align:center">who</td>
+<td style="text-align:center">查看当前所有登录的用户列表</td>
+</tr>
+<tr>
+<td style="text-align:center">03</td>
+<td style="text-align:center">whoami</td>
+<td style="text-align:center">查看当前登录用户的账户名</td>
+</tr>
+</tbody>
+</table>
+<h5 id="password文件"><a href="#password文件" class="headerlink" title="password文件"></a>password文件</h5><p><code>etc/passwd</code>文件存放的是用户的信息，由6个分号组成的7个信息，分别是：</p>
+<ol>
+<li>用户名</li>
+<li>密码(x，表示加密的密码)</li>
+<li>UID(用户标识)</li>
+<li>GID(组标识)</li>
+<li>用户全名或本地账号</li>
+<li>家目录</li>
+<li>登录使用的<code>Shell</code>，就是登录之后，使用的终端命令，<code>ubuntu</code>默认是<code>dash</code></li>
+</ol>
+<h5 id="usermod"><a href="#usermod" class="headerlink" title="usermod"></a>usermod</h5><ul>
+<li><code>usermod</code>可以用来设置<strong>用户</strong>的<strong>主组／附加组</strong>和<strong>登录 Shell</strong>，命令格式如下:</li>
+<li><strong>主组:</strong> 通常在新建用户时指定，在<code>etc/passwd</code>的第4列<strong>GID对应的组</strong></li>
+<li><strong>附加组:</strong> 在<code>etc/group</code>中最后一列表示该组的用户列表，用于指定<strong>用户的附加权限</strong></li>
+</ul>
+<blockquote>
+<p>提示：设置了用户的附加组之后，需要更新登陆才能生效。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改用户的主组（passwd 中的 GID）</span></span><br><span class="line">usermod -g 组 用户名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改用户的附加组</span></span><br><span class="line">usermod -G 组 用户名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改用户登录 Shell</span></span><br><span class="line">usermod -s /bin/bash 用户名</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：<br>默认使用<code>useradd</code>添加的用户是没有权限使用<code>sudo</code>以<code>root</code>身份执行命令的，可以使用以下命令，将用户添加到<code>sudo</code>附加组中</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -G sudo 用户名</span><br></pre></td></tr></table></figure>
+<h5 id="which-重要"><a href="#which-重要" class="headerlink" title="which(重要)"></a>which(重要)</h5><blockquote>
+<p>提示：</p>
+<ul>
+<li><code>/etc/passwd</code>是用于保存用户信息的文件</li>
+<li><code>/usr/bin/passwd</code>是用于修改用户密码的程序</li>
+</ul>
+</blockquote>
+<ul>
+<li><code>which</code>命令可以查看执行命令所在的位置，例如：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> ls</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line"><span class="comment"># /bin/ls</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">which</span> useradd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line"><span class="comment"># /usr/sbin/useradd</span></span><br></pre></td></tr></table></figure>
+<h5 id="bin和sbin"><a href="#bin和sbin" class="headerlink" title="bin和sbin"></a>bin和sbin</h5><ul>
+<li>在Linux中，绝大多数可执行文件都是保存在<code>/bin</code>、<code>/sbin</code>、<code>/usr/bin</code>、<code>/usr/sbin</code></li>
+<li><code>/bin</code>（<code>binary</code>）是二进制执行文件目录，主要用于具体应用</li>
+<li><code>/sbin</code>（<code>system binary</code>）是系统管理员专用的二进制代码存放目录，主要用于系统管理</li>
+<li><code>/usr/bin</code>（<code>user commands for applications</code>）后期安装的一些软件</li>
+<li><code>/usr/sbin</code>（<code>super user commands for applications</code>）超级用户的一些管理程序</li>
+</ul>
+<blockquote>
+<p>提示：</p>
+<ul>
+<li><code>cd</code>这个终端命令是内置在系统内核中的，没有独立的文件，因此用<code>which</code>无法找到 <code>cd</code>命令的位置</li>
+</ul>
+</blockquote>
+<hr>
+<h4 id="切换用户"><a href="#切换用户" class="headerlink" title="切换用户"></a>切换用户</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">作用</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">su - 用户名</td>
+<td style="text-align:center">切换用户，并且切换目录</td>
+<td style="text-align:center"><code>-</code>可以切换到用户家目录，否则保持位置不变</td>
+</tr>
+<tr>
+<td style="text-align:center">02</td>
+<td style="text-align:center">exit</td>
+<td style="text-align:center">退出当前登录账户</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>su</code>不接用户名，可以切换到<code>root</code>,但是不推荐使用，因为不安全</li>
+<li><code>exit</code>示意图如下：</li>
+</ul>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/003_su%E5%92%8Cexit%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="su和exit示意图" title="su和exit示意图"></p>
+<hr>
+<h3 id="修改文件权限"><a href="#修改文件权限" class="headerlink" title="修改文件权限"></a>修改文件权限</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">chown</td>
+<td style="text-align:center">修改拥有者</td>
+</tr>
+<tr>
+<td style="text-align:center">02</td>
+<td style="text-align:center">chgrp</td>
+<td style="text-align:center">修改组</td>
+</tr>
+<tr>
+<td style="text-align:center">03</td>
+<td style="text-align:center">chmod</td>
+<td style="text-align:center">修改权限</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>命令格式如下：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改文件|目录的拥有者</span></span><br><span class="line">chown 用户名 文件名|目录名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归修改文件|目录的组</span></span><br><span class="line">chgrp -R 组名 文件名|目录名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归修改文件权限</span></span><br><span class="line">chmod -R 755 文件名|目录名</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>chmod</code>在设置权限时，可以简单地使用三个数字分别对应<strong>拥有者/组</strong>和<strong>其他</strong>用户的权限</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 直接修改文件|目录的 读|写|执行 权限，但是不能精确到 拥有者|组|其他</span></span><br><span class="line">chmod +/-rwx 文件名|目录名</span><br></pre></td></tr></table></figure>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B9%8B%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/004_%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="文件权限示意图" title="文件权限示意图"></p>
+<ul>
+<li>常见的数字组合有(<code>u</code>表示用户／<code>g</code>表示组／<code>o</code>表示其他)：<ul>
+<li><code>777</code> ===&gt; <code>u=rwx</code>,<code>g=rwx</code>,<code>o=rwx</code></li>
+<li><code>755</code> ===&gt; <code>u=rwx</code>,<code>g=rx</code>,<code>o=rx</code></li>
+<li><code>644</code> ===&gt; <code>u=rw</code>,<code>g=r</code>,<code>o=r</code></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+      <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:18px;">----------------本文结束<i class="fa fa-paw"></i>感谢您的阅读----------------</div>
+    
+</div>
+
+        
+      </div>
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Zhou Zhuming WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Zhou Zhuming Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Zhou Zhuming
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://zhouzhuming.tech/2018/10/20/Linux常用命令之用户权限/" title="Linux常用命令之用户权限">https://zhouzhuming.tech/2018/10/20/Linux常用命令之用户权限/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" <i class="fa fa-tag"></i> Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/20/Linux常用命令之远程管理/" rel="next" title="Linux常用命令之远程管理">
+                <i class="fa fa-chevron-left"></i> Linux常用命令之远程管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/21/Linux常用命令之系统信息相关/" rel="prev" title="Linux常用命令之系统信息相关">
+                Linux常用命令之系统信息相关 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/head-image.jpg"
+                alt="Zhou Zhuming" />
+            
+              <p class="site-author-name" itemprop="name">Zhou Zhuming</p>
+              <p class="site-description motion-element" itemprop="description">用来记录自己学习旅程的个人小站</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zmzhouXJTU" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/users/baea3822be48/timeline" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-book"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zzm961020" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/zhou-zhu-ming-24/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://cyc2018.github.io/" title="CyC2018" target="_blank">CyC2018</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/u014380165/" title="AI之路" target="_blank">AI之路</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/zchang81/" title="zchang81的博客" target="_blank">zchang81的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://cuijiahua.com/blog/ml/" title="Jack Cui的博客" target="_blank">Jack Cui的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://cherryblog.site/" title="Cheey's Blog做更好的自己" target="_blank">Cheey's Blog做更好的自己</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhangwenli.com/blog/" title="羡辙杂俎" target="_blank">羡辙杂俎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#用户和权限的基本概念"><span class="nav-number">1.</span> <span class="nav-text">用户和权限的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组"><span class="nav-number">1.2.</span> <span class="nav-text">组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ls-l扩展"><span class="nav-number">1.3.</span> <span class="nav-text">ls -l扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#chmod简单使用（重要）"><span class="nav-number">1.4.</span> <span class="nav-text">chmod简单使用（重要）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超级用户"><span class="nav-number">1.5.</span> <span class="nav-text">超级用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sudo"><span class="nav-number">1.6.</span> <span class="nav-text">sudo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组管理终端命令"><span class="nav-number">2.</span> <span class="nav-text">组管理终端命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户管理终端命令"><span class="nav-number">3.</span> <span class="nav-text">用户管理终端命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建用户-设置密码-删除用户"><span class="nav-number">3.1.</span> <span class="nav-text">创建用户/设置密码/删除用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看用户信息"><span class="nav-number">3.2.</span> <span class="nav-text">查看用户信息</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#password文件"><span class="nav-number">3.2.1.</span> <span class="nav-text">password文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#usermod"><span class="nav-number">3.2.2.</span> <span class="nav-text">usermod</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#which-重要"><span class="nav-number">3.2.3.</span> <span class="nav-text">which(重要)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bin和sbin"><span class="nav-number">3.2.4.</span> <span class="nav-text">bin和sbin</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切换用户"><span class="nav-number">3.3.</span> <span class="nav-text">切换用户</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改文件权限"><span class="nav-number">4.</span> <span class="nav-text">修改文件权限</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhou Zhuming</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  <i class="fa fa-user"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  </div>
+
+<!-- <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+-->
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="powered-by">
+  <i class="fa fa-eye"></i><span id="busuanzi_container_site_pv">
+  本站总访问量:<span id="busuanzi_value_site_pv"></span>
+  </span>
+  </div>
+
+  <!-- <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a></div>
+-->
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'l8meKq8eW9oObYAjvhwFV1OX-gzGzoHsz',
+        appKey: 'VyMAFxmDWYooxCn6iP1pRJ0M',
+        placeholder: 'ヾﾉ≧∀≦)o 据说看到这个之后发表评论的程序猿(媛)最后都找到了对象！',
+        avatar:'wavatar',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("l8meKq8eW9oObYAjvhwFV1OX-gzGzoHsz", "VyMAFxmDWYooxCn6iP1pRJ0M");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
