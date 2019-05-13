@@ -138,7 +138,7 @@
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/GANomaly/DCGAN.jpg?q-sign-algorithm=sha1&q-ak=AKIDq1uuX3cc66FAKiYWC4vaUwoW2m7CMg86&q-sign-time=1557754626;1557756426&q-key-time=1557754626;1557756426&q-header-list=&q-url-param-list=&q-signature=d0053cfb662bf841e458f1df068d003db1c73a81&x-cos-security-token=cb08b0f7abff8cd9cfb8c8adff3d4f1b3502c2b510001">
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/GANomaly/%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C1.jpg?q-sign-algorithm=sha1&q-ak=AKIDiKzNKXbhyqpoa9NusrP07Hw92N6kyxON&q-sign-time=1557754225;1557756025&q-key-time=1557754225;1557756025&q-header-list=&q-url-param-list=&q-signature=436142885e28179a51ecf4a594108d7a85cef84f&x-cos-security-token=dc6c9ed2e69cd2238fe919299bd03c23c85c777d10001">
 <meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/GANomaly/%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C2.jpg?q-sign-algorithm=sha1&q-ak=AKIDrjC9TdSqNFPXULSbqmwbJ3WZRZQVwrRp&q-sign-time=1557754282;1557756082&q-key-time=1557754282;1557756082&q-header-list=&q-url-param-list=&q-signature=e59aad3f4fad4e17c8191fcbb9a29f0057c3d68a&x-cos-security-token=13866eef7aacfe70d690356395a2ddad405c521e10001">
-<meta property="og:updated_time" content="2019-05-13T13:53:12.871Z">
+<meta property="og:updated_time" content="2019-05-13T13:58:25.270Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="“半监督”异常检测方法GANomaly">
 <meta name="twitter:description" content="好久没有更新博文了，之前由于找实习，准备实习，所以博文这一块就落下了。现在重新拾起来，今天这篇博文来讲一下之前在平安科技实习看的一篇论文《GANomaly: Semi-Supervised Anomaly Detection via Adversarial Training》，好了话不多说，下面一起来看看！">
@@ -531,20 +531,20 @@
 <hr>
 <h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p><strong>本文包含三个子网络，每个子网络对应一个损失函数</strong>。由于文章中写的损失函数和作者公布的代码中的损失函数有些出入，笔者认为代码中的损失函数更为合理，因此下文介绍的都是代码中的损失函数。</p>
 <p><strong>第一个子网络的损失</strong>是<strong>自编码器的重建损失</strong>，这里借鉴了<code>pix2pix</code>文章中生成网络的损失，采用的是L1损失，而不是L2损失。因为<strong>采用L2损失生成的图像通常比采用L1生成的图像要模糊</strong>。</p>
-<p>$$L_{rec} = l_1_loss(input_{_} real, input_{_} fake)$$</p>
+<p>$$L_{rec} = l_1{_}loss(input{_}real, input{_}fake)$$</p>
 <p><strong>第二个子网络的损失</strong>是<strong>编码网络的损失</strong>，这里需要比对的是原图和重建图在高一层抽象空间中的差异，即两个bottleneck(上文中的bottleneck1和bottleneck2)间的差异，采用的是L2损失。</p>
-<p>$$ L_{enc} = l_2_loss(bottleneck1, bottleneck2)$$</p>
+<p>$$ L_{enc} = l_2{_}loss(bottleneck1, bottleneck2)$$</p>
 <p><strong>第三个子网络的损失</strong>是<strong>常规的GAN中判别网络的损失</strong>，这里采用的是二分类的交叉熵损失。</p>
-<p>$$ L_{adv} = bce_loss(input_{_} d)$$</p>
+<p>$$ L_{adv} = bce{_}loss(input{_}d)$$</p>
 <p>正常来说，采用第一个子网络的生成损失和第三个子网络的判别损失就能生成比较不错的图片了，但是这篇文章主要解决的是<strong>异常检测问题</strong>。异常是图片集的特性，采用像素级的损失(原图和重建图的差异)来推断是不够合理的，因而引入了第二个子网络的编码损失，文章中最后用于推断的也是该损失。</p>
 <hr>
 <h3 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h3><p>本文采用的训练策略和常规的GAN一样的，即<strong>交替地优化D-Net和G-Net</strong>。</p>
 <p><strong>优化D-Net</strong>时，采用的损失为上述第三个子网络的损失，即：</p>
 <p>$$L_{D-Net} = L_{adv}$$</p>
-<p>这里的输入$input_d = concat(input_real, input_fake)$。虽然这里的$input_{fake}$ 需要通过G-Net来生成，但是训练D-Net时，G-Net的参数是固定的。</p>
+<p>这里的输入$input{_}d = concat(input{_}real, input{_}fake)$。虽然这里的$input_{fake}$ 需要通过G-Net来生成，但是训练D-Net时，G-Net的参数是固定的。</p>
 <p><strong>优化G-Net</strong>时，采用的损失比较复杂：</p>
 <p>$$L_{G-Net} = \alpha L_{rec} + \beta L_{enc} + \gamma L_{adv}$$</p>
-<p>主体损失为重建损失$L_{rec}$, 编码损失$L_{enc}$为重建损失的一个约束，对抗损失$L_{adv}$则是用来和D-Net博弈。需要注意的一点是，这里的对抗损失的输入对象和优化D-Net时的输入对象是不一样的，这里的$input_d = input_fake$, 这和常规GAN的训练是一致的。</p>
+<p>主体损失为重建损失$L_{rec}$, 编码损失$L_{enc}$为重建损失的一个约束，对抗损失$L_{adv}$则是用来和D-Net博弈。需要注意的一点是，这里的对抗损失的输入对象和优化D-Net时的输入对象是不一样的，这里的$input{_}d = input{_}fake$, 这和常规GAN的训练是一致的。</p>
 <hr>
 <h3 id="推断"><a href="#推断" class="headerlink" title="推断"></a>推断</h3><p>前面提到，本文采用的推断方式和一般的基于自编码器的异常检测方法是不一样的。这里推断以来的不是重建损失$L_{rec}$, 而是编码损失$L_{enc}$。 具体而言，网络训练收敛以后，我们可以计算得到所有OK样本中的$L_{enc}$值，选取其中最大的作为判别阈值。推断时，给定一张图片，我们可以利用学好的网络，计算其$L_{enc}$值，如果它小于判别阈值则判断为OK样本(正常样本)，大于则判断为NG样本(异常样本)。</p>
 <hr>
