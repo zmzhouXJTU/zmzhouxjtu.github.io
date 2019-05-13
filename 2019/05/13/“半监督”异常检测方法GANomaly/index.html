@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="true" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Microsoft YaHei:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="GAN,异常检测," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="好久没有更新博文了，之前由于找实习，准备实习，所以博文这一块就落下了。现在重新拾起来，今天这篇博文来讲一下之前在平安科技实习看的一篇论文《GANomaly: Semi-Supervised Anomaly Detection via Adversarial Training》，好了话不多说，下面一起来看看！">
+<meta name="keywords" content="GAN,异常检测">
+<meta property="og:type" content="article">
+<meta property="og:title" content="“半监督”异常检测方法GANomaly">
+<meta property="og:url" content="https://zhouzhuming.tech/2019/05/13/“半监督”异常检测方法GANomaly/index.html">
+<meta property="og:site_name" content="Zhou Zhuming&#39;s blogs">
+<meta property="og:description" content="好久没有更新博文了，之前由于找实习，准备实习，所以博文这一块就落下了。现在重新拾起来，今天这篇博文来讲一下之前在平安科技实习看的一篇论文《GANomaly: Semi-Supervised Anomaly Detection via Adversarial Training》，好了话不多说，下面一起来看看！">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/GANomaly/GANomaly%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E5%9B%BE.jpg?q-sign-algorithm=sha1&q-ak=AKIDXQQ5nYKV9tB0A53Ch3RPuEzYRE9JFW9I&q-sign-time=1557749755;1557751555&q-key-time=1557749755;1557751555&q-header-list=&q-url-param-list=&q-signature=876a4bc74bbd818722bb47603a4923cb9d35985f&x-cos-security-token=1fb92c4b48e8846ad2f8b705ccf682038bee381910001">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/GANomaly/DCGAN.jpg?q-sign-algorithm=sha1&q-ak=AKIDYY0xsedP6xbUJcV13QvWwfE1pLhNofgT&q-sign-time=1557750874;1557752674&q-key-time=1557750874;1557752674&q-header-list=&q-url-param-list=&q-signature=8f350320af5c4e2827ea07676b40c12626b439c3&x-cos-security-token=ef46d23b3c2fccd65bede6940ac153bd12798f9410001">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/GANomaly/%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C1.jpg?q-sign-algorithm=sha1&q-ak=AKIDiKzNKXbhyqpoa9NusrP07Hw92N6kyxON&q-sign-time=1557754225;1557756025&q-key-time=1557754225;1557756025&q-header-list=&q-url-param-list=&q-signature=436142885e28179a51ecf4a594108d7a85cef84f&x-cos-security-token=dc6c9ed2e69cd2238fe919299bd03c23c85c777d10001">
+<meta property="og:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/GANomaly/%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C2.jpg?q-sign-algorithm=sha1&q-ak=AKIDrjC9TdSqNFPXULSbqmwbJ3WZRZQVwrRp&q-sign-time=1557754282;1557756082&q-key-time=1557754282;1557756082&q-header-list=&q-url-param-list=&q-signature=e59aad3f4fad4e17c8191fcbb9a29f0057c3d68a&x-cos-security-token=13866eef7aacfe70d690356395a2ddad405c521e10001">
+<meta property="og:updated_time" content="2019-05-13T13:32:28.915Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="“半监督”异常检测方法GANomaly">
+<meta name="twitter:description" content="好久没有更新博文了，之前由于找实习，准备实习，所以博文这一块就落下了。现在重新拾起来，今天这篇博文来讲一下之前在平安科技实习看的一篇论文《GANomaly: Semi-Supervised Anomaly Detection via Adversarial Training》，好了话不多说，下面一起来看看！">
+<meta name="twitter:image" content="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/GANomaly/GANomaly%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E5%9B%BE.jpg?q-sign-algorithm=sha1&q-ak=AKIDXQQ5nYKV9tB0A53Ch3RPuEzYRE9JFW9I&q-sign-time=1557749755;1557751555&q-key-time=1557749755;1557751555&q-header-list=&q-url-param-list=&q-signature=876a4bc74bbd818722bb47603a4923cb9d35985f&x-cos-security-token=1fb92c4b48e8846ad2f8b705ccf682038bee381910001">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zhouzhuming.tech/2019/05/13/“半监督”异常检测方法GANomaly/"/>
+
+
+
+
+
+  <title>“半监督”异常检测方法GANomaly | Zhou Zhuming's blogs</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4aab8459c9ccb9136d4791cd2e7c6294";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/zmzhouXJTU"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhou Zhuming's blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">你必须非常努力，才能看起来毫不费力。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhouzhuming.tech/2019/05/13/“半监督”异常检测方法GANomaly/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhou Zhuming">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head-image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhou Zhuming's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">“半监督”异常检测方法GANomaly</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-13T19:54:01+08:00">
+                2019-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/13/“半监督”异常检测方法GANomaly/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/13/“半监督”异常检测方法GANomaly/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/05/13/“半监督”异常检测方法GANomaly/" class="leancloud_visitors" data-flag-title="“半监督”异常检测方法GANomaly">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.7k字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>好久没有更新博文了，之前由于找实习，准备实习，所以博文这一块就落下了。现在重新拾起来，今天这篇博文来讲一下之前在平安科技实习看的一篇论文《GANomaly: Semi-Supervised Anomaly Detection via Adversarial Training》，好了话不多说，下面一起来看看！<a id="more"></a></p>
+<hr>
+<h3 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h3><p><strong>异常检测</strong>是计算机视觉领域一个比较经典的问题, 它旨在区分正常样本(下文称为<strong>OK样本</strong>)和非正常样本(下文称为<strong>NG样本</strong>). 乍一看, 像是普通的二分类问题. 其实不然, 异常检测有一个内在的属性: 样本极其不平衡, 即<strong>OK样本非常多，NG样本非常少</strong>. 极端情况, 训练阶段见不到任何NG样本, 该问题就变成了单分类问题了(本文也将这种只有OK样本而没有NG样本参与训练的情况称为“半监督”, 笔者认为是不妥的). 本文提出的<strong>GANomaly</strong>方法, 就是针对这种极端情况的.</p>
+<p>由于异常检测问题中NG样本通常比较少, 直接学习能区分NG样本的模型是很困难的. 既然NG样本不可靠, 那大家自然会想到采取相反的思路, <strong>学习能区分OK样本的模型就好, 只要跟OK长得不像的就认为是NG的</strong>. 自编码器(Autoencoder)是异常检测中比较经典的一种方法。它的解决思路是采用尽可能多的OK样本去学习一个自编码模型, 由于该模型见过足够多的OK样本, 因此它能够很好地将OK样本重建出来, 而NG样本它是没见过的, 因此它没法很好地重建出来. 推理阶段, 通过输入图片的重建误差, 就可以区分出OK和NG样本了. 但是, 该方法非常容易受噪声影响, 需要在自编码器上加各种约束, 才能得到一个可用的异常检测模型.</p>
+<hr>
+<h3 id="主要思想"><a href="#主要思想" class="headerlink" title="主要思想"></a>主要思想</h3><p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/GANomaly/GANomaly%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E5%9B%BE.jpg?q-sign-algorithm=sha1&amp;q-ak=AKIDXQQ5nYKV9tB0A53Ch3RPuEzYRE9JFW9I&amp;q-sign-time=1557749755;1557751555&amp;q-key-time=1557749755;1557751555&amp;q-header-list=&amp;q-url-param-list=&amp;q-signature=876a4bc74bbd818722bb47603a4923cb9d35985f&amp;x-cos-security-token=1fb92c4b48e8846ad2f8b705ccf682038bee381910001" alt="GANomaly网络结构图"></p>
+<p>如上图所示，不同于一般的基于自编码器的方法，本文采用的是一个<strong>编码器(Encoder1)-解码器(Decoder)-编码器(Encoder2)的网络结构</strong>，同时学习“原图-&gt;重建图”和“原图的编码-&gt;重建图的编码”两个映射关系。该方法不仅对生成的图片外观(图片-&gt;图片)做了的约束，也对图片内容(图片编码-&gt;图片编码)做了约束。另外，该方法还引入了生成对抗网络(GAN)中的对抗训练思想。这里，作者将<strong>Encoder1-Decoder-Encoder2</strong>当成生成网络G-Net，又定义了一个判别网络D-Net，通过交替训练生成网络和对抗网络，最终学到一个比较好的生成网络。</p>
+<p>推理阶段，该方法也不同于一般的基于自编码器的异常检测方法。最后<strong>用于推断异常的不是原图和重建图的差异，而是第一部分编码器产生的隐空间特征(原图的编码)和第二部分编码器产生的隐空间特征(重建图的编码)的差异</strong>。这种方法更关注图片实质内容的差异，对图片中的微小变化不敏感，因而能解决自编码器中易受噪声影响的问题，鲁棒性更好。</p>
+<p>本人认为本文的主要贡献在于提出了这个Encoder1-Decoder-Encoder2的结构，D-Net只是锦上添花的。因为即便没有D-Net和对抗训练的思想，好好调参数该方法也可以work。</p>
+<hr>
+<h3 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h3><p>本文网络结构包含<strong>三个子网络</strong></p>
+<p><strong>第一个子网络</strong>是一个常规的碗形的自编码器，它的作用是<strong>用于重建输入的OK图像</strong>。该自编码器结构的设计参考了<strong>DCGAN</strong>，具体而言，该自编码器的解码器部分(Decoder)和DCGAN的生成网络几乎是一样的，即从一个n维的向量(bottleneck1)映射到一张3通道的图片，如下图所示。该自编码器的编码器部分(Encoder1)则是编码器的逆过程，即从一张3通道的图片映射到一个n维的向量。</p>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/GANomaly/DCGAN.jpg?q-sign-algorithm=sha1&amp;q-ak=AKIDYY0xsedP6xbUJcV13QvWwfE1pLhNofgT&amp;q-sign-time=1557750874;1557752674&amp;q-key-time=1557750874;1557752674&amp;q-header-list=&amp;q-url-param-list=&amp;q-signature=8f350320af5c4e2827ea07676b40c12626b439c3&amp;x-cos-security-token=ef46d23b3c2fccd65bede6940ac153bd12798f9410001" alt=""></p>
+<p><strong>第二个子网络</strong>是一个编码网络(Encoder2)，它的作用是将第一个子网络重建出来的图片再压缩为一个n维的向量(bottleneck2)。虽然Encoder2采用的结构和Encoder1是一样的，但它们的参数显然是不一样的。<strong>这么一个重复的结构看起来没有什么了不起的，但笔者认为该结构是本文思想中最为核心的地方，它摒弃了绝大部分基于自编码器的异常检测方法常用的通过对比原图和重建图的差异来推断异常的方式，采用了一种新的通过对比原图和重建图在高一层抽象空间中的差异来推断异常的方式，而这一层额外的抽象可以使其大大提高抗噪声干扰的能力，学到更加鲁棒的异常检测模型。</strong></p>
+<p>文章中第一个子网络和第二个子网络共同构成了生成对抗网络中的生成网络(G-Net)，听起来有点费解。其实可以换个思路想，<strong>第一个子网络就是一个中规中矩的生成网络，第二个子网络只是它的一个约束条件而已。</strong></p>
+<p>第三个子网络是一个判别网络(D-Net)，它的作用是<strong>用于区分原图和重建图(G-Net生成的图片)，即要将原图判别为真，将重建图判别为假</strong>。它的结构和第一个子网络的解码网络是一样的。<strong>D-Net的引入，是为了引入对抗训练思想，旨在学到更好的G-Net</strong>。</p>
+<p>综上，该文章设计的网络结构事实上比较简单，就是一个Encoder和一个Decoder，只是通过不同的组合，生成了三部分的子网络。接下来将介绍每部分子网络采用的损失函数</p>
+<hr>
+<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p><strong>本文包含三个子网络，每个子网络对应一个损失函数</strong>。由于文章中写的损失函数和作者公布的代码中的损失函数有些出入，笔者认为代码中的损失函数更为合理，因此下文介绍的都是代码中的损失函数。</p>
+<p><strong>第一个子网络的损失</strong>是<strong>自编码器的重建损失</strong>，这里借鉴了<code>pix2pix</code>文章中生成网络的损失，采用的是L1损失，而不是L2损失。因为<strong>采用L2损失生成的图像通常比采用L1生成的图像要模糊</strong>。</p>
+<p>$$L_{rec} = l_{1_}loss(input_{_}real, input_{_}fake)$$</p>
+<p><strong>第二个子网络的损失</strong>是<strong>编码网络的损失</strong>，这里需要比对的是原图和重建图在高一层抽象空间中的差异，即两个bottleneck(上文中的bottleneck1和bottleneck2)间的差异，采用的是L2损失。</p>
+<p>$$L_{enc} = l_{2_}loss(bottleneck1, bottleneck2)$$</p>
+<p><strong>第三个子网络的损失</strong>是<strong>常规的GAN中判别网络的损失</strong>，这里采用的是二分类的交叉熵损失。</p>
+<p>$$L_{adv} = bce_{_}loss(input_{_}d)$$</p>
+<p>正常来说，采用第一个子网络的生成损失和第三个子网络的判别损失就能生成比较不错的图片了，但是这篇文章主要解决的是<strong>异常检测问题</strong>。异常是图片集的特性，采用像素级的损失(原图和重建图的差异)来推断是不够合理的，因而引入了第二个子网络的编码损失，文章中最后用于推断的也是该损失。</p>
+<hr>
+<h3 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h3><p>本文采用的训练策略和常规的GAN一样的，即<strong>交替地优化D-Net和G-Net</strong>。</p>
+<p><strong>优化D-Net</strong>时，采用的损失为上述第三个子网络的损失，即：</p>
+<p>$$L_{D-Net} = L_{adv}$$</p>
+<p>这里的输入$input_{_}d = concat(input_{_}real, input_{_}fake)$。虽然这里的$input_{_}fake$ 需要通过G-Net来生成，但是训练D-Net时，G-Net的参数是固定的。</p>
+<p><strong>优化G-Net</strong>时，采用的损失比较复杂：</p>
+<p>$$L_{G-Net} = \alpha L_{rec} + \beta L_{enc} + \gamma L_{adv}$$</p>
+<p>主体损失为重建损失$L_{rec}$, 编码损失$L_{enc}$为重建损失的一个约束，对抗损失$L_{adv}$则是用来和D-Net博弈。需要注意的一点是，这里的对抗损失的输入对象和优化D-Net时的输入对象是不一样的，这里的$input_{_}d = input_{_}fake$, 这和常规GAN的训练是一致的。</p>
+<hr>
+<h3 id="推断"><a href="#推断" class="headerlink" title="推断"></a>推断</h3><p>前面提到，本文采用的推断方式和一般的基于自编码器的异常检测方法是不一样的。这里推断以来的不是重建损失$L_{rec}$, 而是编码损失$L_{enc}$。 具体而言，网络训练收敛以后，我们可以计算得到所有OK样本中的$L_{enc}$值，选取其中最大的作为判别阈值。推断时，给定一张图片，我们可以利用学好的网络，计算其$L_{enc}$值，如果它小于判别阈值则判断为OK样本(正常样本)，大于则判断为NG样本(异常样本)。</p>
+<hr>
+<h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3><p>要做基于GANomaly的异常检测实验，需要准备大量的OK样本和少量的NG样本。找不到合适的数据集怎么办？很简单，随便找个开源的分类数据集，将其中一个类别的样本当作异常类别，其他所有类别的样本当作正常样本即可，文章中的实验就是这么干的。具体试验结果如下：</p>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/GANomaly/%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C1.jpg?q-sign-algorithm=sha1&amp;q-ak=AKIDiKzNKXbhyqpoa9NusrP07Hw92N6kyxON&amp;q-sign-time=1557754225;1557756025&amp;q-key-time=1557754225;1557756025&amp;q-header-list=&amp;q-url-param-list=&amp;q-signature=436142885e28179a51ecf4a594108d7a85cef84f&amp;x-cos-security-token=dc6c9ed2e69cd2238fe919299bd03c23c85c777d10001" alt=""></p>
+<p>反正在效果上，GANomaly是超过了之前两种代表性的方法。此外，作者还做了性能对比的实验。事实上前面已经介绍了GANomaly的推断方法，就是一个简单的前向传播和一个对比阈值的过程，因此速度非常快。具体结果如下：</p>
+<p><img src="https://myblogs-photos-1256941622.cos.ap-chengdu.myqcloud.com/GANomaly/%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C2.jpg?q-sign-algorithm=sha1&amp;q-ak=AKIDrjC9TdSqNFPXULSbqmwbJ3WZRZQVwrRp&amp;q-sign-time=1557754282;1557756082&amp;q-key-time=1557754282;1557756082&amp;q-header-list=&amp;q-url-param-list=&amp;q-signature=e59aad3f4fad4e17c8191fcbb9a29f0057c3d68a&amp;x-cos-security-token=13866eef7aacfe70d690356395a2ddad405c521e10001" alt=""></p>
+<p>可以看出，计算性能上，GANomaly表现也是非常不错的。</p>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>虽然异常检测在数据挖掘领域很早就有人做了，但是计算机视觉领域的相关研究还相对较少。另外，GAN这几年非常火，GAN到底能不能做异常检测，还没有太多人尝试过。这篇文章算是一个比较成功地将GAN用到异常检测的例子。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+      <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:18px;">----------------本文结束<i class="fa fa-paw"></i>感谢您的阅读----------------</div>
+    
+</div>
+
+        
+      </div>
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Zhou Zhuming 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Zhou Zhuming 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Zhou Zhuming
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://zhouzhuming.tech/2019/05/13/“半监督”异常检测方法GANomaly/" title="“半监督”异常检测方法GANomaly">https://zhouzhuming.tech/2019/05/13/“半监督”异常检测方法GANomaly/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/GAN/" <i class="fa fa-tag"></i> GAN</a>
+          
+            <a href="/tags/异常检测/" <i class="fa fa-tag"></i> 异常检测</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/30/Python数据分析与挖掘实战读书笔记之数据挖掘基础/" rel="next" title="Python数据分析与挖掘实战读书笔记之数据挖掘基础">
+                <i class="fa fa-chevron-left"></i> Python数据分析与挖掘实战读书笔记之数据挖掘基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/head-image.jpg"
+                alt="Zhou Zhuming" />
+            
+              <p class="site-author-name" itemprop="name">Zhou Zhuming</p>
+              <p class="site-description motion-element" itemprop="description">用来记录自己学习旅程的个人小站</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zmzhouXJTU" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/users/baea3822be48/timeline" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-book"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zzm961020" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/zhou-zhu-ming-24/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://cyc2018.github.io/" title="CyC2018" target="_blank">CyC2018</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/u014380165/" title="AI之路" target="_blank">AI之路</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/zchang81/" title="zchang81的博客" target="_blank">zchang81的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://cuijiahua.com/blog/ml/" title="Jack Cui的博客" target="_blank">Jack Cui的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://cherryblog.site/" title="Cheey's Blog做更好的自己" target="_blank">Cheey's Blog做更好的自己</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://zhangwenli.com/blog/" title="羡辙杂俎" target="_blank">羡辙杂俎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景介绍"><span class="nav-number">1.</span> <span class="nav-text">背景介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要思想"><span class="nav-number">2.</span> <span class="nav-text">主要思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络结构"><span class="nav-number">3.</span> <span class="nav-text">网络结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数"><span class="nav-number">4.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练"><span class="nav-number">5.</span> <span class="nav-text">训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推断"><span class="nav-number">6.</span> <span class="nav-text">推断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验"><span class="nav-number">7.</span> <span class="nav-text">实验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhou Zhuming</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  <i class="fa fa-user"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  </div>
+
+<!-- <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+-->
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="powered-by">
+  <i class="fa fa-eye"></i><span id="busuanzi_container_site_pv">
+  本站总访问量:<span id="busuanzi_value_site_pv"></span>
+  </span>
+  </div>
+
+  <!-- <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a></div>
+-->
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'l8meKq8eW9oObYAjvhwFV1OX-gzGzoHsz',
+        appKey: 'VyMAFxmDWYooxCn6iP1pRJ0M',
+        placeholder: 'ヾﾉ≧∀≦)o 据说看到这个之后发表评论的程序猿(媛)最后都找到了对象！',
+        avatar:'wavatar',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("l8meKq8eW9oObYAjvhwFV1OX-gzGzoHsz", "VyMAFxmDWYooxCn6iP1pRJ0M");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
