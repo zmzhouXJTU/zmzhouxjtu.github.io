@@ -2,4 +2,4 @@
 
 ## 以下给出传送门：
 
- <https://zhouzhuming.tech>
+ <https://zhouzhuming.online>
