@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[面试常考算法题02]]></title>
+    <url>%2F2019%2F06%2F17%2F%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%80%83%E7%AE%97%E6%B3%95%E9%A2%9802%2F</url>
+    <content type="text"><![CDATA[今天是这个系列博文的第二篇。今天我们讲的是也是面试最常考的经典算法题之一—判断一个单链表是否有环。好了，其他话不多说，让我们一起来看看这道题吧！ 环形链表给定一个链表，判断链表中是否有环。 为了表示给定链表中的环，我们使用整数pos来表示链表尾连接到链表中的位置(索引从0开始)。 如果pos是-1，则在该链表中没有环。 12345示例 1：输入：head = [3,2,0,-4], pos = 1输出：true解释：链表中有一个环，其尾部连接到第二个节点。 12345示例 2：输入：head = [1,2], pos = 0输出：true解释：链表中有一个环，其尾部连接到第一个节点。 12345示例 3：输入：head = [1], pos = -1输出：false解释：链表中没有环。 进阶： 你能用O(1)(即，常量)内存解决此问题吗？ 解题思路快慢指针 快指针一次走2步，慢指针一次走1步，如果两个指针相遇，说明链表有环。 Python代码12345678910111213141516171819202122# Definition for singly-linked list.# class ListNode(object):# def __init__(self, x):# self.val = x# self.next = Noneclass Solution(object): def hasCycle(self, head): """ :type head: ListNode :rtype: bool """ slow = head fast = head while fast and fast.next: slow = slow.next fast = fast.next.next if slow == fast: return True return False]]></content>
+      <categories>
+        <category>面试</category>
+        <category>Leetcode刷题</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>Python</tag>
+        <tag>算法</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[面试常考算法题01]]></title>
     <url>%2F2019%2F06%2F16%2F%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%80%83%E7%AE%97%E6%B3%95%E9%A2%9801%2F</url>
     <content type="text"><![CDATA[距离上次更新博客又有一个月了，最近这一个月还是在忙着找实习与秋招提前批。从2月底到6月中旬，差不多折腾了4个月，这中间经历了不少心酸，今年的算法(尤其是CV)真的是神仙打架。最后所幸还可以，拿到了两个机器学习的实习offer，分别是滴滴出行的数据算法实习生和哈啰出行的机器学习算法实习生。下面这几篇博文我将总结面试中常考的算法题，今天是第一篇！ 无序数组中的第k大的元素在未排序的数组中找到第k个最大的元素。请注意，你需要找的是数组排序后的第 k个最大的元素，而不是第k个不同的元素。 123456789示例 1:输入: [3,2,1,5,6,4] 和 k = 2输出: 5示例 2:输入: [3,2,3,1,2,4,5,5,6] 和 k = 4输出: 4 解题思路类似快排的划分思路 先任取一个数，把比它大的数移动到它的左边，比它小的数移动到它的右边。移动完成一轮后，看该数的下标(从0计数)，如果刚好为k-1则它就是第k大的数，如果小于k-1，说明第k大的数在它右边，如果大于k-1则说明第k大的数在它左边，取左边或者右边继续进行移动，直到找到。 Python代码1234567891011121314151617181920212223242526272829303132333435363738class Solution: def findKthLargest(self, nums, k): """ :type nums: List[int] :type k: int :rtype: int """ start = 0 end = len(nums) - 1 while start &lt;= end: index = self.partition(nums, start, end) if index == k - 1: return nums[index] elif index &gt; k - 1: end = index - 1 else: start = index + 1 return -1 def partition(self, nums, low, high): """ 基于快排的划分算法 """ pivot = nums[low] while low &lt; high: while low &lt; high and nums[high] &lt;= pivot: high -= 1 nums[low] = nums[high] while low &lt; high and nums[low] &gt; pivot: low += 1 nums[high] = nums[low] nums[low] = pivot return low]]></content>
